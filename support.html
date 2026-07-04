@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Lexfall</title>
+<meta name="description" content="Lexfall support — contact us and find answers about subscriptions, the widget, and your data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
+<style>
+  .faq{border-top:1px solid var(--line);margin-top:36px}
+  .faq details{border-bottom:1px solid var(--line);padding:18px 0}
+  .faq summary{font-family:var(--serif);font-size:20px;cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:'+';color:var(--accent);font-size:22px;font-family:var(--sans)}
+  .faq details[open] summary::after{content:'–'}
+  .faq p{color:var(--muted);margin-top:12px}
+  .contact-card{border:1px solid var(--line2);border-radius:16px;padding:26px;background:var(--surface);margin-top:20px}
+  .contact-card a:not(.btn){color:var(--accent)}
+  .contact-card a.btn-primary{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="wordmark">Le<span class="x">x</span>fall</a>
+    <nav class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="index.html#waitlist" class="btn btn-primary">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <span class="eyebrow">We're here to help</span>
+  <h1>Support</h1>
+  <p class="updated">Questions, feedback, or trouble with a subscription — reach us and we'll get back to you, usually within 1–2 business days.</p>
+
+  <div class="contact-card">
+    <p style="margin:0;color:var(--text);font-family:var(--serif);font-size:20px">Email us</p>
+    <p style="margin-top:8px">General &amp; billing: <a href="mailto:support@lexfall.app">support@lexfall.app</a><br>
+    Privacy requests: <a href="mailto:privacy@lexfall.app">privacy@lexfall.app</a></p>
+    <a class="btn btn-primary" style="margin-top:16px;display:inline-block" href="mailto:support@lexfall.app?subject=Lexfall%20support">Contact support</a>
+  </div>
+
+  <h2 style="margin-top:44px">Frequently asked</h2>
+  <div class="faq">
+    <details open>
+      <summary>How do subscriptions and the free trial work?</summary>
+      <p>Lexfall offers a monthly and an annual auto-renewable subscription, each starting with a free trial. Payment is charged to your App Store account at the end of the trial, and the subscription renews automatically unless you cancel at least 24 hours before the period ends.</p>
+    </details>
+    <details>
+      <summary>How do I cancel or manage my subscription?</summary>
+      <p>Subscriptions are managed by Apple, not inside the app. On iPhone: open <strong>Settings → [your name] → Subscriptions</strong>, choose Lexfall, and cancel or change your plan there. Cancelling stops the next renewal; you keep access until the current period ends.</p>
+    </details>
+    <details>
+      <summary>I paid but Lexfall isn't unlocked. How do I restore?</summary>
+      <p>Open the paywall in the app and tap <strong>Restore</strong>. Make sure you're signed in with the same Apple ID you used to purchase. If it still doesn't unlock, email <a href="mailto:support@lexfall.app">support@lexfall.app</a> with your receipt and we'll sort it out.</p>
+    </details>
+    <details>
+      <summary>How do I add the home-screen widget?</summary>
+      <p>Touch and hold an empty area of your Home Screen until the apps jiggle, tap the <strong>+</strong> in the top-left, search for <strong>Lexfall</strong>, pick a widget size, and add it. It then rotates through a new word every few hours. The app's Widget screen walks you through it too.</p>
+    </details>
+    <details>
+      <summary>Can I use Lexfall without an account?</summary>
+      <p>Yes. Most of the app works with no account — your data stays on your device. Signing in with Apple or Google simply syncs your streak, saved words and progress across your devices.</p>
+    </details>
+    <details>
+      <summary>How do I delete my account and data?</summary>
+      <p>In the app go to <strong>Profile → Delete account</strong>. This permanently erases your saved words, streak and progress from the device and, if you're signed in, from your synced account. You can also email <a href="mailto:privacy@lexfall.app">privacy@lexfall.app</a> to request deletion or a copy of your data.</p>
+    </details>
+    <details>
+      <summary>Is the medical/legal vocabulary professional advice?</summary>
+      <p>No. Lexfall's definitions and examples are for language learning only and are not medical, legal, or professional advice. See our <a href="terms.html">Terms</a> for details.</p>
+    </details>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <a href="index.html" class="wordmark">Le<span class="x">x</span>fall</a>
+    <nav class="foot-links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+  <div class="wrap" style="margin-top:24px"><div class="foot-copy">© 2026 Lexfall. All rights reserved.</div></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lexfall — Advanced English, one word a day</title>
+<meta name="description" content="Lexfall is a minimalist vocabulary app for ambitious non-native English speakers. C1–C2 words across Medicine, Law, Business and General English — with a home-screen widget that teaches you a new word every few hours.">
+<meta property="og:title" content="Lexfall — Advanced English, one word a day">
+<meta property="og:description" content="Master the words that make you sound exceptional. C1–C2 vocabulary across Medicine, Law, Business and General English.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="wordmark">Le<span class="x">x</span>fall</a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#specimens">Words</a>
+      <a href="support.html">Support</a>
+      <a href="#waitlist" class="btn btn-primary">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="wrap hero">
+    <span class="eyebrow rise">Advanced English, daily</span>
+    <h1 class="rise">Master the words that make you sound
+      <span class="ink">exceptional<svg viewBox="0 0 340 24" preserveAspectRatio="none"><path d="M4 15 C 70 6, 150 20, 210 11 C 262 4, 306 15, 336 9"/></svg></span>.</h1>
+    <p class="sub rise">Lexfall is a quiet, editorial vocabulary app for people who already speak well — and want range. One C1–C2 word a day, in about a minute, across the field you actually work in.</p>
+
+    <form id="waitlist-hero" class="capture rise" novalidate>
+      <input type="email" name="email" placeholder="your@email.com" aria-label="Email address" required>
+      <button type="submit" class="btn btn-primary">Get early access</button>
+    </form>
+    <div class="form-msg" data-for="waitlist-hero" aria-live="polite"></div>
+    <div class="trust rise"><span class="stars">★★★★★</span> Built for serious learners · launching on the App Store</div>
+
+    <!-- live rotating specimen -->
+    <div class="specimen-wrap rise">
+      <div class="specimen" id="specimen">
+        <span class="corner" id="sp-field">GENERAL C2</span>
+        <div class="lbl">LEXFALL</div>
+        <div class="fade" id="sp-body">
+          <div class="w" id="sp-word">petrichor</div>
+          <div class="ipa" id="sp-ipa">/ˈpɛtrɪkɔː/</div>
+          <div class="pos" id="sp-pos">(n)</div>
+          <div class="def" id="sp-def">The earthy scent of rain on dry ground.</div>
+        </div>
+        <div class="dots"><i class="on"></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <p class="note">The widget rotates a fresh word onto your Home Screen every few hours.</p>
+  </div>
+
+  <!-- DRIFTING WORD WALL -->
+  <div class="wall" id="specimens">
+    <div class="marquee" id="wall-a"></div>
+    <div class="marquee rev" id="wall-b"></div>
+  </div>
+
+  <!-- FIELDS -->
+  <section id="fields">
+    <div class="wrap">
+      <div class="section-head rise">
+        <span class="eyebrow">Four fields, one standard</span>
+        <h2>Vocabulary organised the way your world is.</h2>
+        <p>Switch fields any time. Every word is chosen for a real category — not stamped generically "advanced." Medical, legal and business lexicons sit alongside a complete General C2 set.</p>
+      </div>
+      <div class="fields rise" style="justify-content:flex-start">
+        <span class="pill on">Medicine</span>
+        <span class="pill">Law</span>
+        <span class="pill">Business</span>
+        <span class="pill">General C2</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PENCIL-SKETCHED PROFICIENCY CURVE -->
+  <section>
+    <div class="wrap curve-panel">
+      <div class="section-head rise" style="margin:0">
+        <span class="eyebrow">Progress you can trust</span>
+        <h2>An honest picture of where you stand.</h2>
+        <p>No vanity metrics, no "you outrank 98%." Lexfall plots your real proficiency from your quiz accuracy — and shows you climbing into the rare tail of the curve, C1 toward C2.</p>
+      </div>
+      <div class="curve-box rise">
+        <span class="eyebrow">Your proficiency</span>
+        <div class="curve-cap">C2<small> · sketched from real accuracy</small></div>
+        <svg class="draw" id="curve" viewBox="0 0 360 120" width="100%" style="margin-top:14px">
+          <line x1="0" y1="100" x2="360" y2="100" stroke="#3E372B" stroke-width="1"/>
+          <path id="bell" d="M0 99 C70 97 120 90 150 58 C170 32 190 32 210 58 C240 90 290 97 360 99" fill="none" stroke="#A39A88" stroke-width="1.6"/>
+          <line id="mark" x1="300" y1="80" x2="300" y2="100" stroke="#C6A85C" stroke-width="1.6"/>
+          <circle id="dot" cx="300" cy="80" r="3.5" fill="#C6A85C"/>
+          <text x="300" y="72" font-size="10" fill="#C6A85C" text-anchor="middle" font-family="Inter">You</text>
+          <text x="150" y="114" font-size="9" fill="#6E665A" text-anchor="middle" font-family="Inter">B2</text>
+          <text x="225" y="114" font-size="9" fill="#6E665A" text-anchor="middle" font-family="Inter">C1</text>
+          <text x="300" y="114" font-size="9" fill="#6E665A" text-anchor="middle" font-family="Inter">C2</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head rise">
+        <span class="eyebrow">Why Lexfall</span>
+        <h2>Built to make learning effortless — and beautiful.</h2>
+      </div>
+      <div class="grid">
+        <div class="card rise">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6A85C" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 9h16"/></svg></div>
+          <h3>One word a day</h3>
+          <p>A single, well-chosen word with pronunciation, an example sentence and its origin. Learn it in a minute; keep it for good.</p>
+        </div>
+        <div class="card rise">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6A85C" stroke-width="1.5"><path d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z"/></svg></div>
+          <h3>The home-screen widget</h3>
+          <p>Our hero feature. A fresh word surfaces on your Home and Lock Screen every few hours — you learn without even opening the app.</p>
+        </div>
+        <div class="card rise">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6A85C" stroke-width="1.5"><path d="M12 4 3 9l9 5 9-5-9-5ZM7 12v5l5 3 5-3v-5"/></svg></div>
+          <h3>Practice that sticks</h3>
+          <p>Games, timed challenges and a placement test, with spaced review that resurfaces the words you almost forgot.</p>
+        </div>
+        <div class="card rise">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6A85C" stroke-width="1.5"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a4.5 4.5 0 0 1 0 7"/></svg></div>
+          <h3>Hear every word</h3>
+          <p>Native-quality pronunciation on tap, with a choice of English voices — UK, US, and more.</p>
+        </div>
+        <div class="card rise">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6A85C" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4V4Z"/></svg></div>
+          <h3>Your own collections</h3>
+          <p>Save words to collections, add your own, and follow only the areas you care about. Your library, your way.</p>
+        </div>
+        <div class="card rise">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6A85C" stroke-width="1.5"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></div>
+          <h3>Progress you can feel</h3>
+          <p>Streaks, a weekly rhythm, and an honest proficiency curve built from your real accuracy — no vanity metrics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section>
+    <div class="wrap">
+      <div class="quote rise">
+        <p>“The difference between the almost-right word and the right word is the difference between the lightning-bug and the lightning.”</p>
+        <div class="by">— Mark Twain. Lexfall is built for people chasing the lightning.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section id="waitlist">
+    <div class="wrap">
+      <div class="section-head rise" style="max-width:640px">
+        <span class="eyebrow">Coming soon</span>
+        <h2>Be first through the <span class="ink">door<svg viewBox="0 0 120 24" preserveAspectRatio="none"><path d="M3 14 C 34 7, 84 19, 116 10"/></svg></span>.</h2>
+        <p>Lexfall is launching on the App Store. Join the waitlist and we'll send you a single email the day it goes live.</p>
+      </div>
+      <form id="waitlist-main" class="capture rise" style="margin-left:0" novalidate>
+        <input type="email" name="email" placeholder="your@email.com" aria-label="Email address" required>
+        <button type="submit" class="btn btn-primary">Join the waitlist</button>
+      </form>
+      <div class="form-msg" data-for="waitlist-main" aria-live="polite"></div>
+      <div class="store">📱 <span>Coming to the App Store<small>iPhone · iPad — 2026</small></span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <a href="index.html" class="wordmark">Le<span class="x">x</span>fall</a>
+      <div class="foot-copy" style="margin-top:8px">Advanced English, one word a day.</div>
+    </div>
+    <nav class="foot-links">
+      <a href="#features">Features</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+  <div class="wrap" style="margin-top:24px"><div class="foot-copy">© 2026 Lexfall. All rights reserved.</div></div>
+</footer>
+
+<script>
+/* ---- real words from the app ---- */
+const FIELDLBL={gen:"GENERAL C2",med:"MEDICINE",law:"LAW",biz:"BUSINESS"};
+const WORDS=[
+{"word":"petrichor","pos":"n","ipa":"ˈpɛtrɪkɔː","cefr":"C2","def":"The earthy scent of rain on dry ground.","field":"gen"},
+{"word":"halcyon","pos":"adj","ipa":"ˈhælsiən","cefr":"C2","def":"Idyllically calm, peaceful and happy.","field":"gen"},
+{"word":"ineffable","pos":"adj","ipa":"ɪnˈɛfəbl̩","cefr":"C2","def":"Too great or extreme to be expressed in words.","field":"gen"},
+{"word":"ephemeral","pos":"adj","ipa":"ɪˈfɛm(ə)rəl","cefr":"C1","def":"Lasting for a very short time.","field":"gen"},
+{"word":"serendipity","pos":"n","ipa":"ˌsɛrənˈdɪpɪti","cefr":"C1","def":"The luck of finding something good without looking for it.","field":"gen"},
+{"word":"mellifluous","pos":"adj","ipa":"mɛˈlɪflʊəs","cefr":"C2","def":"Pleasingly smooth and musical to hear.","field":"gen"},
+{"word":"zeitgeist","pos":"n","ipa":"ˈzaɪtɡaɪst","cefr":"C2","def":"The defining spirit or mood of a period.","field":"gen"},
+{"word":"catharsis","pos":"n","ipa":"kəˈθɑːsɪs","cefr":"C2","def":"The release of strong emotion that brings relief.","field":"gen"},
+{"word":"ennui","pos":"n","ipa":"ɒnˈwiː","cefr":"C2","def":"Listless boredom born of dissatisfaction.","field":"gen"},
+{"word":"schadenfreude","pos":"n","ipa":"ˈʃɑːdənfrɔɪdə","cefr":"C2","def":"Pleasure taken in another’s misfortune.","field":"gen"},
+{"word":"hubris","pos":"n","ipa":"ˈhjuːbrɪs","cefr":"C2","def":"Excessive pride that invites downfall.","field":"gen"},
+{"word":"iconoclast","pos":"n","ipa":"aɪˈkɒnəklæst","cefr":"C2","def":"A person who attacks cherished beliefs.","field":"gen"},
+{"word":"nadir","pos":"n","ipa":"ˈneɪdɪə","cefr":"C2","def":"The lowest or most wretched point.","field":"gen"},
+{"word":"zenith","pos":"n","ipa":"ˈzɛnɪθ","cefr":"C1","def":"The highest point or peak of something.","field":"gen"},
+{"word":"obfuscate","pos":"v","ipa":"ˈɒbfʌskeɪt","cefr":"C2","def":"To deliberately make something unclear.","field":"gen"},
+{"word":"sanguine","pos":"adj","ipa":"ˈsæŋɡwɪn","cefr":"C2","def":"Cheerfully optimistic in a hard situation.","field":"gen"},
+{"word":"aplomb","pos":"n","ipa":"əˈplɒm","cefr":"C2","def":"Composure and assurance under pressure.","field":"gen"},
+{"word":"filibuster","pos":"n","ipa":"ˈfɪlɪbʌstə","cefr":"C2","def":"A long speech used to obstruct a vote.","field":"gen"},
+{"word":"truculent","pos":"adj","ipa":"ˈtrʌkjʊlənt","cefr":"C2","def":"Aggressively defiant and eager to argue.","field":"gen"},
+{"word":"demur","pos":"v","ipa":"dɪˈmɜː","cefr":"C2","def":"To raise a polite objection or hesitate.","field":"gen"},
+{"word":"tautology","pos":"n","ipa":"tɔːˈtɒlədʒi","cefr":"C2","def":"Saying the same thing twice in other words.","field":"gen"},
+{"word":"palliative","pos":"adj","ipa":"ˈpæliətɪv","cefr":"C1","def":"Easing symptoms without curing the cause.","field":"med"},
+{"word":"idiopathic","pos":"adj","ipa":"ˌɪdiəˈpæθɪk","cefr":"C2","def":"Arising from an unknown cause.","field":"med"},
+{"word":"prognosis","pos":"n","ipa":"prɒɡˈnəʊsɪs","cefr":"C1","def":"The likely course or outcome of an illness.","field":"med"},
+{"word":"perfusion","pos":"n","ipa":"pəˈfjuːʒən","cefr":"C2","def":"The passage of blood or fluid through tissue.","field":"med"},
+{"word":"cachexia","pos":"n","ipa":"kəˈkɛksiə","cefr":"C2","def":"Severe wasting of the body from chronic illness.","field":"med"},
+{"word":"ostensible","pos":"adj","ipa":"ɒˈstɛnsɪbl̩","cefr":"C2","def":"Stated as the reason, though perhaps not the real one.","field":"law"},
+{"word":"estoppel","pos":"n","ipa":"ɪˈstɒpl̩","cefr":"C2","def":"A bar preventing a contradictory claim.","field":"law"},
+{"word":"indemnify","pos":"v","ipa":"ɪnˈdɛmnɪfaɪ","cefr":"C2","def":"To compensate another for loss.","field":"law"},
+{"word":"tortious","pos":"adj","ipa":"ˈtɔːʃəs","cefr":"C2","def":"Constituting a civil wrong for which damages may be claimed.","field":"law"},
+{"word":"arbitrage","pos":"n","ipa":"ˈɑːbɪtrɑːʒ","cefr":"C2","def":"Profit made from price differences in markets.","field":"biz"},
+{"word":"accretive","pos":"adj","ipa":"əˈkriːtɪv","cefr":"C2","def":"Adding to value or earnings.","field":"biz"},
+{"word":"cannibalize","pos":"v","ipa":"ˈkænɪbəlaɪz","cefr":"C2","def":"To eat into sales of one’s own product.","field":"biz"},
+{"word":"incentivize","pos":"v","ipa":"ɪnˈsɛntɪvaɪz","cefr":"C1","def":"To motivate with a reward or inducement.","field":"biz"}
+];
+
+/* ---- rotating specimen ---- */
+(function(){
+  const body=document.getElementById('sp-body');
+  const el={w:document.getElementById('sp-word'),ipa:document.getElementById('sp-ipa'),pos:document.getElementById('sp-pos'),def:document.getElementById('sp-def'),f:document.getElementById('sp-field')};
+  const dots=document.querySelectorAll('#specimen .dots i');
+  let i=0;
+  function render(k){const x=WORDS[k%WORDS.length];el.w.textContent=x.word;el.ipa.textContent='/'+x.ipa+'/';el.pos.textContent='('+x.pos+')';el.def.textContent=x.def;el.f.textContent=FIELDLBL[x.field];dots.forEach((d,n)=>d.classList.toggle('on',n===k%4));}
+  render(0);
+  setInterval(()=>{i++;body.style.opacity='0';setTimeout(()=>{render(i);body.style.opacity='1';},450);},3200);
+})();
+
+/* ---- word wall ---- */
+(function(){
+  function chip(x){return '<span class="mword"><b>'+x.word+'</b> <span class="cef">'+x.cefr+'</span></span>';}
+  const a=WORDS.slice(0,17), b=WORDS.slice(17);
+  const rowA=a.map(chip).join(''); const rowB=b.map(chip).join('');
+  document.getElementById('wall-a').innerHTML=rowA+rowA;   // duplicate for seamless loop
+  document.getElementById('wall-b').innerHTML=rowB+rowB;
+})();
+
+/* ---- pencil draw-on (IntersectionObserver) ---- */
+(function(){
+  const strokeEls=document.querySelectorAll('.ink svg, .draw');
+  strokeEls.forEach(svg=>svg.querySelectorAll('path,line,polyline,circle').forEach(p=>{
+    let len; try{len=p.getTotalLength();}catch(e){len=320;}
+    if(!len||!isFinite(len))len=320;
+    p.style.strokeDasharray=len; p.style.strokeDashoffset=len;
+  }));
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const t=e.target;
+      if(t.classList.contains('rise'))t.classList.add('in');
+      t.querySelectorAll&&t.querySelectorAll('path,line,polyline,circle').forEach(p=>{p.style.strokeDashoffset='0';});
+      io.unobserve(t);
+    });
+  },{threshold:.28});
+  document.querySelectorAll('.rise, .ink svg, .draw').forEach(el=>io.observe(el));
+  // hero elements above the fold: nudge in immediately
+  requestAnimationFrame(()=>document.querySelectorAll('.hero .rise').forEach(el=>el.classList.add('in')));
+  setTimeout(()=>document.querySelectorAll('.hero .ink svg path').forEach(p=>p.style.strokeDashoffset='0'),400);
+})();
+
+/* ---- waitlist capture ----
+   TODO(user): set ENDPOINT to your form backend (Formspree/Buttondown/Mailchimp).
+   Formspree example: const ENDPOINT="https://formspree.io/f/xxxxxxx"; */
+const ENDPOINT="";
+const CONTACT="hello@lexfall.app";
+function isEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+function msgFor(id){return document.querySelector('.form-msg[data-for="'+id+'"]');}
+document.querySelectorAll('form.capture').forEach(function(form){
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const input=form.querySelector('input[type=email]');const box=msgFor(form.id);
+    const email=(input.value||'').trim();
+    if(!isEmail(email)){box.className='form-msg err';box.textContent='Please enter a valid email address.';return;}
+    box.className='form-msg';box.textContent='Adding you…';
+    if(ENDPOINT){
+      try{const r=await fetch(ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({email:email})});
+        if(r.ok){box.className='form-msg ok';box.textContent="You're on the list. We'll be in touch.";form.reset();}else{throw new Error('bad');}
+      }catch(err){box.className='form-msg err';box.textContent='Something went wrong — email us at '+CONTACT+'.';}
+    }else{
+      box.className='form-msg ok';box.textContent="Thanks! Opening your mail app to confirm…";
+      window.location.href='mailto:'+CONTACT+'?subject=Join%20the%20Lexfall%20waitlist&body=Please%20add%20me%3A%20'+encodeURIComponent(email);
+      form.reset();
+    }
+  });
+});
+</script>
+</body>
+</html>
