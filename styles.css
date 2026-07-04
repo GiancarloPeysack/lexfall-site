@@ -190,6 +190,17 @@ header.nav, main, footer{position:relative;z-index:1}
   line-height:1.4;color:var(--exText)}
 .quote .by{font-family:var(--sans);font-style:normal;font-size:14px;color:var(--faint);margin-top:16px;letter-spacing:.3px}
 
+/* App Store download button */
+.dl-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.appstore{display:inline-flex;align-items:center;gap:13px;background:var(--text);color:var(--ink);
+  border-radius:14px;padding:12px 24px 12px 20px;transition:transform .15s ease,opacity .2s;
+  box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.appstore:hover{transform:translateY(-2px);opacity:.94}
+.appstore .apple{width:27px;height:27px;flex:none}
+.appstore .lbl{display:flex;flex-direction:column;line-height:1.02;text-align:left}
+.appstore .lbl small{font-size:10.5px;letter-spacing:.2px;opacity:.72}
+.appstore .lbl b{font-family:var(--serif);font-weight:500;font-size:20px}
+
 @media(max-width:640px){
   .hero{padding:60px 0 30px}
   .nav-links a:not(.btn){display:none}
