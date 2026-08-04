@@ -207,3 +207,24 @@ header.nav, main, footer{position:relative;z-index:1}
   section{padding:48px 0}
   .specimen{width:100%}
 }
+
+/* --- screenshots gallery --- */
+.shots{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;margin-top:54px}
+.phone{width:248px;margin:0;text-align:center}
+.phone img{width:100%;border-radius:36px;border:1px solid var(--line2);
+  box-shadow:0 26px 64px -26px rgba(0,0,0,.75);display:block}
+.phone figcaption{font-family:var(--serif);font-style:italic;color:var(--muted);
+  font-size:14.5px;margin-top:16px}
+
+/* --- pricing --- */
+.price-row{display:flex;justify-content:center;align-items:stretch;gap:20px;flex-wrap:wrap;margin:44px 0 34px}
+.price-card{position:relative;width:280px;text-align:left;background:var(--surface);
+  border:1px solid var(--line);border-radius:18px;padding:26px 24px}
+.price-card.feat{border-color:var(--accent);background:var(--surface2)}
+.price-card .tag{position:absolute;top:-11px;left:24px;background:var(--accent);color:var(--ink);
+  font-size:11px;font-weight:600;letter-spacing:.4px;padding:4px 11px;border-radius:999px}
+.price-card .plan{font-family:var(--serif);font-size:20px;color:var(--text)}
+.price-card .amt{font-family:var(--serif);font-size:38px;letter-spacing:-.5px;margin-top:6px;color:var(--text)}
+.price-card .amt span{font-family:var(--sans);font-size:15px;color:var(--faint);letter-spacing:0;margin-left:4px}
+.price-card .pnote{color:var(--muted);font-size:14px;line-height:1.5;margin-top:12px}
+@media(max-width:560px){.shots{gap:24px}.phone{width:72%;max-width:270px}.price-card{width:100%;max-width:340px}}
