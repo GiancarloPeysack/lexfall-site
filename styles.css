@@ -208,13 +208,21 @@ header.nav, main, footer{position:relative;z-index:1}
   .specimen{width:100%}
 }
 
-/* --- screenshots gallery --- */
-.shots{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;margin-top:54px}
-.phone{width:248px;margin:0;text-align:center}
-.phone img{width:100%;border-radius:36px;border:1px solid var(--line2);
-  box-shadow:0 26px 64px -26px rgba(0,0,0,.75);display:block}
-.phone figcaption{font-family:var(--serif);font-style:italic;color:var(--muted);
-  font-size:14.5px;margin-top:16px}
+/* --- screenshots (device frames) --- */
+.shots{display:flex;justify-content:center;align-items:flex-start;gap:30px;flex-wrap:wrap;margin-top:58px}
+.phone{width:264px;margin:0;text-align:center}
+.phone.raised{margin-top:-26px}
+.device{padding:8px;background:#0A0908;border-radius:46px;
+  box-shadow:0 40px 90px -38px rgba(0,0,0,.9), inset 0 0 0 1px #2c2822}
+.device img{width:100%;border-radius:38px;display:block}
+.phone figcaption{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:14.5px;margin-top:20px}
+
+/* --- features (editorial, borderless) --- */
+.feat-list{display:grid;grid-template-columns:repeat(3,1fr);column-gap:54px;margin-top:26px}
+.feat{padding:30px 2px 34px;border-top:1px solid var(--line)}
+.feat .fi{width:26px;height:26px;color:var(--accent);display:block;margin-bottom:16px}
+.feat h3{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:-.2px}
+.feat p{color:var(--muted);margin-top:9px;font-size:15px;line-height:1.62}
 
 /* --- pricing --- */
 .price-row{display:flex;justify-content:center;align-items:stretch;gap:20px;flex-wrap:wrap;margin:44px 0 34px}
@@ -227,4 +235,5 @@ header.nav, main, footer{position:relative;z-index:1}
 .price-card .amt{font-family:var(--serif);font-size:38px;letter-spacing:-.5px;margin-top:6px;color:var(--text)}
 .price-card .amt span{font-family:var(--sans);font-size:15px;color:var(--faint);letter-spacing:0;margin-left:4px}
 .price-card .pnote{color:var(--muted);font-size:14px;line-height:1.5;margin-top:12px}
-@media(max-width:560px){.shots{gap:24px}.phone{width:72%;max-width:270px}.price-card{width:100%;max-width:340px}}
+@media(max-width:820px){.feat-list{grid-template-columns:1fr 1fr;column-gap:44px}}
+@media(max-width:560px){.shots{gap:24px}.phone{width:80%;max-width:290px}.phone.raised{margin-top:0}.price-card{width:100%;max-width:340px}.feat-list{grid-template-columns:1fr;column-gap:0}}
