@@ -2,7 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/partner-dashboard", "destination": "/api/dashboard" }
+    { "source": "/partner-dashboard", "destination": "/api/dashboard" },
+    { "source": "/admin", "destination": "/api/admin" }
   ],
   "headers": [
     {
