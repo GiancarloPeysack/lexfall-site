@@ -21,7 +21,12 @@ export default async function handler(req, res) {
     const r = await fetch(target, init);
     const body = await r.text();
     res.status(r.status);
-    res.setHeader('Content-Type', r.headers.get('content-type') || 'text/html; charset=utf-8');
+    // GET returns the page (Supabase forces text/plain on its domain, so force html
+    // here); POST returns JSON actions — keep that content-type.
+    const ct = req.method === 'POST'
+      ? (r.headers.get('content-type') || 'application/json')
+      : 'text/html; charset=utf-8';
+    res.setHeader('Content-Type', ct);
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.send(body);
