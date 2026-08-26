@@ -43,10 +43,20 @@ sed -i '' 's|styles.css?v=4|styles.css?v=5|g' *.html
 - The rotating card + drifting word-wall pull from the `WORDS` array in index.html's script (34 real words from the app).
 
 ## OPEN ITEMS / TODO
-1. **App Store link is a placeholder.** In `index.html`, near the bottom script: `const APP_STORE_URL="";`. Set it to the real `https://apps.apple.com/app/lexfall/idXXXXXXXX` once the app is approved, then push. Until then the buttons link to `#`.
+1. ~~App Store link is a placeholder.~~ **Resolved 2026-08-27.** Real listing is live:
+   `https://apps.apple.com/us/app/lexfall-advanced-english/id6786614029` (bundle
+   `com.gpeysack.lexfall`, published under seller "Premier Food Delights Inc" — bundle ID
+   confirmed via `itunes.apple.com/lookup?id=6786614029`, this is the correct app). Set in
+   `index.html`'s `APP_STORE_URL` const.
 2. **Brand vs domain:** site says **Lex**fall; domain is **lux**fall.online. Left as-is intentionally. If rebranding to "Luxfall", change the wordmark in all 4 html files + `<title>`/meta. (Owner was considering buying `lexfall.app` to match — not purchased.)
 3. **Emails:** support/privacy pages list `@lexfall.app` addresses that aren't set up (owner said email not needed yet). Remove or swap to a working address before heavy promotion.
-4. **Optional:** add a Google Play badge (android package exists: `com.gpeysack.lexfall`) if/when on Play; add OG share image; add real screenshots of the app.
+4. **Optional:** add a Google Play badge (android package exists: `com.gpeysack.lexfall`) if/when on Play; add real screenshots of the app (partially done — see `shots/word.jpg`, `progress.jpg`, `practice.jpg`, real device screens as of the 2026-08-26 redesign).
+
+Note: this HANDOFF predates a full redesign on 2026-08-26 (light cream theme matching the
+real app, proficiency-curve section removed, a "find your field" interactive section
+added, pricing cards removed). The "Design system" and "Current state" sections above are
+stale — check `styles.css` and `index.html` directly rather than trusting the color/section
+list above.
 
 ## Related
 - The iOS app itself lives at `/Users/giancarlopeysack/Documents/Vorto/app` (Expo/React Native, app name "Lexfall", bundle `com.gpeysack.lexfall` for prod / `app.vorto.mobile` for the local sim build). Separate project — see `Vorto/HANDOFF.md` and `Vorto/LEXFALL_UI_RECOMMENDATIONS.md`.
