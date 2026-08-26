@@ -224,3 +224,28 @@ header.nav, main, footer{position:relative;z-index:1}
   font-size:clamp(18px,2.4vw,22px);text-align:center;margin-top:36px;line-height:1.5}
 
 @media(max-width:560px){.shots{gap:24px}.phone{width:80%;max-width:290px}.phone.raised{margin-top:0}}
+
+/* --- find your field: mini onboarding funnel --- */
+.field-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:32px}
+.field-opt{display:flex;align-items:flex-start;gap:14px;text-align:left;background:var(--surface);
+  border:1.5px solid transparent;border-radius:16px;padding:18px 20px;cursor:pointer;
+  font-family:var(--sans);transition:background .15s ease,border-color .15s ease}
+.field-opt:hover{background:var(--surface2)}
+.field-opt[aria-pressed="true"]{background:var(--surface2);border-color:var(--accent)}
+.field-opt .fi{width:22px;height:22px;color:var(--accent);flex:none;margin-top:2px}
+.field-opt b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--text)}
+.field-opt small{display:block;color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:3px}
+
+.field-reveal{margin-top:36px;padding-top:36px;border-top:1px solid var(--line)}
+.field-reveal-head{font-family:var(--serif);font-size:clamp(24px,3.4vw,32px);color:var(--text);text-align:center;margin-bottom:24px}
+.field-reveal-head span{color:var(--accent)}
+.field-reveal-words{display:flex;flex-direction:column;gap:12px;max-width:640px;margin:0 auto}
+.wcard{display:flex;align-items:flex-start;gap:16px;background:var(--surface);border-radius:16px;padding:18px 20px}
+.wcard-tag{flex:none;width:34px;height:34px;border-radius:9px;background:var(--accent-solid);color:var(--on-accent);
+  font-family:var(--serif);font-weight:500;font-size:15px;display:flex;align-items:center;justify-content:center}
+.wcard-body{flex:1;min-width:0}
+.wcard-top{display:flex;align-items:baseline;gap:10px}
+.wcard-top b{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--text)}
+.wcard-cef{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.3px}
+.wcard-def{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:4px}
+@media(max-width:560px){.field-opt{padding:16px}}

@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 
@@ -147,6 +147,39 @@
     </div>
   </section>
 
+  <!-- FIND YOUR FIELD (mini onboarding, mirrors the app's own field picker) -->
+  <section id="find-field">
+    <div class="wrap">
+      <div class="section-head rise">
+        <span class="eyebrow">Pick your focus</span>
+        <h2>What should we focus on?</h2>
+        <p>Pick your main focus. This is the same question the app opens with, and it's real words either way.</p>
+      </div>
+      <div class="field-picker rise" id="fieldPicker">
+        <button class="field-opt" data-field="gen" aria-pressed="true">
+          <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4a1 1 0 0 0-1-1H6.5A2.5 2.5 0 0 0 4 5.5v14Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20"/></svg>
+          <span><b>General English</b><small>Literature, ideas, science and culture. The broad advanced mix.</small></span>
+        </button>
+        <button class="field-opt" data-field="med" aria-pressed="false">
+          <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>
+          <span><b>Healthcare</b><small>The medical English of the ward and patient care.</small></span>
+        </button>
+        <button class="field-opt" data-field="law" aria-pressed="false">
+          <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v18M5 7l-3 6a3.5 3.5 0 0 0 7 0l-3-6Zm14 0-3 6a3.5 3.5 0 0 0 7 0l-3-6ZM4 21h16M4 7h16"/></svg>
+          <span><b>Law</b><small>Legal English for contracts and court.</small></span>
+        </button>
+        <button class="field-opt" data-field="biz" aria-pressed="false">
+          <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          <span><b>Business</b><small>Business English for meetings and deals.</small></span>
+        </button>
+      </div>
+      <div class="field-reveal rise" id="fieldReveal">
+        <div class="field-reveal-head">The words <span id="fieldRevealTopic">general English</span> runs on</div>
+        <div class="field-reveal-words" id="fieldRevealWords"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- DOWNLOAD -->
   <section id="download">
     <div class="wrap" style="text-align:center">
@@ -227,6 +260,37 @@ const WORDS=[
 /* ---- App Store link (replace href when the listing is live) ---- */
 const APP_STORE_URL="";  // e.g. "https://apps.apple.com/app/lexfall/id0000000000"
 document.querySelectorAll('[data-appstore]').forEach(a=>{ if(APP_STORE_URL){ a.href=APP_STORE_URL; a.target="_blank"; a.rel="noopener"; } });
+
+/* ---- find your field (mini onboarding funnel) ---- */
+(function(){
+  const TOPIC={gen:"general English",med:"medicine",law:"law",biz:"business"};
+  const picker=document.getElementById('fieldPicker');
+  const topicEl=document.getElementById('fieldRevealTopic');
+  const wordsEl=document.getElementById('fieldRevealWords');
+  if(!picker) return;
+
+  function wordCard(x){
+    return '<div class="wcard"><span class="wcard-tag">L.</span><div class="wcard-body">'
+      +'<div class="wcard-top"><b>'+x.word+'</b><span class="wcard-cef">'+x.cefr+'</span></div>'
+      +'<div class="wcard-def">'+x.def+'</div></div></div>';
+  }
+
+  function reveal(field){
+    picker.querySelectorAll('.field-opt').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.field===field)));
+    topicEl.textContent=TOPIC[field];
+    const pool=WORDS.filter(w=>w.field===field);
+    const picked=[...pool].sort(()=>Math.random()-0.5).slice(0,3);
+    wordsEl.innerHTML=picked.map(wordCard).join('');
+  }
+
+  picker.addEventListener('click', (e)=>{
+    const btn=e.target.closest('.field-opt');
+    if(!btn) return;
+    reveal(btn.dataset.field);
+  });
+
+  reveal('gen');
+})();
 
 /* ---- rotating specimen ---- */
 (function(){
