@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lexfall — Advanced English, one word a day</title>
-<meta name="description" content="Lexfall is a minimalist vocabulary app for ambitious non-native English speakers. C1–C2 words across Medicine, Law, Business and General English — with a home-screen widget that teaches you a new word every few hours. Now on the App Store.">
-<meta property="og:title" content="Lexfall — Advanced English, one word a day">
+<title>Lexfall: Advanced English, one word a day</title>
+<meta name="description" content="Lexfall is a minimalist vocabulary app for ambitious non-native English speakers. C1–C2 words across Medicine, Law, Business and General English, with a home-screen widget that teaches you a new word every few hours. Now on the App Store.">
+<meta property="og:title" content="Lexfall: Advanced English, one word a day">
 <meta property="og:description" content="Master the words that make you sound exceptional. C1–C2 vocabulary across Medicine, Law, Business and General English. Now on the App Store.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 
@@ -35,7 +35,17 @@
     <span class="eyebrow rise">Advanced English, daily</span>
     <h1 class="rise">Master the words that make you sound
       <span class="ink">exceptional<svg viewBox="0 0 340 24" preserveAspectRatio="none"><path d="M4 15 C 70 6, 150 20, 210 11 C 262 4, 306 15, 336 9"/></svg></span>.</h1>
-    <p class="sub rise">A quiet, editorial vocabulary app for people who already speak well — and want range. One C1–C2 word a day, in about a minute, across the field you actually work in.</p>
+    <p class="sub rise">A quiet, editorial vocabulary app for people who already speak well, and want range. One C1–C2 word a day, in about a minute, across the field you actually work in.</p>
+
+    <div class="field-chips rise">
+      <span>Medicine</span><span>Law</span><span>Business</span><span>General</span>
+    </div>
+
+    <div class="stat-strip rise">
+      <div><b>10,000+</b><span>words</span></div>
+      <div><b>C1–C2</b><span>advanced</span></div>
+      <div><b>10</b><span>a day</span></div>
+    </div>
 
     <div class="dl-row rise">
       <a class="appstore" href="#" data-appstore aria-label="Download Lexfall on the App Store">
@@ -59,7 +69,7 @@
         <div class="dots"><i class="on"></i><i></i><i></i><i></i></div>
       </div>
     </div>
-    <p class="note">The widget rotates a fresh word onto your Home Screen every few hours.</p>
+    <p class="note">Rotates automatically through Lexfall's C1–C2 word bank.</p>
   </div>
 
   <!-- DRIFTING WORD WALL -->
@@ -68,122 +78,72 @@
     <div class="marquee rev" id="wall-b"></div>
   </div>
 
-  <!-- FIELDS -->
-  <section id="fields">
-    <div class="wrap">
-      <div class="section-head rise">
-        <span class="eyebrow">Four fields, one standard</span>
-        <h2>Vocabulary organised the way your world is.</h2>
-        <p>Switch fields any time. Every word is chosen for a real category — not stamped generically "advanced." Medical, legal and business lexicons sit alongside a complete General C2 set.</p>
-      </div>
-      <div class="fields rise" style="justify-content:flex-start">
-        <span class="pill on">Medicine</span>
-        <span class="pill">Law</span>
-        <span class="pill">Business</span>
-        <span class="pill">General C2</span>
-      </div>
-    </div>
-  </section>
-
   <!-- SCREENSHOTS -->
   <section id="screens">
     <div class="wrap">
       <div class="section-head rise">
         <span class="eyebrow">See it</span>
-        <h2>A word worth looking at.</h2>
-        <p>Every word arrives full-screen over a photograph chosen for its field — pronunciation, meaning and an example a tap away. Then you practise it until it stays.</p>
+        <h2>Exactly what's in the app.</h2>
+        <p>Your word for the day, your real proficiency, and the practice that keeps it: three real screens, not a mockup.</p>
       </div>
       <div class="shots rise">
         <figure class="phone">
-          <div class="device"><img src="shots/feed.jpg" alt="Lexfall's word of the day, mountebank, over an autumn photograph" loading="lazy"></div>
+          <div class="device"><img src="shots/word.jpg" alt="Lexfall's word of the day, ubiquitous, with pronunciation and definition" loading="lazy"></div>
           <figcaption>The daily word</figcaption>
         </figure>
         <figure class="phone raised">
-          <div class="device"><img src="shots/paywall.png" alt="Lexfall full access — every field, widgets and practice" loading="lazy"></div>
-          <figcaption>Every field, unlocked</figcaption>
+          <div class="device"><img src="shots/progress.jpg" alt="Lexfall progress screen, showing streak, level and words learned" loading="lazy"></div>
+          <figcaption>Your real progress</figcaption>
         </figure>
         <figure class="phone">
-          <div class="device"><img src="shots/practice.png" alt="Lexfall practice — a placement test and build-a-test" loading="lazy"></div>
+          <div class="device"><img src="shots/practice.jpg" alt="Lexfall practice hub, showing words to review and timed drills" loading="lazy"></div>
           <figcaption>Practice that sticks</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- PENCIL-SKETCHED PROFICIENCY CURVE -->
+  <!-- WIDGET TEASER -->
   <section>
-    <div class="wrap curve-panel">
-      <div class="section-head rise" style="margin:0">
-        <span class="eyebrow">Progress you can trust</span>
-        <h2>An honest picture of where you stand.</h2>
-        <p>No vanity metrics, no "you outrank 98%." Lexfall plots your real proficiency from your quiz accuracy — and shows you climbing into the rare tail of the curve, C1 toward C2.</p>
+    <div class="wrap">
+      <div class="section-head rise">
+        <span class="eyebrow">The hero feature</span>
+        <h2>A new word on your Home Screen.</h2>
+        <p>The widget surfaces a fresh word every few hours, with its meaning, so you keep learning without opening the app. Here it is, live:</p>
       </div>
-      <div class="curve-box rise">
-        <span class="eyebrow">Your proficiency</span>
-        <div class="curve-cap">C2<small> · sketched from real accuracy</small></div>
-        <svg class="draw" id="curve" viewBox="0 0 360 120" width="100%" style="margin-top:14px">
-          <line x1="0" y1="100" x2="360" y2="100" stroke="#3E372B" stroke-width="1"/>
-          <path id="bell" d="M0 99 C70 97 120 90 150 58 C170 32 190 32 210 58 C240 90 290 97 360 99" fill="none" stroke="#A39A88" stroke-width="1.6"/>
-          <line id="mark" x1="300" y1="80" x2="300" y2="100" stroke="#C6A85C" stroke-width="1.6"/>
-          <circle id="dot" cx="300" cy="80" r="3.5" fill="#C6A85C"/>
-          <text x="300" y="72" font-size="10" fill="#C6A85C" text-anchor="middle" font-family="Inter">You</text>
-          <text x="150" y="114" font-size="9" fill="#6E665A" text-anchor="middle" font-family="Inter">B2</text>
-          <text x="225" y="114" font-size="9" fill="#6E665A" text-anchor="middle" font-family="Inter">C1</text>
-          <text x="300" y="114" font-size="9" fill="#6E665A" text-anchor="middle" font-family="Inter">C2</text>
-        </svg>
+      <div class="demo rise">
+        <div class="widget">
+          <div class="lbl">LEXFALL</div>
+          <div class="w">gastronome</div>
+          <div class="ipa">(n)</div>
+          <div class="def">A connoisseur of good food and the art of eating well.</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
+  <!-- DIFFERENTIATORS -->
   <section id="features">
     <div class="wrap">
       <div class="section-head rise">
         <span class="eyebrow">Why Lexfall</span>
-        <h2>Built to make learning effortless — and beautiful.</h2>
+        <h2>Here's what makes Lexfall different.</h2>
       </div>
-      <div class="feat-list rise">
-        <div class="feat">
+      <div class="diff-list rise">
+        <div class="diff">
           <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 9h16"/></svg>
-          <h3>One word a day</h3>
-          <p>A single, well-chosen word with pronunciation, an example sentence and its origin. Learn it in a minute; keep it for good.</p>
+          <div><h3>Advanced, never basic</h3><p>The rare, exact words C1–C2 speakers reach for, not the beginner list.</p></div>
         </div>
-        <div class="feat">
-          <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z"/></svg>
-          <h3>The home-screen widget</h3>
-          <p>The hero feature. A fresh word surfaces on your Home and Lock Screen every few hours — you learn without even opening the app.</p>
-        </div>
-        <div class="feat">
+        <div class="diff">
           <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 4 3 9l9 5 9-5-9-5ZM7 12v5l5 3 5-3v-5"/></svg>
-          <h3>Practice that sticks</h3>
-          <p>Games, timed challenges and a placement test, with spaced review that resurfaces the words you almost forgot.</p>
+          <div><h3>Built around your world</h3><p>Medicine, law, business, exams: vocabulary chosen by area, not a vague level.</p></div>
         </div>
-        <div class="feat">
-          <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a4.5 4.5 0 0 1 0 7"/></svg>
-          <h3>Hear every word</h3>
-          <p>Native-quality pronunciation on tap, with a choice of English voices — UK, US, and more.</p>
-        </div>
-        <div class="feat">
-          <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 4h12v16l-6-4-6 4V4Z"/></svg>
-          <h3>Your own collections</h3>
-          <p>Save words to collections, add your own, and follow only the areas you care about. Your library, your way.</p>
-        </div>
-        <div class="feat">
-          <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
-          <h3>Progress you can feel</h3>
-          <p>Streaks, a weekly rhythm, and a proficiency curve built from your real accuracy — no vanity metrics.</p>
+        <div class="diff">
+          <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+          <div><h3>Made to stick</h3><p>Spaced review brings each word back until it's yours for good.</p></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- PULL QUOTE -->
-  <section>
-    <div class="wrap">
-      <div class="quote rise">
-        <p>“The difference between the almost-right word and the right word is the difference between the lightning-bug and the lightning.”</p>
-        <div class="by">— Mark Twain. Lexfall is built for people chasing the lightning.</div>
-      </div>
+      <p class="founder-line rise">We built Lexfall because we wanted it and couldn't find it.</p>
     </div>
   </section>
 
@@ -193,20 +153,7 @@
       <div class="section-head rise" style="max-width:640px;margin:0 auto">
         <span class="eyebrow">Get Lexfall</span>
         <h2>Start sounding exceptional <span class="ink">today<svg viewBox="0 0 140 24" preserveAspectRatio="none"><path d="M3 14 C 40 7, 100 19, 137 10"/></svg></span>.</h2>
-        <p>Download Lexfall on iPhone and iPad. Your first word, a level test, and the widget are waiting — begin in about a minute.</p>
-      </div>
-      <div class="price-row rise">
-        <div class="price-card feat">
-          <span class="tag">7 days free</span>
-          <div class="plan">Yearly</div>
-          <div class="amt">$29.99<span>/year</span></div>
-          <div class="pnote">Then $29.99 a year after the trial. Best value.</div>
-        </div>
-        <div class="price-card">
-          <div class="plan">Weekly</div>
-          <div class="amt">$4.99<span>/week</span></div>
-          <div class="pnote">Cancel anytime. New subscribers get the first week for $1.99.</div>
-        </div>
+        <p>Download Lexfall on iPhone and iPad. Your first word, a level test, and the widget are waiting. Begin in about a minute.</p>
       </div>
       <div class="dl-row rise" style="justify-content:center">
         <a class="appstore" href="#" data-appstore aria-label="Download Lexfall on the App Store">

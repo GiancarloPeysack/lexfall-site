@@ -1,9 +1,10 @@
-/* Lexfall — website styles. Mirrors the app's dark editorial tokens. */
+/* Lexfall — website styles. Tokens sampled directly from the app (v0.1.19). */
 :root{
-  --bg:#100E0B; --surface:#1A1712; --surface2:#221E18;
-  --line:#322C22; --line2:#3E372B;
-  --text:#ECE5D7; --muted:#A39A88; --faint:#6E665A;
-  --accent:#C6A85C; --ink:#100E0B; --exText:#CABFA8;
+  --bg:#F4F0E8; --surface:#ECE6DA; --surface2:#E4DCC8;
+  --line:#E1D9C7; --line2:#D6CCB4;
+  --text:#211D16; --muted:#7F7D79; --faint:#A79E8C;
+  --accent:#9A7B2E; --accent-solid:#C6A85C; --on-accent:#FBF7EE; --ink:#211D16;
+  --dark:#100E0B; --dark-text:#ECE5D7; --dark-muted:#A39A88; --exText:#CABFA8;
   --serif:'Newsreader',Georgia,'Times New Roman',serif;
   --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --maxw:1080px;
@@ -31,7 +32,7 @@ img{max-width:100%;display:block}
 .wordmark .x{color:var(--accent);font-style:italic}
 
 /* nav */
-header.nav{position:sticky;top:0;z-index:50;background:rgba(16,14,11,.82);
+header.nav{position:sticky;top:0;z-index:50;background:rgba(244,240,232,.82);
   backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
 .nav-links{display:flex;align-items:center;gap:28px}
@@ -39,11 +40,11 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(16,14,11,.82);
 .nav-links a:hover{color:var(--text)}
 .btn{display:inline-block;font-weight:600;font-size:14px;border-radius:12px;
   padding:11px 18px;transition:transform .15s,opacity .2s;cursor:pointer;border:none}
-.btn-primary{background:var(--accent);color:var(--ink)}
+.btn-primary{background:var(--accent-solid);color:var(--on-accent)}
 .btn-primary:hover{transform:translateY(-1px);opacity:.94}
 .btn-ghost{border:1px solid var(--line2);color:var(--text);background:transparent}
 .btn-ghost:hover{border-color:var(--accent)}
-.nav-links .btn{color:var(--ink)}
+.nav-links .btn{color:var(--on-accent)}
 
 /* hero */
 .hero{padding:90px 0 40px;text-align:center}
@@ -52,10 +53,18 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(16,14,11,.82);
 .hero h1 em{color:var(--accent);font-style:italic}
 .hero .sub{color:var(--muted);font-size:clamp(16px,2.2vw,20px);
   max-width:56ch;margin:22px auto 0;line-height:1.55}
-.fields{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 0}
-.pill{border:1px solid var(--line2);border-radius:999px;padding:9px 16px;
-  font-size:14px;color:var(--muted)}
-.pill.on{background:var(--accent);border-color:var(--accent);color:var(--ink);font-weight:500}
+
+/* personalization proof: your field, not a generic level */
+.field-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px auto 0}
+.field-chips span{border:1px solid var(--line2);border-radius:999px;padding:7px 15px;
+  font-size:13px;color:var(--muted)}
+
+/* real onboarding stat row: 10,000+ words · C1–C2 · 10 a day */
+.stat-strip{display:flex;justify-content:center;gap:0;margin:32px auto 0;max-width:420px}
+.stat-strip div{flex:1;padding:0 16px;border-left:1px solid var(--line)}
+.stat-strip div:first-child{border-left:none}
+.stat-strip b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;color:var(--text)}
+.stat-strip span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 
 /* email capture */
 .capture{display:flex;gap:10px;max-width:480px;margin:34px auto 0;flex-wrap:wrap}
@@ -70,13 +79,13 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(16,14,11,.82);
 .form-msg.ok{color:var(--accent)}
 .form-msg.err{color:var(--bad,#C57B5B)}
 
-/* sample widget card */
-.demo{display:flex;justify-content:center;margin:56px 0 10px}
-.widget{background:#0C0A08;border:1px solid var(--line);border-radius:26px;
-  width:300px;padding:26px 28px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
-.widget .lbl{color:var(--accent);font-weight:600;font-size:11px;letter-spacing:2px}
+/* sample widget card — the app's Home Screen widget is genuinely black, unlike the rest of the app */
+.demo{display:flex;justify-content:center;margin:40px 0 10px}
+.widget{background:var(--dark);color:var(--dark-text);border:1px solid #26221b;border-radius:26px;
+  width:300px;padding:26px 28px;box-shadow:0 24px 60px rgba(33,29,22,.22)}
+.widget .lbl{color:var(--accent-solid);font-weight:600;font-size:11px;letter-spacing:2px}
 .widget .w{font-family:var(--serif);font-size:34px;margin-top:14px}
-.widget .ipa{font-family:var(--serif);font-style:italic;color:var(--muted);margin-top:6px;font-size:15px}
+.widget .ipa{font-family:var(--serif);font-style:italic;color:var(--dark-muted);margin-top:6px;font-size:15px}
 .widget .def{color:var(--exText);margin-top:12px;font-size:15px;line-height:1.5}
 
 /* sections */
@@ -147,21 +156,21 @@ header.nav, main, footer{position:relative;z-index:1}
 .trust{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;color:var(--faint);font-size:13px}
 .stars{color:var(--accent);letter-spacing:2px;font-size:14px}
 
-/* live rotating specimen card (bigger, editorial) */
+/* live rotating specimen card — matches the app's own flat cream word screen */
 .specimen-wrap{display:flex;justify-content:center;margin:58px 0 6px}
-.specimen{position:relative;width:340px;min-height:250px;background:#0C0A08;
+.specimen{position:relative;width:340px;min-height:250px;background:var(--surface);
   border:1px solid var(--line);border-radius:26px;padding:30px 32px;
-  box-shadow:0 30px 80px rgba(0,0,0,.55);overflow:hidden}
+  box-shadow:0 24px 60px rgba(33,29,22,.10);overflow:hidden}
 .specimen .corner{position:absolute;top:16px;right:18px;color:var(--faint);font-size:11px;letter-spacing:1.5px}
 .specimen .lbl{color:var(--accent);font-weight:600;font-size:11px;letter-spacing:2px}
-.specimen .w{font-family:var(--serif);font-size:40px;line-height:1.05;margin-top:16px;letter-spacing:-.5px}
+.specimen .w{font-family:var(--serif);font-size:40px;line-height:1.05;margin-top:16px;letter-spacing:-.5px;color:var(--text)}
 .specimen .ipa{font-family:var(--serif);font-style:italic;color:var(--muted);margin-top:8px;font-size:16px}
 .specimen .pos{font-family:var(--serif);font-style:italic;color:var(--faint);margin-top:16px;font-size:14px}
-.specimen .def{color:var(--exText);margin-top:6px;font-size:16px;line-height:1.5}
+.specimen .def{color:var(--text);margin-top:6px;font-size:16px;line-height:1.5}
 .specimen .fade{transition:opacity .5s ease}
 .specimen .dots{position:absolute;left:32px;bottom:22px;display:flex;gap:6px}
 .specimen .dots i{width:5px;height:5px;border-radius:3px;background:var(--line2);transition:all .4s}
-.specimen .dots i.on{width:16px;background:var(--accent)}
+.specimen .dots i.on{width:16px;background:var(--accent-solid)}
 
 /* drifting word wall */
 .wall{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -177,24 +186,11 @@ header.nav, main, footer{position:relative;z-index:1}
 .mword .cef{font-family:var(--sans);font-size:11px;color:var(--accent);vertical-align:super;margin-left:4px;letter-spacing:1px}
 @keyframes drift{to{transform:translateX(-50%)}}
 
-/* pencil-sketched proficiency curve section */
-.curve-panel{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;margin-top:16px}
-.curve-box{border:1px solid var(--line);border-radius:20px;padding:30px;background:var(--surface)}
-.curve-cap{font-family:var(--serif);font-size:34px;color:var(--text);margin-top:6px}
-.curve-cap small{font-family:var(--sans);font-size:15px;color:var(--faint)}
-@media(max-width:820px){.curve-panel{grid-template-columns:1fr;gap:26px}}
-
-/* editorial pull quote */
-.quote{border-left:2px solid var(--accent);padding:6px 0 6px 26px;max-width:760px;margin:0 auto}
-.quote p{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3.2vw,30px);
-  line-height:1.4;color:var(--exText)}
-.quote .by{font-family:var(--sans);font-style:normal;font-size:14px;color:var(--faint);margin-top:16px;letter-spacing:.3px}
-
-/* App Store download button */
+/* App Store download button — a deliberate dark badge, like Apple's own */
 .dl-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:32px}
-.appstore{display:inline-flex;align-items:center;gap:13px;background:var(--text);color:var(--ink);
+.appstore{display:inline-flex;align-items:center;gap:13px;background:var(--dark);color:var(--dark-text);
   border-radius:14px;padding:12px 24px 12px 20px;transition:transform .15s ease,opacity .2s;
-  box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  box-shadow:0 10px 30px rgba(33,29,22,.20)}
 .appstore:hover{transform:translateY(-2px);opacity:.94}
 .appstore .apple{width:27px;height:27px;flex:none}
 .appstore .lbl{display:flex;flex-direction:column;line-height:1.02;text-align:left}
@@ -217,23 +213,14 @@ header.nav, main, footer{position:relative;z-index:1}
 .device img{width:100%;border-radius:38px;display:block}
 .phone figcaption{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:14.5px;margin-top:20px}
 
-/* --- features (editorial, borderless) --- */
-.feat-list{display:grid;grid-template-columns:repeat(3,1fr);column-gap:54px;margin-top:26px}
-.feat{padding:30px 2px 34px;border-top:1px solid var(--line)}
-.feat .fi{width:26px;height:26px;color:var(--accent);display:block;margin-bottom:16px}
-.feat h3{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:-.2px}
-.feat p{color:var(--muted);margin-top:9px;font-size:15px;line-height:1.62}
+/* --- differentiators: the app's own flat cream cards, no borders --- */
+.diff-list{display:grid;gap:14px;margin-top:32px}
+.diff{display:flex;gap:20px;align-items:flex-start;background:var(--surface);
+  border-radius:18px;padding:24px 26px}
+.diff .fi{width:22px;height:22px;color:var(--accent);flex:none;margin-top:4px}
+.diff h3{font-family:var(--serif);font-weight:500;font-size:21px;letter-spacing:-.2px;color:var(--text)}
+.diff p{color:var(--muted);margin-top:6px;font-size:15px;line-height:1.6;max-width:52ch}
+.founder-line{font-family:var(--serif);font-style:italic;color:var(--accent);
+  font-size:clamp(18px,2.4vw,22px);text-align:center;margin-top:36px;line-height:1.5}
 
-/* --- pricing --- */
-.price-row{display:flex;justify-content:center;align-items:stretch;gap:20px;flex-wrap:wrap;margin:44px 0 34px}
-.price-card{position:relative;width:280px;text-align:left;background:var(--surface);
-  border:1px solid var(--line);border-radius:18px;padding:26px 24px}
-.price-card.feat{border-color:var(--accent);background:var(--surface2)}
-.price-card .tag{position:absolute;top:-11px;left:24px;background:var(--accent);color:var(--ink);
-  font-size:11px;font-weight:600;letter-spacing:.4px;padding:4px 11px;border-radius:999px}
-.price-card .plan{font-family:var(--serif);font-size:20px;color:var(--text)}
-.price-card .amt{font-family:var(--serif);font-size:38px;letter-spacing:-.5px;margin-top:6px;color:var(--text)}
-.price-card .amt span{font-family:var(--sans);font-size:15px;color:var(--faint);letter-spacing:0;margin-left:4px}
-.price-card .pnote{color:var(--muted);font-size:14px;line-height:1.5;margin-top:12px}
-@media(max-width:820px){.feat-list{grid-template-columns:1fr 1fr;column-gap:44px}}
-@media(max-width:560px){.shots{gap:24px}.phone{width:80%;max-width:290px}.phone.raised{margin-top:0}.price-card{width:100%;max-width:340px}.feat-list{grid-template-columns:1fr;column-gap:0}}
+@media(max-width:560px){.shots{gap:24px}.phone{width:80%;max-width:290px}.phone.raised{margin-top:0}}
