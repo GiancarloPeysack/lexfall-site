@@ -223,24 +223,30 @@ header.nav, main, footer{position:relative;z-index:1}
 /* --- find your field: mini onboarding funnel --- */
 .field-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:32px}
 .field-opt{display:flex;align-items:flex-start;gap:14px;text-align:left;background:var(--surface);
-  border:1.5px solid transparent;border-radius:16px;padding:18px 20px;cursor:pointer;
+  border:1.5px solid transparent;border-radius:16px;padding:18px 20px;cursor:pointer;position:relative;
   font-family:var(--sans);transition:background .15s ease,border-color .15s ease}
 .field-opt:hover{background:var(--surface2)}
 .field-opt[aria-pressed="true"]{background:var(--surface2);border-color:var(--accent)}
-.field-opt .fi{width:22px;height:22px;color:var(--accent);flex:none;margin-top:2px}
+.field-opt .fi{width:26px;height:26px;flex:none;margin-top:1px}
+.field-opt span{flex:1;min-width:0;padding-right:20px}
 .field-opt b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--text)}
 .field-opt small{display:block;color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:3px}
+.field-opt .radio{flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line2);
+  margin-top:3px;position:relative;transition:border-color .15s ease}
+.field-opt[aria-pressed="true"] .radio{border-color:var(--accent)}
+.field-opt[aria-pressed="true"] .radio::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--accent-solid)}
 
 .field-reveal{margin-top:36px;padding-top:36px;border-top:1px solid var(--line)}
 .field-reveal-head{font-family:var(--serif);font-size:clamp(24px,3.4vw,32px);color:var(--text);text-align:center;margin-bottom:24px}
 .field-reveal-head span{color:var(--accent)}
-.field-reveal-words{display:flex;flex-direction:column;gap:12px;max-width:640px;margin:0 auto}
-.wcard{display:flex;align-items:flex-start;gap:16px;background:var(--surface);border-radius:16px;padding:18px 20px}
-.wcard-tag{flex:none;width:34px;height:34px;border-radius:9px;background:var(--accent-solid);color:var(--on-accent);
-  font-family:var(--serif);font-weight:500;font-size:15px;display:flex;align-items:center;justify-content:center}
+.field-reveal-words{display:flex;flex-direction:column;gap:12px;max-width:480px;margin:0 auto}
+.wcard{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border-radius:18px;
+  padding:14px 16px;box-shadow:0 10px 28px rgba(33,29,22,.08);border:1px solid var(--line)}
+.wcard-icon{flex:none;width:36px;height:36px;border-radius:10px;background:linear-gradient(160deg,#B08A4E,#8A6A38);
+  color:#fff;font-family:var(--serif);font-weight:500;font-size:16px;display:flex;align-items:center;justify-content:center}
 .wcard-body{flex:1;min-width:0}
-.wcard-top{display:flex;align-items:baseline;gap:10px}
-.wcard-top b{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--text)}
-.wcard-cef{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.3px}
-.wcard-def{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:4px}
+.wcard-top{display:flex;align-items:baseline;gap:8px}
+.wcard-top b{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--text)}
+.wcard-now{margin-left:auto;color:var(--faint);font-size:12.5px;flex:none}
+.wcard-def{color:var(--muted);font-size:14px;line-height:1.5;margin-top:2px}
 @media(max-width:560px){.field-opt{padding:16px}}
