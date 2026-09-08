@@ -41,10 +41,10 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-parallax" aria-hidden="true" id="heroParallax">
-      <img class="pf-item pf-illo" data-depth="22" style="width:132px;left:4%;top:10%" src="illustrations/reader-hero.png" alt="">
-      <img class="pf-item pf-illo" data-depth="38" style="width:80px;left:85%;top:8%" src="illustrations/face-med.png" alt="">
-      <img class="pf-item pf-illo" data-depth="30" style="width:76px;left:88%;top:62%" src="illustrations/face-biz.png" alt="">
-      <img class="pf-item pf-illo" data-depth="16" style="width:70px;left:6%;top:68%" src="illustrations/face-law.png" alt="">
+      <img class="pf-item pf-illo" data-depth="70" style="width:132px;left:8%;top:14%" src="illustrations/reader-hero.png" alt="">
+      <img class="pf-item pf-illo" data-depth="110" style="width:80px;left:80%;top:10%" src="illustrations/face-med.png" alt="">
+      <img class="pf-item pf-illo" data-depth="90" style="width:76px;left:82%;top:58%" src="illustrations/face-biz.png" alt="">
+      <img class="pf-item pf-illo" data-depth="50" style="width:70px;left:10%;top:64%" src="illustrations/face-law.png" alt="">
     </div>
     <div class="wrap">
     <span class="eyebrow rise">Advanced English, daily</span>
@@ -383,29 +383,24 @@ document.querySelectorAll('[data-appstore]').forEach(a=>{ if(APP_STORE_URL){ a.h
   setTimeout(()=>document.querySelectorAll('.hero .ink svg path').forEach(p=>p.style.strokeDashoffset='0'),400);
 })();
 
-/* ---- hero parallax: floating illustration + word cards drift toward the cursor ---- */
+/* ---- hero parallax: floating illustrations track the cursor across the whole viewport ---- */
 (function(){
-  const hero=document.querySelector('.hero');
   const layer=document.getElementById('heroParallax');
-  if(!hero||!layer) return;
+  if(!layer) return;
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const items=[...layer.querySelectorAll('.pf-item')];
-  let raf=null, mx=0, my=0;
+  let raf=null, mx=window.innerWidth/2, my=window.innerHeight/2;
   function apply(){
-    const r=hero.getBoundingClientRect();
-    const cx=(mx-r.left)/r.width-0.5, cy=(my-r.top)/r.height-0.5;
+    const cx=mx/window.innerWidth-0.5, cy=my/window.innerHeight-0.5;
     items.forEach(el=>{
       const depth=parseFloat(el.dataset.depth)||20;
       el.style.transform='translate3d('+(cx*depth).toFixed(1)+'px,'+(cy*depth).toFixed(1)+'px,0)';
     });
     raf=null;
   }
-  hero.addEventListener('mousemove',(e)=>{
+  window.addEventListener('mousemove',(e)=>{
     mx=e.clientX; my=e.clientY;
     if(!raf) raf=requestAnimationFrame(apply);
-  });
-  hero.addEventListener('mouseleave',()=>{
-    items.forEach(el=>el.style.transform='translate3d(0,0,0)');
   });
 })();
 </script>
