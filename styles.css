@@ -200,16 +200,10 @@ header.nav, main, footer{position:relative;z-index:1}
   .specimen{width:100%}
 }
 
-/* --- hero parallax: floating illustration + word cards that drift with the cursor --- */
+/* --- hero parallax: floating field illustrations that drift with the cursor --- */
 .hero-parallax{position:absolute;inset:0;z-index:0;pointer-events:none}
 .pf-item{position:absolute;will-change:transform;transition:transform .2s cubic-bezier(.2,.7,.2,1)}
-.pf-card{left:var(--x);top:var(--y);display:flex;align-items:flex-start;gap:10px;
-  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:11px 14px;
-  box-shadow:0 16px 40px rgba(33,29,22,.10);max-width:190px;text-align:left}
-.pf-icon{flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(160deg,#B08A4E,#8A6A38);
-  color:#fff;font-family:var(--serif);font-weight:500;font-size:12px;display:flex;align-items:center;justify-content:center}
-.pf-card b{display:block;font-family:var(--serif);font-weight:500;font-size:14.5px;color:var(--text)}
-.pf-card small{display:block;color:var(--muted);font-size:12px;line-height:1.4;margin-top:1px}
+.pf-illo{filter:drop-shadow(0 20px 36px rgba(33,29,22,.16))}
 @media(max-width:900px){.hero-parallax{display:none}}
 @media(prefers-reduced-motion:reduce){.pf-item{transition:none}}
 
