@@ -39,7 +39,23 @@
 
 <main>
   <!-- HERO -->
-  <div class="wrap hero">
+  <div class="hero">
+    <div class="hero-parallax" aria-hidden="true" id="heroParallax">
+      <img class="pf-item pf-illo" data-depth="26" src="illustrations/reader-hero.png" alt="">
+      <div class="pf-item pf-card" data-depth="42" style="--x:8%;--y:14%">
+        <span class="pf-icon">L</span>
+        <div><b>ineffable</b><small>Too great to be put into words.</small></div>
+      </div>
+      <div class="pf-item pf-card" data-depth="16" style="--x:80%;--y:60%">
+        <span class="pf-icon">L</span>
+        <div><b>zenith</b><small>The highest point of something.</small></div>
+      </div>
+      <div class="pf-item pf-card" data-depth="34" style="--x:6%;--y:72%">
+        <span class="pf-icon">L</span>
+        <div><b>aplomb</b><small>Composure under pressure.</small></div>
+      </div>
+    </div>
+    <div class="wrap">
     <span class="eyebrow rise">Advanced English, daily</span>
     <h1 class="rise">Speak with the impact
       <span class="ink">your ideas deserve<svg viewBox="0 0 340 24" preserveAspectRatio="none"><path d="M4 15 C 70 6, 150 20, 210 11 C 262 4, 306 15, 336 9"/></svg></span>.</h1>
@@ -74,6 +90,7 @@
       </div>
     </div>
     <p class="note">Rotates automatically through Lexfall's C1–C2 word bank.</p>
+    </div>
   </div>
 
   <!-- DRIFTING WORD WALL -->
@@ -373,6 +390,32 @@ document.querySelectorAll('[data-appstore]').forEach(a=>{ if(APP_STORE_URL){ a.h
   document.querySelectorAll('.rise, .ink svg, .draw').forEach(el=>io.observe(el));
   requestAnimationFrame(()=>document.querySelectorAll('.hero .rise').forEach(el=>el.classList.add('in')));
   setTimeout(()=>document.querySelectorAll('.hero .ink svg path').forEach(p=>p.style.strokeDashoffset='0'),400);
+})();
+
+/* ---- hero parallax: floating illustration + word cards drift toward the cursor ---- */
+(function(){
+  const hero=document.querySelector('.hero');
+  const layer=document.getElementById('heroParallax');
+  if(!hero||!layer) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const items=[...layer.querySelectorAll('.pf-item')];
+  let raf=null, mx=0, my=0;
+  function apply(){
+    const r=hero.getBoundingClientRect();
+    const cx=(mx-r.left)/r.width-0.5, cy=(my-r.top)/r.height-0.5;
+    items.forEach(el=>{
+      const depth=parseFloat(el.dataset.depth)||20;
+      el.style.transform='translate3d('+(cx*depth).toFixed(1)+'px,'+(cy*depth).toFixed(1)+'px,0)';
+    });
+    raf=null;
+  }
+  hero.addEventListener('mousemove',(e)=>{
+    mx=e.clientX; my=e.clientY;
+    if(!raf) raf=requestAnimationFrame(apply);
+  });
+  hero.addEventListener('mouseleave',()=>{
+    items.forEach(el=>el.style.transform='translate3d(0,0,0)');
+  });
 })();
 </script>
 </body>
