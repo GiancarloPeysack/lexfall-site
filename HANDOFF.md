@@ -3,11 +3,12 @@
 The Lexfall marketing site. Live, deployed, editable. Read this first.
 
 ## Live + hosting
-- **Live URL:** https://luxfall.online (and https://www.luxfall.online)
+- **Live URL:** https://lexfall.app (and https://www.lexfall.app) — moved from luxfall.online 2026-09-08.
 - **Host:** Vercel project `lexfall-site` (account `gcpeysack-3589`, team `giancarls-projects`). Auto-issued HTTPS.
 - **Source repo:** https://github.com/GiancarloPeysack/lexfall-site (public, branch `master`). Vercel is connected — **`git push` to master auto-deploys.**
 - **Local working copy (edit here):** `/Users/giancarlopeysack/Documents/lexfall-site/`
-- Domain is registered at **GoDaddy** as `luxfall.online`. DNS: apex `A @ → 76.76.21.21`; `www` CNAME → apex. Both point at Vercel.
+- `lexfall.app` is registered at **GoDaddy** (nameservers stayed `ns21/ns22.domaincontrol.com`; not switched to Vercel's). Added to the Vercel project via `vercel domains add`, apex `A @ → 76.76.21.21` set at GoDaddy 2026-09-08. `www` uses the existing `CNAME www → lexfall.app.` record. Allow up to ~1hr (rarely 48hr) for DNS propagation + auto HTTPS.
+- `luxfall.online` (old domain, still registered/pointed at Vercel) is not redirected to `lexfall.app` — both currently resolve independently. Worth adding a redirect once the new domain is confirmed live.
 
 ## Files (all in the repo dir)
 - `index.html` — landing page (hero, rotating word card, word-wall, proficiency curve, features, quote, download section). Contains inline `<script>` with the word data + animations.

@@ -3,10 +3,10 @@
 // The Supabase edge function renders correct HTML, but Supabase serves it as
 // text/plain + nosniff on the shared *.functions.supabase.co domain (anti-abuse),
 // so a browser shows source. This proxy fetches that HTML and re-serves it as
-// real text/html from luxfall.online, so a partner link just works.
+// real text/html from lexfall.app, so a partner link just works.
 //
 // Reached via the /partner-dashboard rewrite in vercel.json, e.g.
-//   https://luxfall.online/partner-dashboard?t=<signed-token>
+//   https://lexfall.app/partner-dashboard?t=<signed-token>
 
 const UPSTREAM = 'https://qfniuekmcwytlstvtszt.functions.supabase.co/partner-dashboard';
 
