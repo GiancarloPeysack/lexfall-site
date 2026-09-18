@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css?v=20">
+<link rel="stylesheet" href="styles.css?v=21">
 </head>
 <body>
 
@@ -73,7 +73,7 @@
         <svg class="padlock" viewBox="0 0 16 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.5" y="8" width="13" height="9" rx="2"/><path d="M4.5 8V5.5a3.5 3.5 0 0 1 7 0V8"/></svg>
         <div class="time">9:41</div>
         <div class="day">Tuesday morning</div>
-        <div class="wcard"><span class="wcard-icon">L</span><div class="wcard-body fade" id="lockBody">
+        <div class="wcard"><img class="wcard-icon" src="brand/icon-128.png" alt="" width="46" height="46"><div class="wcard-body fade" id="lockBody">
           <div class="wcard-top"><b id="lockWord">equanimity</b><span class="wcard-now">now</span></div>
           <div class="wcard-def" id="lockDef">(n) Calmness and composure under strain.</div>
         </div></div>
@@ -167,6 +167,7 @@
         <h2>What should we focus on?</h2>
         <p>Pick your main focus. It's the same question the app opens with, and these are real words from each field.</p>
       </div>
+      <div class="field-grid">
       <div class="field-picker rise" id="fieldPicker">
         <button class="field-opt" data-field="gen" aria-pressed="true">
           <svg class="fi" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 13c6-2.6 12-2.6 16 1 4-3.6 10-3.6 16-1v22c-6-2.6-12-2.6-16 1-4-3.6-10-3.6-16-1z"/><line x1="24" y1="14" x2="24" y2="36"/></svg>
@@ -192,6 +193,7 @@
       <div class="field-reveal rise" id="fieldReveal">
         <div class="field-reveal-head">The words <span id="fieldRevealTopic">general English</span> runs on</div>
         <div class="field-reveal-words" id="fieldRevealWords"></div>
+      </div>
       </div>
     </div>
   </section>
@@ -303,7 +305,7 @@ document.querySelectorAll('[data-appstore]').forEach(a=>{ if(APP_STORE_URL){ a.h
   if(!picker) return;
 
   function wordCard(x){
-    return '<div class="wcard"><span class="wcard-icon">L</span><div class="wcard-body">'
+    return '<div class="wcard"><img class="wcard-icon" src="brand/icon-128.png" alt="" width="46" height="46"><div class="wcard-body">'
       +'<div class="wcard-top"><b>'+x.word+'</b><span class="wcard-now">now</span></div>'
       +'<div class="wcard-def">('+x.pos+') '+x.def+'</div></div></div>';
   }

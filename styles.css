@@ -245,14 +245,16 @@ header.nav, main, footer{position:relative;z-index:1}
 .scene-illustration{margin-top:48px}
 .scene-illustration img{width:100%;display:block}
 
-.field-reveal{margin-top:36px;padding-top:36px;border-top:1px solid var(--line)}
-.field-reveal-head{font-family:var(--serif);font-size:clamp(24px,3.4vw,32px);color:var(--text);text-align:center;margin-bottom:24px}
+.field-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start;margin-top:28px}
+.field-grid .field-picker{margin-top:0;max-width:none}
+.field-reveal{position:sticky;top:96px}
+.field-reveal-head{font-family:var(--serif);font-size:clamp(22px,2.6vw,28px);color:var(--text);margin-bottom:18px}
 .field-reveal-head span{color:var(--accent)}
-.field-reveal-words{display:flex;flex-direction:column;gap:12px;max-width:480px;margin:0 auto}
+@media(max-width:860px){.field-grid{grid-template-columns:1fr;gap:36px}.field-reveal{position:static}}
+.field-reveal-words{display:flex;flex-direction:column;gap:12px}
 .wcard{display:flex;align-items:center;gap:14px;background:#FBF8F1;border-radius:22px;padding:14px 16px;
   box-shadow:0 8px 24px rgba(33,29,22,.07)}
-.wcard-icon{flex:none;width:46px;height:46px;border-radius:12px;background:var(--accent);
-  color:#FBF8F1;font-family:var(--serif);font-weight:500;font-size:24px;display:flex;align-items:center;justify-content:center}
+.wcard-icon{flex:none;width:46px;height:46px;border-radius:11px;display:block}
 .wcard-body{flex:1;min-width:0}
 .wcard-top{display:flex;align-items:baseline;gap:8px}
 .wcard-top b{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--text)}
