@@ -1,4 +1,4 @@
-/* Lexfall — website styles. Tokens sampled directly from the app (v0.1.19). */
+/* Lexfall: website styles. Tokens sampled directly from the app (v0.1.19). */
 :root{
   --bg:#F4F0E8; --surface:#ECE6DA; --surface2:#E4DCC8;
   --line:#E1D9C7; --line2:#D6CCB4;
@@ -28,8 +28,11 @@ img{max-width:100%;display:block}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
 
 /* wordmark: Le·x·fall with italic gold x */
-.wordmark{font-family:var(--serif);font-weight:500;font-size:24px;letter-spacing:-.5px;color:var(--text)}
-.wordmark .x{color:var(--accent);font-style:italic}
+.wordmark{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;
+  font-size:14px;letter-spacing:3px;color:var(--text)}
+.wordmark .mark{width:30px;height:30px;border-radius:8px}
+.wordmark .dot{color:var(--accent);letter-spacing:0;margin-left:-2px}
+.hero .eyebrow{display:inline-block;line-height:1.7}
 
 /* nav */
 header.nav{position:sticky;top:0;z-index:50;background:rgba(244,240,232,.82);
@@ -58,6 +61,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(244,240,232,.82);
 .stat-strip{display:flex;justify-content:center;gap:0;margin:22px auto 0;max-width:420px}
 .stat-strip div{flex:1;padding:0 16px;border-left:1px solid var(--line)}
 .stat-strip div:first-child{border-left:none}
+.stat-strip b{white-space:nowrap}
 .stat-strip b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;color:var(--text)}
 .stat-strip span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 
@@ -193,15 +197,16 @@ header.nav, main, footer{position:relative;z-index:1}
 .appstore .lbl b{font-family:var(--serif);font-weight:500;font-size:20px}
 
 @media(max-width:640px){
-  .hero{padding:60px 0 30px}
+  .hero{padding:32px 0 30px}
   .nav-links a:not(.btn){display:none}
   section{padding:48px 0}
   .specimen{width:100%}
 }
 
-/* --- hero phone mockup: the actual welcome screen, in a device frame --- */
-.hero-phone{display:flex;justify-content:center;margin:34px 0 6px}
-.hero-phone .device{width:220px}
+/* --- hero illustration (same art as the app welcome screen) --- */
+.hero-art{display:flex;justify-content:center;margin:0 0 18px}
+.hero-art img{width:300px;height:auto}
+@media(max-width:560px){.hero-art img{width:230px}}
 
 /* --- screenshots (device frames) --- */
 .shots{display:flex;justify-content:center;align-items:flex-start;gap:30px;flex-wrap:wrap;margin-top:58px}
