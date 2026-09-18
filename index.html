@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=20">
 </head>
 <body>
 
@@ -60,24 +60,25 @@
         <svg class="apple" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.09-2.02-3.76-2.05-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.88 2.65 3.22 2.6 1.29-.05 1.78-.83 3.34-.83 1.56 0 2 .83 3.37.81 1.39-.03 2.27-1.27 3.12-2.53.98-1.45 1.39-2.85 1.41-2.92-.03-.01-2.7-1.04-2.73-4.13zM14.53 4.6c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.65.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44z"/></svg>
         <span class="lbl"><small>Download on the</small><b>App Store</b></span>
       </a>
+      <a class="appstore" href="google-play.html" aria-label="Lexfall on Google Play: coming soon">
+        <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8 13.4 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1z" fill="#34A853"/><path d="m16.8 8.6-3.4 3.4-9.8-10.2c.2-.1.5-.2.8-.2.3 0 .5.1.8.2l11.6 6.8z" fill="#4285F4"/><path d="m16.8 15.4-11.6 6.8c-.3.1-.5.2-.8.2-.3 0-.6-.1-.8-.2L13.4 12l3.4 3.4z" fill="#EA4335"/><path d="m21 12c0 .5-.3 1-.7 1.2l-3.5 2.2-3.4-3.4 3.4-3.4 3.5 2.2c.4.2.7.7.7 1.2z" fill="#FBBC04"/></svg>
+        <span class="lbl"><small>Coming soon to</small><b>Google Play</b></span>
+      </a>
     </div>
-    <div class="trust rise"><span class="stars">★★★★★</span> Loved by advanced learners · on iPhone &amp; iPad</div>
+    <div class="trust rise"><span class="stars">★★★★★</span> Loved by advanced learners · on iPhone &amp; iPad · Android coming soon</div>
 
-    <!-- live rotating specimen -->
-    <div class="specimen-wrap rise">
-      <div class="specimen" id="specimen">
-        <span class="corner" id="sp-field">GENERAL C2</span>
-        <div class="lbl">LEXFALL</div>
-        <div class="fade" id="sp-body">
-          <div class="w" id="sp-word">petrichor</div>
-          <div class="ipa" id="sp-ipa">/ˈpɛtrɪkɔː/</div>
-          <div class="pos" id="sp-pos">(n)</div>
-          <div class="def" id="sp-def">The earthy scent of rain on dry ground.</div>
-        </div>
-        <div class="dots"><i class="on"></i><i></i><i></i><i></i></div>
+    <!-- lock screen: a word arrives every time it lights up (rotates through real words) -->
+    <div class="lock-wrap rise">
+      <div class="lock" aria-label="A Lexfall word notification on the iPhone Lock Screen">
+        <svg class="padlock" viewBox="0 0 16 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.5" y="8" width="13" height="9" rx="2"/><path d="M4.5 8V5.5a3.5 3.5 0 0 1 7 0V8"/></svg>
+        <div class="time">9:41</div>
+        <div class="day">Tuesday morning</div>
+        <div class="wcard"><span class="wcard-icon">L</span><div class="wcard-body fade" id="lockBody">
+          <div class="wcard-top"><b id="lockWord">equanimity</b><span class="wcard-now">now</span></div>
+          <div class="wcard-def" id="lockDef">(n) Calmness and composure under strain.</div>
+        </div></div>
       </div>
     </div>
-    <p class="note">Rotates automatically through Lexfall's C1–C2 word bank.</p>
     </div>
   </div>
 
@@ -112,21 +113,20 @@
     </div>
   </section>
 
-  <!-- WIDGET TEASER -->
+  <!-- WIDGET: mirrors the app's "Learn without opening the app" scene -->
   <section>
     <div class="wrap">
       <div class="section-head rise">
-        <span class="eyebrow">The hero feature</span>
-        <h2>A new word on your Home Screen.</h2>
-        <p>The widget surfaces a fresh word every few hours, with its meaning, so you keep learning without opening the app. Here it is, live:</p>
+        <span class="eyebrow">Home Screen widget</span>
+        <h2>Learn without opening the app.</h2>
+        <p><b style="color:var(--text);font-weight:600">You check your phone about 150 times a day.</b> Meet a new word every time, passively, on your Home and Lock Screens.</p>
       </div>
       <div class="demo rise">
-        <div class="widget">
-          <div class="lbl">LEXFALL</div>
-          <div class="w">gastronome</div>
-          <div class="ipa">(n)</div>
-          <div class="def">A connoisseur of good food and the art of eating well.</div>
-        </div>
+        <div class="widget"><div class="fade" id="widgetBody">
+          <div class="w" id="widgetWord">sedulous</div>
+          <div class="def" id="widgetDef">(adj) Showing dedication and diligence.</div>
+        </div></div>
+        <div class="app-lbl">Lexfall</div>
       </div>
     </div>
   </section>
@@ -165,43 +165,27 @@
       <div class="section-head rise">
         <span class="eyebrow">Pick your focus</span>
         <h2>What should we focus on?</h2>
-        <p>Pick your main focus. This is the same question the app opens with, and it's real words either way.</p>
+        <p>Pick your main focus. It's the same question the app opens with, and these are real words from each field.</p>
       </div>
       <div class="field-picker rise" id="fieldPicker">
         <button class="field-opt" data-field="gen" aria-pressed="true">
-          <svg class="fi" viewBox="0 0 24 24">
-            <path d="M12 4 4 6v14l8-2Z" fill="#6E665A"/>
-            <path d="M12 4 20 6v14l-8-2Z" fill="var(--accent-solid)"/>
-          </svg>
-          <span><b>General English</b><small>Literature, ideas, science and culture. The broad advanced mix.</small></span>
+          <svg class="fi" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 13c6-2.6 12-2.6 16 1 4-3.6 10-3.6 16-1v22c-6-2.6-12-2.6-16 1-4-3.6-10-3.6-16-1z"/><line x1="24" y1="14" x2="24" y2="36"/></svg>
+          <span><b>General English</b><small>Literature, ideas, science and culture. The broad advanced mix</small></span>
           <i class="radio" aria-hidden="true"></i>
         </button>
         <button class="field-opt" data-field="med" aria-pressed="false">
-          <svg class="fi" viewBox="0 0 24 24">
-            <rect x="9" y="2" width="6" height="20" rx="2.5" fill="var(--accent-solid)"/>
-            <rect x="2" y="9" width="20" height="6" rx="2.5" fill="var(--accent-solid)"/>
-          </svg>
-          <span><b>Healthcare</b><small>The language medicine runs on — the ward, patient care &amp; OET.</small></span>
+          <svg class="fi" viewBox="0 0 48 48" aria-hidden="true"><path d="M15 7v10a9 9 0 0018 0V7"/><circle cx="15" cy="6" r="2.2"/><circle cx="33" cy="6" r="2.2"/><path d="M33 21v3a9 9 0 01-9 9"/><circle cx="24" cy="38" r="5"/><circle class="g" cx="24" cy="38" r="1.7"/></svg>
+          <span><b>Healthcare</b><small>The medical English of OET, the ward &amp; patient care</small></span>
           <i class="radio" aria-hidden="true"></i>
         </button>
         <button class="field-opt" data-field="law" aria-pressed="false">
-          <svg class="fi" viewBox="0 0 24 24">
-            <rect x="11" y="2.5" width="2" height="16" fill="#6E665A"/>
-            <rect x="3.5" y="18.5" width="17" height="2" rx="1" fill="#6E665A"/>
-            <rect x="2.5" y="6.5" width="19" height="1.4" fill="#6E665A"/>
-            <path d="M3 7.2h6.4L6.2 13a3.2 3.2 0 0 1-3.2-3.2Z" fill="var(--accent-solid)"/>
-            <path d="M14.6 7.2H21l-3.2 5.8a3.2 3.2 0 0 1-3.2-3.2Z" fill="var(--accent-solid)"/>
-          </svg>
-          <span><b>Law</b><small>The language law runs on — contracts, court &amp; TOLES.</small></span>
+          <svg class="fi" viewBox="0 0 48 48" aria-hidden="true"><line x1="24" y1="8" x2="24" y2="35"/><path d="M16 37h16"/><circle class="g" cx="24" cy="7" r="1.6"/><path d="M10 13h28"/><path d="M4 23l6-10 6 10"/><path d="M4 23a6 6 0 0012 0"/><path d="M32 23l6-10 6 10"/><path d="M32 23a6 6 0 0012 0"/></svg>
+          <span><b>Law</b><small>Legal English for contracts, court &amp; TOLES</small></span>
           <i class="radio" aria-hidden="true"></i>
         </button>
         <button class="field-opt" data-field="biz" aria-pressed="false">
-          <svg class="fi" viewBox="0 0 24 24">
-            <rect x="3" y="8" width="18" height="12" rx="2" fill="#6E665A"/>
-            <path d="M9 8V6.5A1.5 1.5 0 0 1 10.5 5h3A1.5 1.5 0 0 1 15 6.5V8" fill="none" stroke="#6E665A" stroke-width="1.6"/>
-            <rect x="10.5" y="11.5" width="3" height="3" rx="0.6" fill="var(--accent-solid)"/>
-          </svg>
-          <span><b>Business</b><small>The language business runs on — meetings, emails &amp; deals.</small></span>
+          <svg class="fi" viewBox="0 0 48 48" aria-hidden="true"><g transform="rotate(45 24 24)"><path d="M22 8h4l1 22-3 6-3-6z"/><line x1="24" y1="8" x2="24" y2="26"/><circle class="g" cx="24" cy="13" r="1.6"/></g></svg>
+          <span><b>Business</b><small>Business English for meetings, emails &amp; deals</small></span>
           <i class="radio" aria-hidden="true"></i>
         </button>
       </div>
@@ -218,7 +202,7 @@
       <div class="section-head rise">
         <span class="eyebrow">Field by field</span>
         <h2>The exact words each room runs on.</h2>
-        <p>Medicine has its register. So does law, business, and every field in between — the terms that mark real fluency, not a generic level.</p>
+        <p>Medicine has its register. So does law, business, and every field in between: the terms that mark real fluency, not a generic level.</p>
       </div>
       <div class="scene-illustration rise">
         <img src="illustrations/fields-scene.svg" alt="An isometric illustration of a doctor descending a staircase beneath a medical caduceus, and a man in a suit descending a staircase beneath the scales of justice." loading="lazy">
@@ -232,12 +216,16 @@
       <div class="section-head rise" style="max-width:640px;margin:0 auto">
         <span class="eyebrow">Get Lexfall</span>
         <h2>Expand your vocabulary <span class="ink">today<svg viewBox="0 0 140 24" preserveAspectRatio="none"><path d="M3 14 C 40 7, 100 19, 137 10"/></svg></span>.</h2>
-        <p>Download Lexfall on iPhone and iPad. Your first word, a level test, and the widget are waiting. Begin in about a minute.</p>
+        <p>Download Lexfall on iPhone and iPad. Android is coming soon. Your first word, a level test, and the widget are waiting. Begin in about a minute.</p>
       </div>
       <div class="dl-row rise" style="justify-content:center">
         <a class="appstore" href="#" data-appstore aria-label="Download Lexfall on the App Store">
           <svg class="apple" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.09-2.02-3.76-2.05-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.88 2.65 3.22 2.6 1.29-.05 1.78-.83 3.34-.83 1.56 0 2 .83 3.37.81 1.39-.03 2.27-1.27 3.12-2.53.98-1.45 1.39-2.85 1.41-2.92-.03-.01-2.7-1.04-2.73-4.13zM14.53 4.6c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.65.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44z"/></svg>
           <span class="lbl"><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <a class="appstore" href="google-play.html" aria-label="Lexfall on Google Play: coming soon">
+          <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8 13.4 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1z" fill="#34A853"/><path d="m16.8 8.6-3.4 3.4-9.8-10.2c.2-.1.5-.2.8-.2.3 0 .5.1.8.2l11.6 6.8z" fill="#4285F4"/><path d="m16.8 15.4-11.6 6.8c-.3.1-.5.2-.8.2-.3 0-.6-.1-.8-.2L13.4 12l3.4 3.4z" fill="#EA4335"/><path d="m21 12c0 .5-.3 1-.7 1.2l-3.5 2.2-3.4-3.4 3.4-3.4 3.5 2.2c.4.2.7.7.7 1.2z" fill="#FBBC04"/></svg>
+          <span class="lbl"><small>Coming soon to</small><b>Google Play</b></span>
         </a>
       </div>
       <p class="note" style="text-align:center">Requires iOS 16 or later. Subscription renews automatically; cancel anytime in App Store settings.</p>
@@ -265,7 +253,6 @@
 
 <script>
 /* ---- real words from the app ---- */
-const FIELDLBL={gen:"GENERAL C2",med:"MEDICINE",law:"LAW",biz:"BUSINESS"};
 const WORDS=[
 {"word":"petrichor","pos":"n","ipa":"ˈpɛtrɪkɔː","cefr":"C2","def":"The earthy scent of rain on dry ground.","field":"gen"},
 {"word":"halcyon","pos":"adj","ipa":"ˈhælsiən","cefr":"C2","def":"Idyllically calm, peaceful and happy.","field":"gen"},
@@ -338,15 +325,17 @@ document.querySelectorAll('[data-appstore]').forEach(a=>{ if(APP_STORE_URL){ a.h
   reveal('gen');
 })();
 
-/* ---- rotating specimen ---- */
+/* ---- lock screen + widget: rotate through real words ---- */
 (function(){
-  const body=document.getElementById('sp-body');
-  const el={w:document.getElementById('sp-word'),ipa:document.getElementById('sp-ipa'),pos:document.getElementById('sp-pos'),def:document.getElementById('sp-def'),f:document.getElementById('sp-field')};
-  const dots=document.querySelectorAll('#specimen .dots i');
-  let i=0;
-  function render(k){const x=WORDS[k%WORDS.length];el.w.textContent=x.word;el.ipa.textContent='/'+x.ipa+'/';el.pos.textContent='('+x.pos+')';el.def.textContent=x.def;el.f.textContent=FIELDLBL[x.field];dots.forEach((d,n)=>d.classList.toggle('on',n===k%4));}
-  render(0);
-  setInterval(()=>{i++;body.style.opacity='0';setTimeout(()=>{render(i);body.style.opacity='1';},450);},3200);
+  function rotate(bodyId,wordId,defId,start,every){
+    const body=document.getElementById(bodyId), w=document.getElementById(wordId), d=document.getElementById(defId);
+    if(!body) return;
+    let i=start;
+    setInterval(()=>{i=(i+1)%WORDS.length;body.style.opacity='0';
+      setTimeout(()=>{const x=WORDS[i];w.textContent=x.word;d.textContent='('+x.pos+') '+x.def;body.style.opacity='1';},450);},every);
+  }
+  rotate('lockBody','lockWord','lockDef',0,3600);
+  rotate('widgetBody','widgetWord','widgetDef',17,4200);
 })();
 
 /* ---- word wall ---- */

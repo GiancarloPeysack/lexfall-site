@@ -1,7 +1,7 @@
 // Vercel serverless function: owner payout-admin proxy.
 // Forwards GET (the page, re-served as real HTML) and POST (approve/mark-sent
 // actions, JSON) to the Supabase admin-payouts edge function. Reached at
-// lexfall.app/admin?key=<ADMIN_KEY>. No secrets live here — the key travels
+// lexfall.app/admin?key=<ADMIN_KEY>. No secrets live here; the key travels
 // from the owner's browser through to the edge function, which validates it.
 
 const UPSTREAM = 'https://qfniuekmcwytlstvtszt.functions.supabase.co/admin-payouts';
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     const body = await r.text();
     res.status(r.status);
     // GET returns the page (Supabase forces text/plain on its domain, so force html
-    // here); POST returns JSON actions — keep that content-type.
+    // here); POST returns JSON actions, so keep that content-type.
     const ct = req.method === 'POST'
       ? (r.headers.get('content-type') || 'application/json')
       : 'text/html; charset=utf-8';

@@ -78,14 +78,14 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(244,240,232,.82);
 .form-msg.ok{color:var(--accent)}
 .form-msg.err{color:var(--bad,#C57B5B)}
 
-/* sample widget card — the app's Home Screen widget is genuinely black, unlike the rest of the app */
-.demo{display:flex;justify-content:center;margin:40px 0 10px}
-.widget{background:var(--dark);color:var(--dark-text);border:1px solid #26221b;border-radius:26px;
-  width:300px;padding:26px 28px;box-shadow:0 24px 60px rgba(33,29,22,.22)}
-.widget .lbl{color:var(--accent-solid);font-weight:600;font-size:11px;letter-spacing:2px}
-.widget .w{font-family:var(--serif);font-size:34px;margin-top:14px}
-.widget .ipa{font-family:var(--serif);font-style:italic;color:var(--dark-muted);margin-top:6px;font-size:15px}
-.widget .def{color:var(--exText);margin-top:12px;font-size:15px;line-height:1.5}
+/* Home Screen widget: mirrors the app's own widget scene (black card, serif word, sans def) */
+.demo{display:flex;flex-direction:column;align-items:center;margin:40px 0 10px}
+.widget{background:#15120E;color:#ECE5D7;border-radius:30px;width:340px;max-width:100%;
+  padding:30px 28px;text-align:center;box-shadow:0 22px 50px rgba(33,29,22,.22)}
+.widget .w{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.1}
+.widget .def{color:#CABFA8;margin-top:10px;font-size:16px;line-height:1.45}
+.widget .fade{transition:opacity .45s ease}
+.demo .app-lbl{color:var(--muted);font-size:14px;margin-top:14px}
 
 /* sections */
 section{padding:64px 0;border-top:1px solid var(--line)}
@@ -126,7 +126,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;margin-top:20px}
 .store small{display:block;color:var(--faint);font-size:11px}
 
 /* ============================================================
-   Refinement layer — premium detailing + pencil-draft motion
+   Refinement layer: premium detailing + pencil-draft motion
    ============================================================ */
 
 /* paper grain, very subtle, sits above bg */
@@ -155,21 +155,15 @@ header.nav, main, footer{position:relative;z-index:1}
 .trust{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 10px;margin-top:14px;color:var(--faint);font-size:13px}
 .stars{color:var(--accent);letter-spacing:2px;font-size:14px}
 
-/* live rotating specimen card — matches the app's own flat cream word screen */
-.specimen-wrap{display:flex;justify-content:center;margin:20px 0 6px}
-.specimen{position:relative;width:320px;min-height:210px;background:var(--surface);
-  border:1px solid var(--line);border-radius:26px;padding:22px 28px;
-  box-shadow:0 24px 60px rgba(33,29,22,.10);overflow:hidden}
-.specimen .corner{position:absolute;top:16px;right:18px;color:var(--faint);font-size:11px;letter-spacing:1.5px}
-.specimen .lbl{color:var(--accent);font-weight:600;font-size:11px;letter-spacing:2px}
-.specimen .w{font-family:var(--serif);font-size:40px;line-height:1.05;margin-top:16px;letter-spacing:-.5px;color:var(--text)}
-.specimen .ipa{font-family:var(--serif);font-style:italic;color:var(--muted);margin-top:8px;font-size:16px}
-.specimen .pos{font-family:var(--serif);font-style:italic;color:var(--faint);margin-top:16px;font-size:14px}
-.specimen .def{color:var(--text);margin-top:6px;font-size:16px;line-height:1.5}
-.specimen .fade{transition:opacity .5s ease}
-.specimen .dots{position:absolute;left:32px;bottom:22px;display:flex;gap:6px}
-.specimen .dots i{width:5px;height:5px;border-radius:3px;background:var(--line2);transition:all .4s}
-.specimen .dots i.on{width:16px;background:var(--accent-solid)}
+/* lock screen notification: mirrors the app's "A word arrives every time it lights up" scene */
+.lock-wrap{display:flex;justify-content:center;margin:34px 0 6px}
+.lock{width:340px;max-width:100%;background:#ECE5D9;border:5px solid #211D16;border-radius:48px;
+  padding:26px 20px 24px;text-align:center;box-shadow:0 24px 60px rgba(33,29,22,.12)}
+.lock .padlock{width:16px;height:18px;margin:0 auto;color:var(--muted)}
+.lock .time{font-family:var(--serif);font-weight:500;font-size:74px;line-height:1;letter-spacing:-1px;color:var(--text);margin-top:6px}
+.lock .day{color:var(--muted);font-size:16px;margin-top:6px}
+.lock .wcard{margin-top:22px;text-align:left}
+.lock .fade{transition:opacity .45s ease}
 
 /* drifting word wall */
 .wall{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -185,7 +179,7 @@ header.nav, main, footer{position:relative;z-index:1}
 .mword .cef{font-family:var(--sans);font-size:11px;color:var(--accent);vertical-align:super;margin-left:4px;letter-spacing:1px}
 @keyframes drift{to{transform:translateX(-50%)}}
 
-/* App Store download button — a deliberate dark badge, like Apple's own */
+/* App Store download button: a deliberate dark badge, like Apple's own */
 .dl-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:22px}
 .appstore{display:inline-flex;align-items:center;gap:13px;background:var(--dark);color:var(--dark-text);
   border-radius:14px;padding:12px 24px 12px 20px;transition:transform .15s ease,opacity .2s;
@@ -200,7 +194,6 @@ header.nav, main, footer{position:relative;z-index:1}
   .hero{padding:32px 0 30px}
   .nav-links a:not(.btn){display:none}
   section{padding:48px 0}
-  .specimen{width:100%}
 }
 
 /* --- hero illustration (same art as the app welcome screen) --- */
@@ -228,21 +221,20 @@ header.nav, main, footer{position:relative;z-index:1}
 
 @media(max-width:560px){.shots{gap:24px}.phone{width:80%;max-width:290px}.phone.raised{margin-top:0}}
 
-/* --- find your field: mini onboarding funnel --- */
-.field-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:32px}
-.field-opt{display:flex;align-items:flex-start;gap:14px;text-align:left;background:var(--surface);
-  border:1.5px solid transparent;border-radius:16px;padding:18px 20px;cursor:pointer;position:relative;
-  font-family:var(--sans);transition:background .15s ease,border-color .15s ease}
-.field-opt:hover{background:var(--surface2)}
-.field-opt[aria-pressed="true"]{background:var(--surface2);border-color:var(--accent)}
-.field-opt .fi{width:26px;height:26px;flex:none;margin-top:1px}
-.field-opt span{flex:1;min-width:0;padding-right:20px}
-.field-opt b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--text)}
-.field-opt small{display:block;color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:3px}
-.field-opt .radio{flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line2);
-  margin-top:3px;position:relative;transition:border-color .15s ease}
-.field-opt[aria-pressed="true"] .radio{border-color:var(--accent)}
-.field-opt[aria-pressed="true"] .radio::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--accent-solid)}
+/* --- find your field: mirrors the app's "What should we focus on?" list --- */
+.field-picker{max-width:560px;margin-top:28px;border-top:1px solid var(--line)}
+.field-opt{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:none;border:none;
+  border-bottom:1px solid var(--line);padding:18px 0;cursor:pointer;font-family:var(--sans);color:inherit}
+.field-opt .fi{width:44px;height:44px;flex:none}
+.field-opt .fi *{fill:none;stroke:var(--text);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.field-opt .fi .g{fill:var(--accent);stroke:none}
+.field-opt span{flex:1;min-width:0}
+.field-opt b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--text)}
+.field-opt small{display:block;color:var(--muted);font-size:15.5px;line-height:1.4;margin-top:2px}
+.field-opt .radio{flex:none;width:22px;height:22px;border-radius:50%;background:var(--line2);
+  display:flex;align-items:center;justify-content:center;transition:background .15s ease}
+.field-opt[aria-pressed="true"] .radio{background:var(--accent)}
+.field-opt[aria-pressed="true"] .radio::after{content:'✓';color:#FBF8F1;font-size:12px;font-weight:700}
 
 /* --- fields scene: isometric illustration, full-bleed dark section --- */
 .scene-section{background:#20282A;border-top:none;padding:72px 0}
@@ -257,13 +249,14 @@ header.nav, main, footer{position:relative;z-index:1}
 .field-reveal-head{font-family:var(--serif);font-size:clamp(24px,3.4vw,32px);color:var(--text);text-align:center;margin-bottom:24px}
 .field-reveal-head span{color:var(--accent)}
 .field-reveal-words{display:flex;flex-direction:column;gap:12px;max-width:480px;margin:0 auto}
-.wcard{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border-radius:18px;
-  padding:14px 16px;box-shadow:0 10px 28px rgba(33,29,22,.08);border:1px solid var(--line)}
-.wcard-icon{flex:none;width:36px;height:36px;border-radius:10px;background:linear-gradient(160deg,#B08A4E,#8A6A38);
-  color:#fff;font-family:var(--serif);font-weight:500;font-size:16px;display:flex;align-items:center;justify-content:center}
+.wcard{display:flex;align-items:center;gap:14px;background:#FBF8F1;border-radius:22px;padding:14px 16px;
+  box-shadow:0 8px 24px rgba(33,29,22,.07)}
+.wcard-icon{flex:none;width:46px;height:46px;border-radius:12px;background:var(--accent);
+  color:#FBF8F1;font-family:var(--serif);font-weight:500;font-size:24px;display:flex;align-items:center;justify-content:center}
 .wcard-body{flex:1;min-width:0}
 .wcard-top{display:flex;align-items:baseline;gap:8px}
-.wcard-top b{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--text)}
-.wcard-now{margin-left:auto;color:var(--faint);font-size:12.5px;flex:none}
-.wcard-def{color:var(--muted);font-size:14px;line-height:1.5;margin-top:2px}
-@media(max-width:560px){.field-opt{padding:16px}}
+.wcard-top b{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--text)}
+.wcard-now{margin-left:auto;color:var(--muted);font-size:13px;flex:none}
+.wcard-def{color:var(--muted);font-size:15px;line-height:1.4;margin-top:1px}
+
+
