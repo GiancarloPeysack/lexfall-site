@@ -39,16 +39,27 @@
   @media(max-width:560px){
     .nav-inner{height:56px}
     .hero{padding-top:18px}
-    .hero-art{margin-bottom:6px}
-    .hero-art img{width:104px;height:auto}
+    .hero-art{margin-bottom:8px}
+    .hero-art img{width:156px;height:auto}
     .hero .eyebrow{font-size:10px;letter-spacing:1.2px}
     .hero .sub{font-size:16px;line-height:1.5;margin-top:12px}
+  }
+  /* the smallest current iPhone (SE-class, ~553px tall once Safari's UI is on screen):
+     claw back space so the bigger illustration above still leaves the button on screen */
+  @media(max-width:560px) and (max-height:580px){
+    .hero{padding-top:8px}
+    .hero-art{margin-bottom:2px}
+    .hero-art img{width:104px}
+    .hero .eyebrow{display:none}
+    .hero h1{font-size:30px;margin-top:8px}
+    .hero .sub{font-size:14.5px;line-height:1.4;margin-top:8px}
+    .hero .dl-row{margin-top:14px}
   }
   /* desktop: the QR sits beside the button so a computer visitor can hand off to the phone */
   .qr{display:none}
   @media(min-width:900px) and (hover:hover) and (pointer:fine){
     .hero{padding-top:28px}
-    .hero-art img{width:200px;height:auto}
+    .hero-art img{width:240px;height:auto}
     .qr{display:flex;align-items:center;gap:14px;padding:8px 20px 8px 8px;background:var(--surface);border:1px solid var(--line);border-radius:16px;text-align:left}
     .qr img{width:116px;height:116px;border-radius:10px;background:#fff}
     .qr b{display:block;font-family:var(--serif);font-weight:500;font-size:18px;line-height:1.2}
@@ -58,7 +69,7 @@
   @media(min-width:900px) and (max-height:760px){
     .hero{padding-top:12px}
     .hero-art{margin-bottom:6px}
-    .hero-art img{width:104px}
+    .hero-art img{width:132px}
     .hero h1{font-size:44px;margin-top:10px}
     .hero .sub{margin-top:10px;font-size:17px}
     .hero .dl-row{margin-top:16px}
