@@ -12,16 +12,17 @@
 <meta property="og:image" content="https://lexfall.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lexfall: Expand your vocabulary beyond average">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Lexfall Support">
 <meta name="twitter:description" content="Contact Lexfall support and find answers about subscriptions, the widget, and your data.">
 <meta name="twitter:image" content="https://lexfall.app/og-image.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="canonical" href="https://lexfall.app/support">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css?v=21">
+<link rel="stylesheet" href="styles.css?v=23">
 <style>
   .faq{border-top:1px solid var(--line);margin-top:36px}
   .faq details{border-bottom:1px solid var(--line);padding:18px 0}
@@ -32,7 +33,7 @@
   .faq details[open] summary::after{content:'–'}
   .faq p{color:var(--muted);margin-top:12px}
   .contact-card{border:1px solid var(--line2);border-radius:16px;padding:26px;background:var(--surface);margin-top:20px}
-  .contact-card a:not(.btn){color:var(--accent)}
+  .contact-card a:not(.btn){color:var(--accent-text);text-decoration:underline;text-underline-offset:2px}
   .contact-card a.btn-primary{color:var(--on-accent)}
 </style>
 </head>
@@ -40,14 +41,14 @@
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="index.html" class="wordmark" aria-label="Lexfall home"><img class="mark" src="brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
-    <nav class="nav-links">
-      <a href="index.html#screens">See it</a>
-      <a href="index.html#features">Features</a>
-      <a href="index.html#specimens">Words</a>
-      <a href="partners.html">Partners</a>
-      <a href="support.html">Support</a>
-      <a href="index.html#download" class="btn btn-primary">Download</a>
+    <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#screens">See it</a>
+      <a href="/#features">Features</a>
+      <a href="/#specimens">Words</a>
+      <a href="/partners">Partners</a>
+      <a href="/support">Support</a>
+      <a href="https://apps.apple.com/app/id6786614029?ct=web_other" class="btn btn-primary">Download</a>
     </nav>
   </div>
 </header>
@@ -92,7 +93,7 @@
     </details>
     <details>
       <summary>Is the medical/legal vocabulary professional advice?</summary>
-      <p>No. Lexfall's definitions and examples are for language learning only and are not medical, legal, or professional advice. See our <a href="terms.html">Terms</a> for details.</p>
+      <p>No. Lexfall's definitions and examples are for language learning only and are not medical, legal, or professional advice. See our <a href="/terms">Terms</a> for details.</p>
     </details>
   </div>
 </main>
@@ -100,19 +101,18 @@
 <footer>
   <div class="wrap foot-inner">
     <div>
-      <a href="index.html" class="wordmark" aria-label="Lexfall home"><img class="mark" src="brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
+      <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
       <div class="foot-copy" style="margin-top:8px">An advanced vocabulary app for life and work.</div>
     </div>
-    <nav class="foot-links">
-      <a href="index.html#features">Features</a>
-      <a href="partners.html">Partners</a>
-      <a href="support.html">Support</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="/admin">Admin</a>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/#features">Features</a>
+      <a href="/partners">Partners</a>
+      <a href="/support">Support</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
     </nav>
   </div>
-  <div class="wrap" style="margin-top:24px"><div class="foot-copy">© 2026 Lexfall. All rights reserved.</div></div>
+  <div class="wrap" style="margin-top:24px"><div class="foot-copy">© 2026 Lexfall. All rights reserved. Apple, iPhone and App Store are trademarks of Apple Inc.</div></div>
 </footer>
 </body>
 </html>

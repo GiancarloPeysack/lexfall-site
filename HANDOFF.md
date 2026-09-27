@@ -1,63 +1,38 @@
-# Lexfall website — handoff
+# Lexfall website: handoff
 
-The Lexfall marketing site. Live, deployed, editable. Read this first.
+Internal notes. This file is excluded from the public deploy by `.vercelignore`. Updated 2026-09-27.
 
-## Live + hosting
-- **Live URL:** https://lexfall.app (and https://www.lexfall.app) — moved from luxfall.online 2026-09-08.
-- **Host:** Vercel project `lexfall-site` (account `gcpeysack-3589`, team `giancarls-projects`). Auto-issued HTTPS.
-- **Source repo:** https://github.com/GiancarloPeysack/lexfall-site (public, branch `master`). Vercel is connected — **`git push` to master auto-deploys.**
-- **Local working copy (edit here):** `/Users/giancarlopeysack/Documents/lexfall-site/`
-- `lexfall.app` is registered at **GoDaddy** (nameservers stayed `ns21/ns22.domaincontrol.com`; not switched to Vercel's). Added to the Vercel project via `vercel domains add`, apex `A @ → 76.76.21.21` set at GoDaddy 2026-09-08. `www` uses the existing `CNAME www → lexfall.app.` record. Allow up to ~1hr (rarely 48hr) for DNS propagation + auto HTTPS.
-- `luxfall.online` (old domain, still registered/pointed at Vercel) is not redirected to `lexfall.app` — both currently resolve independently. Worth adding a redirect once the new domain is confirmed live.
+## Hosting and deploys
+- Live: https://lexfall.app. Vercel project `lexfall-site` (team `giancarls-projects`). Repo: github.com/GiancarloPeysack/lexfall-site, branch `master`.
+- `git push` to master auto-deploys (about 20 seconds). `gh` and `vercel` are already authenticated on this Mac.
+- Test config safely first: `vercel deploy --yes` makes a private preview (behind a login wall). Hit it with `vercel curl /path --deployment <preview-url> -- -sI`.
+- www.lexfall.app, luxfall.online and www.luxfall.online redirect to https://lexfall.app (see `vercel.json`).
+- Always `git add -A` before committing. Fonts, `brand/qr-appstore.svg`, `404.html`, `robots.txt` and `sitemap.xml` are all required files.
+- The local preview server (`python3 -m http.server`) does not emulate clean URLs, redirects or rewrites. Test those on a Vercel preview.
 
-## Files (all in the repo dir)
-- `index.html` — landing page (hero, rotating word card, word-wall, proficiency curve, features, quote, download section). Contains inline `<script>` with the word data + animations.
-- `privacy.html`, `terms.html`, `support.html` — legal/support pages.
-- `styles.css` — all shared styling. Linked as `styles.css?v=4` (see caching note).
-- `vercel.json` — `{"cleanUrls": true}` so `/privacy` works without `.html`.
+## Files
+- `index.html` landing page. `blog.html` plus two articles. `partners.html`, `support.html`, `privacy.html`, `terms.html`, `google-play.html` (Android holding page), `404.html`.
+- `styles.css` shared styles, linked as `styles.css?v=23`. If you change it, bump the version everywhere: `sed -i '' 's|styles.css?v=23|styles.css?v=24|g' *.html`.
+- `fonts/` self-hosted Inter and Newsreader (SIL OFL, licence texts included). No third-party requests.
+- `brand/qr-appstore.svg` encodes `https://apps.apple.com/app/id6786614029?ct=web_qr`. Regenerate with the `qrcode` npm package (margin 4).
+- `og-image.png` is 1200x630, rendered from an HTML mock with headless Chrome. Update it when the headline or stats change.
 
-## How to deploy an edit
-```
-cd /Users/giancarlopeysack/Documents/lexfall-site
-# edit files…
-git add -A && git commit -m "…" && git push        # auto-deploys via Vercel
-# OR force an immediate prod deploy:
-vercel --prod --yes
-```
-Both `gh` and the `vercel` CLI are already authenticated on this machine — no login needed.
+## Routes (vercel.json)
+- `/medicine`, `/healthcare`, `/law`, `/legal`, `/business` serve the homepage; JS reads the path (or `?f=medicine`) to tailor the hero and preselect the field. Use these as ad and creator landing pages.
+- `/get` and `/get/<source>` redirect to the App Store with `ct=<source>` (Android goes to `/google-play`). Use for bio links, emails and creators, for example `lexfall.app/get/nurse-assoc`.
 
-## CACHING GOTCHA (important)
-Browsers cache `styles.css`. The HTML links it as `styles.css?v=4`. **If you change `styles.css`, bump the version in ALL html files** (`?v=4` → `?v=5`) or your CSS edits won't show. Quick bump:
-```
-cd /Users/giancarlopeysack/Documents/lexfall-site
-sed -i '' 's|styles.css?v=4|styles.css?v=5|g' *.html
-```
+## Attribution
+Store links carry campaign tokens: `web_home` (hero, nav, download), `web_qr`, `web_field_<field>`, `web_lp_<field>` (landing variants), `web_blog`, `web_other`. Apple only reports a campaign when the link also has your provider token `pt=`. When you have it, add it to every link in one command, for example: `sed -i '' 's|id6786614029?ct=|id6786614029?pt=YOURTOKEN\&ct=|g' *.html vercel.json`.
 
-## Design system (keep consistent — mirrors the iOS app)
-- Colors (CSS vars in `:root`): bg `#100E0B`, text `#ECE5D7`, muted `#A39A88`, faint `#6E665A`, **gold accent `#C6A85C`**, surfaces `#1A1712`/`#221E18`, lines `#322C22`/`#3E372B`.
-- Fonts: **Newsreader** (serif, headings/words) + **Inter** (UI). `.eyebrow` = the gold micro-caps label.
-- Motion: `.rise` = fade-up on scroll; `.ink` = a gold "pencil" underline that draws itself in; `.draw` = SVG stroke draw-on (the proficiency curve). All handled by the IntersectionObserver block at the bottom of index.html.
-- Wordmark: `Le<span class="x">x</span>fall` (italic gold x).
+## Facts the copy relies on (re-check before changing claims)
+- App Store: free to download; after a free trial a subscription (monthly or annual) unlocks every professional field. Built for iPhone, iOS 15.1 or later. Available in essentially every storefront. Android is not available.
+- The listing had exactly 1 rating on 2026-09-27, so the site must not make rating or "loved by" claims.
+- Widget shows a new word every few hours.
 
-## Current state
-- Framed as a **launched app**: hero + download section use an **"Download on the App Store"** button (`.appstore`). No waitlist/email capture anywhere.
-- The rotating card + drifting word-wall pull from the `WORDS` array in index.html's script (34 real words from the app).
-
-## OPEN ITEMS / TODO
-1. ~~App Store link is a placeholder.~~ **Resolved 2026-08-27.** Real listing is live:
-   `https://apps.apple.com/us/app/lexfall-advanced-english/id6786614029` (bundle
-   `com.gpeysack.lexfall`, published under seller "Premier Food Delights Inc" — bundle ID
-   confirmed via `itunes.apple.com/lookup?id=6786614029`, this is the correct app). Set in
-   `index.html`'s `APP_STORE_URL` const.
-2. **Brand vs domain:** site says **Lex**fall; domain is **lux**fall.online. Left as-is intentionally. If rebranding to "Luxfall", change the wordmark in all 4 html files + `<title>`/meta. (Owner was considering buying `lexfall.app` to match — not purchased.)
-3. **Emails:** support/privacy pages list `@lexfall.app` addresses that aren't set up (owner said email not needed yet). Remove or swap to a working address before heavy promotion.
-4. **Optional:** add a Google Play badge (android package exists: `com.gpeysack.lexfall`) if/when on Play; add real screenshots of the app (partially done — see `shots/word.jpg`, `progress.jpg`, `practice.jpg`, real device screens as of the 2026-08-26 redesign).
-
-Note: this HANDOFF predates a full redesign on 2026-08-26 (light cream theme matching the
-real app, proficiency-curve section removed, a "find your field" interactive section
-added, pricing cards removed). The "Design system" and "Current state" sections above are
-stale — check `styles.css` and `index.html` directly rather than trusting the color/section
-list above.
-
-## Related
-- The iOS app itself lives at `/Users/giancarlopeysack/Documents/Vorto/app` (Expo/React Native, app name "Lexfall", bundle `com.gpeysack.lexfall` for prod / `app.vorto.mobile` for the local sim build). Separate project — see `Vorto/HANDOFF.md` and `Vorto/LEXFALL_UI_RECOMMENDATIONS.md`.
+## Open items that need the owner
+1. App Store Connect: subtitle ("For work and life" names no field), promo text, keywords, Custom Product Pages per field.
+2. Provider token (`pt`) for attribution, and Vercel Web Analytics (enable in the dashboard). Update privacy.html if any ad pixel is added.
+3. Android waitlist needs a backend or a hosted form. Until then `/google-play` only informs.
+4. Support and legal contact is a personal Gmail. The `@lexfall.app` addresses are not set up. The App Store seller name (Premier Food Delights Inc) differs from the Lexfall brand. Privacy and Terms name no legal entity and do not cover website or partner-application data.
+5. Partner program: define "net revenue" and how the audience's 20% code is redeemed.
+6. Use Apple's official App Store badge artwork instead of the hand-drawn one.

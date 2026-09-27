@@ -1,9 +1,18 @@
 /* Lexfall: website styles. Tokens sampled directly from the app (v0.1.19). */
+/* Self-hosted fonts (Inter + Newsreader, SIL OFL). No third-party requests. */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-400.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-500.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-600.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/newsreader-400.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/newsreader-500.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/newsreader-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/newsreader-500-italic.woff2) format('woff2')}
+
 :root{
   --bg:#F4F0E8; --surface:#ECE6DA; --surface2:#E4DCC8;
   --line:#E1D9C7; --line2:#D6CCB4;
-  --text:#211D16; --muted:#7F7D79; --faint:#A79E8C;
-  --accent:#9A7B2E; --accent-solid:#C6A85C; --on-accent:#FBF7EE; --ink:#211D16;
+  --text:#211D16; --muted:#5E5C58; --faint:#666055;
+  --accent:#9A7B2E; --accent-text:#755D23; --accent-solid:#C6A85C; --on-accent:#211D16; --ink:#211D16;
   --dark:#100E0B; --dark-text:#ECE5D7; --dark-muted:#A39A88; --exText:#CABFA8;
   --serif:'Newsreader',Georgia,'Times New Roman',serif;
   --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
@@ -17,12 +26,12 @@ body{
   text-rendering:optimizeLegibility;
 }
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 
 /* micro-caps label (app's `label` style) */
 .eyebrow{
   font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:1.8px;
-  text-transform:uppercase;color:var(--accent);
+  text-transform:uppercase;color:var(--accent-text);
 }
 .serif{font-family:var(--serif)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
@@ -35,7 +44,7 @@ img{max-width:100%;display:block}
 .hero .eyebrow{display:inline-block;line-height:1.7}
 
 /* nav */
-header.nav{position:sticky;top:0;z-index:50;background:rgba(244,240,232,.82);
+header.nav{position:sticky;top:0;z-index:50;background:rgba(244,240,232,.94);
   backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
 .nav-links{display:flex;align-items:center;gap:28px}
@@ -75,7 +84,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(244,240,232,.82);
 .capture .btn-primary{padding:14px 22px}
 .note{color:var(--faint);font-size:12.5px;margin-top:12px}
 .form-msg{margin-top:14px;font-size:14px;min-height:20px}
-.form-msg.ok{color:var(--accent)}
+.form-msg.ok{color:var(--accent-text)}
 .form-msg.err{color:var(--bad,#C57B5B)}
 
 /* Home Screen widget: mirrors the app's own widget scene (black card, serif word, sans def) */
@@ -102,14 +111,14 @@ section{padding:64px 0;border-top:1px solid var(--line)}
 .card p{color:var(--muted);margin-top:8px;font-size:15px;line-height:1.55}
 
 /* legal / doc pages */
-.doc{padding:70px 0 40px;max-width:760px}
+.doc{padding:70px 26px 40px;max-width:760px}
 .doc h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,46px);letter-spacing:-.5px}
 .doc .updated{color:var(--faint);font-size:14px;margin-top:10px}
 .doc h2{font-family:var(--serif);font-weight:500;font-size:24px;margin:38px 0 10px;color:var(--text)}
 .doc p{color:var(--muted);margin-top:12px}
 .doc ul{margin:12px 0 0 20px;color:var(--muted)}
 .doc li{margin-top:8px}
-.doc a{color:var(--accent)}
+.doc a:not(.btn):not(.appstore){color:var(--accent-text);text-decoration:underline;text-underline-offset:2px}
 .doc strong{color:var(--text);font-weight:600}
 
 /* footer */
@@ -148,12 +157,15 @@ header.nav, main, footer{position:relative;z-index:1}
   transition:stroke-dashoffset 1.3s cubic-bezier(.6,.05,.2,1)}
 
 /* soft fade/rise reveal */
-.rise{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-.rise.in{opacity:1;transform:none}
+.rise{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rise{opacity:0;transform:translateY(14px)}
+.js .rise.in,.js.reveal-all .rise{opacity:1;transform:none}
+/* above the fold: pure-CSS entrance, visible even if scripts fail or are slow */
+.js .hero .rise{opacity:1;transform:none;animation:heroIn .7s ease both}
+@keyframes heroIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* trust line under hero */
 .trust{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 10px;margin-top:14px;color:var(--faint);font-size:13px}
-.stars{color:var(--accent);letter-spacing:2px;font-size:14px}
 
 /* lock screen notification: mirrors the app's "A word arrives every time it lights up" scene */
 .lock-wrap{display:flex;justify-content:center;margin:34px 0 6px}
@@ -176,7 +188,7 @@ header.nav, main, footer{position:relative;z-index:1}
 .marquee:hover{animation-play-state:paused}
 .mword{font-family:var(--serif);font-size:26px;color:var(--muted);white-space:nowrap}
 .mword b{color:var(--text);font-weight:500}
-.mword .cef{font-family:var(--sans);font-size:11px;color:var(--accent);vertical-align:super;margin-left:4px;letter-spacing:1px}
+.mword .cef{font-family:var(--sans);font-size:11px;color:var(--accent-text);vertical-align:super;margin-left:4px;letter-spacing:1px}
 @keyframes drift{to{transform:translateX(-50%)}}
 
 /* App Store download button: a deliberate dark badge, like Apple's own */
@@ -213,10 +225,10 @@ header.nav, main, footer{position:relative;z-index:1}
 /* --- differentiators: quiet editorial list, no cards --- */
 .diff-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px 32px;margin-top:40px}
 .diff{border-top:1px solid var(--line);padding-top:22px}
-.diff-num{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:14px;letter-spacing:.5px}
+.diff-num{font-family:var(--serif);font-style:italic;color:var(--accent-text);font-size:14px;letter-spacing:.5px}
 .diff h3{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.2px;color:var(--text);margin-top:10px}
 .diff p{color:var(--muted);margin-top:8px;font-size:14.5px;line-height:1.6}
-.founder-line{font-family:var(--serif);font-style:italic;color:var(--accent);
+.founder-line{font-family:var(--serif);font-style:italic;color:var(--accent-text);
   font-size:clamp(18px,2.4vw,22px);text-align:center;margin-top:36px;line-height:1.5}
 
 @media(max-width:560px){.shots{gap:24px}.phone{width:80%;max-width:290px}.phone.raised{margin-top:0}}
@@ -249,7 +261,7 @@ header.nav, main, footer{position:relative;z-index:1}
 .field-grid .field-picker{margin-top:0;max-width:none}
 .field-reveal{position:sticky;top:96px}
 .field-reveal-head{font-family:var(--serif);font-size:clamp(22px,2.6vw,28px);color:var(--text);margin-bottom:18px}
-.field-reveal-head span{color:var(--accent)}
+.field-reveal-head span{color:var(--accent-text)}
 @media(max-width:860px){.field-grid{grid-template-columns:1fr;gap:36px}.field-reveal{position:static}}
 .field-reveal-words{display:flex;flex-direction:column;gap:12px}
 .wcard{display:flex;align-items:center;gap:14px;background:#FBF8F1;border-radius:22px;padding:14px 16px;
@@ -262,3 +274,19 @@ header.nav, main, footer{position:relative;z-index:1}
 .wcard-def{color:var(--muted);font-size:15px;line-height:1.4;margin-top:1px}
 
 
+
+/* ---- accessibility + robustness ---- */
+html{scroll-padding-top:72px}
+section,[id]{scroll-margin-top:72px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
+.foot-links{gap:0 22px}
+.foot-links a{display:inline-block;padding:12px 0}
+@media(min-width:641px){.nav-links a:not(.btn){padding:12px 0}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee{animation:none}
+  .js .rise,.js .hero .rise{opacity:1;transform:none;transition:none;animation:none}
+  *{transition-duration:.01ms!important}
+}
+/* tablets and small landscape phones: the header only has room for the wordmark and Download */
+@media(max-width:760px){.nav-links a:not(.btn){display:none}}
