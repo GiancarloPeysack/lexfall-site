@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create for Lexfall: The Creator Kit</title>
+<meta name="description" content="Everything you need to make a Lexfall video today: proven hooks, ready scripts, what to film, your link, and how you get paid. 25% recurring for 12 months.">
+<link rel="canonical" href="https://lexfall.app/creators">
+<meta name="apple-itunes-app" content="app-id=6786614029, app-argument=https://lexfall.app/creators">
+<meta property="og:title" content="Create for Lexfall: The Creator Kit">
+<meta property="og:description" content="Proven hooks, ready-to-record scripts, and your own code. Earn 25% recurring for 12 months.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lexfall.app/creators">
+<meta property="og:image" content="https://lexfall.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lexfall: Expand your vocabulary beyond average">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Create for Lexfall: The Creator Kit">
+<meta name="twitter:description" content="Proven hooks, ready-to-record scripts, and your own code.">
+<meta name="twitter:image" content="https://lexfall.app/og-image.png">
+<link rel="preload" href="fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css?v=23">
+<style>
+  .chero{padding:64px 26px 8px;text-align:center}
+  .chero h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,6vw,56px);line-height:1.05;margin:14px 0 0;letter-spacing:-.5px}
+  .chero .sub{color:var(--muted);font-size:18px;max-width:54ch;margin:16px auto 0;line-height:1.6}
+  .chero .cta-row{margin:22px 0 0;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .csec{max-width:720px;margin:0 auto;padding:0 26px}
+  .csec h2{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.2;margin:52px 0 0;letter-spacing:-.3px}
+  .csec p{font-size:17px;line-height:1.7;margin:14px 0 0;color:var(--text)}
+  .csec p.mut{color:var(--muted)}
+  .steps{list-style:none;counter-reset:s;padding:0;margin:20px 0 0}
+  .steps li{counter-increment:s;position:relative;padding:14px 0 14px 46px;border-top:1px solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:12px;width:30px;height:30px;border-radius:50%;
+    background:var(--surface);border:1px solid var(--line);color:var(--accent-text);font-family:var(--serif);font-size:16px;
+    display:flex;align-items:center;justify-content:center}
+  .steps b{font-weight:600}
+  .steps span{display:block;color:var(--muted);font-size:15px;margin-top:2px}
+  .deal{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:24px 0 0}
+  .deal .d{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .deal .d .n{font-family:var(--serif);font-size:26px;color:var(--accent);line-height:1}
+  .deal .d .l{margin-top:6px;font-weight:600;font-size:15px}
+  .deal .d .t{margin-top:2px;color:var(--muted);font-size:13px;line-height:1.5}
+  .script{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:16px 0 0}
+  .script .tag{font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--accent-text);font-weight:600}
+  .script .hook{font-family:var(--serif);font-size:20px;line-height:1.35;margin:8px 0 0}
+  .script ul{margin:12px 0 0;padding-left:18px}
+  .script li{font-size:16px;line-height:1.6;margin:5px 0}
+  .script li b{font-weight:600}
+  .script .cta-line{margin:12px 0 0;font-size:15px;color:var(--muted)}
+  .script .cta-line span{color:var(--accent-text);font-style:italic}
+  .callout{background:var(--surface2,var(--surface));border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:20px 0 0}
+  .callout b{color:var(--text)}
+  .dodont{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 0}
+  @media(max-width:560px){.dodont{grid-template-columns:1fr}.deal{grid-template-columns:1fr 1fr}}
+  .dodont .col{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .dodont h3{font-size:12px;letter-spacing:.6px;text-transform:uppercase;margin:0 0 8px}
+  .dodont .do h3{color:var(--accent-text)}
+  .dodont .dont h3{color:#8A3B1E}
+  .dodont ul{margin:0;padding-left:18px}
+  .dodont li{font-size:14px;line-height:1.55;margin:5px 0}
+  .kcta{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;text-align:center;margin:52px auto 56px;max-width:640px}
+  .kcta p{margin:0 0 16px;font-size:18px}
+  .kcta small{display:block;color:var(--muted);font-size:13px;margin-top:12px;line-height:1.5}
+  .more{max-width:720px;margin:0 auto;padding:8px 26px 64px;font-size:15px;color:var(--muted)}
+  .more a{color:var(--accent-text);text-decoration:underline;text-underline-offset:2px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#screens">See it</a>
+      <a href="/#features">Features</a>
+      <a href="/partners">Partners</a>
+      <a href="/support">Support</a>
+      <a href="https://apps.apple.com/app/id6786614029?ct=web_other" class="btn btn-primary">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap chero">
+    <span class="eyebrow">Creator kit</span>
+    <h1>Create for Lexfall.</h1>
+    <p class="sub">Everything you need to make your first video today: the hooks that work, scripts you can read straight off the screen, what to film, your link, and how you get paid.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/partners#applyForm">Apply to partner</a>
+      <a class="btn" href="#scripts">Jump to the scripts</a>
+    </div>
+  </div>
+
+  <div class="csec">
+    <h2>The deal, in four numbers</h2>
+    <div class="deal">
+      <div class="d"><div class="n">25%</div><div class="l">Recurring, 12 months</div><div class="t">Of net revenue from every subscriber you bring, for a year. Tutors earn 30%.</div></div>
+      <div class="d"><div class="n">A perk</div><div class="l">For your audience</div><div class="t">Your code carries a real benefit for your followers, so sharing it is a gift, not a pitch.</div></div>
+      <div class="d"><div class="n">Live</div><div class="l">Your dashboard</div><div class="t">A private page showing your redemptions, conversions and commission as they happen.</div></div>
+      <div class="d"><div class="n">$0</div><div class="l">No minimum</div><div class="t">Paid monthly on a fixed date. No threshold, no exclusivity.</div></div>
+    </div>
+    <p class="mut">Full terms and the application form live on the <a href="/partners" style="color:var(--accent-text);text-decoration:underline">partners page</a>. This page is the how-to.</p>
+  </div>
+
+  <div class="csec">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><b>Apply in two minutes.</b><span>Tell us your handle and audience on the partners page. We review every one personally.</span></li>
+      <li><b>Get your code, your link and your dashboard.</b><span>On acceptance you receive a code that carries a perk for your audience, a tracking link (lexfall.app/get/yourhandle), and a private dashboard.</span></li>
+      <li><b>Post, using the hooks below.</b><span>Film the word card, or talk to camera. Put your link in your bio and your code in the caption.</span></li>
+      <li><b>Get paid every month.</b><span>Your dashboard shows conversions in near real time. Commission is paid on a fixed monthly date.</span></li>
+    </ol>
+  </div>
+
+  <div class="csec">
+    <h2>What to film: the card is the content</h2>
+    <p>Lexfall is built to be filmed. The daily word card, the definition, the example sentence, the streak, the widget on your lock screen: each is a clean, five-second visual that works as a native short. You do not need to be on camera. The two formats that work:</p>
+    <p><b>Faceless.</b> Screen-record the app, or lay text-on-screen word cards over a quiet trending audio. Let the words carry it.</p>
+    <p><b>Talking.</b> Read a script below to camera. Rough beats polish here. Speed and honesty win.</p>
+    <div class="callout">
+      <b>The one rule that decides everything: the first three seconds.</b> Lead with the hook, never an introduction. Every script below is written hook-first for exactly this reason. Post the same cut to TikTok, Reels and Shorts. Shorts is worth the extra upload because it keeps ranking in search for months.
+    </div>
+  </div>
+
+  <div class="csec" id="scripts">
+    <h2>The hook library: five scripts, ready to record</h2>
+    <p class="mut">Every word below is real Lexfall content. Read them straight, or make them yours.</p>
+
+    <div class="script">
+      <div class="tag">General · broadest appeal · ~25s</div>
+      <p class="hook">"English has four words for how much someone talks. Knowing them makes you sound razor-sharp."</p>
+      <ul>
+        <li><b>garrulous</b>: talks too much, about nothing. "a garrulous passenger you can't escape on a flight."</li>
+        <li><b>taciturn</b>: barely speaks. "the famously taciturn director who lets his films talk."</li>
+        <li><b>laconic</b>: few words, but they land. "a laconic one-word reply."</li>
+        <li><b>prolix</b>: goes on and on in writing. "so prolix the point gets buried."</li>
+      </ul>
+      <p class="cta-line">Close: <span>"One word like this a day, on your lock screen. Lexfall."</span></p>
+    </div>
+
+    <div class="script">
+      <div class="tag">Business · sound senior · ~25s</div>
+      <p class="hook">"Stop saying 'we're low on cash.' Here is how people who run companies say it."</p>
+      <ul>
+        <li><b>liquidity</b>: how fast assets turn into cash. "a run of late payments left them short of liquidity."</li>
+        <li><b>leverage</b>: using borrowed money to amplify returns. "high leverage magnified both the gains and the losses."</li>
+        <li><b>collateral</b>: an asset pledged to secure a loan. "the bank took the warehouse as collateral."</li>
+      </ul>
+      <p class="cta-line">Close: <span>"Business English that makes you sound senior. Lexfall."</span></p>
+    </div>
+
+    <div class="script">
+      <div class="tag">Medical / OET · nurse audience · ~30s</div>
+      <p class="hook">"If you are a nurse taking the OET: it is not testing your medicine. It is testing this."</p>
+      <ul>
+        <li><b>take a history</b>: systematically gather a patient's story. "before I examine you, I'd like to take a full history."</li>
+        <li><b>presenting complaint</b>: the main problem, in the patient's own words.</li>
+        <li><b>open-ended question</b>: one they cannot answer yes or no. "tell me more about that."</li>
+      </ul>
+      <p class="cta-line">Close: <span>"The medical English the ward and the exam expect. Lexfall, choose Medicine."</span></p>
+    </div>
+
+    <div class="script">
+      <div class="tag">Emotional hook · ~20s</div>
+      <p class="hook">"There is a single word for a feeling too vast to describe. Most native speakers don't know it."</p>
+      <ul>
+        <li><b>ineffable</b>: too great or sacred to be put into words. "the ineffable quality of grief."</li>
+        <li><b>sanguine</b>: cheerfully optimistic in a hard situation. "sanguine about the firm's long-term prospects."</li>
+      </ul>
+      <p class="cta-line">Close: <span>"The words you didn't know you were missing. Lexfall."</span></p>
+    </div>
+
+    <div class="script">
+      <div class="tag">Curiosity · ~25s</div>
+      <p class="hook">"Four words people use so you won't notice what they are actually saying."</p>
+      <ul>
+        <li><b>obfuscate</b>: deliberately make something unclear. "jargon to obfuscate the true cost."</li>
+        <li><b>ostensibly</b>: supposedly, but maybe not really. "he resigned ostensibly for health reasons."</li>
+        <li><b>perfunctory</b>: done with the bare minimum of care. "a perfunctory nod."</li>
+        <li><b>notwithstanding</b>: in spite of. "notwithstanding these limitations..."</li>
+      </ul>
+      <p class="cta-line">Close: <span>"Read between the lines. Lexfall."</span></p>
+    </div>
+  </div>
+
+  <div class="csec">
+    <h2>Your link, and the mistake that loses 80% of clicks</h2>
+    <p>Use your own tracking link in your bio: <b>lexfall.app/get/yourhandle</b>. It redirects to the App Store and credits you.</p>
+    <p>The mistake almost every creator makes: pasting a raw App Store link in a TikTok or Instagram bio. Those apps open links in their own in-app browser, which cannot launch the App Store, so most people hit a dead screen and give up. Your <b>lexfall.app/get/</b> link is built to break out of the in-app browser into the phone's real browser, so the App Store actually opens. Always use it, never the raw store URL.</p>
+    <div class="callout">
+      <b>On Android?</b> Lexfall is iPhone-only for now. If your audience is largely on Android, send them to <a href="/google-play" style="color:var(--accent-text);text-decoration:underline">lexfall.app/google-play</a> to join the waitlist, so you still capture them and can convert them at launch.
+    </div>
+  </div>
+
+  <div class="csec">
+    <h2>Do's and don'ts</h2>
+    <div class="dodont">
+      <div class="col do">
+        <h3>Do</h3>
+        <ul>
+          <li>Disclose the partnership: #ad or "paid partner", clearly.</li>
+          <li>Describe Lexfall accurately: an iPhone vocabulary app, free to download, subscription unlocks every field.</li>
+          <li>Show the app, or real words. Authentic beats polished.</li>
+          <li>Reply to comments. The comment section is your next video.</li>
+        </ul>
+      </div>
+      <div class="col dont">
+        <h3>Don't</h3>
+        <ul>
+          <li>Claim exam results or a passing score. Lexfall teaches vocabulary, not the exam.</li>
+          <li>Suggest endorsement by any exam body (OET, IELTS, GRE are trademarks of their owners).</li>
+          <li>Promise Android today. It is coming; point Android users to the waitlist.</li>
+          <li>Invent ratings or "loved by thousands" claims.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="kcta">
+    <p>Ready? Apply, and we will send your code and dashboard.</p>
+    <a class="btn btn-primary" href="/partners#applyForm">Apply to partner</a>
+    <small>We review every application personally and reply by email. Free to download. iPhone, iOS 15.1 or later.</small>
+  </div>
+
+  <p class="more">More: <a href="/partners">Partner terms</a> · <a href="/medical-english-vocabulary-oet">OET word list</a> · <a href="/business-english-vocabulary">Business word list</a> · <a href="/blog">All posts</a></p>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
+      <div class="foot-copy" style="margin-top:8px">An advanced vocabulary app for life and work.</div>
+    </div>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/#features">Features</a>
+      <a href="/partners">Partners</a>
+      <a href="/creators">Creators</a>
+      <a href="/support">Support</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </nav>
+  </div>
+  <div class="wrap" style="margin-top:24px"><div class="foot-copy">© 2026 Lexfall. All rights reserved. Apple, iPhone and App Store are trademarks of Apple Inc.</div></div>
+</footer>
+<script>
+(function(){
+  var ua=navigator.userAgent, mobile=/Android|iPhone|iPad|iPod/i.test(ua);
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !mobile){
+    document.querySelectorAll('a[href^="https://apps.apple.com"]').forEach(function(a){a.target='_blank';a.rel='noopener';});
+  }
+})();
+</script>
+</body>
+</html>
