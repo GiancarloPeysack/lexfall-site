@@ -65,6 +65,30 @@
       <span class="lbl"><small>Download on the</small><b>App Store</b></span>
     </a>
   </div>
+  <form class="waitlist" id="waitlistForm">
+    <h2>Get told when Android is ready</h2>
+    <p class="mut">We will email you the moment Lexfall lands on Android. No newsletter, no noise, just the one message that matters.</p>
+
+    <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+    <div class="field"><label for="name">Your name (optional)</label><input id="name" name="name" autocomplete="name"></div>
+    <div class="field"><label for="country">Country (optional)</label>
+      <select id="country" name="country">
+        <option value="">Prefer not to say</option>
+        <option>Philippines</option>
+        <option>India</option>
+        <option>Nigeria</option>
+        <option>Pakistan</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <input class="hp" type="text" id="company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <button type="submit" class="btn btn-primary" id="waitlistBtn">Join the Android waitlist</button>
+    <div class="note" id="waitlistNote" role="status" aria-live="polite"></div>
+    <p style="margin:12px 0 0;font-size:13px;color:var(--muted);text-align:center">We use your email only to tell you when Android is ready. See our <a href="/privacy" style="color:var(--accent-text);text-decoration:underline">Privacy Policy</a>.</p>
+  </form>
+
   <p style="margin-top:28px"><a href="/" style="color:var(--accent-text);text-decoration:underline;text-underline-offset:2px">Back to lexfall.app</a></p>
 </main>
 
@@ -84,5 +108,29 @@
   </div>
   <div class="wrap" style="margin-top:24px"><div class="foot-copy">© 2026 Lexfall. All rights reserved. Apple, iPhone and App Store are trademarks of Apple Inc.</div></div>
 </footer>
+
+<script>
+const WAITLIST_URL = 'https://qfniuekmcwytlstvtszt.functions.supabase.co/android-waitlist';
+const wlForm = document.getElementById('waitlistForm');
+const wlNote = document.getElementById('waitlistNote');
+const wlBtn = document.getElementById('waitlistBtn');
+const wlVal = (id) => document.getElementById(id).value;
+wlForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  wlNote.className = 'note'; wlNote.textContent = '';
+  const payload = {
+    email: wlVal('email'), name: wlVal('name'), country: wlVal('country'),
+    company: wlVal('company')
+  };
+  wlBtn.disabled = true; wlBtn.textContent = 'Adding you…';
+  try {
+    const res = await fetch(WAITLIST_URL, { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(payload) });
+    const j = await res.json();
+    if (j.ok) { wlForm.reset(); wlNote.className='note ok'; wlNote.textContent = 'You are on the list. We will email you the moment Android is ready.'; }
+    else { wlNote.className='note err'; wlNote.textContent = j.error || 'Something went wrong. Please try again.'; }
+  } catch { wlNote.className='note err'; wlNote.textContent = 'Network error. Please try again.'; }
+  wlBtn.disabled = false; wlBtn.textContent = 'Join the Android waitlist';
+});
+</script>
 </body>
 </html>
