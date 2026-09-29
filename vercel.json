@@ -6,9 +6,9 @@
     { "source": "/(.*)", "has": [{ "type": "host", "value": "luxfall.online" }], "destination": "https://lexfall.app/$1", "permanent": true },
     { "source": "/(.*)", "has": [{ "type": "host", "value": "www.luxfall.online" }], "destination": "https://lexfall.app/$1", "permanent": true },
     { "source": "/get/:src", "has": [{ "type": "header", "key": "user-agent", "value": ".*Android.*" }], "destination": "/google-play", "permanent": false },
-    { "source": "/get/:src", "destination": "https://apps.apple.com/app/id6786614029?ct=:src", "permanent": false },
+    { "source": "/get/:src", "destination": "https://apps.apple.com/app/id6786614029?pt=128225052&ct=:src", "permanent": false },
     { "source": "/get", "has": [{ "type": "header", "key": "user-agent", "value": ".*Android.*" }], "destination": "/google-play", "permanent": false },
-    { "source": "/get", "destination": "https://apps.apple.com/app/id6786614029?ct=link", "permanent": false }
+    { "source": "/get", "destination": "https://apps.apple.com/app/id6786614029?pt=128225052&ct=link", "permanent": false }
   ],
   "rewrites": [
     { "source": "/partner-dashboard", "destination": "/api/dashboard" },
