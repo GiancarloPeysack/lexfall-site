@@ -13,6 +13,28 @@
   <url><loc>https://lexfall.app/support</loc><lastmod>2026-09-18</lastmod><priority>0.4</priority></url>
   <url><loc>https://lexfall.app/privacy</loc><lastmod>2026-09-18</lastmod><priority>0.2</priority></url>
   <url><loc>https://lexfall.app/terms</loc><lastmod>2026-09-18</lastmod><priority>0.2</priority></url>
+  <!-- lists:start -->
+  <url><loc>https://lexfall.app/word-lists</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/toefl-vocabulary-list</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/toeic-vocabulary-list</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/plab-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/toles-legal-english-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/cambridge-c1-advanced-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/cambridge-c2-proficiency-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/pte-academic-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/duolingo-english-test-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/linguaskill-business-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/michigan-ecpe-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/nursing-english-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/pharmacology-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/oet-letter-writing-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/dental-english-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/contract-law-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/criminal-law-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/finance-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/accounting-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/negotiation-vocabulary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <!-- lists:end -->
   <!-- words:start -->
   <url><loc>https://lexfall.app/words</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://lexfall.app/words/letter/a</loc><lastmod>2026-10-18</lastmod></url>
