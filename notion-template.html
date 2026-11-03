@@ -158,7 +158,7 @@
 <script>
 (function(){
   // Public Notion links (published with "Duplicate as template"). Empty = coming soon.
-  var NOTION={oet:'',toles:'',ielts:''};
+  var NOTION={oet:'https://pond-production-b49.notion.site/OET-Exam-Prep-System-40db2179d1f981e3af56fa748b612bb7',toles:'https://pond-production-b49.notion.site/TOLES-Study-Workspace-40db2179d1f9818e9e22f93a9de41d74',ielts:'https://pond-production-b49.notion.site/IELTS-Study-Planner-40db2179d1f98176b078caf2f3d5d6d8'};
   document.querySelectorAll('a[data-tpl]').forEach(function(a){
     var u=NOTION[a.dataset.tpl];
     if(u){a.href=u;a.target='_blank';a.rel='noopener';}else{a.textContent='Coming this week';a.setAttribute('aria-disabled','true');}
