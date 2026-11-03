@@ -87,7 +87,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   var q=new URLSearchParams(location.search),r=document.documentElement;
   var t=(q.get('theme')||'auto').toLowerCase();
   if(t!=='light'&&t!=='dark')t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';
-  r.dataset.theme=t;r.dataset.mode=(q.get('theme')||'auto').toLowerCase();
+  r.dataset.theme=t;r.style.colorScheme=t;r.dataset.mode=(q.get('theme')||'auto').toLowerCase();
   var s=(q.get('skin')||q.get('style')||'paper').toLowerCase();
   r.dataset.skin=['paper','glass','mono','clear'].indexOf(s)>-1?s:'paper';
   if(window.top===window.self)r.dataset.standalone='1';
@@ -164,7 +164,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 
   // Follow the OS / Notion theme live when theme=auto.
   if(document.documentElement.dataset.mode!=='light'&&document.documentElement.dataset.mode!=='dark'&&window.matchMedia){
-    var m=matchMedia('(prefers-color-scheme: dark)');var f=function(){var r=document.documentElement;r.dataset.theme=m.matches?'dark':'light';if(window.__LXA)r.style.setProperty('--accent',window.__LXA[m.matches?1:0])};
+    var m=matchMedia('(prefers-color-scheme: dark)');var f=function(){var r=document.documentElement;r.dataset.theme=m.matches?'dark':'light';r.style.colorScheme=r.dataset.theme;if(window.__LXA)r.style.setProperty('--accent',window.__LXA[m.matches?1:0])};
     m.addEventListener?m.addEventListener('change',f):m.addListener(f);
   }
 })();
