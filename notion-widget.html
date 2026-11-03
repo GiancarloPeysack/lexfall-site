@@ -80,7 +80,7 @@
 
   <section class="builder" aria-label="Widget builder">
     <div class="stage" id="stage">
-      <iframe id="preview" title="Widget preview" src="/widget/?cat=exam" loading="eager"></iframe>
+      <iframe id="preview" title="Widget preview" src="/widget?cat=exam" loading="eager"></iframe>
       <div class="hint">Live preview. This is exactly what appears in Notion.</div>
     </div>
     <div class="controls">
@@ -105,7 +105,7 @@
           <button data-v="3">3 hours</button><button data-v="6" aria-pressed="true">6 hours</button><button data-v="24">Day</button>
         </div></div>
       <div class="ctl"><label for="out">Your embed link</label>
-        <div class="url"><input id="out" readonly value="https://lexfall.app/widget/?cat=exam"><button class="btn btn-primary" id="copy" type="button">Copy</button></div>
+        <div class="url"><input id="out" readonly value="https://lexfall.app/widget?cat=exam"><button class="btn btn-primary" id="copy" type="button">Copy</button></div>
       </div>
     </div>
   </section>
@@ -119,14 +119,14 @@
 
   <h2>Use it anywhere</h2>
   <p style="margin-top:12px;color:var(--muted)">It is a plain web page, so it works in Figma (with any iframe or embed plugin), Obsidian, Coda, Craft, a website or a study blog. Paste this snippet:</p>
-  <pre class="snippet" id="snippet">&lt;iframe src="https://lexfall.app/widget/?cat=exam" width="100%" height="300" style="border:0;border-radius:16px" title="Advanced word of the day"&gt;&lt;/iframe&gt;</pre>
+  <pre class="snippet" id="snippet">&lt;iframe src="https://lexfall.app/widget?cat=exam" width="100%" height="300" style="border:0;border-radius:16px" title="Advanced word of the day"&gt;&lt;/iframe&gt;</pre>
 
   <h2>Styles</h2>
   <div class="gallery">
-    <figure><iframe src="/widget/?cat=medical&skin=paper&theme=light" title="Paper style, light" loading="lazy"></iframe><figcaption>Paper, light. Medical words for OET.</figcaption></figure>
-    <figure><iframe src="/widget/?cat=legal&skin=glass&theme=dark" title="Glass style, dark" loading="lazy"></iframe><figcaption>Glass, dark. Legal words for TOLES.</figcaption></figure>
-    <figure><iframe src="/widget/?cat=exam&skin=mono&theme=light" title="Mono style" loading="lazy"></iframe><figcaption>Mono. Matches a black and white setup.</figcaption></figure>
-    <figure><iframe src="/widget/?cat=business&skin=paper&theme=dark&accent=sage" title="Paper style, dark, sage" loading="lazy"></iframe><figcaption>Paper, dark, sage accent. Business English.</figcaption></figure>
+    <figure><iframe src="/widget?cat=medical&skin=paper&theme=light" title="Paper style, light" loading="lazy"></iframe><figcaption>Paper, light. Medical words for OET.</figcaption></figure>
+    <figure><iframe src="/widget?cat=legal&skin=glass&theme=dark" title="Glass style, dark" loading="lazy"></iframe><figcaption>Glass, dark. Legal words for TOLES.</figcaption></figure>
+    <figure><iframe src="/widget?cat=exam&skin=mono&theme=light" title="Mono style" loading="lazy"></iframe><figcaption>Mono. Matches a black and white setup.</figcaption></figure>
+    <figure><iframe src="/widget?cat=business&skin=paper&theme=dark&accent=sage" title="Paper style, dark, sage" loading="lazy"></iframe><figcaption>Paper, dark, sage accent. Business English.</figcaption></figure>
   </div>
 
   <h2>Questions</h2>
@@ -171,7 +171,7 @@
     if(state.theme!=='auto')p.push('theme='+state.theme);
     if(state.accent!=='gold')p.push('accent='+state.accent);
     if(state.every!=='6')p.push('every='+state.every);
-    return 'https://lexfall.app/widget/?'+p.join('&');
+    return 'https://lexfall.app/widget?'+p.join('&');
   }
   function update(){
     var u=url();out.value=u;pv.src=u.replace('https://lexfall.app','');
