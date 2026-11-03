@@ -21,7 +21,7 @@
   --ok:#5E7B45; --bad:#B25B3F;
   --forest:#2F4A3A; --forest-text:#F4F0E8; --forest-muted:#C9D2C4;
   --tint:rgba(251,248,241,.78);
-  --glass:rgba(251,248,241,.62); --sheen:rgba(255,255,255,.75);
+  --glass:rgba(251,248,241,.62); --glass-strong:rgba(251,248,241,.97); --sheen:rgba(255,255,255,.75);
   --glass-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 18px 48px -18px rgba(33,29,22,.28),0 2px 8px rgba(33,29,22,.05);
   --soft-shadow:0 10px 30px -14px rgba(33,29,22,.22);
   --pool:rgba(198,168,92,.22); --pool2:rgba(201,180,142,.28);
@@ -42,7 +42,7 @@
     --ok:#8FA76B; --bad:#C57B5B;
     --forest:#1F3328; --forest-text:#ECE5D7; --forest-muted:#B9C3B2;
     --tint:rgba(34,30,24,.78);
-    --glass:rgba(28,24,18,.55); --sheen:rgba(255,255,255,.14);
+    --glass:rgba(28,24,18,.55); --glass-strong:rgba(28,24,18,.97); --sheen:rgba(255,255,255,.14);
     --glass-shadow:0 1px 0 rgba(255,255,255,.07) inset,0 22px 56px -20px rgba(0,0,0,.7),0 2px 8px rgba(0,0,0,.3);
     --soft-shadow:0 12px 34px -14px rgba(0,0,0,.6);
     --pool:rgba(197,176,125,.10); --pool2:rgba(91,102,112,.16);
@@ -130,7 +130,7 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 .menu summary svg{width:22px;height:22px;fill:none;stroke:var(--text);stroke-width:1.8;stroke-linecap:round}
 .menu[open] summary{background:var(--surface2)}
 .menu-panel{position:absolute;right:-60px;top:52px;min-width:220px;padding:8px;display:flex;flex-direction:column;border-radius:20px;
-  background:var(--glass);box-shadow:var(--glass-shadow);-webkit-backdrop-filter:blur(26px) saturate(150%);backdrop-filter:blur(26px) saturate(150%)}
+  background:var(--glass-strong);box-shadow:var(--glass-shadow);-webkit-backdrop-filter:blur(26px) saturate(150%);backdrop-filter:blur(26px) saturate(150%)}
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.menu-panel{background:var(--surface)}}
 .menu-panel a{padding:12px 14px;border-radius:12px;font-size:16px}
 .menu-panel a:hover{background:var(--surface2)}
@@ -173,7 +173,7 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 .cloud.c1{width:150px;left:6%;top:150px}
 .cloud.c2{width:110px;right:7%;top:70px}
 @media(max-width:699px){.cloud.c1{width:92px;left:-18px;top:auto;bottom:250px}.cloud.c2{display:none}}
-@media (prefers-color-scheme:dark){.cloud{opacity:.22}}
+@media (prefers-color-scheme:dark){.cloud{display:none}}
 @media (prefers-reduced-motion:no-preference){
   .cloud.c1{animation:cloudDrift 38s ease-in-out infinite alternate}
   .cloud.c2{animation:cloudDrift 46s ease-in-out infinite alternate-reverse}
