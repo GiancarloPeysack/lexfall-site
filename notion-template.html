@@ -19,61 +19,51 @@
 {"@type":"ListItem","position":2,"name":"TOLES Study Workspace"},
 {"@type":"ListItem","position":3,"name":"IELTS Study Planner"}]}
 </script>
-<link rel="preload" href="fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css?v=23">
-<style>
-  .nt{max-width:1000px;margin:0 auto;padding-top:52px;padding-bottom:40px}
-  .nt h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,5.4vw,56px);line-height:1.06;letter-spacing:-.8px;margin-top:14px;max-width:20ch}
-  .nt h1 em{color:var(--accent);font-style:italic}
-  .nt .lede{color:var(--muted);font-size:clamp(16px,2vw,19px);line-height:1.6;margin-top:16px;max-width:62ch}
-  .nt h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,30px);letter-spacing:-.3px;margin-top:56px}
-  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px}
-  .tpl{border:1px solid var(--line);border-radius:18px;background:var(--surface);display:flex;flex-direction:column;overflow:hidden}
-  .tpl .mock{background:#191919;color:#E9E9E7;padding:18px 18px 0;font:13px/1.5 var(--sans);height:210px;overflow:hidden;position:relative}
-  .tpl .mock:after{content:"";position:absolute;left:0;right:0;bottom:0;height:46px;background:linear-gradient(transparent,#191919)}
-  .mock b{display:block;font-size:19px;font-weight:600;letter-spacing:-.2px}
-  .mock .co{display:flex;gap:8px;background:#2A2A2A;border-radius:6px;padding:8px 10px;margin:10px 0;font-size:11.5px;color:#D4D4D4}
-  .mock .co i{font-style:normal}
-  .mock .row{display:flex;align-items:center;gap:7px;color:#BDBDBD;margin-top:5px;font-size:12.5px}
-  .mock .row:before{content:"";width:11px;height:9px;border:1.5px solid #8A8A8A;border-radius:2px}
-  .tpl .body{padding:20px;display:flex;flex-direction:column;flex:1}
-  .tpl h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.2}
-  .tpl p{color:var(--muted);font-size:15px;line-height:1.6;margin-top:8px;flex:1}
-  .tpl .for{font-size:12px;color:var(--muted);margin-top:12px}
-  .tpl .btn{margin-top:16px;text-align:center}
-  .tpl .btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
-  .inside{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
-  .inside div{border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-  .inside b{display:block;font-weight:600}
-  .inside span{display:block;color:var(--muted);font-size:14.5px;margin-top:4px;line-height:1.55}
-  .widget-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center;margin-top:22px}
-  .widget-row iframe{width:100%;height:300px;border:0;border-radius:16px}
-  .widget-row p{color:var(--muted);line-height:1.7}
-  .widget-row a{text-decoration:underline;text-underline-offset:2px}
-  .phone-cta{margin-top:56px;border-radius:20px;padding:32px;background:var(--dark);color:var(--dark-text);display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-  .phone-cta h2{margin:0;color:var(--dark-text)}
-  .phone-cta p{color:var(--dark-muted);margin-top:8px;max-width:52ch}
-  .faq dt{font-weight:600;margin-top:22px}
-  .faq dd{color:var(--muted);margin-top:6px;line-height:1.65}
-  @media (max-width:860px){.cards,.inside{grid-template-columns:1fr}.widget-row{grid-template-columns:1fr}.nav-links a:not(.btn){display:none}}
-</style>
+<!-- chrome:head -->
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F0E8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#100E0B" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="/fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css?v=30">
+<!-- /chrome:head -->
 </head>
 <body>
+<div class="ambient" aria-hidden="true"></div>
 
+<!-- chrome:nav ct=notion_template -->
+<a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
+    <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png" alt="" width="32" height="32"><span>Lexfall</span></a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="/notion-widget">Notion widget</a>
-      <a href="/words">Words</a>
-      <a href="https://apps.apple.com/app/id6786614029?pt=128225052&ct=notion_template" class="btn btn-primary">Download</a>
+      <a href="/word-lists">Word lists</a>
+      <a href="/words">Dictionary</a>
+      <a href="/creators">Creators</a>
+      <a href="/partners">Partners</a>
+      <a href="/blog">Blog</a>
+      <a href="/support">Support</a>
     </nav>
+    <details class="menu">
+      <summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/word-lists">Word lists</a>
+        <a href="/words">Dictionary</a>
+        <a href="/creators">Creators</a>
+        <a href="/partners">Partners</a>
+        <a href="/blog">Blog</a>
+        <a href="/support">Support</a>
+        <a href="/google-play">Android</a>
+      </nav>
+    </details>
+    <a href="https://apps.apple.com/app/id6786614029?pt=128225052&ct=notion_template" class="btn btn-primary nav-cta">Download</a>
   </div>
 </header>
+<!-- /chrome:nav -->
 
-<main class="wrap nt">
+<main id="main" class="wrap nt">
   <span class="eyebrow">Free Notion templates</span>
   <h1>A calm Notion system for your <em>exam</em></h1>
   <p class="lede">Clean, minimalist exam prep workspaces for professionals: one for the OET, one for TOLES, one for IELTS. Exam dates, study notes, a case log, a vocabulary log, a weekly plan and practice scores, all linked on one page. Free to duplicate.</p>
@@ -140,21 +130,35 @@
   </section>
 </main>
 
-<footer>
-  <div class="wrap foot-inner">
-    <div>
-      <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
-      <div class="foot-copy" style="margin-top:8px">An advanced vocabulary app for life and work.</div>
+<!-- chrome:foot -->
+<footer class="site-foot">
+  <div class="ridge" aria-hidden="true"><picture><source type="image/avif" srcset="/art/ridge-1280.avif 1280w, /art/ridge-2880.avif 2880w" sizes="100vw"><img src="/art/ridge-1280.webp" srcset="/art/ridge-1280.webp 1280w, /art/ridge-2880.webp 2880w" sizes="100vw" alt="" width="1280" height="172" loading="lazy" decoding="async"></picture></div>
+  <div class="foot-body">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png" alt="" width="32" height="32" loading="lazy"><span>Lexfall</span></a>
+        <p>Advanced English for work and exams. A few words a day, on your Home Screen.</p>
+        <div class="badges"><a class="badge" href="https://apps.apple.com/app/id6786614029?pt=128225052&ct=web_foot" aria-label="Download on the App Store"><svg class="badge-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.09-2.02-3.76-2.05-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.88 2.65 3.22 2.6 1.29-.05 1.78-.83 3.34-.83 1.56 0 2 .83 3.37.81 1.39-.03 2.27-1.27 3.12-2.53.98-1.45 1.39-2.85 1.41-2.92-.03-.01-2.7-1.04-2.73-4.13zM14.53 4.6c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.65.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44z"/></svg><span><small>Download on the</small><b>App Store</b></span></a><a class="badge badge-soon" href="/google-play" aria-label="Android: join the Google Play waitlist"><svg class="badge-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8 13.4 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1z" fill="#34A853"/><path d="m16.8 8.6-3.4 3.4-9.8-10.2c.2-.1.5-.2.8-.2.3 0 .5.1.8.2l11.6 6.8z" fill="#4285F4"/><path d="m16.8 15.4-11.6 6.8c-.3.1-.5.2-.8.2-.3 0-.6-.1-.8-.2L13.4 12l3.4 3.4z" fill="#EA4335"/><path d="m21 12c0 .5-.3 1-.7 1.2l-3.5 2.2-3.4-3.4 3.4-3.4 3.5 2.2c.4.2.7.7.7 1.2z" fill="#FBBC04"/></svg><span><small>Coming soon to</small><b>Google Play</b></span></a></div>
+      </div>
+      <nav class="foot-col" aria-label="Learn"><b>Learn</b><a href="/word-lists">Word lists</a><a href="/words">Dictionary</a><a href="/blog">Blog</a><a href="/#how">How it works</a></nav>
+      <nav class="foot-col" aria-label="Work with us"><b>Work with us</b><a href="/creators">Creators</a><a href="/partners">Partners</a><a href="/google-play">Android</a><a href="/support">Support</a></nav>
+      <nav class="foot-col" aria-label="Legal"><b>Legal</b><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
     </div>
-    <nav class="foot-links" aria-label="Footer">
-      <a href="/notion-widget">Notion widget</a>
-      <a href="/words">Words</a>
-      <a href="/support">Support</a>
-      <a href="/privacy">Privacy</a>
-    </nav>
+    <div class="wrap foot-copy">© 2026 Lexfall. All rights reserved. Apple, iPhone and App Store are trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</div>
   </div>
-  <div class="wrap" style="margin-top:24px"><div class="foot-copy">© 2026 Lexfall. Not affiliated with Notion Labs. Apple, iPhone and App Store are trademarks of Apple Inc.</div></div>
 </footer>
+<script>
+(function(){
+  var ua=navigator.userAgent, mobile=/Android|iPhone|iPad|iPod/i.test(ua);
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !mobile){
+    document.querySelectorAll('a[href^="https://apps.apple.com"]').forEach(function(a){a.target='_blank';a.rel='noopener';});
+    var n=document.querySelector('.nav-cta'), g=document.getElementById('get')||document.getElementById('download');
+    if(n&&g){n.href='#'+g.id;n.removeAttribute('target');n.removeAttribute('rel');}
+  }
+  document.querySelectorAll('.menu-panel a').forEach(function(a){a.addEventListener('click',function(){var d=a.closest('details');if(d)d.open=false;});});
+})();
+</script>
+<!-- /chrome:foot -->
 <script>
 (function(){
   // Public Notion links (published with "Duplicate as template"). Empty = coming soon.
