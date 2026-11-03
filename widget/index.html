@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Advanced Word of the Day</title>
+<meta name="description" content="A free, embeddable Advanced Word of the Day widget for Notion, Figma or any page. Medical, legal, business and exam vocabulary from Lexfall.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://lexfall.app/notion-widget">
+<link rel="preload" href="/widget/words.json" as="fetch" crossorigin>
+<style>
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/newsreader-500.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/newsreader-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-400.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/inter-600.woff2) format('woff2')}
+
+/* Lexfall app tokens (theme/tokens.ts). Light is the default; dark is set by JS from ?theme= or the OS. */
+:root{
+  --bg:#F4F0E8;--card:#FBF8F1;--line:#E2DBCC;--text:#211D16;--muted:#6E665A;--ex:#4A4335;--accent:#9A7B2E;
+  --glass:rgba(255,255,255,.55);--glassLine:rgba(33,29,22,.14);--shadow:0 1px 2px rgba(33,29,22,.05),0 8px 28px rgba(33,29,22,.07);
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+:root[data-theme="dark"]{
+  --bg:#100E0B;--card:#1A1712;--line:#322C22;--text:#ECE5D7;--muted:#C3BAA7;--ex:#CABFA8;--accent:#C5B07D;
+  --glass:rgba(236,229,215,.08);--glassLine:rgba(236,229,215,.22);--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+}
+/* mono skin: neutral black and white, for minimalist dashboards */
+:root[data-skin="mono"]{--bg:#FFFFFF;--card:#FFFFFF;--line:#E9E9E7;--text:#191919;--muted:#787774;--ex:#37352F;--accent:#191919}
+:root[data-skin="mono"][data-theme="dark"]{--bg:#191919;--card:#191919;--line:#2F2F2F;--text:#EDEDED;--muted:#9B9B9B;--ex:#D4D4D4;--accent:#EDEDED}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+  display:flex;align-items:center;justify-content:center;padding:clamp(6px,2.5vw,14px);overflow:hidden}
+:root[data-skin="clear"] body{background:transparent}
+:root[data-skin="glass"] body{background:
+  radial-gradient(120% 90% at 0% 0%,color-mix(in srgb,var(--accent) 34%,transparent),transparent 60%),
+  radial-gradient(110% 90% at 100% 100%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 55%),var(--bg)}
+
+.card{width:100%;height:100%;max-width:720px;max-height:520px;display:flex;flex-direction:column;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
+  padding:clamp(14px,4.5vw,28px) clamp(16px,5vw,32px) clamp(10px,3vw,16px);container-type:size;overflow:hidden}
+:root[data-skin="clear"] .card,:root[data-skin="mono"] .card{box-shadow:none}
+:root[data-skin="clear"] .card{background:transparent;border-color:transparent;padding-left:clamp(4px,2vw,12px);padding-right:clamp(4px,2vw,12px)}
+:root[data-skin="glass"] .card{background:var(--glass);border-color:var(--glassLine);
+  -webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%)}
+
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.eyebrow{font-weight:600;font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.date{font-size:11px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;padding:clamp(6px,3cqh,18px) 0}
+.word{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.02;
+  font-size:clamp(28px,min(11cqw,17cqh),64px);overflow-wrap:anywhere}
+.meta{margin-top:6px;font-size:13px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.meta .pos{font-family:var(--serif);font-style:italic;font-size:15px}
+.meta .lvl{font-size:10px;font-weight:600;letter-spacing:1px;border:1px solid var(--line);border-radius:6px;padding:1px 5px;color:var(--muted)}
+.def{margin-top:clamp(8px,3.5cqh,16px);font-size:clamp(14px,min(3.4cqw,5.2cqh),18px);line-height:1.5;color:var(--text)}
+.ex{margin-top:clamp(6px,2.5cqh,12px);font-family:var(--serif);font-style:italic;font-size:clamp(14px,min(3.3cqw,5cqh),18px);line-height:1.45;color:var(--ex);
+  padding-left:12px;border-left:2px solid color-mix(in srgb,var(--accent) 55%,transparent)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+:root[data-skin="clear"] .foot{border-top-color:color-mix(in srgb,var(--line) 70%,transparent)}
+.foot a{color:inherit;text-decoration:none}
+.foot .cta{display:flex;align-items:center;gap:7px;min-width:0}
+.foot .cta span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.foot .get{flex:none;font-weight:600;color:var(--accent);white-space:nowrap}
+.foot a:hover .get{text-decoration:underline;text-underline-offset:3px}
+.logo{flex:none;width:14px;height:14px;border-radius:4px;background:var(--accent);display:grid;place-items:center;color:var(--card);font:italic 500 11px/1 var(--serif)}
+:root[data-skin="mono"] .logo{color:var(--bg)}
+
+/* small embeds: shed the extras, keep the word and the CTA */
+@container (max-height:250px){.ex{display:none}}
+@container (max-height:170px){.body{padding:2px 0}.def{margin-top:4px;font-size:13px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.meta{display:none}.foot{padding-top:7px}}
+@container (max-height:120px){.def{-webkit-line-clamp:1}}
+@container (max-width:340px){.date{display:none}.foot .cta span.long{display:none}}
+@container (min-width:341px){.foot .cta span.short{display:none}}
+:root[data-ex="0"] .ex{display:none}
+.fade{animation:fade .5s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none}}
+</style>
+<script>
+// Set theme + skin before first paint so there is no flash.
+(function(){
+  var q=new URLSearchParams(location.search),r=document.documentElement;
+  var t=(q.get('theme')||'auto').toLowerCase();
+  if(t!=='light'&&t!=='dark')t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';
+  r.dataset.theme=t;r.dataset.mode=(q.get('theme')||'auto').toLowerCase();
+  var s=(q.get('skin')||q.get('style')||'paper').toLowerCase();
+  r.dataset.skin=['paper','glass','mono','clear'].indexOf(s)>-1?s:'paper';
+  if(q.get('example')==='0'||q.get('ex')==='0')r.dataset.ex='0';
+  var A={gold:['#9A7B2E','#C5B07D'],sage:['#5E7B45','#97AC79'],rust:['#B25B3F','#B86040'],ocean:['#3F7186','#7AA0B4'],rose:['#A65B77','#C58BA0'],violet:['#6E5BA6','#A093C6']};
+  var a=A[(q.get('accent')||'').toLowerCase()];
+  window.__LXA=a||null;if(a)r.style.setProperty('--accent',a[t==='dark'?1:0]);
+})();
+</script>
+</head>
+<body>
+<main class="card" id="card" aria-live="polite">
+  <div class="top"><span class="eyebrow" id="eyebrow">Advanced word of the day</span><span class="date" id="date"></span></div>
+  <div class="body fade" id="body">
+    <div class="word" id="word">perspicacious</div>
+    <div class="meta"><span class="pos" id="pos">adjective</span><span id="ipa">/ˌpɜːspɪˈkeɪʃəs/</span><span class="lvl" id="lvl">C2</span></div>
+    <p class="def" id="def">Having a ready insight into and understanding of things.</p>
+    <p class="ex" id="ex">A perspicacious reviewer spotted the flaw in the second paragraph.</p>
+  </div>
+  <div class="foot">
+    <a class="cta" id="cta" target="_blank" rel="noopener" href="https://apps.apple.com/app/id6786614029?pt=128225052&amp;ct=notion_widget">
+      <span class="logo" aria-hidden="true">x</span>
+      <span class="long">Put this widget on your iPhone Lock Screen</span><span class="short">On your Lock Screen</span>
+      <b class="get">Get Lexfall</b>
+    </a>
+  </div>
+</main>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  var CATS={medical:'Medical',legal:'Legal',business:'Business',exam:'Exam'};
+  var ALIAS={med:'medical',medicine:'medical',oet:'medical',plab:'medical',nursing:'medical',law:'legal',toles:'legal',biz:'business',ielts:'exam',toefl:'exam',gre:'exam',general:'exam',all:'mix',any:'mix'};
+  var cat=(q.get('cat')||q.get('category')||'mix').toLowerCase();cat=ALIAS[cat]||cat;if(!CATS[cat])cat='mix';
+  var hours=parseFloat(q.get('every')||q.get('hours')||'6');if(!(hours>=1&&hours<=168))hours=6;
+  var POS={n:'noun',v:'verb',adj:'adjective',adv:'adverb',prep:'preposition',phr:'phrase',conj:'conjunction'};
+  var $=function(id){return document.getElementById(id)};
+  var cta=$('cta');cta.href='https://apps.apple.com/app/id6786614029?pt=128225052&ct=notion_widget';
+  var label=hours===24?'Word of the day':'Advanced word';
+  $('eyebrow').textContent=label+(cat!=='mix'?' · '+CATS[cat]:'');
+
+  // Deterministic shuffle so everyone sees the same word in the same slot, without a server.
+  function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function shuffle(list,seed){var a=list.slice(),r=rng(seed);for(var i=a.length-1;i>0;i--){var j=Math.floor(r()*(i+1));var x=a[i];a[i]=a[j];a[j]=x}return a}
+  function pool(data){
+    if(cat!=='mix')return data[cat]||[];
+    var keys=['exam','medical','legal','business'],out=[],n=0;keys.forEach(function(k){n=Math.max(n,(data[k]||[]).length)});
+    for(var i=0;i<n;i++)keys.forEach(function(k){if(data[k]&&data[k][i])out.push(Object.assign({c:k},data[k][i]))});
+    return out;
+  }
+  var period=hours*3600e3;
+  function slotNow(){var now=Date.now()-new Date().getTimezoneOffset()*60e3;return Math.floor(now/period)}
+  var list=null,shown=-1;
+  function render(){
+    if(!list||!list.length)return;
+    var s=slotNow();if(s===shown)return;shown=s;
+    var w=list[((s%list.length)+list.length)%list.length];
+    var b=$('body');b.classList.remove('fade');void b.offsetWidth;b.classList.add('fade');
+    $('word').textContent=w.w;
+    $('pos').textContent=POS[w.p]||w.p||'';
+    $('ipa').textContent=w.i?'/'+w.i+'/':'';$('ipa').style.display=w.i?'':'none';
+    $('lvl').textContent=w.l||'C1';
+    $('def').textContent=w.d;
+    $('ex').textContent=w.e||'';$('ex').style.display=w.e?'':'none';
+    if(cat==='mix'&&w.c)$('eyebrow').textContent=label+' · '+CATS[w.c];
+    else if(w.x&&w.x.length&&cat!=='mix')$('eyebrow').textContent=label+' · '+w.x[0];
+    $('date').textContent=new Date().toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  }
+  function tick(){render();var msLeft=period-((Date.now()-new Date().getTimezoneOffset()*60e3)%period);setTimeout(tick,Math.min(msLeft+1000,36e5))}
+  $('date').textContent=new Date().toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  fetch('/widget/words.json').then(function(r){return r.json()}).then(function(data){
+    var seed=0;for(var i=0;i<cat.length;i++)seed=seed*31+cat.charCodeAt(i)|0;
+    list=shuffle(pool(data),seed||7);tick();
+  }).catch(function(){/* keep the built-in word; the widget never shows an error */});
+
+  // Follow the OS / Notion theme live when theme=auto.
+  if(document.documentElement.dataset.mode!=='light'&&document.documentElement.dataset.mode!=='dark'&&window.matchMedia){
+    var m=matchMedia('(prefers-color-scheme: dark)');var f=function(){var r=document.documentElement;r.dataset.theme=m.matches?'dark':'light';if(window.__LXA)r.style.setProperty('--accent',window.__LXA[m.matches?1:0])};
+    m.addEventListener?m.addEventListener('change',f):m.addListener(f);
+  }
+})();
+</script>
+</body>
+</html>
