@@ -5,15 +5,16 @@
 // exam tags from data/word-exams.ts in ~/Downloads/Lexfall/app). Re-export it when the corpus
 // changes, then run:
 //   node scripts/build-lists.mjs
-// Page chrome (head styles, nav, footer) is copied from ielts-academic-vocabulary.html so the
-// generated pages always match the hand-written articles.
+// Page chrome (head assets, nav, footer, store badges) comes from scripts/chrome.mjs, shared with
+// build-words.mjs and apply-chrome.mjs, so every page has the same nav and footer.
 import fs from 'node:fs';
 import path from 'node:path';
 import { LISTS, EXISTING } from './lists-config.mjs';
+import { HEAD_ASSETS, NAV, FOOT as FOOTER, STORE as STORE_URL, badges } from './chrome.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const SITE = 'https://lexfall.app';
-const STORE = (ct) => `https://apps.apple.com/app/id6786614029?pt=128225052&ct=${ct}`;
+const STORE = STORE_URL;
 const TODAY = new Date().toISOString().slice(0, 10);
 const MONTH = new Date().toLocaleString('en-GB', { month: 'long', year: 'numeric' });
 const PER_PAGE = 40;
@@ -79,14 +80,10 @@ function groups(list, words) {
   return out;
 }
 
-// ---- chrome copied from a hand-written article ------------------------------------------------
-const tpl = fs.readFileSync(path.join(ROOT, 'ielts-academic-vocabulary.html'), 'utf8');
-const between = (s, a, b) => s.slice(s.indexOf(a), s.indexOf(b, s.indexOf(a)) + b.length);
-const STYLE = between(tpl, '<link rel="preload"', '</style>')
-  + '\n<style>.wordlist .meta{color:var(--muted);font-size:13px;margin-left:6px}.hub-list{list-style:none;padding:0;margin:16px 0 0}.hub-list li{border-top:1px solid var(--line);padding:14px 0}.hub-list a{font-family:var(--serif);font-size:20px;color:inherit;text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}.hub-list p{margin:4px 0 0!important;font-size:15px!important;color:var(--muted)}</style>';
-const NAV = between(tpl, '<header class="nav">', '</header>');
-const FOOT = tpl.slice(tpl.indexOf('<footer>'));
-const navWith = (ct) => NAV.replace(/ct=web_blog/g, `ct=${ct}`);
+// ---- shared site chrome (scripts/chrome.mjs) ----------------------------------------------------
+const STYLE = `<!-- chrome:head -->\n${HEAD_ASSETS}\n<!-- /chrome:head -->`;
+const navWith = (ct) => `<div class="ambient" aria-hidden="true"></div>\n<!-- chrome:nav ct=${ct} -->\n${NAV(ct)}\n<!-- /chrome:nav -->`;
+const FOOT = `<!-- chrome:foot -->\n${FOOTER()}\n<!-- /chrome:foot -->\n</body>\n</html>\n`;
 
 const head = ({ title, desc, url, jsonld }) => `<!DOCTYPE html>
 <html lang="en">
@@ -121,9 +118,9 @@ ${STYLE}
 const org = { '@type': 'Organization', name: 'Lexfall', url: SITE };
 const cta = (text, ct) => `    <div class="cta" id="get">
       <p>${text}</p>
-      <a class="btn btn-primary" href="${STORE(ct)}">Download on the App Store</a>
+      ${badges(ct)}
       <small>Free to download. After a free trial, a subscription unlocks every field. Built for iPhone, iOS 15.1 or later.</small>
-      <div class="qr"><img src="brand/qr-appstore.svg" alt="QR code that opens Lexfall on the App Store" width="104" height="104" loading="lazy"><div><b>On a computer?</b><span>Scan with your iPhone camera.</span></div></div>
+      <div class="qr"><img src="/brand/qr-appstore.svg" alt="QR code that opens Lexfall on the App Store" width="104" height="104" loading="lazy"><div><b>On a computer?</b><span>Scan with your iPhone camera.</span></div></div>
     </div>`;
 
 // ---- list pages ---------------------------------------------------------------------------------
@@ -154,7 +151,7 @@ for (const list of LISTS) {
 
   const html = head({ title: list.title, desc: list.desc, url, jsonld }) + navWith(list.ct) + `
 
-<main>
+<main id="main">
   <article class="wrap post">
     <span class="eyebrow">${esc(list.eyebrow)}</span>
     <h1>${esc(list.h1)}</h1>
@@ -196,8 +193,9 @@ const hub = head({ title: 'English Vocabulary Word Lists for Exams and Work', de
   jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'English Vocabulary Word Lists', description: hubDesc, url: hubUrl, publisher: org } })
   + navWith('web_lists') + `
 
-<main>
+<main id="main">
   <article class="wrap post">
+    <picture><source type="image/avif" srcset="/art/obj-lists-240.avif 1x, /art/obj-lists-480.avif 2x"><img class="post-spot" src="/art/obj-lists-240.webp" srcset="/art/obj-lists-240.webp 1x, /art/obj-lists-480.webp 2x" width="130" height="114" alt="" decoding="async"></picture>
     <span class="eyebrow">Word lists</span>
     <h1>English Vocabulary Word Lists for Exams and Work</h1>
     <p class="lede">Free vocabulary lists for English exams and professional fields. Every word has a definition and a real example sentence.</p>

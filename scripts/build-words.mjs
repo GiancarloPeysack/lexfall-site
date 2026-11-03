@@ -7,11 +7,12 @@
 // Generated output (words/ and the sitemap block) is committed; data/ and scripts/ are not deployed.
 import fs from 'node:fs';
 import path from 'node:path';
+import { HEAD_ASSETS, NAV, FOOT as FOOTER, STORE as STORE_URL, badges } from './chrome.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const OUT = path.join(ROOT, 'words');
 const SITE = 'https://lexfall.app';
-const STORE = 'https://apps.apple.com/app/id6786614029?pt=128225052&ct=web_word';
+const STORE = STORE_URL('web_word');
 const TODAY = new Date().toISOString().slice(0, 10);
 
 const FIELD = {
@@ -89,69 +90,31 @@ const head = ({ title, desc, url, jsonld }) => `<!DOCTYPE html>
 <meta property="og:image" content="${SITE}/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="${SITE}/og-image.png">
-${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld)}\n</script>\n` : ''}<link rel="preload" href="/fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="/styles.css?v=23">
-<link rel="stylesheet" href="/words/words.css?v=1">
+${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld)}\n</script>\n` : ''}<!-- chrome:head -->
+${HEAD_ASSETS}
+<!-- /chrome:head -->
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap nav-inner">
-    <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="/#screens">See it</a>
-      <a href="/#features">Features</a>
-      <a href="/partners">Partners</a>
-      <a href="/creators">Creators</a>
-      <a href="/blog">Blog</a>
-      <a href="/support">Support</a>
-      <a href="${STORE}" class="btn btn-primary">Download</a>
-    </nav>
-  </div>
-</header>
+<div class="ambient" aria-hidden="true"></div>
+<!-- chrome:nav ct=web_word -->
+${NAV('web_word')}
+<!-- /chrome:nav -->
 `;
 
 const cta = (line) => `
     <div class="cta" id="get">
       <p>${line}</p>
-      <a class="btn btn-primary" href="${STORE}">Download on the App Store</a>
+      ${badges('web_word')}
       <small>Lexfall puts a new word on your home and lock screen through widgets, so you learn without opening an app. Free to download. After a free trial, a subscription unlocks every field. Built for iPhone, iOS 15.1 or later.</small>
       <div class="qr"><img src="/brand/qr-appstore.svg" alt="QR code that opens Lexfall on the App Store" width="104" height="104" loading="lazy"><div><b>On a computer?</b><span>Scan with your iPhone camera.</span></div></div>
     </div>
 `;
 
 const foot = `
-<footer>
-  <div class="wrap foot-inner">
-    <div>
-      <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png" alt="" width="30" height="30"><span>LEXFALL<span class="dot">.</span></span></a>
-      <div class="foot-copy" style="margin-top:8px">An advanced vocabulary app for life and work.</div>
-    </div>
-    <nav class="foot-links" aria-label="Footer">
-      <a href="/#features">Features</a>
-      <a href="/words">Words</a>
-      <a href="/partners">Partners</a>
-      <a href="/creators">Creators</a>
-      <a href="/blog">Blog</a>
-      <a href="/support">Support</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-    </nav>
-  </div>
-  <div class="wrap" style="margin-top:24px"><div class="foot-copy">© 2026 Lexfall. All rights reserved. Apple, iPhone and App Store are trademarks of Apple Inc.</div></div>
-</footer>
-<script>
-(function(){
-  var ua=navigator.userAgent, mobile=/Android|iPhone|iPad|iPod/i.test(ua);
-  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !mobile){
-    document.querySelectorAll('a[href^="https://apps.apple.com"]').forEach(function(a){a.target='_blank';a.rel='noopener';});
-    var n=document.querySelector('.nav-links .btn'); if(n){n.href='#get';n.removeAttribute('target');n.removeAttribute('rel');}
-  }
-})();
-</script>
+<!-- chrome:foot -->
+${FOOTER()}
+<!-- /chrome:foot -->
 </body>
 </html>
 `;
@@ -192,7 +155,7 @@ function wordPage(e) {
     <h2 class="h-sub">More ${esc(FIELD[p.field].short.toLowerCase())} words: ${esc(p.topic)}</h2>
     <ul class="related">${e.related.map((r) => `<li><a href="/words/${r.slug}">${esc(r.word)}</a></li>`).join('')}</ul>` : '';
   return head({ title, desc, url, jsonld }) + `
-<main>
+<main id="main">
   <article class="wrap word-page">
     <p class="crumbs"><a href="/words">Words</a> / <a href="/words/letter/${e.letter === '0' ? 'a' : e.letter}">${e.letter === '0' ? '#' : e.letter.toUpperCase()}</a> / <a href="/words/field/${FIELD[p.field].hub}">${esc(FIELD[p.field].short)}</a></p>
     <h1>${esc(e.word)}</h1>
@@ -215,7 +178,7 @@ function letterPage(l) {
   const list = entries.filter((e) => e.letter === l || (l === 'a' && e.letter === '0'));
   const url = `${SITE}/words/letter/${l}`;
   return head({ title: `Advanced English words starting with ${l.toUpperCase()} | Lexfall`, desc: `${list.length.toLocaleString('en-US')} advanced English words starting with ${l.toUpperCase()}, each with a clear definition, a real example sentence, its CEFR level and a rarity score.`, url }) + `
-<main>
+<main id="main">
   <article class="wrap word-index">
     <p class="crumbs"><a href="/words">Words</a> / ${l.toUpperCase()}</p>
     <h1>Words starting with ${l.toUpperCase()}</h1>
@@ -240,7 +203,7 @@ function fieldPage(f) {
   const F = FIELD[f];
   const url = `${SITE}/words/field/${F.hub}`;
   return head({ title: `${F.name} vocabulary list: ${list.length.toLocaleString('en-US')} words | Lexfall`, desc: `${list.length.toLocaleString('en-US')} ${F.name.toLowerCase()} words grouped by topic, each with a clear definition, a real example sentence, its CEFR level and a rarity score.`, url }) + `
-<main>
+<main id="main">
   <article class="wrap word-index">
     <p class="crumbs"><a href="/words">Words</a> / ${esc(F.short)}</p>
     <h1>${esc(F.name)} vocabulary</h1>
@@ -258,7 +221,7 @@ function hubPage() {
   const featured = ['sonder', 'petrichor', 'sedulous', 'laconic', 'palliative', 'estoppel', 'fiduciary', 'lucrative', 'ostensible', 'brainrot']
     .map((s) => bySlug.get(s)).filter(Boolean);
   return head({ title: 'Advanced English vocabulary: definitions and examples | Lexfall', desc: `${entries.length.toLocaleString('en-US')} advanced English words for life and work, from general vocabulary to medical, legal and business English. Each has a definition, an example sentence, a level and a rarity score.`, url: `${SITE}/words` }) + `
-<main>
+<main id="main">
   <article class="wrap word-index">
     <span class="eyebrow">Word list</span>
     <h1>Advanced English vocabulary</h1>
@@ -279,7 +242,6 @@ function hubPage() {
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'letter'), { recursive: true });
 fs.mkdirSync(path.join(OUT, 'field'), { recursive: true });
-fs.copyFileSync(path.join(ROOT, 'scripts/words.css'), path.join(OUT, 'words.css'));
 for (const e of entries) fs.writeFileSync(path.join(OUT, `${e.slug}.html`), wordPage(e));
 for (const l of letters) fs.writeFileSync(path.join(OUT, 'letter', `${l}.html`), letterPage(l));
 for (const f of FIELD_ORDER) fs.writeFileSync(path.join(OUT, 'field', `${FIELD[f].hub}.html`), fieldPage(f));

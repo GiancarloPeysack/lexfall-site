@@ -12,7 +12,7 @@ Internal notes. This file is excluded from the public deploy by `.vercelignore`.
 
 ## Files
 - `index.html` landing page. `blog.html` plus two articles. `partners.html`, `support.html`, `privacy.html`, `terms.html`, `google-play.html` (Android holding page), `404.html`.
-- `styles.css` shared styles, linked as `styles.css?v=23`. If you change it, bump the version everywhere: `sed -i '' 's|styles.css?v=23|styles.css?v=24|g' *.html`.
+- `styles.css` is the one design system for every page (no per-page `<style>` blocks). If you change it, bump `CSS_VERSION` in `scripts/chrome.mjs` and run the three chrome scripts (see "Redesign 2026-11").
 - `fonts/` self-hosted Inter and Newsreader (SIL OFL, licence texts included). No third-party requests.
 - `brand/qr-appstore.svg` encodes `https://apps.apple.com/app/id6786614029?ct=web_qr`. Regenerate with the `qrcode` npm package (margin 4).
 - `og-image.png` is 1200x630, rendered from an HTML mock with headless Chrome. Update it when the headline or stats change.
@@ -48,3 +48,12 @@ Store links carry campaign tokens: `web_home` (hero, nav, download), `web_qr`, `
 - Copy and word-pool rules live in `scripts/lists-config.mjs`; build with `node scripts/build-lists.mjs` from `data/corpus.json` (full 20k export incl. exam tags from the app's `word-exams.ts`). The build warns if an intro names a word that is not in its list.
 - Store token per page: `ct=web_lp_<exam|topic>`, hub `ct=web_lists`.
 - Many listed words have no `/words/<slug>` page yet because `/words` was built from the older 9.9k export; those render unlinked. Rebuilding `/words` from `corpus.json` would link them.
+
+## Redesign 2026-11 (matches app 1.1.5)
+- Look: the app's tokens (light + dark follow the visitor's system), glass for the nav and one hero per section (recipe from the app's `whats-new.tsx`), solid-tinted lists, gold only on the primary action, Editorial Flat art. Rollback: `git tag pre-redesign-2026-11`.
+- Chrome lives in ONE place, `scripts/chrome.mjs` (head assets, nav, footer, store badges, `CSS_VERSION`, `PLAY`). After changing it run:
+  `node scripts/apply-chrome.mjs && node scripts/build-lists.mjs && node scripts/build-words.mjs`
+  `apply-chrome.mjs` fills the `<!-- chrome:x -->` markers in hand-written pages; the two generators emit the same markup.
+- Art in `/art` (AVIF + WebP). `scripts/art/web_scene.py` renders the hero landscape, footer ridge, leaf and clouds from the App Store creative kit (`~/Downloads/Lexfall/app/design/store/2026-10-29-creative/scene.py`), transparent sky so dark mode works; `scripts/art/export.sh` and `export-spots.sh` make the web files. Page spots: store cut-outs plus five new ones made on fal.ai Z-Image Turbo (masters in `scripts/art/masters`, prompts in `scripts/art/jobs-2026-11-03.txt`). App screens come from the store captures (the Home Screen one has the B1 icon composited in).
+- `og-image.png` is rendered from `scripts/og.html` with headless Chromium.
+- Google Play launch day: set `PLAY.live = true` in `scripts/chrome.mjs`, run the three scripts, and change the two Android `/get` rules in `vercel.json` from `/google-play` to the Play URL. Until then every Play badge goes to the waitlist.
