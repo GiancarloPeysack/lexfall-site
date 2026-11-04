@@ -103,7 +103,7 @@
         <div class="wc-top"><img src="/brand/icon-128.png" alt="" width="38" height="38"><span class="app">Lexfall</span><span class="now">now</span></div>
         <div class="fade" id="wcBody">
           <div class="wc-word" id="wcWord">equanimity</div>
-          <div class="wc-meta" id="wcMeta">noun · C1</div>
+          <div class="wc-meta" id="wcMeta"><span class="wc-pos" id="wcPos">noun</span><span class="wc-level" id="wcLevel">C1</span></div>
           <div class="wc-def" id="wcDef">Calmness and composure under strain.</div>
           <div class="wc-ex" id="wcEx">“She handled the hostile questions with remarkable equanimity.”</div>
         </div>
@@ -391,7 +391,7 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const body=document.getElementById('wcBody'); let i=0;
   const set=(id,t)=>{document.getElementById(id).textContent=t;};
   setInterval(()=>{ if(document.hidden) return; i=(i+1)%HERO.length; body.style.opacity='0';
-    setTimeout(()=>{const x=HERO[i]; set('wcWord',x.w); set('wcMeta',x.p+' · '+x.l); set('wcDef',x.d); set('wcEx','“'+x.e+'”'); body.style.opacity='1';},450);
+    setTimeout(()=>{const x=HERO[i]; set('wcWord',x.w); set('wcPos',x.p); set('wcLevel',x.l); set('wcDef',x.d); set('wcEx','“'+x.e+'”'); body.style.opacity='1';},450);
   },4200);
 })();
 
