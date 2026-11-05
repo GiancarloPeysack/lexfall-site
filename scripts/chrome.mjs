@@ -2,7 +2,7 @@
 // One source of truth. Used by build-words.mjs, build-lists.mjs and apply-chrome.mjs (hand-written pages).
 // Change it here, then run:  node scripts/apply-chrome.mjs && node scripts/build-lists.mjs && node scripts/build-words.mjs
 
-export const CSS_VERSION = 30;
+export const CSS_VERSION = 31;
 export const APP_ID = '6786614029';
 export const PT = '128225052'; // App Store provider token: every store link must carry it (attribution)
 export const STORE = (ct) => `https://apps.apple.com/app/id${APP_ID}?pt=${PT}&ct=${ct}`;
