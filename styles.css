@@ -611,3 +611,12 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 .nt .inside div{background:var(--tint)}
 .nw .faq,.nt .faq{max-width:none;margin:0;display:block}
 .nw h1 em,.nt h1 em{color:inherit}
+/* Owner rule (2026-11-05): words on cards are centred, app and web alike. The notification header row
+   (icon, app name, time) stays as a header; the word block below it is centred. */
+#wcBody,.wordcard .fade{text-align:center}
+.wordcard .wc-word{overflow:visible;text-overflow:clip}
+.wcard{position:relative}
+.wcard-body{text-align:center}
+.wcard-top{justify-content:center}
+.wcard-now{position:absolute;right:14px;top:12px;margin-left:0}
+.wcard-top{padding:0 34px}
