@@ -28,7 +28,7 @@ const slugify = (s) => s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '')
 const posName = (p) => POS[p] || p;
 
 // ---- data ---------------------------------------------------------------------------------------
-const corpus = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/corpus.json'), 'utf8'));
+const corpus = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/corpus.json'), 'utf8').replace(/\s*\u2014\s*/g, ', ')); // no em dashes on the site (owner rule)
 const wordPages = new Set(fs.readdirSync(path.join(ROOT, 'words')).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)));
 
 // Stable pseudo-random order, so the same corpus always builds the same pages.
@@ -167,7 +167,7 @@ ${sections}
     </div>
 
     <h2>Learning the list, not just reading it</h2>
-    <p>Reading a list once does not make the words yours. Lexfall is a vocabulary app that teaches words like these a few at a time, then brings each one back with spaced review just before you would forget it. This page shows ${chosen.length} of the ${poolSize.toLocaleString('en-US')} words on this list in the app.</p>
+    <p>Reading a list once does not make the words yours. Lexfall is a vocabulary app that teaches words like these in one short lesson a day, then brings each one back with spaced review just before you would forget it. This page shows ${chosen.length} of the ${poolSize.toLocaleString('en-US')} words on this list in the app.</p>
     <p>It does not coach the exam or mark your work. It builds the vocabulary those things draw on.</p>
 ${list.owner ? `\n    <p class="disclaimer">This article is about vocabulary, not exam coaching. ${list.owner} Lexfall is not affiliated with or endorsed by it.</p>\n` : ''}
 ${cta(list.cta, list.ct)}
@@ -212,7 +212,7 @@ ${hubItems('topic').map((i) => `      <li><a href="/${i.slug}">${esc(i.name)}</a
 
     <p>Looking for one word? Browse the <a href="/words">Lexfall dictionary</a>.</p>
 
-${cta('Learn the words on these lists a few at a time, with spaced review.', 'web_lists')}
+${cta('Learn the words on these lists in one short lesson a day, with spaced review.', 'web_lists')}
   </article>
 </main>
 

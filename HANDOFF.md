@@ -57,3 +57,9 @@ Store links carry campaign tokens: `web_home` (hero, nav, download), `web_qr`, `
 - Art in `/art` (AVIF + WebP). `scripts/art/web_scene.py` renders the hero landscape, footer ridge, leaf and clouds from the App Store creative kit (`~/Downloads/Lexfall/app/design/store/2026-10-29-creative/scene.py`), transparent sky so dark mode works; `scripts/art/export.sh` and `export-spots.sh` make the web files. Page spots: store cut-outs plus five new ones made on fal.ai Z-Image Turbo (masters in `scripts/art/masters`, prompts in `scripts/art/jobs-2026-11-03.txt`). App screens come from the store captures (the Home Screen one has the B1 icon composited in).
 - `og-image.png` is rendered from `scripts/og.html` with headless Chromium.
 - Google Play launch day: set `PLAY.live = true` in `scripts/chrome.mjs`, run the three scripts, and change the two Android `/get` rules in `vercel.json` from `/google-play` to the Play URL. Until then every Play badge goes to the waitlist.
+
+## App sync 2026-11-10 (matches app 1.1.7 / OTA 0.1.88)
+- Homepage copy follows the live store copy: level in one tap (Intermediate, Advanced, Expert, optional word check), guided first lesson, Journey path (no XP rank), 5 fields incl. New Words, 15 exams, owner positioning line. No placement test claims anywhere.
+- Screens from `~/Downloads/Lexfall-pass2/design/store/2026-11-10/captures` (lesson, feed, journey, exams), `?v=33`. Home-widget image kept.
+- Generators strip em dashes from corpus text at load (build-words, build-lists). CSS v33. Rollback tag `pre-sync-2026-11-10`.
+- Play launch change is ready on branch `auto/2026-11-10-play-live` (unmerged until Play approves).

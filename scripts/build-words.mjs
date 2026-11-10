@@ -34,7 +34,7 @@ const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const rarityWords = (r) => r >= 80 ? 'very rare' : r >= 60 ? 'rare' : r >= 40 ? 'uncommon' : r >= 20 ? 'fairly common' : 'common';
 
 // ---- group the corpus into one entry per headword --------------------------------------------
-const raw = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/words.json'), 'utf8'));
+const raw = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/words.json'), 'utf8').replace(/\s*\u2014\s*/g, ', ')); // no em dashes on the site (owner rule)
 const bySlug = new Map();
 for (const w of raw) {
   const slug = slugify(w.word);
