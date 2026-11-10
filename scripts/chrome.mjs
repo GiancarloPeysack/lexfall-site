@@ -66,7 +66,7 @@ export const FOOT = () => `<footer class="site-foot">
     <div class="wrap foot-grid">
       <div class="foot-brand">
         <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png" alt="" width="32" height="32" loading="lazy"><span>Lexfall</span></a>
-        <p>Advanced English words for work, study and 15 exams. One short lesson a day.</p>
+        <p>Advanced English for work, exams and everyday life. One short lesson a day.</p>
         ${badges('web_foot')}
       </div>
       <nav class="foot-col" aria-label="Learn"><b>Learn</b><a href="/word-lists">Word lists</a><a href="/words">Dictionary</a><a href="/blog">Blog</a><a href="/#how">How it works</a></nav>

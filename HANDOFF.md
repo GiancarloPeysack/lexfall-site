@@ -63,3 +63,4 @@ Store links carry campaign tokens: `web_home` (hero, nav, download), `web_qr`, `
 - Screens from `~/Downloads/Lexfall-pass2/design/store/2026-11-10/captures` (lesson, feed, journey, exams), `?v=33`. Home-widget image kept.
 - Generators strip em dashes from corpus text at load (build-words, build-lists). CSS v33. Rollback tag `pre-sync-2026-11-10`.
 - Play launch change is ready on branch `auto/2026-11-10-play-live` (unmerged until Play approves).
+- Positioning (owner 2026-11-10): main line "Advanced English for work, exams and everyday life" (hero eyebrow, title, meta, og, footer, og-image.png). Work and exam specifics are proof points, not the frame.
