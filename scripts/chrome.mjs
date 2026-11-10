@@ -10,7 +10,7 @@ export const STORE = (ct) => `https://apps.apple.com/app/id${APP_ID}?pt=${PT}&ct
 // Google Play. Until launch the badge points at the waitlist page. On launch day set live: true,
 // re-run the three scripts above, and point the Android rule in vercel.json (/get) at PLAY.url.
 export const PLAY = {
-  live: false,
+  live: true,
   url: 'https://play.google.com/store/apps/details?id=com.gpeysack.lexfall',
   waitlist: '/google-play',
 };
