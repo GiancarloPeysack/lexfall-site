@@ -1,0 +1,195 @@
+# Lexfall
+
+> Lexfall is an iPhone app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level (upper-intermediate to proficient) in one short lesson a day, with pronunciation, example sentences, gentle checks and spaced review. Android is coming to Google Play.
+
+Lexfall is for people who already speak English well and want more range: professionals who use English at work (healthcare, law, business), candidates preparing for English exams, and anyone, native speakers included, who wants to read, write and speak with more precise words. Beginner apps teach basics; Lexfall starts where they stop.
+
+Key facts:
+
+- 20,000+ advanced English words, each with a plain definition, a real example sentence, its CEFR level and audio pronunciation (British, American and other accents).
+- Level picked in one tap: Intermediate, Advanced or Expert (or check with a few words). No placement test to sit.
+- A guided first lesson (two words and a few checks), then one short lesson a day on the Journey, a path of lessons that climbs from your level towards Expert.
+- Five fields: General, Healthcare, Law, Business and New Words (recently coined language).
+- Word lists for 15 exams: IELTS, TOEFL, TOEIC, OET, PLAB, TOLES, PTE Academic, Duolingo English Test, Cambridge C1 Advanced, Cambridge C2 Proficiency, GRE Verbal, Linguaskill Business, Michigan ECPE, LanguageCert C1/C2 and Trinity ISE. Adding an exam makes daily lessons and checks pull from its list.
+- Spaced review brings every word back just before you would forget it.
+- Home Screen and Lock Screen widgets show a new word every few hours (Save and Next buttons on iOS 17 and later).
+- Add to Lexfall: select a word in Safari or another app, tap Share, and it goes into your notebook. Notebook export as text or CSV.
+- Pricing model: free to download, with a free trial (the monthly plan has a 14-day free trial). After the trial, a monthly or annual subscription unlocks every field, exam list and premium feature. Cancel any time in App Store settings.
+- Platforms: iPhone, iOS 15.1 or later. Android: coming soon to Google Play (waitlist open).
+- Lexfall teaches vocabulary. It is not a full exam course, does not mark your work, and is not affiliated with any exam body.
+
+Website: https://lexfall.app/  
+App Store: https://apps.apple.com/app/id6786614029  
+Short version: https://lexfall.app/llms.txt
+
+## How Lexfall works
+
+1. Day one: pick your level in one tap (Intermediate, Advanced or Expert), or check with a few words instead. Then a guided first lesson: two words, gentle checks, and a finger showing you how.
+2. Daily lesson: a few new words, each with its meaning, a real example and its sound, then a quick check with hints. Choose Practical, Balanced or Rare words. Save any word to your notebook in one tap.
+3. Journey: a path of lessons. Each lesson you finish moves you further up, from your level towards Expert. Add a path for a field or an exam and they climb side by side.
+4. Fields and exams: follow General, Healthcare, Law, Business or New Words, and add word lists for 15 exams. Your path and checks pull from them.
+5. Home Screen: widgets and gentle reminders put a new word in front of you through the day.
+
+Spaced review brings every word back just before you would forget it. Definitions are for language learning, not medical or legal advice.
+
+## Frequently asked questions
+
+### What is Lexfall?
+
+Lexfall is an iPhone app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level in one short lesson a day, with sound, gentle checks and spaced review, and puts new words on your Home Screen with widgets. It is free to download, and Android is coming to Google Play.
+
+### What is a good app for advanced English vocabulary?
+
+If beginner apps feel too easy, you need one that starts where they stop. Lexfall only teaches advanced words (B2 to C2), each with its meaning, a real example sentence and its pronunciation, and it brings every word back with spaced review so it stays. It covers general English plus healthcare, law, business and new words. Whatever app you use, reading widely in English and noting the words you meet is still the best partner to it.
+
+### Is there an app for IELTS vocabulary?
+
+Yes. Lexfall has word lists for 15 exams, including IELTS, TOEFL, OET, PTE Academic, TOEIC, Cambridge C1 Advanced and C2 Proficiency, TOLES and PLAB. Add an exam and your daily lessons and checks pull words from its list. You can browse free sample lists on our word lists page, starting with IELTS Academic vocabulary. Lexfall teaches vocabulary only; it is not a full IELTS course.
+
+### How do I learn C1 and C2 words?
+
+A few at a time, in context, and reviewed over weeks. Learn each word with its meaning, a real example sentence and its sound. Check yourself on it a little later, then review it again just before you would forget it (spaced review). Use it in your own writing or speech within a day or two. Lexfall builds these steps into one short lesson a day, so you do not have to plan them.
+
+### What level do I need?
+
+Lexfall is for intermediate to expert learners (B2 to C2) and for native speakers who want more range. You pick your level in one tap: Intermediate, Advanced or Expert. Not sure? Check with a few words instead, so you start on words you don't already know. Your first lesson is guided, and you can change your level any time.
+
+### Is Lexfall free?
+
+Lexfall is free to download and starts with a free trial; the monthly plan includes a 14-day free trial. After the trial, a subscription (monthly or annual) unlocks every field, exam list and premium feature. It renews automatically, and you can cancel any time in your App Store account settings.
+
+### Which devices does it run on?
+
+Lexfall is built for iPhone and needs iOS 15.1 or later. Android is coming to Google Play soon: join the waitlist and we will email you when it is ready.
+
+### Which fields and exams does it cover?
+
+Five fields: General, Healthcare, Law, Business and New Words (the language still being coined). Fifteen exams: IELTS, TOEFL, TOEIC, OET, PLAB, TOLES, PTE Academic, Duolingo English Test, Cambridge C1 Advanced, Cambridge C2 Proficiency, GRE Verbal, Linguaskill Business, Michigan ECPE, LanguageCert C1/C2 and Trinity ISE. 20,000+ words in total.
+
+### Can I add words I find elsewhere?
+
+Yes. Select a word in Safari or another app, tap Share, then Add to Lexfall, and it goes straight into your notebook. If Lexfall does not have it yet, it is saved as your own word with your meaning. You can export your notebook as text or CSV.
+
+### How does a lesson work?
+
+One short lesson a day on your Journey, a path that climbs from your level towards Expert. Each word comes with its meaning, a real example and its sound, then gentle checks with hints. Spaced review brings every word back just before you would forget it. Your first lesson is guided, two words and a few checks, so you see how it works.
+
+### How does the widget work?
+
+Home Screen and Lock Screen widgets show a fresh word every few hours, so you meet new vocabulary without opening the app. On iOS 17 and later you can save the word or skip to the next one right from the widget.
+
+### Is it a full exam course?
+
+No, it is a vocabulary tool, not an exam course: it does not coach the test or mark your work. It is not affiliated with or endorsed by the organisations behind any of the exams it lists, such as IELTS, TOEFL, OET, Cambridge English, TOLES or GRE.
+
+### Something is not working. Who do I contact?
+
+Write to us from the Support page and we will reply by email.
+
+## Word lists on lexfall.app
+
+### [IELTS Academic Vocabulary: Words for a Higher Band](https://lexfall.app/ielts-academic-vocabulary)
+
+Precise academic vocabulary for IELTS Writing Task 2 and Speaking: hedging, argument verbs and the words that lift a band score, each with a real example. IELTS rewards precise, natural word choice (the Lexical Resource score in Writing and Speaking). This page lists the academic verbs, hedging language, nouns and adjectives that make a Writing Task 2 essay or a Speaking answer more exact, each with a definition and a real example. Learn a few a day and use them in your own practice answers.
+
+### [TOEFL Vocabulary List: Academic Words for the iBT](https://lexfall.app/toefl-vocabulary-list)
+
+A TOEFL iBT vocabulary list of academic words from lectures and reading passages, each with a clear definition and a real example sentence. 40 TOEFL vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [TOEIC Vocabulary List: Workplace English Words](https://lexfall.app/toeic-vocabulary-list)
+
+A TOEIC vocabulary list of the workplace words that appear in Listening and Reading: offices, contracts, travel, purchasing and meetings, with examples. 40 TOEIC vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Medical English Vocabulary for the OET](https://lexfall.app/medical-english-vocabulary-oet)
+
+Clinical English for the OET: history-taking, examination, handover and patient-facing words, each with a genuine example and the vocabulary underneath them. The OET tests English for healthcare professionals in clinical settings. This page lists the medical vocabulary of a consultation: taking a history, examination and signs, the ward and handover, and talking with patients, each with a definition and a real example. It is vocabulary practice, not clinical guidance.
+
+### [OET Letter Writing Vocabulary: Referral Phrases](https://lexfall.app/oet-letter-writing-vocabulary)
+
+Vocabulary for the OET Writing sub-test: the formal phrases of referral, discharge and transfer letters, each with a definition and example. 40 OET Writing vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [PLAB Vocabulary: Clinical English for UK Practice](https://lexfall.app/plab-vocabulary)
+
+Clinical vocabulary for PLAB 1 and PLAB 2: the conditions, signs, procedures and patient-facing phrases of UK medical practice, each with an example. 40 PLAB vocabulary words at C1 and C2 level, grouped by topic. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [TOLES Vocabulary: Legal English Words and Phrases](https://lexfall.app/toles-legal-english-vocabulary)
+
+Legal English vocabulary for TOLES: contract terms, litigation language and the formal phrases of legal drafting, each with a real example. 40 TOLES vocabulary words at B2 to C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [C1 Advanced (CAE) Vocabulary List with Examples](https://lexfall.app/cambridge-c1-advanced-vocabulary)
+
+A Cambridge C1 Advanced (CAE) vocabulary list: the precise adjectives, verbs and nouns that Reading and Use of English and Writing reward, with examples. 40 Cambridge C1 Advanced vocabulary words at B2 to C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [C2 Proficiency (CPE) Vocabulary: Advanced Words](https://lexfall.app/cambridge-c2-proficiency-vocabulary)
+
+A Cambridge C2 Proficiency (CPE) vocabulary list of advanced, nuanced words and idiomatic phrases, each with a definition and example sentence. 40 Cambridge C2 Proficiency vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [PTE Academic Vocabulary List with Examples](https://lexfall.app/pte-academic-vocabulary)
+
+A PTE Academic vocabulary list of academic words for reading, writing and speaking tasks, each with a clear definition and example sentence. 40 PTE Academic vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Duolingo English Test Vocabulary: Words to Know](https://lexfall.app/duolingo-english-test-vocabulary)
+
+Vocabulary for the Duolingo English Test: advanced words for the read-and-select, writing and speaking tasks, each with a definition and example. 40 Duolingo English Test vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [GRE Vocabulary: High-Value Words to Know](https://lexfall.app/gre-vocabulary-words)
+
+High-value GRE vocabulary for Text Completion and Sentence Equivalence, grouped by meaning, with a genuine example sentence for every word. GRE Verbal questions such as Text Completion and Sentence Equivalence turn on knowing a word precisely. This page lists high-value GRE words grouped by sense (how people speak, praise and censure, clear versus obscure, temperament) plus key nouns, each with a definition and a real example. Learn them in context and review them over weeks rather than memorising a definition once.
+
+### [Linguaskill Business Vocabulary List](https://lexfall.app/linguaskill-business-vocabulary)
+
+Business English vocabulary for Linguaskill Business: management, finance, HR and operations words, each with a definition and a workplace example. 40 Linguaskill Business vocabulary words at B2 to C2 level, grouped by topic. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Michigan ECPE Vocabulary: C2 Words with Examples](https://lexfall.app/michigan-ecpe-vocabulary)
+
+A Michigan ECPE vocabulary list of C2-level words for the GVR section, writing and speaking, each with a definition and example sentence. 40 Michigan ECPE vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [USMLE English for IMGs: The Vocabulary Behind the Interview](https://lexfall.app/usmle-english-for-imgs)
+
+International medical graduates: the interview, patient and ward English that question banks rarely cover, with phrases to practice and the vocabulary underneath them. For international medical graduates, the gap is often how you say what you know. This page gives ten phrases for hedging and reassurance, talking with patients, interviews and handoffs, then explains how to build the medical vocabulary behind them.
+
+### [English Vocabulary Word Lists for Exams and Work](https://lexfall.app/word-lists)
+
+Free English vocabulary lists for exams (TOEFL, TOEIC, IELTS, OET, PLAB, TOLES, Cambridge, PTE) and professions (nursing, law, finance), with examples.
+
+### [Business English Vocabulary to Sound Senior](https://lexfall.app/business-english-vocabulary)
+
+Finance, negotiation, leadership and meeting-room English for non-native professionals, each with a genuine example sentence and the register underneath it. Sounding senior in English comes from precise words, not more words. This page lists business vocabulary for finance, negotiation, leading a team, and meetings and email, each with a definition and a real example.
+
+### [Legal English for Lawyers: The Vocabulary a Law Degree Rarely Teaches](https://lexfall.app/legal-english-for-lawyers)
+
+Contract, client and negotiation English for lawyers who work in a second language: the phrases to practice and the vocabulary underneath them. Legal English is a register as much as a vocabulary. This page gives ten phrases for contract drafting, client letters, negotiation and formal writing, then explains how to build the precise legal vocabulary behind them.
+
+### [Nursing English Vocabulary: Words for the Ward](https://lexfall.app/nursing-english-vocabulary)
+
+English vocabulary for nurses: nursing care, handover and SBAR, and mental health nursing terms, each with a definition and a ward-style example. 40 nursing vocabulary words at C1 and C2 level, grouped by topic. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Pharmacology Vocabulary: Drug Terms in English](https://lexfall.app/pharmacology-vocabulary)
+
+Pharmacology and pharmacy vocabulary in English: drug actions, dosing, interactions and adverse effects, each with a definition and clinical example. 40 pharmacology vocabulary words at C1 and C2 level, grouped by topic. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Dental English Vocabulary for Dentists](https://lexfall.app/dental-english-vocabulary)
+
+English vocabulary for dentists and dental nurses: procedures, conditions and patient-facing phrases, each with a definition and a chairside example. 40 dentistry vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Contract Law Vocabulary: Legal English Terms](https://lexfall.app/contract-law-vocabulary)
+
+Contract law vocabulary in English: formation, terms, breach and remedies, plus the formal drafting phrases of commercial agreements, with examples. 40 contract law vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Criminal Law Vocabulary: English Legal Terms](https://lexfall.app/criminal-law-vocabulary)
+
+Criminal law vocabulary in English: offences, defences, procedure and sentencing terms, each with a clear definition and example sentence. 40 criminal law vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Finance Vocabulary: English Words for Finance Jobs](https://lexfall.app/finance-vocabulary)
+
+Finance vocabulary for professionals: markets, capital, valuation and risk terms used in finance roles, each with a definition and example sentence. 40 finance vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Accounting Vocabulary: English Terms for Accountants](https://lexfall.app/accounting-vocabulary)
+
+Accounting vocabulary in English: reporting, audit, accruals and tax terms used by accountants, each with a definition and an example sentence. 40 accounting vocabulary words at C1 and C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+### [Negotiation Vocabulary: Words and Phrases in English](https://lexfall.app/negotiation-vocabulary)
+
+Negotiation vocabulary in English: the words for positions, concessions, leverage and agreement, each with a definition and example from real deals. 40 negotiation vocabulary words at B2 to C2 level, grouped by part of speech. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.
+
+More: all word lists at https://lexfall.app/word-lists and a dictionary of advanced words at https://lexfall.app/words.

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lexfall.app/</loc><lastmod>2026-09-27</lastmod><priority>1.0</priority></url>
-  <url><loc>https://lexfall.app/blog</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://lexfall.app/usmle-english-for-imgs</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://lexfall.app/legal-english-for-lawyers</loc><lastmod>2026-09-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://lexfall.app/medical-english-vocabulary-oet</loc><lastmod>2026-09-29</lastmod><priority>0.8</priority></url>
-  <url><loc>https://lexfall.app/ielts-academic-vocabulary</loc><lastmod>2026-09-29</lastmod><priority>0.8</priority></url>
-  <url><loc>https://lexfall.app/gre-vocabulary-words</loc><lastmod>2026-09-29</lastmod><priority>0.8</priority></url>
-  <url><loc>https://lexfall.app/business-english-vocabulary</loc><lastmod>2026-09-29</lastmod><priority>0.8</priority></url>
-  <url><loc>https://lexfall.app/partners</loc><lastmod>2026-09-27</lastmod><priority>0.6</priority></url>
-  <url><loc>https://lexfall.app/creators</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
-  <url><loc>https://lexfall.app/support</loc><lastmod>2026-09-18</lastmod><priority>0.4</priority></url>
-  <url><loc>https://lexfall.app/privacy</loc><lastmod>2026-09-18</lastmod><priority>0.2</priority></url>
-  <url><loc>https://lexfall.app/terms</loc><lastmod>2026-09-18</lastmod><priority>0.2</priority></url>
+  <url><loc>https://lexfall.app/</loc><lastmod>2026-11-10</lastmod><priority>1.0</priority></url>
+  <url><loc>https://lexfall.app/blog</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/usmle-english-for-imgs</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/legal-english-for-lawyers</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/medical-english-vocabulary-oet</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/ielts-academic-vocabulary</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/gre-vocabulary-words</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/business-english-vocabulary</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lexfall.app/partners</loc><lastmod>2026-11-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://lexfall.app/creators</loc><lastmod>2026-11-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://lexfall.app/google-play</loc><lastmod>2026-11-10</lastmod><priority>0.5</priority></url>
+  <url><loc>https://lexfall.app/support</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
+  <url><loc>https://lexfall.app/privacy</loc><lastmod>2026-11-10</lastmod><priority>0.2</priority></url>
+  <url><loc>https://lexfall.app/terms</loc><lastmod>2026-11-10</lastmod><priority>0.2</priority></url>
   <!-- lists:start -->
   <url><loc>https://lexfall.app/word-lists</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://lexfall.app/toefl-vocabulary-list</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
@@ -35,8 +36,8 @@
   <url><loc>https://lexfall.app/accounting-vocabulary</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://lexfall.app/negotiation-vocabulary</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
   <!-- lists:end -->
-  <url><loc>https://lexfall.app/notion-template</loc><lastmod>2026-11-03</lastmod></url>
-  <url><loc>https://lexfall.app/notion-widget</loc><lastmod>2026-11-03</lastmod></url>
+  <url><loc>https://lexfall.app/notion-template</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://lexfall.app/notion-widget</loc><lastmod>2026-11-10</lastmod></url>
   <!-- words:start -->
   <url><loc>https://lexfall.app/words</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://lexfall.app/words/letter/a</loc><lastmod>2026-11-10</lastmod></url>
