@@ -116,6 +116,16 @@ ${STYLE}
 `;
 
 const org = { '@type': 'Organization', name: 'Lexfall', url: SITE };
+const crumbs = (items) => ({ '@type': 'BreadcrumbList', itemListElement: [['Home', `${SITE}/`], ...items].map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })) });
+// Answer-first summary under the lede: plain facts about the list, so search and AI answers can quote it.
+const LV = ['B2', 'C1', 'C2'];
+function summary(list, chosen) {
+  const lv = LV.filter((l) => chosen.some((w) => w.level === l));
+  const range = lv.length > 2 ? `${lv[0]} to ${lv[lv.length - 1]}` : lv.join(' and ');
+  const by = list.group === 'pos' ? 'part of speech' : 'topic';
+  const what = list.pool.exams ? `${list.eyebrow} vocabulary` : `${list.eyebrow.replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase())} vocabulary`;
+  return `<strong>In short:</strong> ${chosen.length} ${what} words at ${range} level, grouped by ${by}. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.`;
+}
 const cta = (text, ct) => `    <div class="cta" id="get">
       <p>${text}</p>
       ${badges(ct)}
@@ -134,6 +144,7 @@ for (const list of LISTS) {
         image: `${SITE}/og-image.png`, articleSection: 'Language', author: org,
         publisher: { ...org, logo: { '@type': 'ImageObject', url: `${SITE}/brand/apple-touch-icon.png` } }, mainEntityOfPage: url },
       { '@type': 'DefinedTermSet', name: list.h1, url, hasDefinedTerm: chosen.map((w) => ({ '@type': 'DefinedTerm', name: w.word, description: w.def })) },
+      crumbs([['Word lists', `${SITE}/word-lists`], [list.h1.split(':')[0], url]]),
     ],
   };
   const sections = groups(list, chosen).map(([g, ws]) => `      <h3>${esc(g)}</h3>\n` + ws.map((w) => {
@@ -156,6 +167,7 @@ for (const list of LISTS) {
     <span class="eyebrow">${esc(list.eyebrow)}</span>
     <h1>${esc(list.h1)}</h1>
     <p class="lede">${list.lede}</p>
+    <p>${summary(list, chosen)}</p>
     <p class="byline">By the Lexfall team · Updated ${MONTH}</p>
     <p class="inline-cta"><a href="${STORE(list.ct)}">Get Lexfall on the App Store</a> · Free to download. Subscription after a free trial.</p>
 
@@ -190,7 +202,7 @@ const hubItems = (kind) => [
 const hubUrl = `${SITE}/word-lists`;
 const hubDesc = 'Free English vocabulary lists for exams (TOEFL, TOEIC, IELTS, OET, PLAB, TOLES, Cambridge, PTE) and professions (nursing, law, finance), with examples.';
 const hub = head({ title: 'English Vocabulary Word Lists for Exams and Work', desc: hubDesc, url: hubUrl,
-  jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'English Vocabulary Word Lists', description: hubDesc, url: hubUrl, publisher: org } })
+  jsonld: { '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', name: 'English Vocabulary Word Lists', description: hubDesc, url: hubUrl, publisher: org }, crumbs([['Word lists', hubUrl]])] } })
   + navWith('web_lists') + `
 
 <main id="main">
