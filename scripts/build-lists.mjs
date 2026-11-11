@@ -129,7 +129,7 @@ function summary(list, chosen) {
 const cta = (text, ct) => `    <div class="cta" id="get">
       <p>${text}</p>
       ${badges(ct)}
-      <small>Free to download. After a free trial, a subscription unlocks every field. Built for iPhone, iOS 15.1 or later.</small>
+      <small>Free to download. After a free trial, a subscription unlocks every field. On iPhone (iOS 15.1 or later) and Android.</small>
       <div class="qr"><img src="/brand/qr-appstore.svg" alt="QR code that opens Lexfall on the App Store" width="104" height="104" loading="lazy"><div><b>On a computer?</b><span>Scan with your iPhone camera.</span></div></div>
     </div>`;
 

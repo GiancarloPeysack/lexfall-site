@@ -1,6 +1,6 @@
 # Lexfall
 
-> Lexfall is an iPhone app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level (upper-intermediate to proficient) in one short lesson a day, with pronunciation, example sentences, gentle checks and spaced review. Android is coming to Google Play.
+> Lexfall is an iPhone and Android app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level (upper-intermediate to proficient) in one short lesson a day, with pronunciation, example sentences, gentle checks and spaced review. Android is coming to Google Play.
 
 Lexfall is for people who already speak English well and want more range: professionals who use English at work (healthcare, law, business), candidates preparing for English exams, and anyone, native speakers included, who wants to read, write and speak with more precise words. Beginner apps teach basics; Lexfall starts where they stop.
 
@@ -15,14 +15,14 @@ Key facts:
 - Home Screen and Lock Screen widgets show a new word every few hours (Save and Next buttons on iOS 17 and later).
 - Add to Lexfall: select a word in Safari or another app, tap Share, and it goes into your notebook. Notebook export as text or CSV.
 - Pricing model: free to download, with a free trial (the monthly plan has a 14-day free trial). After the trial, a monthly or annual subscription unlocks every field, exam list and premium feature. Cancel any time in App Store settings.
-- Platforms: iPhone, iOS 15.1 or later. Android: coming soon to Google Play (waitlist open).
+- Platforms: iPhone (iOS 15.1 or later) and Android (Google Play: https://play.google.com/store/apps/details?id=com.gpeysack.lexfall).
 - Lexfall teaches vocabulary. It is not a full exam course, does not mark your work, and is not affiliated with any exam body.
 
 ## App
 
 - [Lexfall on the App Store](https://apps.apple.com/app/id6786614029): download for iPhone
 - [Homepage](https://lexfall.app/): what Lexfall is, how a lesson works, fields, exams and FAQ
-- [Android waitlist](https://lexfall.app/google-play): Google Play launch sign-up
+- [Lexfall on Google Play](https://play.google.com/store/apps/details?id=com.gpeysack.lexfall): Android app
 
 ## Exam word lists
 

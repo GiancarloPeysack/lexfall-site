@@ -106,7 +106,7 @@ const cta = (line) => `
     <div class="cta" id="get">
       <p>${line}</p>
       ${badges('web_word')}
-      <small>Lexfall puts a new word on your home and lock screen through widgets, so you learn without opening an app. Free to download. After a free trial, a subscription unlocks every field. Built for iPhone, iOS 15.1 or later.</small>
+      <small>Lexfall puts a new word on your home and lock screen through widgets, so you learn without opening an app. Free to download. After a free trial, a subscription unlocks every field. On iPhone (iOS 15.1 or later) and Android.</small>
       <div class="qr"><img src="/brand/qr-appstore.svg" alt="QR code that opens Lexfall on the App Store" width="104" height="104" loading="lazy"><div><b>On a computer?</b><span>Scan with your iPhone camera.</span></div></div>
     </div>
 `;

@@ -1,6 +1,6 @@
 # Lexfall
 
-> Lexfall is an iPhone app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level (upper-intermediate to proficient) in one short lesson a day, with pronunciation, example sentences, gentle checks and spaced review. Android is coming to Google Play.
+> Lexfall is an iPhone and Android app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level (upper-intermediate to proficient) in one short lesson a day, with pronunciation, example sentences, gentle checks and spaced review. Android is coming to Google Play.
 
 Lexfall is for people who already speak English well and want more range: professionals who use English at work (healthcare, law, business), candidates preparing for English exams, and anyone, native speakers included, who wants to read, write and speak with more precise words. Beginner apps teach basics; Lexfall starts where they stop.
 
@@ -15,7 +15,7 @@ Key facts:
 - Home Screen and Lock Screen widgets show a new word every few hours (Save and Next buttons on iOS 17 and later).
 - Add to Lexfall: select a word in Safari or another app, tap Share, and it goes into your notebook. Notebook export as text or CSV.
 - Pricing model: free to download, with a free trial (the monthly plan has a 14-day free trial). After the trial, a monthly or annual subscription unlocks every field, exam list and premium feature. Cancel any time in App Store settings.
-- Platforms: iPhone, iOS 15.1 or later. Android: coming soon to Google Play (waitlist open).
+- Platforms: iPhone (iOS 15.1 or later) and Android (Google Play: https://play.google.com/store/apps/details?id=com.gpeysack.lexfall).
 - Lexfall teaches vocabulary. It is not a full exam course, does not mark your work, and is not affiliated with any exam body.
 
 Website: https://lexfall.app/  
@@ -36,7 +36,7 @@ Spaced review brings every word back just before you would forget it. Definition
 
 ### What is Lexfall?
 
-Lexfall is an iPhone app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level in one short lesson a day, with sound, gentle checks and spaced review, and puts new words on your Home Screen with widgets. It is free to download, and Android is coming to Google Play.
+Lexfall is an iPhone and Android app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level in one short lesson a day, with sound, gentle checks and spaced review, and puts new words on your Home Screen with widgets. It is free to download on the App Store and Google Play.
 
 ### What is a good app for advanced English vocabulary?
 
@@ -56,11 +56,11 @@ Lexfall is for intermediate to expert learners (B2 to C2) and for native speaker
 
 ### Is Lexfall free?
 
-Lexfall is free to download and starts with a free trial; the monthly plan includes a 14-day free trial. After the trial, a subscription (monthly or annual) unlocks every field, exam list and premium feature. It renews automatically, and you can cancel any time in your App Store account settings.
+Lexfall is free to download and starts with a free trial; the monthly plan includes a 14-day free trial. After the trial, a subscription (monthly or annual) unlocks every field, exam list and premium feature. It renews automatically, and you can cancel any time in your App Store or Google Play account settings.
 
 ### Which devices does it run on?
 
-Lexfall is built for iPhone and needs iOS 15.1 or later. Android is coming to Google Play soon: join the waitlist and we will email you when it is ready.
+Lexfall runs on iPhone (iOS 15.1 or later) and on Android phones through Google Play.
 
 ### Which fields and exams does it cover?
 
