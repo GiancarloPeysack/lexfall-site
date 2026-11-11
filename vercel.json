@@ -2,42 +2,170 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.lexfall.app" }], "destination": "https://lexfall.app/$1", "permanent": true },
-    { "source": "/(.*)", "has": [{ "type": "host", "value": "luxfall.online" }], "destination": "https://lexfall.app/$1", "permanent": true },
-    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.luxfall.online" }], "destination": "https://lexfall.app/$1", "permanent": true },
-    { "source": "/get/:src", "has": [{ "type": "header", "key": "user-agent", "value": ".*Android.*" }], "destination": "https://play.google.com/store/apps/details?id=com.gpeysack.lexfall&referrer=utm_source%3D:src%26utm_medium%3Dlink", "permanent": false },
-    { "source": "/get/:src", "destination": "https://apps.apple.com/app/id6786614029?pt=128225052&ct=:src", "permanent": false },
-    { "source": "/get", "has": [{ "type": "header", "key": "user-agent", "value": ".*Android.*" }], "destination": "https://play.google.com/store/apps/details?id=com.gpeysack.lexfall&referrer=utm_source%3Dlink%26utm_medium%3Dlink", "permanent": false },
-    { "source": "/get", "destination": "https://apps.apple.com/app/id6786614029?pt=128225052&ct=link", "permanent": false }
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.lexfall.app"
+        }
+      ],
+      "destination": "https://lexfall.app/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "luxfall.online"
+        }
+      ],
+      "destination": "https://lexfall.app/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.luxfall.online"
+        }
+      ],
+      "destination": "https://lexfall.app/$1",
+      "permanent": true
+    },
+    {
+      "source": "/get/:src",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*Android.*"
+        }
+      ],
+      "destination": "https://play.google.com/store/apps/details?id=com.gpeysack.lexfall&referrer=utm_source%3D:src%26utm_medium%3Dlink",
+      "permanent": false
+    },
+    {
+      "source": "/get/:src",
+      "destination": "https://apps.apple.com/app/id6786614029?pt=128225052&ct=:src",
+      "permanent": false
+    },
+    {
+      "source": "/get",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*Android.*"
+        }
+      ],
+      "destination": "https://play.google.com/store/apps/details?id=com.gpeysack.lexfall&referrer=utm_source%3Dlink%26utm_medium%3Dlink",
+      "permanent": false
+    },
+    {
+      "source": "/get",
+      "destination": "https://apps.apple.com/app/id6786614029?pt=128225052&ct=link",
+      "permanent": false
+    }
   ],
   "rewrites": [
-    { "source": "/partner-dashboard", "destination": "/api/dashboard" },
-    { "source": "/admin", "destination": "/api/admin" },
-    { "source": "/medicine", "destination": "/" },
-    { "source": "/healthcare", "destination": "/" },
-    { "source": "/law", "destination": "/" },
-    { "source": "/legal", "destination": "/" },
-    { "source": "/business", "destination": "/" }
+    {
+      "source": "/partner-dashboard",
+      "destination": "/api/dashboard"
+    },
+    {
+      "source": "/admin",
+      "destination": "/api/admin"
+    },
+    {
+      "source": "/medicine",
+      "destination": "/"
+    },
+    {
+      "source": "/healthcare",
+      "destination": "/"
+    },
+    {
+      "source": "/law",
+      "destination": "/"
+    },
+    {
+      "source": "/legal",
+      "destination": "/"
+    },
+    {
+      "source": "/business",
+      "destination": "/"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     },
     {
       "source": "/(fonts|brand|shots|illustrations|art)/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/(favicon.ico|og-image.png)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/styles.css",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/((?!widget).*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'sha256-1Ymu2HeFWBSsDgX0c3VM286hJJc2suNEY6x0L8VHT5A=' 'sha256-3JDpdvl7gh1DmJtLbPiG7xf++RFrmDK5OvQTiFQcDlY=' 'sha256-7arqEdoPeYymOYExx96bRimn+SXpQDqDY0O+SfXchg4=' 'sha256-88PGZDZDiR8L6yM3lEVHDad6Vwvk7Q29hFWxIHD/NbE=' 'sha256-LCNL3HziKiZJiuLMwq/6Sem7nVyQARmYt6sw12XuqtE=' 'sha256-Ps826T1M525M71EyxqIaXjcYv+uvg0mNT7p8i7Cd2XA=' 'sha256-nD1Ic3pfllUH5Mu+ffjVXwRk/8fhF9fvsUjJ7bXYPSU=' 'sha256-qOhFsq0QMV2REqNwk5hGH5bZE9SkX6gt6yeyKdYPv+U=' 'sha256-x7xxhe+jFXJT5Iulps4Oxz8lMg6ufnXmRBLTnkWK+ek='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://qfniuekmcwytlstvtszt.functions.supabase.co; frame-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        }
+      ]
+    },
+    {
+      "source": "/widget(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'sha256-1Ymu2HeFWBSsDgX0c3VM286hJJc2suNEY6x0L8VHT5A=' 'sha256-3JDpdvl7gh1DmJtLbPiG7xf++RFrmDK5OvQTiFQcDlY=' 'sha256-7arqEdoPeYymOYExx96bRimn+SXpQDqDY0O+SfXchg4=' 'sha256-88PGZDZDiR8L6yM3lEVHDad6Vwvk7Q29hFWxIHD/NbE=' 'sha256-LCNL3HziKiZJiuLMwq/6Sem7nVyQARmYt6sw12XuqtE=' 'sha256-Ps826T1M525M71EyxqIaXjcYv+uvg0mNT7p8i7Cd2XA=' 'sha256-nD1Ic3pfllUH5Mu+ffjVXwRk/8fhF9fvsUjJ7bXYPSU=' 'sha256-qOhFsq0QMV2REqNwk5hGH5bZE9SkX6gt6yeyKdYPv+U=' 'sha256-x7xxhe+jFXJT5Iulps4Oxz8lMg6ufnXmRBLTnkWK+ek='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://qfniuekmcwytlstvtszt.functions.supabase.co; frame-src 'self'; frame-ancestors *; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        }
+      ]
     }
   ]
 }

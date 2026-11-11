@@ -52,7 +52,7 @@ Store links carry campaign tokens: `web_home` (hero, nav, download), `web_qr`, `
 ## Redesign 2026-11 (matches app 1.1.5)
 - Look: the app's tokens (light + dark follow the visitor's system), glass for the nav and one hero per section (recipe from the app's `whats-new.tsx`), solid-tinted lists, gold only on the primary action, Editorial Flat art. Rollback: `git tag pre-redesign-2026-11`.
 - Chrome lives in ONE place, `scripts/chrome.mjs` (head assets, nav, footer, store badges, `CSS_VERSION`, `PLAY`). After changing it run:
-  `node scripts/apply-chrome.mjs && node scripts/build-lists.mjs && node scripts/build-words.mjs`
+  `node scripts/apply-chrome.mjs && node scripts/build-lists.mjs && node scripts/build-words.mjs && node scripts/csp.mjs` (csp.mjs re-hashes the inline scripts into the Content-Security-Policy in vercel.json; an inline script edited without it is blocked. `node scripts/csp.mjs --check` tells you)
   `apply-chrome.mjs` fills the `<!-- chrome:x -->` markers in hand-written pages; the two generators emit the same markup.
 - Art in `/art` (AVIF + WebP). `scripts/art/web_scene.py` renders the hero landscape, footer ridge, leaf and clouds from the App Store creative kit (`~/Downloads/Lexfall/app/design/store/2026-10-29-creative/scene.py`), transparent sky so dark mode works; `scripts/art/export.sh` and `export-spots.sh` make the web files. Page spots: store cut-outs plus five new ones made on fal.ai Z-Image Turbo (masters in `scripts/art/masters`, prompts in `scripts/art/jobs-2026-11-03.txt`). App screens come from the store captures (the Home Screen one has the B1 icon composited in).
 - `og-image.png` is rendered from `scripts/og.html` with headless Chromium.
