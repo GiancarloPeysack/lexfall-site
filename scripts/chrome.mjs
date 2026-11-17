@@ -2,7 +2,7 @@
 // One source of truth. Used by build-words.mjs, build-lists.mjs and apply-chrome.mjs (hand-written pages).
 // Change it here, then run:  node scripts/apply-chrome.mjs && node scripts/build-lists.mjs && node scripts/build-words.mjs
 
-export const CSS_VERSION = 33;
+export const CSS_VERSION = 34;
 export const APP_ID = '6786614029';
 export const PT = '128225052'; // App Store provider token: every store link must carry it (attribution)
 export const STORE = (ct) => `https://apps.apple.com/app/id${APP_ID}?pt=${PT}&ct=${ct}`;
@@ -66,7 +66,7 @@ export const FOOT = () => `<footer class="site-foot">
     <div class="wrap foot-grid">
       <div class="foot-brand">
         <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png" alt="" width="32" height="32" loading="lazy"><span>Lexfall</span></a>
-        <p>Advanced English for work, exams and everyday life. One short lesson a day.</p>
+        <p>Short daily lessons for advanced English. A path built for your field or exam, from your level up to Expert.</p>
         ${badges('web_foot')}
       </div>
       <nav class="foot-col" aria-label="Learn"><b>Learn</b><a href="/word-lists">Word lists</a><a href="/words">Dictionary</a><a href="/blog">Blog</a><a href="/#how">How it works</a></nav>

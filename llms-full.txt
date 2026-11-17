@@ -1,20 +1,19 @@
 # Lexfall
 
-> Lexfall is an iPhone and Android app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level (upper-intermediate to proficient) in one short lesson a day, with pronunciation, example sentences, gentle checks and spaced review. Android is coming to Google Play.
+> Lexfall is a daily lesson path for advanced English (C1-C2). Short lessons teach the words that matter for your work, your exam or everyday life, then smart reviews make them stick. On iPhone and Android. For when good English isn't enough.
 
-Lexfall is for people who already speak English well and want more range: professionals who use English at work (healthcare, law, business), candidates preparing for English exams, and anyone, native speakers included, who wants to read, write and speak with more precise words. Beginner apps teach basics; Lexfall starts where they stop.
+Lexfall teaches advanced English (C1-C2) through short daily lessons on a path built for you. Pick your level and your field (healthcare, law, business or general English) or the exam you are preparing for (IELTS, OET, TOEFL, TOLES, PLAB, Cambridge C1 and C2 and more). Every lesson gives you a few new words, a quick check, and smart reviews later, so the words stick and you climb lesson by lesson from your level up to Expert. Between lessons, new words reach you on a swipe feed and on your Home and Lock Screen widgets. 20,000+ advanced words, with meaning, example and pronunciation on every one.
 
 Key facts:
 
-- 20,000+ advanced English words, each with a plain definition, a real example sentence, its CEFR level and audio pronunciation (British, American and other accents).
-- Level picked in one tap: Intermediate, Advanced or Expert (or check with a few words). No placement test to sit.
-- A guided first lesson (two words and a few checks), then one short lesson a day on the Journey, a path of lessons that climbs from your level towards Expert.
+- A daily lesson path (the Journey): a few new words, a quick check, smart reviews later. Each lesson you finish moves you up, from your level towards Expert. The first lesson is guided (two words and a few checks).
+- Built for your level (Intermediate, Advanced, Expert, picked in one tap or checked with a few words; no placement test) and your field or exam.
 - Five fields: General, Healthcare, Law, Business and New Words (recently coined language).
-- Word lists for 15 exams: IELTS, TOEFL, TOEIC, OET, PLAB, TOLES, PTE Academic, Duolingo English Test, Cambridge C1 Advanced, Cambridge C2 Proficiency, GRE Verbal, Linguaskill Business, Michigan ECPE, LanguageCert C1/C2 and Trinity ISE. Adding an exam makes daily lessons and checks pull from its list.
-- Spaced review brings every word back just before you would forget it.
-- Home Screen and Lock Screen widgets show a new word every few hours (Save and Next buttons on iOS 17 and later).
-- Add to Lexfall: select a word in Safari or another app, tap Share, and it goes into your notebook. Notebook export as text or CSV.
-- Pricing model: free to download, with a free trial (the monthly plan has a 14-day free trial). After the trial, a monthly or annual subscription unlocks every field, exam list and premium feature. Cancel any time in App Store settings.
+- Word lists for 15 exams: IELTS, TOEFL, TOEIC, OET, PLAB, TOLES, PTE Academic, Duolingo English Test, Cambridge C1 Advanced, Cambridge C2 Proficiency, GRE Verbal, Linguaskill Business, Michigan ECPE, LanguageCert C1/C2 and Trinity ISE. Adding an exam makes your lessons and checks pull from its list.
+- 20,000+ advanced English words, each with a plain definition, a real example sentence, its CEFR level and audio pronunciation (British, American and other accents).
+- Between lessons: a swipe feed to keep the good ones, and Home Screen and Lock Screen widgets that show a new word every time you look (Save and Next buttons on iOS 17 and later).
+- Your library: saved words, your own notebook, the areas you follow. Add to Lexfall from the Share sheet in Safari or any app. Notebook export as text or CSV.
+- Pricing model: free to download, with a free trial (the monthly plan has a 14-day free trial). After the trial, a monthly or annual subscription unlocks every field, exam list and premium feature. Cancel any time in App Store or Google Play settings.
 - Platforms: iPhone (iOS 15.1 or later) and Android (Google Play: https://play.google.com/store/apps/details?id=com.gpeysack.lexfall).
 - Lexfall teaches vocabulary. It is not a full exam course, does not mark your work, and is not affiliated with any exam body.
 
@@ -24,23 +23,28 @@ Short version: https://lexfall.app/llms.txt
 
 ## How Lexfall works
 
-1. Day one: pick your level in one tap (Intermediate, Advanced or Expert), or check with a few words instead. Then a guided first lesson: two words, gentle checks, and a finger showing you how.
-2. Daily lesson: a few new words, each with its meaning, a real example and its sound, then a quick check with hints. Choose Practical, Balanced or Rare words. Save any word to your notebook in one tap.
-3. Journey: a path of lessons. Each lesson you finish moves you further up, from your level towards Expert. Add a path for a field or an exam and they climb side by side.
-4. Fields and exams: follow General, Healthcare, Law, Business or New Words, and add word lists for 15 exams. Your path and checks pull from them.
-5. Home Screen: widgets and gentle reminders put a new word in front of you through the day.
+1. Daily lessons: each short lesson gives you a few new words, each with its meaning, a real example and its sound, then a quick check with hints. Smart reviews bring every word back later, just before you would forget it.
+2. Your path: the Journey is a path of lessons. Each one you finish moves you further up, from your level towards Expert. Add a path for a field or an exam and they climb side by side.
+3. Your level, your field: pick Intermediate, Advanced or Expert in one tap, then General, Healthcare, Law, Business or New Words. Your first lesson is guided.
+4. Exam prep: word lists for 15 exams. Add the exam you are preparing for and your lessons and checks pull from its list.
+5. Between lessons: a swipe feed (meaning, example and pronunciation on every card; keep the good ones) and Home and Lock Screen widgets with a new word every time you look.
+6. Your library: saved words, your own notebook and the areas you follow, all in one place.
 
-Spaced review brings every word back just before you would forget it. Definitions are for language learning, not medical or legal advice.
+Definitions are for language learning, not medical or legal advice.
 
 ## Frequently asked questions
 
 ### What is Lexfall?
 
-Lexfall is an iPhone and Android app for advanced English vocabulary, for work, exams and everyday life. It teaches 20,000+ words at B2 to C2 level in one short lesson a day, with sound, gentle checks and spaced review, and puts new words on your Home Screen with widgets. It is free to download on the App Store and Google Play.
+Lexfall is a daily lesson path for advanced English (C1-C2), on iPhone and Android. Short lessons teach the words that matter for your work, your exam or everyday life, then smart reviews make them stick. Pick your level and your field (healthcare, law, business or general English) or one of 15 exams, and you climb lesson by lesson from your level up to Expert. Between lessons, a swipe feed and Home and Lock Screen widgets keep new words in front of you. It is free to download on the App Store and Google Play.
+
+### How does a lesson work?
+
+Each short lesson on your Journey gives you a few new words, each with its meaning, a real example and its sound, then a quick check with hints. Smart reviews bring every word back later, just before you would forget it. Each lesson you finish moves you further up the path, from your level towards Expert. Your first lesson is guided: two words and a few checks, so you see how it works.
 
 ### What is a good app for advanced English vocabulary?
 
-If beginner apps feel too easy, you need one that starts where they stop. Lexfall only teaches advanced words (B2 to C2), each with its meaning, a real example sentence and its pronunciation, and it brings every word back with spaced review so it stays. It covers general English plus healthcare, law, business and new words. Whatever app you use, reading widely in English and noting the words you meet is still the best partner to it.
+If beginner apps feel too easy, you need one that starts where they stop. Lexfall is a daily lesson path for advanced English (C1-C2): each short lesson teaches a few words with their meaning, a real example sentence and their pronunciation, checks them, and brings them back with smart reviews so they stay. The path is built for your level and your field (general English, healthcare, law, business or new words) or your exam. Whatever app you use, reading widely in English and noting the words you meet is still the best partner to it.
 
 ### Is there an app for IELTS vocabulary?
 
@@ -48,11 +52,11 @@ Yes. Lexfall has word lists for 15 exams, including IELTS, TOEFL, OET, PTE Acade
 
 ### How do I learn C1 and C2 words?
 
-A few at a time, in context, and reviewed over weeks. Learn each word with its meaning, a real example sentence and its sound. Check yourself on it a little later, then review it again just before you would forget it (spaced review). Use it in your own writing or speech within a day or two. Lexfall builds these steps into one short lesson a day, so you do not have to plan them.
+A few at a time, in context, and reviewed over weeks. Learn each word with its meaning, a real example sentence and its sound. Check yourself on it a little later, then review it again just before you would forget it (spaced review). Use it in your own writing or speech within a day or two. Lexfall builds these steps into short daily lessons on a path, so you do not have to plan them.
 
 ### What level do I need?
 
-Lexfall is for intermediate to expert learners (B2 to C2) and for native speakers who want more range. You pick your level in one tap: Intermediate, Advanced or Expert. Not sure? Check with a few words instead, so you start on words you don't already know. Your first lesson is guided, and you can change your level any time.
+Lexfall is for upper-intermediate to expert learners who want C1 and C2 English, and for native speakers who want more range. You pick your level in one tap: Intermediate, Advanced or Expert. Not sure? Check with a few words instead, so you start on words you don't already know. Your path starts at your level, your first lesson is guided, and you can change your level any time.
 
 ### Is Lexfall free?
 
@@ -70,13 +74,9 @@ Five fields: General, Healthcare, Law, Business and New Words (the language stil
 
 Yes. Select a word in Safari or another app, tap Share, then Add to Lexfall, and it goes straight into your notebook. If Lexfall does not have it yet, it is saved as your own word with your meaning. You can export your notebook as text or CSV.
 
-### How does a lesson work?
-
-One short lesson a day on your Journey, a path that climbs from your level towards Expert. Each word comes with its meaning, a real example and its sound, then gentle checks with hints. Spaced review brings every word back just before you would forget it. Your first lesson is guided, two words and a few checks, so you see how it works.
-
 ### How does the widget work?
 
-Home Screen and Lock Screen widgets show a fresh word every few hours, so you meet new vocabulary without opening the app. On iOS 17 and later you can save the word or skip to the next one right from the widget.
+Home Screen and Lock Screen widgets show a fresh word every few hours, so new words stay in front of you between lessons. On iOS 17 and later you can save the word or skip to the next one right from the widget.
 
 ### Is it a full exam course?
 

@@ -98,14 +98,14 @@ const head = ({ title, desc, url, jsonld }) => `<!DOCTYPE html>
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE}/og-image.png">
+<meta property="og:image" content="${SITE}/og-image.png?v=34">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Lexfall: Expand your vocabulary beyond average">
+<meta property="og:image:alt" content="Lexfall: Short daily lessons for advanced English">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">
-<meta name="twitter:image" content="${SITE}/og-image.png">
+<meta name="twitter:image" content="${SITE}/og-image.png?v=34">
 <script type="application/ld+json">
 ${JSON.stringify(jsonld)}
 </script>
@@ -141,7 +141,7 @@ for (const list of LISTS) {
   const jsonld = {
     '@context': 'https://schema.org', '@graph': [
       { '@type': 'Article', headline: list.h1, description: list.desc, datePublished: list.published || TODAY, dateModified: TODAY,
-        image: `${SITE}/og-image.png`, articleSection: 'Language', author: org,
+        image: `${SITE}/og-image.png?v=34`, articleSection: 'Language', author: org,
         publisher: { ...org, logo: { '@type': 'ImageObject', url: `${SITE}/brand/apple-touch-icon.png` } }, mainEntityOfPage: url },
       { '@type': 'DefinedTermSet', name: list.h1, url, hasDefinedTerm: chosen.map((w) => ({ '@type': 'DefinedTerm', name: w.word, description: w.def })) },
       crumbs([['Word lists', `${SITE}/word-lists`], [list.h1.split(':')[0], url]]),
@@ -179,7 +179,7 @@ ${sections}
     </div>
 
     <h2>Learning the list, not just reading it</h2>
-    <p>Reading a list once does not make the words yours. Lexfall is a vocabulary app that teaches words like these in one short lesson a day, then brings each one back with spaced review just before you would forget it. This page shows ${chosen.length} of the ${poolSize.toLocaleString('en-US')} words on this list in the app.</p>
+    <p>Reading a list once does not make the words yours. Lexfall is a daily lesson path for advanced English: short lessons teach words like these, then smart reviews bring each one back just before you would forget it. This page shows ${chosen.length} of the ${poolSize.toLocaleString('en-US')} words on this list in the app.</p>
     <p>It does not coach the exam or mark your work. It builds the vocabulary those things draw on.</p>
 ${list.owner ? `\n    <p class="disclaimer">This article is about vocabulary, not exam coaching. ${list.owner} Lexfall is not affiliated with or endorsed by it.</p>\n` : ''}
 ${cta(list.cta, list.ct)}
@@ -224,7 +224,7 @@ ${hubItems('topic').map((i) => `      <li><a href="/${i.slug}">${esc(i.name)}</a
 
     <p>Looking for one word? Browse the <a href="/words">Lexfall dictionary</a>.</p>
 
-${cta('Learn the words on these lists in one short lesson a day, with spaced review.', 'web_lists')}
+${cta('Learn the words on these lists in short daily lessons, with smart reviews that make them stick.', 'web_lists')}
   </article>
 </main>
 

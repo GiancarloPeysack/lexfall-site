@@ -87,9 +87,9 @@ const head = ({ title, desc, url, jsonld }) => `<!DOCTYPE html>
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE}/og-image.png">
+<meta property="og:image" content="${SITE}/og-image.png?v=34">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="${SITE}/og-image.png">
+<meta name="twitter:image" content="${SITE}/og-image.png?v=34">
 ${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld)}\n</script>\n` : ''}<!-- chrome:head -->
 ${HEAD_ASSETS}
 <!-- /chrome:head -->
@@ -106,7 +106,7 @@ const cta = (line) => `
     <div class="cta" id="get">
       <p>${line}</p>
       ${badges('web_word')}
-      <small>Lexfall puts a new word on your home and lock screen through widgets, so you learn without opening an app. Free to download. After a free trial, a subscription unlocks every field. On iPhone (iOS 15.1 or later) and Android.</small>
+      <small>Lexfall teaches words like these in short daily lessons on a path built for your field or exam, then smart reviews make them stick. Free to download. After a free trial, a subscription unlocks every field. On iPhone (iOS 15.1 or later) and Android.</small>
       <div class="qr"><img src="/brand/qr-appstore.svg" alt="QR code that opens Lexfall on the App Store" width="104" height="104" loading="lazy"><div><b>On a computer?</b><span>Scan with your iPhone camera.</span></div></div>
     </div>
 `;
@@ -163,7 +163,7 @@ function wordPage(e) {
     ${stats ? `<div class="stats">${stats}</div>` : ''}
     ${senses}
     ${typeof e.rarity === 'number' ? `<p class="note">Rarity runs from 0 (a word everyone knows) to 100 (almost never seen outside specialist or literary writing). Level is the word's real difficulty on the CEFR scale, from A1 to C2.</p>` : ''}
-    ${cta(`Get words like <em>${esc(e.word)}</em> on your lock screen, a few a day, with review that makes them stick.`)}
+    ${cta(`Learn words like <em>${esc(e.word)}</em> in short daily lessons, with smart reviews that make them stick.`)}
     ${rel}
     ${letterNav(null)}
   </article>
@@ -185,7 +185,7 @@ function letterPage(l) {
     <p class="lede">${list.length.toLocaleString('en-US')} words from the Lexfall vocabulary, each with a definition and an example sentence.</p>
     ${letterNav(l)}
     <ul class="index-list">${listItems(list)}</ul>
-    ${cta('Learn these words without opening an app: Lexfall puts them on your home and lock screen.')}
+    ${cta('Learn these words in short daily lessons, on a path from your level up to Expert.')}
   </article>
 </main>
 ` + foot;
@@ -210,7 +210,7 @@ function fieldPage(f) {
     <p class="lede">${list.length.toLocaleString('en-US')} words grouped into ${tlist.length} topics. Tap any word for its definition, an example sentence, its level and how rare it is.</p>
     <nav class="topics" aria-label="Topics">${tlist.map(([t, l]) => `<a href="#${slugify(t)}">${esc(t)} <span>${l.length}</span></a>`).join('')}</nav>
     ${tlist.map(([t, l]) => `<h2 class="h-sub" id="${slugify(t)}">${esc(t)}</h2><ul class="chips">${l.map((e) => `<li><a href="/words/${e.slug}">${esc(e.word)}</a></li>`).join('')}</ul>`).join('\n    ')}
-    ${cta(`Learn ${esc(F.name.toLowerCase())} a few words a day, right on your lock screen.`)}
+    ${cta(`Learn ${esc(F.name.toLowerCase())} in short daily lessons, on a path built for your field.`)}
   </article>
 </main>
 ` + foot;
@@ -232,7 +232,7 @@ function hubPage() {
     <ul class="fields">${FIELD_ORDER.map((f) => `<li><a href="/words/field/${FIELD[f].hub}"><b>${esc(FIELD[f].name)}</b><span>${counts[f].toLocaleString('en-US')} words</span></a></li>`).join('')}</ul>
     <h2 class="h-sub">A few to start with</h2>
     <ul class="index-list">${listItems(featured)}</ul>
-    ${cta('Learn a few of these a day without opening an app: Lexfall puts them on your home and lock screen.')}
+    ${cta('Learn a few of these in each short daily lesson, on a path from your level up to Expert.')}
   </article>
 </main>
 ` + foot;
