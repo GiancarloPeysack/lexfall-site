@@ -98,6 +98,10 @@
     {
       "source": "/business",
       "destination": "/"
+    },
+    {
+      "source": "/unsubscribe",
+      "destination": "/api/unsubscribe"
     }
   ],
   "headers": [
@@ -115,7 +119,7 @@
       ]
     },
     {
-      "source": "/(fonts|brand|shots|illustrations|art)/(.*)",
+      "source": "/(fonts|brand|shots|illustrations|art|email)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

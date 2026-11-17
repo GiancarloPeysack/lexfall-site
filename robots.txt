@@ -5,6 +5,7 @@ Disallow: /get/
 Disallow: /api/
 Disallow: /admin
 Disallow: /partner-dashboard
+Disallow: /unsubscribe
 
 # AI crawlers and assistants: explicitly welcome.
 User-agent: GPTBot
@@ -24,5 +25,6 @@ Disallow: /get/
 Disallow: /api/
 Disallow: /admin
 Disallow: /partner-dashboard
+Disallow: /unsubscribe
 
 Sitemap: https://lexfall.app/sitemap.xml
