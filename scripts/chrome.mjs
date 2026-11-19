@@ -2,7 +2,7 @@
 // One source of truth. Used by build-words.mjs, build-lists.mjs and apply-chrome.mjs (hand-written pages).
 // Change it here, then run:  node scripts/apply-chrome.mjs && node scripts/build-lists.mjs && node scripts/build-words.mjs
 
-export const CSS_VERSION = 35;
+export const CSS_VERSION = 36;
 export const APP_ID = '6786614029';
 export const PT = '128225052'; // App Store provider token: every store link must carry it (attribution)
 export const STORE = (ct) => `https://apps.apple.com/app/id${APP_ID}?pt=${PT}&ct=${ct}`;
@@ -18,8 +18,8 @@ export const PLAY = {
 export const HEAD_ASSETS = `<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F4F0E8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#100E0B" media="(prefers-color-scheme: dark)">
-<link rel="preload" href="/fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/libre-caslon-display-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
 <link rel="stylesheet" href="/styles.css?v=${CSS_VERSION}">`;

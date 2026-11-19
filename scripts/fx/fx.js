@@ -248,15 +248,11 @@ async function liquidMark(host) {
 /* ------------------------------------------------------------------ boot */
 const idle = window.requestIdleCallback || ((f) => setTimeout(f, 200));
 idle(liquidCard);
-const closer = document.querySelector('#download .closer');
-const band = document.querySelector('.sg-band');
+// each gradient band and the liquid leaf start only when they near the screen
+const near = (el, fn) => {
+  const io = new IntersectionObserver(([en]) => { if (en.isIntersecting) { io.disconnect(); fn(); } }, { rootMargin: '600px 0px' });
+  io.observe(el);
+};
+document.querySelectorAll('.sg-band').forEach((band) => near(band, () => gradientBand(band)));
 const mark = document.querySelector('.lm-mark');
-if (closer && (band || mark)) {
-  const io = new IntersectionObserver(([en]) => {
-    if (!en.isIntersecting) return;
-    io.disconnect();
-    if (band) gradientBand(band);
-    if (mark) liquidMark(mark).catch(() => {});
-  }, { rootMargin: '600px 0px' });
-  io.observe(closer);
-}
+if (mark) near(mark, () => liquidMark(mark).catch(() => {}));
