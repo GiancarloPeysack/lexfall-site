@@ -8,7 +8,7 @@
 // Every effect is progressive: without WebGL or with reduced motion the page keeps its current look.
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const dark = () => matchMedia('(prefers-color-scheme: dark)').matches;
+const dark = () => { const t = document.documentElement.dataset.theme; return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
 
 function gl2d(canvas) {
   const o = { alpha: true, premultipliedAlpha: true, antialias: false, preserveDrawingBuffer: false };
@@ -254,5 +254,4 @@ const near = (el, fn) => {
   io.observe(el);
 };
 document.querySelectorAll('.sg-band').forEach((band) => near(band, () => gradientBand(band)));
-const mark = document.querySelector('.lm-mark');
-if (mark) near(mark, () => liquidMark(mark).catch(() => {}));
+document.querySelectorAll('.lm-mark').forEach((mark) => near(mark, () => liquidMark(mark).catch(() => {})));

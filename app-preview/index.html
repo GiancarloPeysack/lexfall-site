@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lexfall App, New Brand</title>
+<meta name="robots" content="noindex">
+<script>try{var t=localStorage.getItem("lx-preview-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+@font-face{font-family:'Lexfall Serif';font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/libre-caslon-display-400.woff2) format('woff2')}
+@font-face{font-family:'Lexfall Serif';font-style:italic;font-weight:400 600;font-display:swap;src:url(/fonts/libre-caslon-text-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Lexfall Text';font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/libre-caslon-text-400.woff2) format('woff2')}
+@font-face{font-family:'Lexfall Text';font-style:italic;font-weight:400 600;font-display:swap;src:url(/fonts/libre-caslon-text-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/hanken-grotesk.woff2) format('woff2')}
+@font-face{font-family:'Charis SIL';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/charis-sil-400.woff2) format('woff2'),url(/fonts/charis-sil-400-ext.woff2) format('woff2')}
+@font-face{font-family:'Charis SIL IPA';font-style:normal;font-weight:400;src:url(/fonts/charis-sil-400-ext.woff2) format('woff2');unicode-range:U+0250-02FF,U+1D00-1DBF}
+
+/* app tokens (theme/tokens.ts) with the brand refresh names */
+:root{
+  --paper:#F4F0E8; --sheet:#FBF8F1; --sheet2:#ECE6DA; --rule:#E2DBCC; --ink:#211D16; --muted:#6E665A; --faint:#7C7264;
+  --gilt:#9A7B2E; --on-gilt:#FBF8F1; --forest:#2F4A3A; --forest-ink:#F4F0E8; --forest-muted:#C9D2C4;
+  --glass:rgba(251,248,241,.62); --glass-line:rgba(255,255,255,.7); --shadow:0 18px 40px -18px rgba(33,29,22,.35);
+  --page:#E9E3D7; --page-ink:#211D16;
+  --display:'Lexfall Serif',Georgia,serif; --text:'Lexfall Text',Georgia,serif; --ui:'Hanken Grotesk',-apple-system,'Segoe UI',sans-serif;
+  --ipa:'Charis SIL IPA','Charis SIL',Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#100E0B; --sheet:#1A1712; --sheet2:#221E18; --rule:#322C22; --ink:#ECE5D7; --muted:#C3BAA7; --faint:#B9B09E;
+  --gilt:#C5B07D; --on-gilt:#100E0B; --forest:#1F3328; --forest-ink:#ECE5D7; --forest-muted:#B9C3B2;
+  --glass:rgba(28,24,18,.55); --glass-line:rgba(255,255,255,.12); --shadow:0 22px 50px -20px rgba(0,0,0,.7);
+  --page:#0A0907; --page-ink:#ECE5D7; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#100E0B; --sheet:#1A1712; --sheet2:#221E18; --rule:#322C22; --ink:#ECE5D7; --muted:#C3BAA7; --faint:#B9B09E;
+  --gilt:#C5B07D; --on-gilt:#100E0B; --forest:#1F3328; --forest-ink:#ECE5D7; --forest-muted:#B9C3B2;
+  --glass:rgba(28,24,18,.55); --glass-line:rgba(255,255,255,.12); --shadow:0 22px 50px -20px rgba(0,0,0,.7);
+  --page:#0A0907; --page-ink:#ECE5D7; color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--page);color:var(--page-ink);font:15px/1.5 var(--ui);padding-inline:16px;padding-block:28px 60px}
+.top{max-width:1240px;margin:0 auto 26px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between}
+.top h1{font:400 clamp(30px,4vw,44px)/1.05 var(--display);margin:0}
+.top p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+.toggle{display:flex;gap:6px;background:var(--sheet);border:1px solid var(--rule);border-radius:999px;padding:4px}
+.toggle button{font:600 13px var(--ui);border:0;background:transparent;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.toggle button:focus-visible{outline:2px solid var(--gilt);outline-offset:2px}
+.rack{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:34px 26px;justify-items:center}
+.slot{display:flex;flex-direction:column;gap:12px;align-items:center;min-width:0}
+.cap{font-size:13px;color:var(--muted);text-align:center;max-width:300px}
+.cap b{display:block;color:var(--page-ink);font-size:14px}
+
+/* phone: 390 x 844 points at 0.76 */
+.phone{width:296px;height:620px;border-radius:44px;padding:9px;background:#0d0c0a;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.scr{position:relative;width:390px;height:844px;transform:scale(.7128);transform-origin:0 0;border-radius:46px;overflow:hidden;background:var(--paper);color:var(--ink);isolation:isolate}
+.sb{position:absolute;top:0;left:0;right:0;height:50px;display:flex;justify-content:space-between;align-items:center;padding:14px 30px 0;font:600 16px var(--ui);z-index:20}
+.sb i{font-style:normal;letter-spacing:1px;font-size:13px}
+.glass{background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);border:1px solid var(--glass-line);box-shadow:var(--shadow)}
+.eyebrow{font:600 11px/1 var(--ui);letter-spacing:1.6px;text-transform:uppercase;color:var(--gilt)}
+.leaf{display:inline-block;width:.42em;height:.55em;background:url(/art/leaf.webp) center/contain no-repeat;transform:rotate(28deg);margin-left:.04em}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:54px;border-radius:16px;background:var(--gilt);color:var(--on-gilt);font:600 17px var(--ui);border:0}
+.tabs{position:absolute;left:16px;right:16px;bottom:22px;height:66px;border-radius:24px;display:flex;justify-content:space-around;align-items:center;z-index:10}
+.tabs span{display:flex;flex-direction:column;align-items:center;gap:4px;font:500 11px var(--ui);color:var(--muted)}
+.tabs span.on{color:var(--ink)}
+.tabs svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6}
+
+/* moving gradient (shadergradient port) and liquid gold (paper liquid metal), from /fx */
+.sg-band{position:relative;overflow:hidden}
+.sg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.sg-band>*:not(canvas){position:relative;z-index:1}
+.lm-mark{position:relative}
+.lm-stage{display:none}
+.lm-mark.lm-on img{display:none}
+.lm-mark.lm-on .lm-stage{display:block;width:100%;height:100%}
+.lm-mark img{width:100%;height:100%;object-fit:contain;transform:rotate(28deg)}
+
+/* 1 journey */
+.j-head{position:absolute;top:58px;left:16px;right:16px;padding:16px 18px;border-radius:24px;z-index:5;display:flex;flex-direction:column;gap:6px}
+.j-row{display:flex;justify-content:space-between;align-items:center;font:600 13px var(--ui);color:var(--muted)}
+.j-row b{color:var(--ink)}
+.j-head h2{margin:2px 0 0;font:400 34px/1 var(--display)}
+.bar{height:6px;border-radius:6px;background:var(--sheet2);overflow:hidden}
+.bar i{display:block;height:100%;width:42%;background:var(--gilt);border-radius:6px}
+.j-art{position:absolute;inset:0;background:url(/art/scene-journey-1200.webp) center 62%/cover}
+.j-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--paper) 0%,transparent 26%,transparent 62%,var(--paper) 88%)}
+.j-today{position:absolute;left:16px;right:16px;bottom:104px;border-radius:26px;padding:18px 18px 16px;z-index:5;display:flex;flex-direction:column;gap:12px}
+.j-today .r{display:flex;justify-content:space-between;align-items:center}
+.j-today h3{margin:0;font:400 28px/1.05 var(--display)}
+.j-today small{color:var(--muted);font-size:14px}
+.j-today .btn{height:46px;padding:0 22px;border-radius:999px;font-size:16px}
+.chips{display:flex;gap:8px}
+.chip{font:500 13px var(--ui);padding:7px 11px;border-radius:999px;background:var(--sheet2);color:var(--ink)}
+
+/* 2 feed */
+.f-bg{position:absolute;inset:0;background:url(feed-bg.jpg) center/cover}
+.f-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,6,.55),rgba(10,8,6,.25) 30%,rgba(10,8,6,.55) 70%,rgba(10,8,6,.85))}
+.feed .sb{color:#F4F0E8}
+.f-top{position:absolute;top:58px;left:18px;right:18px;display:flex;align-items:center;gap:12px;z-index:5;color:#F4F0E8;font:600 12px var(--ui);letter-spacing:1.2px}
+.f-top .bar{flex:1;background:rgba(255,255,255,.2)}
+.f-card{position:absolute;left:18px;right:18px;top:210px;border-radius:30px;padding:30px 22px 24px;z-index:5;text-align:center;display:flex;flex-direction:column;gap:12px;color:#F4F0E8;
+  background:rgba(20,16,12,.32);border-color:rgba(255,255,255,.18)}
+.f-card .w{font:400 62px/1 var(--display);letter-spacing:-.3px}
+.f-card .p{font:18px var(--ipa);opacity:.85}
+.f-card .p em{font:italic 16px var(--text);margin-left:10px;opacity:.9}
+.f-card .d{font:19px/1.45 var(--ui)}
+.f-card .x{font:italic 18px/1.5 var(--text);opacity:.82}
+.lvl{display:inline-block;font:700 11px/1 var(--ui);letter-spacing:1px;padding:5px 7px;border-radius:6px;border:1px solid currentColor;margin-left:8px;vertical-align:3px}
+.f-acts{position:absolute;left:0;right:0;bottom:120px;display:flex;justify-content:center;gap:16px;z-index:5}
+.f-acts span{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#F4F0E8;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22)}
+.f-acts svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7}
+.feed .tabs{background:rgba(20,16,12,.35);border-color:rgba(255,255,255,.14)}
+.feed .tabs span{color:rgba(244,240,232,.65)}.feed .tabs span.on{color:#F4F0E8}
+
+/* 3 lesson intro */
+.close{position:absolute;top:58px;left:20px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;z-index:5;font-size:20px;color:var(--ink)}
+.li-dial{position:absolute;top:110px;left:16px;right:16px;height:330px;border-radius:30px;display:grid;place-items:center}
+.li-dial .ring{width:220px;height:220px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.li-dial .n{font:400 88px/1 var(--display)}
+.li-dial .n span{font-size:40px;color:var(--muted)}
+.li-dial .t{font:600 11px var(--ui);letter-spacing:1.6px;color:var(--muted);text-transform:uppercase}
+.li-body{position:absolute;top:466px;left:24px;right:24px;display:flex;flex-direction:column;gap:18px}
+.li-body h2{margin:0;font:400 32px/1.05 var(--display)}
+.step{display:grid;grid-template-columns:30px 1fr;gap:12px}
+.step i{font:400 22px/1 var(--display);color:var(--gilt);font-style:normal}
+.step b{display:block;font:600 16px var(--ui)}
+.step span{color:var(--muted);font-size:14.5px}
+.li .btn{position:absolute;left:20px;right:20px;bottom:40px}
+
+/* 4 lesson complete */
+.lc{background:var(--paper)}
+.lc-band{position:absolute;inset:0}
+.lc-mark{position:absolute;top:120px;left:50%;width:150px;height:200px;margin-left:-75px;z-index:3}
+.lc-body{position:absolute;top:350px;left:20px;right:20px;border-radius:30px;padding:26px 22px 22px;z-index:4;text-align:center;display:flex;flex-direction:column;gap:14px}
+.lc-body h2{margin:0;font:400 40px/1 var(--display)}
+.lc-words{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.lc-words span{font:italic 17px var(--text);padding:6px 12px;border-radius:999px;background:var(--sheet2)}
+.lc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--rule);padding-top:14px}
+.lc-stats b{display:block;font:400 30px/1 var(--display)}
+.lc-stats small{font-size:12px;color:var(--muted)}
+.lc .btn{position:absolute;left:20px;right:20px;bottom:40px;z-index:4}
+.fall{position:absolute;top:-40px;width:22px;height:28px;background:url(/art/leaf.webp) center/contain no-repeat;z-index:2;opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .fall{animation:fall 7s cubic-bezier(.4,.1,.6,1) infinite}
+  .fall.b{animation-delay:1.6s;left:22%!important}.fall.c{animation-delay:3.1s}.fall.d{animation-delay:4.6s}
+}
+@keyframes fall{0%{opacity:0;transform:translate(0,0) rotate(0)}8%{opacity:1}
+  30%{transform:translate(34px,240px) rotate(70deg)}55%{transform:translate(-20px,480px) rotate(150deg)}
+  80%{opacity:1;transform:translate(26px,700px) rotate(230deg)}100%{opacity:0;transform:translate(0,880px) rotate(300deg)}}
+
+/* 5 word detail */
+.wd-body{position:absolute;top:116px;left:24px;right:24px;display:flex;flex-direction:column;gap:10px}
+.wd-body .w{font:400 70px/1 var(--display);letter-spacing:-.4px;margin-top:6px}
+.wd-body .p{font:20px var(--ipa);color:var(--muted)}
+.wd-body .p em{font:italic 17px var(--text);margin-left:10px}
+.wd-sense{margin-top:14px;border-radius:22px;padding:20px;background:var(--sheet);border:1px solid var(--rule);display:flex;flex-direction:column;gap:10px}
+.wd-sense .d{font:20px/1.45 var(--text)}
+.wd-sense .x{font:italic 18px/1.5 var(--text);color:var(--muted)}
+.wd-meta{display:flex;gap:8px;flex-wrap:wrap}
+.wd-meta span{font:500 13px var(--ui);padding:7px 11px;border-radius:999px;background:var(--sheet2)}
+.wd-origin{border-top:1px solid var(--rule);padding-top:14px;margin-top:6px;color:var(--muted);font-size:14.5px}
+.wd-origin b{display:block;color:var(--ink);font:600 12px var(--ui);letter-spacing:1.4px;text-transform:uppercase;margin-bottom:4px}
+
+/* 6 widget on the home screen */
+.hs{position:absolute;inset:0}
+.hs .sb{color:var(--ink)}
+.hs-time{position:absolute;top:90px;left:0;right:0;text-align:center;font:400 76px/1 var(--display);color:var(--ink);z-index:2}
+.hs-date{position:absolute;top:66px;left:0;right:0;text-align:center;font:600 15px var(--ui);color:var(--muted);z-index:2}
+.wg{position:absolute;left:24px;right:24px;top:220px;height:170px;border-radius:26px;padding:16px 18px;z-index:3;display:flex;flex-direction:column;gap:6px;color:var(--ink);
+  background:var(--glass);border-color:var(--glass-line)}
+.wg .r{display:flex;justify-content:space-between;align-items:center;font:600 12px var(--ui);color:var(--muted)}
+.wg .r img{width:22px;height:22px;border-radius:6px}
+.wg .w{font:400 40px/1 var(--display)}
+.wg .d{font:15px/1.4 var(--ui);color:var(--muted)}
+.wg-sm{position:absolute;top:410px;width:162px;height:162px;border-radius:26px;padding:14px;z-index:3;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);
+  background:var(--glass);border-color:var(--glass-line)}
+.wg-sm.l{left:24px}.wg-sm.r{right:24px}
+.wg-sm .w{font:400 28px/1 var(--display)}
+.wg-sm .p{font:15px var(--ipa);color:var(--muted)}
+.wg-sm .k{font:600 11px var(--ui);letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.wg-sm .big{font:400 54px/1 var(--display)}
+.dock{position:absolute;left:14px;right:14px;bottom:18px;height:92px;border-radius:32px;z-index:3;display:flex;justify-content:space-around;align-items:center;background:var(--glass);border-color:var(--glass-line)}
+.dock i{width:62px;height:62px;border-radius:16px;background:var(--sheet2)}
+.dock i.lx{background:#211D16 url(/brand/icon-128.png) center/cover}
+
+/* 7 paywall */
+.pw{background:var(--forest);color:var(--forest-ink)}
+.pw .close{color:var(--forest-ink)}
+.pw-badge{position:absolute;top:96px;left:50%;width:84px;height:110px;margin-left:-42px}
+.pw-body{position:absolute;top:214px;left:24px;right:24px;display:flex;flex-direction:column;gap:14px;text-align:center}
+.pw-body .eyebrow{color:#D9C38C}
+.pw-body h2{margin:0;font:400 36px/1.05 var(--display)}
+.pw-list{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:9px;text-align:left;font-size:15.5px;color:var(--forest-muted)}
+.pw-list li{display:grid;grid-template-columns:20px 1fr;gap:8px}
+.pw-list li::before{content:"";width:9px;height:12px;margin-top:5px;background:url(/art/leaf.webp) center/contain no-repeat;transform:rotate(28deg)}
+.plans{position:absolute;left:20px;right:20px;top:548px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.plan{border-radius:20px;padding:16px 12px 14px;text-align:center;display:flex;flex-direction:column;gap:4px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:var(--forest-ink)}
+.plan.on{border:1.5px solid #D9C38C;background:rgba(255,255,255,.14)}
+.plan .tag{font:700 10px var(--ui);letter-spacing:1.2px;text-transform:uppercase;color:#D9C38C}
+.plan b{font:600 15px var(--ui)}
+.plan .pr{font:400 30px/1 var(--display)}
+.plan small{font-size:12px;color:var(--forest-muted)}
+.pw .btn{position:absolute;left:20px;right:20px;bottom:66px;background:#D9C38C;color:#1F2A22}
+.pw .fine{position:absolute;left:24px;right:24px;bottom:28px;text-align:center;font-size:11.5px;color:var(--forest-muted)}
+@media(max-width:380px){.phone{transform:scale(.92);transform-origin:top center}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>The Lexfall app, new brand<span class="leaf" role="img" aria-label="."></span></h1>
+    <p>A browser preview of seven app screens with the brand refresh: dictionary type, phonetic face for pronunciations, glass, the moving wheat and sage gradient, and liquid gold for earned moments. Real words and layouts from the app. Not shipped anywhere.</p>
+  </div>
+  <div class="toggle" role="group" aria-label="Theme">
+    <button id="tSys" aria-pressed="true">System</button><button id="tLight" aria-pressed="false">Light</button><button id="tDark" aria-pressed="false">Dark</button>
+  </div>
+</header>
+
+<main class="rack">
+
+  <div class="slot"><div class="phone"><div class="scr">
+    <div class="sb"><span>9:41</span><i>●●● ▮</i></div>
+    <div class="j-art" aria-hidden="true"></div>
+    <div class="j-head glass">
+      <div class="j-row"><span><b>12</b> day streak · 56 days to IELTS</span><span>Edit</span></div>
+      <span class="eyebrow">Next milestone</span>
+      <h2>Level 2 · Building</h2>
+      <div class="bar"><i></i></div>
+      <div class="j-row"><span>10 mastered words to Level 2</span></div>
+    </div>
+    <div class="j-today glass">
+      <div class="r"><div><h3>Today's lesson<span class="leaf" role="img" aria-label="."></span></h3><small>About 3 min · 5 new words</small></div><span class="btn">Start</span></div>
+      <div class="chips"><span class="chip">equanimity</span><span class="chip">sedulous</span><span class="chip">+3</span></div>
+    </div>
+    <nav class="tabs glass" aria-label="App tabs">
+      <span class="on"><svg viewBox="0 0 24 24"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Journey</span>
+      <span><svg viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 012 2v13a2 2 0 00-2-2H4zM20 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></svg>Words</span>
+      <span><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>Library</span>
+      <span><svg viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Progress</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>Profile</span>
+    </nav>
+  </div></div><p class="cap"><b>Journey</b>The header and today's lesson in glass over the scenery. Headlines in Caslon end with the leaf.</p></div>
+
+  <div class="slot"><div class="phone"><div class="scr feed">
+    <div class="f-bg" aria-hidden="true"></div>
+    <div class="sb"><span>9:41</span><i>●●● ▮</i></div>
+    <div class="f-top"><span>8 / 10 TODAY</span><div class="bar"><i style="width:80%;background:#D9C38C"></i></div></div>
+    <div class="f-card glass">
+      <div class="w">calculus</div>
+      <div class="p">/ˈkælkjʊləs/<em>noun</em><span class="lvl">C2</span></div>
+      <div class="d">Hardened, mineralised plaque that adheres firmly to the teeth and can only be removed by scaling.</div>
+      <div class="x">“The hygienist removed the calculus below the gum line.”</div>
+    </div>
+    <div class="f-acts">
+      <span class="glass"><svg viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 6.5-8 11-8 11z"/></svg></span>
+      <span class="glass"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg></span>
+      <span class="glass"><svg viewBox="0 0 24 24"><path d="M4 12v8h16v-8M12 3v13M7 8l5-5 5 5"/></svg></span>
+    </div>
+    <nav class="tabs glass" aria-label="App tabs">
+      <span><svg viewBox="0 0 24 24"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/></svg>Journey</span>
+      <span class="on"><svg viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 012 2v13a2 2 0 00-2-2H4zM20 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></svg>Words</span>
+      <span><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>Library</span>
+      <span><svg viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Progress</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>Profile</span>
+    </nav>
+  </div></div><p class="cap"><b>Words feed</b>The card is a dictionary entry: Caslon headword, IPA in Charis SIL, italic example. Glass over the photo.</p></div>
+
+  <div class="slot"><div class="phone"><div class="scr li">
+    <div class="sb"><span>9:41</span><i>●●● ▮</i></div>
+    <span class="close glass" aria-hidden="true">×</span>
+    <div class="li-dial sg-band">
+      <div class="ring glass"><div class="n">0<span> / 10</span></div><div class="t">5 words today</div></div>
+    </div>
+    <div class="li-body">
+      <span class="eyebrow">Daily lesson · 1-day streak</span>
+      <h2>Two steps, about three minutes<span class="leaf" role="img" aria-label="."></span></h2>
+      <div class="step"><i>1</i><div><b>Meet 5 new words</b><span>A gentle first look, then a quick check. It is not graded.</span></div></div>
+      <div class="step"><i>2</i><div><b>They come back tomorrow</b><span>Each word returns for a recall check right before you would forget it.</span></div></div>
+    </div>
+    <span class="btn">Start</span>
+  </div></div><p class="cap"><b>Lesson intro</b>The counter sits in glass over the moving wheat and sage gradient, the same shader as the website.</p></div>
+
+  <div class="slot"><div class="phone"><div class="scr lc">
+    <div class="lc-band sg-band" aria-hidden="true"></div>
+    <div class="sb"><span>9:41</span><i>●●● ▮</i></div>
+    <i class="fall" style="left:70%"></i><i class="fall b"></i><i class="fall c" style="left:48%"></i><i class="fall d" style="left:84%"></i>
+    <div class="lc-mark lm-mark"><img src="/art/leaf.webp" alt=""></div>
+    <div class="lc-body glass">
+      <span class="eyebrow">Lesson 14 complete</span>
+      <h2>Five words, yours<span class="leaf" role="img" aria-label="."></span></h2>
+      <div class="lc-words"><span>equanimity</span><span>sedulous</span><span>petrichor</span><span>tendentious</span><span>accretive</span></div>
+      <div class="lc-stats"><div><b>13</b><small>day streak</small></div><div><b>214</b><small>words learned</small></div><div><b>C1</b><small>your level</small></div></div>
+    </div>
+    <span class="btn">Continue</span>
+  </div></div><p class="cap"><b>Lesson complete (new moment)</b>Liquid gold leaf and falling leaves. Gold appears only for earned moments like this one.</p></div>
+
+  <div class="slot"><div class="phone"><div class="scr wd">
+    <div class="sb"><span>9:41</span><i>●●● ▮</i></div>
+    <span class="close glass" aria-hidden="true">‹</span>
+    <div class="wd-body">
+      <span class="eyebrow" style="margin-top:2px">Consent and explaining · Healthcare</span>
+      <div class="w">invasive</div>
+      <div class="p">/ɪnˈveɪsɪv/<em>adjective</em><span class="lvl" style="color:var(--gilt)">B2</span></div>
+      <div class="wd-sense">
+        <div class="d">Of a procedure: involving entry into the body by incision or the insertion of an instrument.</div>
+        <div class="x">“We would rather try a less invasive option before surgery.”</div>
+        <div class="wd-meta"><span>Similar: intrusive</span><span>Opposite: non-invasive</span></div>
+      </div>
+      <div class="wd-origin"><b>Origin</b>From Latin invadere, to go into, through medieval French invasif.</div>
+    </div>
+  </div></div><p class="cap"><b>Word detail</b>Laid out like a dictionary page: headword, pronunciation, sense, example, origin.</p></div>
+
+  <div class="slot"><div class="phone"><div class="scr">
+    <div class="hs sg-band" aria-hidden="true"></div>
+    <div class="sb"><span>9:41</span><i>●●● ▮</i></div>
+    <div class="hs-date">Thursday 19 November</div>
+    <div class="hs-time">9:41</div>
+    <div class="wg glass">
+      <div class="r"><span>LEXFALL · WORD OF THE HOUR</span><img src="/brand/icon-64.png" alt=""></div>
+      <div class="w">sestina<span class="leaf" role="img" aria-label="."></span></div>
+      <div class="d">An elaborate poem of six six-line stanzas whose line endings recur in a fixed rotating order.</div>
+    </div>
+    <div class="wg-sm glass l"><span class="k">Next word</span><div><div class="w">halcyon</div><div class="p">/ˈhælsiən/</div></div></div>
+    <div class="wg-sm glass r"><span class="k">Streak</span><div class="big">12</div><span class="k" style="letter-spacing:.4px;text-transform:none">days, keep it going</span></div>
+    <div class="dock glass"><i></i><i class="lx"></i><i></i><i></i></div>
+  </div></div><p class="cap"><b>Widgets</b>Glass widgets over the brand gradient wallpaper. The most-seen surface, so it gets the dictionary look first.</p></div>
+
+  <div class="slot"><div class="phone"><div class="scr pw">
+    <div class="sb"><span>9:41</span><i>●●● ▮</i></div>
+    <span class="close" aria-hidden="true">×</span>
+    <div class="pw-badge lm-mark"><img src="/art/leaf.webp" alt=""></div>
+    <div class="pw-body">
+      <span class="eyebrow">Full access</span>
+      <h2>Master the language of healthcare<span class="leaf" role="img" aria-label="."></span></h2>
+      <ul class="pw-list">
+        <li>Every field: Healthcare, Law, Business and General</li>
+        <li>Your plan: 10 words a day, about 3,650 a year</li>
+        <li>Home Screen and Lock Screen widgets</li>
+        <li>Voice pronunciations and your own word lists</li>
+      </ul>
+    </div>
+    <div class="plans">
+      <div class="plan on"><span class="tag">Save 64%</span><b>Yearly</b><span class="pr">$29.99</span><small>$0.58 a week</small></div>
+      <div class="plan"><span class="tag">Monthly</span><b>Monthly</b><span class="pr">$6.99</span><small>$1.61 a week</small></div>
+    </div>
+    <span class="btn">Start free trial</span>
+    <p class="fine">Renews automatically. Cancel any time in App Store settings.</p>
+  </div></div><p class="cap"><b>Paywall</b>Forest page, liquid gold leaf as the Full Access badge, leaf bullets, Caslon prices.</p></div>
+
+</main>
+<script type="module" src="/fx/fx.js?v=p1"></script>
+<script type="module" src="theme.js"></script>
+</body>
+</html>
