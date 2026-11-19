@@ -1,0 +1,4 @@
+Lexfall homepage effects (/fx) build on these open-source projects:
+- dashersw/liquid-glass-js (MIT): liquid glass refraction, ported to the hero word card.
+- ruucm/shadergradient (MIT): plane gradient shader and its classic Perlin noise (from hughsk/glsl-noise, MIT).
+- @paper-design/shaders (Apache-2.0), the liquid metal shader behind paper-design/liquid-logo.

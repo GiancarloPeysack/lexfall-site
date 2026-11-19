@@ -34,7 +34,7 @@
 <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="/styles.css?v=34">
+<link rel="stylesheet" href="/styles.css?v=35">
 <!-- /chrome:head -->
 <link rel="preload" as="image" type="image/avif" href="/art/scene-opener-600.avif?v=34" imagesrcset="/art/scene-opener-600.avif?v=34 600w, /art/scene-opener-1200.avif?v=34 1200w" imagesizes="(min-width:900px) 460px, 86vw">
 </head>
@@ -249,8 +249,9 @@
   <!-- DOWNLOAD -->
   <section class="section" id="download" aria-labelledby="dl-title" style="padding-bottom:0">
     <div class="wrap">
+      <div class="sg-band">
       <div class="closer glass rise">
-        <picture><source type="image/avif" srcset="/art/obj-open-book-240.avif 1x, /art/obj-open-book-480.avif 2x"><img class="obj-top" src="/art/obj-open-book-240.webp" srcset="/art/obj-open-book-240.webp 1x, /art/obj-open-book-480.webp 2x" width="120" height="75" alt="" loading="lazy"></picture>
+        <div class="lm-mark"><picture><source type="image/avif" srcset="/art/obj-open-book-240.avif 1x, /art/obj-open-book-480.avif 2x"><img class="obj-top" src="/art/obj-open-book-240.webp" srcset="/art/obj-open-book-240.webp 1x, /art/obj-open-book-480.webp 2x" width="120" height="75" alt="" loading="lazy"></picture></div>
         <h2 id="dl-title">Start your first lesson.</h2>
         <p>Pick your level in one tap, then a guided first lesson with two words. Day 1, done.</p>
         <!-- chrome:badges ct=web_home -->
@@ -258,6 +259,7 @@
 <!-- /chrome:badges -->
         <div class="qr"><img src="/brand/qr-appstore.svg" alt="QR code that opens Lexfall on the App Store" width="92" height="92" loading="lazy"><div><b>On a computer?</b><span>Scan with your iPhone camera to get Lexfall.</span></div></div>
         <p class="note">Requires iOS 15.1 or later. Free to download; after a free trial, a subscription unlocks every field and premium feature. It renews automatically, and you can cancel any time in App Store settings.</p>
+      </div>
       </div>
     </div>
   </section>
@@ -292,6 +294,7 @@
 })();
 </script>
 <!-- /chrome:foot -->
+<script type="module" src="/fx/fx.js?v=1"></script>
 
 <script>
 /* real words from the app's corpus (data/corpus.json) */

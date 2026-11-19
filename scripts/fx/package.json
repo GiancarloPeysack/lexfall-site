@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "type": "module",
+  "description": "Builds /fx (homepage effects). npm ci && node build.mjs",
+  "devDependencies": { "@paper-design/shaders": "0.0.82", "esbuild": "^0.24.0" }
+}

@@ -687,3 +687,19 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 .nobr{white-space:nowrap}
 .ed-hero .sub{max-width:34ch}
 @media(min-width:900px){.ed-hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}.ed-hero .wordcard{left:-30%;bottom:7%}}
+
+/* ---------------------------------------------------------------- homepage effects (/fx, scripts/fx/fx.js) */
+/* hero word card: liquid glass refraction (after liquid-glass-js) replaces the CSS blur once the canvas is drawn */
+.wordcard.lg-on{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.lg-canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;z-index:-2;display:block}
+/* download panel: shadergradient-style band behind the glass */
+.sg-band{position:relative;border-radius:40px}
+.sg-band.sg-on{padding:72px clamp(14px,5vw,64px) 40px;margin:0 auto;max-width:900px}
+.sg-canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;z-index:0;display:block}
+.sg-band>.closer{z-index:1}
+/* the Lexfall leaf in liquid metal (after paper-design/liquid-logo) in place of the open book */
+.lm-mark{position:relative}
+.lm-stage{display:none}
+.lm-mark.lm-on picture{display:none}
+.lm-mark.lm-on .lm-stage{display:block;width:120px;height:162px;margin:-118px auto 0;position:relative}
+.lm-stage canvas{display:block}
