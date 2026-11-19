@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journey Climb Preview</title>
+<meta name="robots" content="noindex">
+<script>try{var t=localStorage.getItem("lx-preview-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+@font-face{font-family:'Lexfall Serif';font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/libre-caslon-display-400.woff2) format('woff2')}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/hanken-grotesk.woff2) format('woff2')}
+
+:root{
+  --paper:#F4F0E8; --sheet:#FBF8F1; --sheet2:#ECE6DA; --rule:#E2DBCC; --ink:#211D16; --muted:#6E665A;
+  --gilt:#9A7B2E; --on-gilt:#FBF8F1;
+  --glass:rgba(251,248,241,.62); --glass-line:rgba(255,255,255,.7); --shadow:0 18px 40px -18px rgba(33,29,22,.35);
+  --page:#E9E3D7; --page-ink:#211D16;
+  --display:'Lexfall Serif',Georgia,serif; --ui:'Hanken Grotesk',-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#100E0B; --sheet:#1A1712; --sheet2:#221E18; --rule:#322C22; --ink:#ECE5D7; --muted:#C3BAA7;
+  --gilt:#C5B07D; --on-gilt:#100E0B;
+  --glass:rgba(28,24,18,.55); --glass-line:rgba(255,255,255,.12); --shadow:0 22px 50px -20px rgba(0,0,0,.7);
+  --page:#0A0907; --page-ink:#ECE5D7; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#100E0B; --sheet:#1A1712; --sheet2:#221E18; --rule:#322C22; --ink:#ECE5D7; --muted:#C3BAA7;
+  --gilt:#C5B07D; --on-gilt:#100E0B;
+  --glass:rgba(28,24,18,.55); --glass-line:rgba(255,255,255,.12); --shadow:0 22px 50px -20px rgba(0,0,0,.7);
+  --page:#0A0907; --page-ink:#ECE5D7; color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--page);color:var(--page-ink);font:15px/1.5 var(--ui);padding:24px 16px 48px;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;gap:28px 40px;justify-content:center;align-items:flex-start}
+.notes{flex:1 1 300px;max-width:420px;min-width:0}
+.notes h1{font:400 clamp(30px,4vw,42px)/1.05 var(--display);margin:0 0 10px}
+.notes p,.notes li{color:var(--muted)}
+.notes ul{padding-left:18px;margin:8px 0}
+.notes b{color:var(--page-ink)}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin:6px 0 2px}
+.ctl small{font:600 11px var(--ui);letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:86px}
+.toggle{display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--sheet);border:1px solid var(--rule);border-radius:999px;padding:4px}
+.toggle button{font:600 13px var(--ui);border:0;background:transparent;color:var(--muted);padding:8px 13px;border-radius:999px;cursor:pointer;min-height:36px}
+.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.toggle button:focus-visible{outline:2px solid var(--gilt);outline-offset:2px}
+
+@media (max-width:760px){.phone{order:-1}}   /* on a phone the sketch comes first, notes after */
+.phone{border-radius:48px;padding:9px;background:#0d0c0a;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);flex:none}
+.scr{position:relative;width:390px;height:844px;transform-origin:0 0;border-radius:46px;overflow:hidden;background:#EEE9DA;color:var(--ink);isolation:isolate}
+#world{position:absolute;inset:0;width:390px;height:844px;display:block}
+#scroller{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;z-index:2;cursor:pointer}
+#scroller::-webkit-scrollbar{display:none}
+#spacer{height:6200px}
+
+.sb{position:absolute;top:0;left:0;right:0;height:50px;display:flex;justify-content:space-between;align-items:center;padding:14px 30px 0;font:600 16px var(--ui);z-index:20;pointer-events:none}
+.sb i{font-style:normal;letter-spacing:1px;font-size:13px}
+.glass{background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);border:1px solid var(--glass-line);box-shadow:var(--shadow)}
+.eyebrow{font:600 11px/1 var(--ui);letter-spacing:1.6px;text-transform:uppercase;color:var(--gilt)}
+.leaf{display:inline-block;width:.42em;height:.55em;background:url(/art/leaf.webp) center/contain no-repeat;transform:rotate(28deg);margin-left:.04em}
+.btn{display:flex;align-items:center;justify-content:center;height:46px;padding:0 22px;border-radius:999px;background:var(--ink);color:var(--paper);font:600 16px var(--ui);border:0;cursor:pointer}
+
+.j-head{position:absolute;top:58px;left:16px;right:16px;padding:14px 18px;border-radius:24px;z-index:5;display:flex;flex-direction:column;gap:6px;pointer-events:none}
+.j-row{display:flex;justify-content:space-between;align-items:center;font:600 13px var(--ui);color:var(--muted)}
+.j-row b{color:var(--ink)}
+.j-head h2{margin:2px 0 0;font:400 32px/1 var(--display)}
+.bar{height:6px;border-radius:6px;background:var(--sheet2);overflow:hidden}
+.bar i{display:block;height:100%;width:42%;background:var(--gilt);border-radius:6px}
+.j-today{position:absolute;left:16px;right:16px;bottom:104px;border-radius:26px;padding:16px 18px;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:opacity .25s,transform .25s}
+.j-today h3{margin:0;font:400 26px/1.05 var(--display)}
+.j-today small{color:var(--muted);font-size:14px}
+.j-today.away{opacity:0;transform:translateY(16px);pointer-events:none}
+
+.pill{position:absolute;left:50%;z-index:6;transform:translateX(-50%);border-radius:999px;padding:0 18px;min-height:44px;font:600 14px var(--ui);display:flex;align-items:center;gap:8px;white-space:nowrap;transition:opacity .3s;color:var(--ink)}
+.pill svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;transition:transform .2s}
+#hint{top:204px;pointer-events:none}
+#back{bottom:112px;opacity:0;pointer-events:none;cursor:pointer}
+#back.on{opacity:1;pointer-events:auto}
+#back.up svg{transform:rotate(180deg)}
+#toast{top:204px;opacity:0;pointer-events:none;max-width:330px;white-space:normal;text-align:center;padding:10px 18px;line-height:1.35}
+#toast.on{opacity:1}
+.hide{opacity:0!important}
+@media (prefers-reduced-motion:reduce){.pill,.j-today,.pill svg{transition:none}}
+
+.tabs{position:absolute;left:16px;right:16px;bottom:22px;height:66px;border-radius:24px;display:flex;justify-content:space-around;align-items:center;z-index:10}
+.tabs span{display:flex;flex-direction:column;align-items:center;gap:4px;font:500 11px var(--ui);color:var(--muted)}
+.tabs span.on{color:var(--ink)}
+.tabs svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="notes">
+    <h1>Journey as a climb<span class="leaf" role="img" aria-label="."></span></h1>
+    <p>A browser sketch of the Journey tab as a 2.5D path. Scroll inside the phone: up climbs, down goes back toward where you started.</p>
+    <div class="ctl"><small>Theme</small>
+      <div class="toggle" role="group" aria-label="Theme">
+        <button id="tSys" aria-pressed="true">System</button><button id="tLight" aria-pressed="false">Light</button><button id="tDark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+    <div class="ctl"><small>Time of day</small>
+      <div class="toggle" role="group" aria-label="Time of day (preview only)">
+        <button data-tod="auto" aria-pressed="true">Auto</button><button data-tod="day" aria-pressed="false">Day</button><button data-tod="evening" aria-pressed="false">Evening</button><button data-tod="night" aria-pressed="false">Night</button>
+      </div>
+    </div>
+    <ul>
+      <li><b>No visible end.</b> The path always runs over the next rise and fades into haze, so it reads as a path, not a map.</li>
+      <li><b>Places along the way.</b> Each unit is a place the path walks through: the village, the market square, the station, the library, a mountain hut, the observatory. A signpost with the unit name stands at each entrance.</li>
+      <li><b>Through the mountains.</b> A stream with a plank bridge, switchbacks up a slope, a pass between rock walls and a tunnel into the alpine valley.</li>
+      <li><b>The view changes as you climb.</b> The camera rises and tilts from the ground toward the sky.</li>
+      <li><b>Its own time of day.</b> The scenery follows the phone's clock (day, golden hour, moonlit night with lit windows), not the app theme. Theme only changes the glass, tabs and stops. Use the preview control to compare.</li>
+      <li><b>Scroll cue.</b> The view nudges up once and "Scroll to climb" shows until the first scroll. "Back to today" appears when your lesson is off screen.</li>
+      <li><b>Pro track.</b> A fainter side path branches off to the clinic (Medical track). In the app, tapping it opens the paywall.</li>
+      <li><b>Tap targets.</b> Nearby stops and the Start bubble never take less than 44 pt to tap.</li>
+      <li><b>Reduce Motion:</b> no tilt change, no glide, no pulse, no bob. Preview it with <b>?reduce=1</b>.</li>
+    </ul>
+    <p>Vector placeholder art in the Editorial Flat palette of the 2D path. The app version would use painted layers. Sketch only, not in the app.</p>
+  </div>
+
+  <div class="phone" id="phone"><div class="scr" id="scr">
+    <canvas id="world" aria-hidden="true"></canvas>
+    <div id="scroller" aria-label="Journey path, scroll to climb"><div id="spacer"></div></div>
+    <div class="sb"><span>9:41</span><i>●●● ▮</i></div>
+    <div class="j-head glass">
+      <div class="j-row"><span><b>12</b> day streak · 56 days to IELTS</span><span>Edit</span></div>
+      <span class="eyebrow">Next milestone</span>
+      <h2>Level 2 · Building</h2>
+      <div class="bar"><i></i></div>
+    </div>
+    <div class="pill glass" id="toast" role="status"></div>
+    <div class="pill glass" id="hint"><svg viewBox="0 0 24 24"><path d="M6 14l6-6 6 6"/></svg>Scroll to climb</div>
+    <button class="pill glass" id="back"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Back to today</button>
+    <div class="j-today glass" id="today">
+      <div><h3>Today's lesson<span class="leaf" role="img" aria-label="."></span></h3><small>Lesson 5 · 3 min · 5 new words</small></div>
+      <button class="btn" id="startCard">Start</button>
+    </div>
+    <nav class="tabs glass" aria-label="App tabs">
+      <span class="on"><svg viewBox="0 0 24 24"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Journey</span>
+      <span><svg viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 012 2v13a2 2 0 00-2-2H4zM20 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></svg>Words</span>
+      <span><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>Library</span>
+      <span><svg viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Progress</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>Profile</span>
+    </nav>
+  </div></div>
+</div>
+
+<script>
+// Theme switch (same key as the other preview pages). Theme only styles the UI chrome and the stops.
+(() => {
+  const KEY = 'lx-preview-theme';
+  let t = null;
+  try { t = localStorage.getItem(KEY); } catch (e) {}
+  const ids = { tSys: null, tLight: 'light', tDark: 'dark' };
+  for (const [id, v] of Object.entries(ids)) {
+    const b = document.getElementById(id);
+    b.setAttribute('aria-pressed', String(v === t));
+    b.addEventListener('click', () => { try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); } catch (e) {} location.reload(); });
+  }
+})();
+
+// Fit the 390 x 844 phone to the window.
+const phone = document.getElementById('phone'), scr = document.getElementById('scr');
+function fit() {
+  const s = Math.min(1, (innerHeight - 40) / 862, (innerWidth - 32) / 408);
+  scr.style.transform = `scale(${s})`;
+  phone.style.width = (390 * s + 18) + 'px';
+  phone.style.height = (844 * s + 18) + 'px';
+  phone.style.borderRadius = (48 * s) + 'px';
+}
+fit(); addEventListener('resize', fit);
+
+// ===================================================================================================
+// World: x right, y up, z forward along the climb. Every item is projected on its own (a point, a
+// polygon, a billboard), so the same math ports to React Native as Reanimated values + react-native-svg
+// paths. No CSS 3D, no WebGL.
+// ===================================================================================================
+const W = 390, H = 844, F = 470;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || /[?&]reduce=1/.test(location.search);
+const themeDark = (() => {
+  const t = document.documentElement.dataset.theme;
+  return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+})();
+
+function smooth(t) { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); }
+function lerp(a, b, t) { return a + (b - a) * t; }
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+function mix(c1, c2, t) { return [lerp(c1[0], c2[0], t), lerp(c1[1], c2[1], t), lerp(c1[2], c2[2], t)]; }
+const rgb = (c, a = 1) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${a})`;
+const hex = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+const shade = (c, k) => [c[0] * k, c[1] * k, c[2] * k];
+
+// ---- layout of the climb (world units) ----
+const FORK = 2560, FORK_END = 3300;            // Pro side path to the clinic
+const STREAM_Z = 3880;                          // the stream and its plank bridge
+const SW0 = 5250, SW1 = 6250;                   // switchbacks up a steep slope
+const PASS0 = 7150, PASS1 = 7700;               // the pass between two rock walls
+const TUN0 = 8050, TUN1 = 8560;                 // the tunnel into the alpine valley
+
+const swK = z => smooth((z - SW0) / 160) * (1 - smooth((z - (SW1 - 160)) / 160));
+const passK = z => smooth((z - PASS0) / 180) * (1 - smooth((z - (PASS1 - 180)) / 180));
+const tunK = z => smooth((z - (TUN0 - 500)) / 400) * (1 - smooth((z - (TUN1 + 100)) / 400));
+const baseX = z => 150 * Math.sin(z / 430) + 70 * Math.sin(z / 1250 + 1);
+function zig(z) {                               // rounded hairpins: sin of a triangle wave
+  const u = (z - SW0) / 250, tri = 2 * Math.abs(2 * (u - Math.floor(u + .5))) - 1;
+  return 170 * Math.sin(tri * Math.PI / 2);
+}
+const calmX = z => baseX(z) * (1 - .75 * swK(z)) * (1 - .85 * passK(z)) * (1 - .9 * tunK(z));
+const pathX = z => calmX(z) + zig(z) * swK(z);
+// Altitude: steady climb with long rises (so the path goes over the next crest), steep on the switchbacks.
+// Gentle at the trailhead, steepest mid-mountain, easing off in the alpine valley so the sky opens up.
+const alt = z => 0.05 * z + 1500 * smooth((z - 1200) / 9600) + 80 * Math.sin(z / 1100) + 280 * smooth((z - SW0) / (SW1 - SW0));
+const noise = (x, z) => Math.sin(x / 170 + z / 310) * 0.5 + Math.sin(x / 61 - z / 97) * 0.22 + Math.sin(x / 413 + z / 733) * 0.6;
+// Altitude zones (2D landscape.ts): 0 meadow, 1 forest, 2 upland rock, 3 alpine. A float, blended.
+const zoneF = z => smooth((z - 2900) / 500) + smooth((z - 5100) / 500) + smooth((z - (TUN0 + 250)) / 60);
+function ground(x, z) {
+  const dx = Math.abs(x - calmX(z));
+  const flat = 80 + 200 * swK(z);
+  let bowl = dx < flat ? 0 : Math.pow((dx - flat) / 520, 1.5) * 300;
+  const pk = passK(z);
+  if (pk > 0 && dx > 70) bowl += pk * (460 * smooth((dx - 70) / 110) + 110 * Math.abs(Math.sin(x / 47 + z / 39)));
+  let y = alt(z) + bowl + noise(x, z) * Math.min(bowl, 120) * 0.45;
+  if (z > TUN0 && z < TUN1) {                   // the massif the tunnel runs through: a cliff face at TUN0
+    const u = (z - TUN0) / (TUN1 - TUN0);
+    y = Math.max(y, alt(z) + 330 + 300 * Math.sin(Math.PI * u) + 80 * Math.sin(x / 230 + u * 3) + 40 * Math.sin(x / 71));
+  }
+  return y;
+}
+const branchX = z => pathX(z) - 250 * smooth((z - FORK) / (FORK_END - FORK));   // off to the left, up the slope
+const streamZ = x => STREAM_Z + 46 * Math.sin(x / 290) + 18 * Math.sin(x / 97 + 1);
+
+// ---- scene palette: Editorial Flat (landscape.ts SCENE_LIGHT + ZONE_TONES.light). No gold in the scenery. ----
+const BASE = {
+  ink: '#211D16', pine: '#2F4A3A', pineSh: '#243A2D', pineFar: '#5F7766', trunk: '#6B5640',
+  slate: '#5B6670', slateSh: '#48525B', slateFar: '#9AA2A8', snow: '#FBF8F1',
+  tan: '#C9B48E', tanSh: '#B39D76', ground: '#DCCDAE', stone: '#A99F8B', stoneSh: '#8F8572',
+  water: '#9DB0B5', brick: '#A0573E', plaster: '#EFE8D8', round: '#5B7A57', roundSh: '#4A6748', window: '#E8E0D0',
+  g0: '#D9DDC4', g1: '#D2D9BD', g2: '#DDD9C7', g3: '#D8D7CE',
+  p0: '#CCD3B4', p1: '#C4CDAB', p2: '#CFC8B2', p3: '#F4F1EA',
+  h0: '#B8C3A0', h1: '#AAB894', h2: '#BEB69F', h3: '#BCC1C2',
+  s0: '#A4B18D', s1: '#97A681', s2: '#A9A08A', s3: '#A2A8AA',
+};
+// Time of day grades the whole scene (scenery never follows the app theme).
+const TODS = {
+  day: { mul: [1, 1, 1], tint: '#000000', ta: 0, fog: '#ECE7D8', skyTop: '#C7D6DA', skyHigh: '#AFC6D3', skyLow: '#F1ECDD',
+    glow: [255, 247, 224], glowA: .5, glowAt: [.76, .15], stars: 0, moon: 0, lit: 0, cloud: '#FFFFFF', cloudA: .75, range: '#B3BFC4' },
+  evening: { mul: [.95, .89, .84], tint: '#B97C6A', ta: .08, fog: '#E7D0BE', skyTop: '#8F93B6', skyHigh: '#7A7CA4', skyLow: '#F0BE95',
+    glow: [255, 214, 150], glowA: .8, glowAt: [.7, .44], stars: .12, moon: 0, lit: .75, cloud: '#F6CDB0', cloudA: .7, range: '#A890A0' },
+  night: { mul: [.33, .38, .5], tint: '#1A2338', ta: .18, fog: '#2B3449', skyTop: '#0B1121', skyHigh: '#070B17', skyLow: '#26304A',
+    glow: [200, 214, 240], glowA: .22, glowAt: [.8, .29], stars: 1, moon: 1, lit: 1, cloud: '#4A5470', cloudA: .45, range: '#2E3850' },
+};
+const TOD_KEY = 'lx-preview-tod';
+let todPref = 'auto';
+try { todPref = localStorage.getItem(TOD_KEY) || 'auto'; } catch (e) {}
+function todFromClock() {
+  const d = new Date(), h = d.getHours() + d.getMinutes() / 60;
+  return h >= 6.5 && h < 17 ? 'day' : h >= 17 && h < 20.5 ? 'evening' : 'night';
+}
+let TOD = 'day', T = TODS.day, SC = {}, sbLight = null;
+function applyTod() {
+  TOD = todPref === 'auto' ? todFromClock() : todPref;
+  T = TODS[TOD];
+  const tint = hex(T.tint);
+  const grade = c => { c = hex(c); return [c[0] * T.mul[0] * (1 - T.ta) + tint[0] * T.ta, c[1] * T.mul[1] * (1 - T.ta) + tint[1] * T.ta, c[2] * T.mul[2] * (1 - T.ta) + tint[2] * T.ta]; };
+  SC = {};
+  for (const k in BASE) SC[k] = grade(BASE[k]);
+  SC.fog = hex(T.fog); SC.skyTop = hex(T.skyTop); SC.skyHigh = hex(T.skyHigh); SC.skyLow = hex(T.skyLow);
+  SC.cloud = hex(T.cloud); SC.range = hex(T.range);
+  SC.lit = [246, 203, 116];                     // lit windows (evening and night only)
+  SC.portal = TOD === 'night' ? [70, 84, 112] : mix(hex(T.fog), [255, 250, 235], .4);
+  scr.style.background = T.fog;
+  sbLight = null;
+  document.querySelectorAll('[data-tod]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tod === todPref)));
+}
+applyTod();
+document.querySelectorAll('[data-tod]').forEach(b => b.addEventListener('click', () => {
+  todPref = b.dataset.tod;
+  try { todPref === 'auto' ? localStorage.removeItem(TOD_KEY) : localStorage.setItem(TOD_KEY, todPref); } catch (e) {}
+  applyTod();
+}));
+setInterval(() => { if (todPref === 'auto') applyTod(); }, 60000);
+
+// Theme colours for the stops and their chips (UI, so they follow the app theme).
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const UI = { gilt: hex(css('--gilt')), onGilt: hex(css('--on-gilt')), sheet: hex(css('--sheet')), ink: hex(css('--ink')), muted: hex(css('--muted')) };
+// Text drawn on the ground always uses the day ink on a paper chip, so it reads at any time of day.
+const CHIP = { bg: hex('#FBF8F1'), ink: hex('#211D16'), muted: hex('#6E665A') };
+
+// ---- lessons and units ----
+const CURRENT = 4, PER_UNIT = 5;
+const stops = [];
+{
+  let z = 200;
+  for (let i = 0; i < 70; i++) {
+    if (z > TUN0 - 140 && z < TUN1 + 160) z = TUN1 + 160;           // no stop inside the tunnel
+    if (Math.abs(z - STREAM_Z) < 120) z = STREAM_Z + 140;             // none on the bridge
+    stops.push({ kind: 'stop', i, z });
+    z += 440;
+  }
+}
+const todayZ = stops[CURRENT].z;
+const proStop = { kind: 'pro', z: FORK_END };
+const UNITS = [
+  { field: 'Everyday life', title: 'The village' },
+  { field: 'Everyday life', title: 'The market square' },
+  { field: 'Work', title: 'The station' },
+  { field: 'Exams', title: 'The library' },
+  { field: 'Everyday life', title: 'The mountain hut' },
+  { field: 'Exams', title: 'The observatory' },
+  { field: 'Work', title: 'The harbour office' },
+  { field: 'Everyday life', title: 'The lakeside inn' },
+];
+
+// ---- scenery, seeded ----
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const objs = [];          // everything drawn inside a depth slice (sorted far to near once)
+const reserved = [];      // footprints trees keep clear of: [x0, x1, z0, z1]
+const blocked = (x, z, pad = 0) => reserved.some(r => x > r[0] - pad && x < r[1] + pad && z > r[2] - pad && z < r[3] + pad);
+function nearRoad(x, z, pad) {
+  for (let dz = -90; dz <= 90; dz += 15) {
+    if (Math.abs(x - pathX(z + dz)) < pad) return true;
+    if (z + dz > FORK - 40 && z + dz < FORK_END + 260 && Math.abs(x - branchX(Math.min(z + dz, FORK_END))) < pad - 20) return true;
+  }
+  return false;
+}
+
+// Buildings: an extruded box (front face, the side face toward the camera, roof), all per-item math.
+const BLD = {
+  cottage: { w: 82, d: 70, h: 46, roof: 'gable', rh: 34, wall: 'plaster', roofC: 'brick', door: true, win: [[.12, .42, .2, .26], [.68, .42, .2, .26]], chimney: true },
+  bakery: { w: 100, d: 72, h: 50, roof: 'gable', rh: 34, wall: 'tan', roofC: 'brick', door: true, win: [[.1, .4, .26, .26]], awning: ['brick', 'snow'] },
+  cafe: { w: 104, d: 72, h: 54, roof: 'flat', wall: 'plaster', roofC: 'stoneSh', door: true, win: [[.08, .38, .3, .3], [.64, .38, .3, .3], [.12, .78, .18, .12], [.4, .78, .18, .12], [.68, .78, .18, .12]], awning: ['pine', 'snow'] },
+  stall: { w: 64, d: 40, h: 22, roof: 'none', wall: 'tan', roofC: 'tan', canopy: ['brick', 'snow'] },
+  station: { w: 240, d: 80, h: 60, roof: 'gable', rh: 30, wall: 'tan', roofC: 'slate', door: true, win: [[.06, .4, .1, .3], [.2, .4, .1, .3], [.7, .4, .1, .3], [.84, .4, .1, .3]], clock: true },
+  canopy: { w: 200, d: 46, h: 46, roof: 'slab', wall: 'trunk', roofC: 'slateSh' },
+  office: { w: 92, d: 80, h: 132, roof: 'flat', wall: 'stone', roofC: 'stoneSh', door: true, grid: [3, 4] },
+  library: { w: 196, d: 92, h: 74, roof: 'flat', wall: 'plaster', roofC: 'stoneSh', door: true, columns: 6, pediment: true },
+  school: { w: 120, d: 80, h: 56, roof: 'gable', rh: 36, wall: 'brick', roofC: 'slate', door: true, win: [[.08, .42, .16, .3], [.3, .42, .16, .3], [.76, .42, .16, .3]], bell: true },
+  hut: { w: 92, d: 72, h: 44, roof: 'gable', rh: 40, wall: 'trunk', roofC: 'snow', door: true, win: [[.12, .42, .18, .24], [.7, .42, .18, .24]], chimney: true },
+  observatory: { w: 96, d: 96, h: 52, roof: 'flat', wall: 'plaster', roofC: 'stoneSh', door: true, dome: true },
+  clinic: { w: 128, d: 84, h: 62, roof: 'flat', wall: 'plaster', roofC: 'stoneSh', door: true, win: [[.06, .45, .2, .26], [.74, .45, .2, .26]], cross: true },
+  inn: { w: 130, d: 80, h: 58, roof: 'gable', rh: 40, wall: 'plaster', roofC: 'slate', door: true, win: [[.08, .45, .16, .22], [.3, .45, .16, .22], [.76, .45, .16, .22]], chimney: true },
+};
+// What each unit's place is made of: [type, dz from the unit's signpost, side, distance from the road].
+const PLACES = [
+  [['cottage', 120, -1, 170], ['bakery', 330, 1, 185], ['well', 520, 1, 120], ['cottage', 640, -1, 215], ['cottage', 960, 1, 230], ['fence', 1220, -1, 150]],
+  [['cafe', 140, -1, 175], ['stall', 330, 1, 130], ['stall', 420, 1, 175], ['cottage', 560, 1, 260], ['cottage', 760, -1, 240], ['well', 900, -1, 130]],
+  [['station', 160, -1, 220], ['canopy', 180, -1, 85], ['office', 420, 1, 200], ['office', 620, 1, 300]],
+  [['library', 160, 1, 220], ['school', 520, -1, 200]],
+  [['hut', 150, -1, 170], ['cairn', 420, 1, 110]],
+  [['observatory', 200, 1, 210], ['cairn', 420, -1, 120]],
+  [['office', 160, -1, 200], ['cottage', 420, 1, 210]],
+  [['inn', 160, 1, 190], ['cottage', 400, -1, 200]],
+];
+const signs = [];
+for (let u = 0; u < UNITS.length; u++) {
+  const first = stops[u * PER_UNIT]; if (!first) break;
+  const sz = first.z - 170;
+  const side = pathX(sz + 60) > pathX(sz - 60) ? -1 : 1;     // away from the way the road bends
+  const s = { kind: 'sign', u, z: sz, x: pathX(sz) + side * 62, side,
+    done: (u + 1) * PER_UNIT <= CURRENT, active: u * PER_UNIT <= CURRENT && CURRENT < (u + 1) * PER_UNIT };
+  signs.push(s); objs.push(s);
+  reserved.push([s.x - 40, s.x + 40, sz - 40, sz + 40]);
+  for (const [type, dz, sd, dist] of PLACES[u] || []) {
+    const z = sz + dz, x = pathX(z) + sd * dist;
+    if (BLD[type]) {
+      const b = BLD[type];
+      objs.push({ kind: 'bld', type, b, x, z0: z, z: z, side: sd });
+      reserved.push([x - b.w / 2 - 30, x + b.w / 2 + 30, z - 40, z + b.d + 40]);
+    } else {
+      objs.push({ kind: type, x, z, side: sd });
+      reserved.push([x - 50, x + 50, z - 40, z + 40]);
+    }
+  }
+}
+// The clinic at the end of the Pro side path.
+{
+  const b = BLD.clinic, x = branchX(FORK_END) - 30, z = FORK_END + 140;
+  objs.push({ kind: 'bld', type: 'clinic', b, x, z0: z, z });
+  reserved.push([x - b.w / 2 - 30, x + b.w / 2 + 30, z - 60, z + b.d + 40]);
+}
+// The stream (a ground strip keyed at its near edge) and the bridge where the road crosses it.
+objs.push({ kind: 'stream', z: STREAM_Z - 70 });
+objs.push({ kind: 'bridge', z: STREAM_Z - 46 });
+reserved.push([-1e5, 1e5, STREAM_Z - 90, STREAM_Z + 90]);
+// The tunnel portal (on the cliff face) and the tunnel's road stays hidden inside.
+objs.push({ kind: 'portal', z: TUN0 - 1 });
+// Section labels on the road (as the 2D path's section rules).
+objs.push({ kind: 'section', z: -60, text: 'Level 2 · Building', ahead: false });
+objs.push({ kind: 'section', z: stops[7].z + 220, text: 'Level 3 · when 40 more words lock in', ahead: true });
+// A finger post by the road now and then.
+for (const z of [1450, 4300, 6650]) objs.push({ kind: 'fingerpost', z, x: pathX(z) + (pathX(z + 50) > pathX(z) ? -52 : 52) });
+
+// Trees by zone: round trees in meadow groves, dense pines in the forest, sparse pines on rock, few up high.
+for (let i = 0; i < 2700; i++) {
+  const z = -900 + rnd() * 15900, zf = zoneF(z);
+  const keep = zf < .5 ? .28 : zf < 1.5 ? .95 : zf < 2.5 ? .26 : .1;
+  const side = rnd() < .5 ? -1 : 1, far = Math.pow(rnd(), 1.35);
+  if (rnd() > keep) continue;
+  const x = calmX(z) + side * (120 + far * 1500);
+  if (passK(z) > .05 && Math.abs(x - calmX(z)) < 600) continue;
+  if (z > TUN0 - 30 && z < TUN1 + 40) continue;
+  if (nearRoad(x, z, 95) || blocked(x, z)) continue;
+  const round = zf < .5 ? rnd() < .55 : zf < 1.5 ? rnd() < .12 : false;
+  objs.push({ kind: 'tree', x, z, h: (zf > 2.5 ? 60 : 72) + rnd() * 70, round, far: rnd() < .35, lean: (rnd() - .5) * 4 });
+}
+// Rocks on the upland and alpine slopes, and along the pass; snow caps up high.
+for (let i = 0; i < 260; i++) {
+  const z = 3600 + rnd() * 12000, zf = zoneF(z);
+  if (zf < 1.3 && passK(z) < .1) continue;
+  const x = calmX(z) + (rnd() < .5 ? -1 : 1) * (90 + Math.pow(rnd(), 1.3) * 900);
+  if (z > TUN0 - 20 && z < TUN1 + 40) continue;
+  if (nearRoad(x, z, 70) || blocked(x, z)) continue;
+  objs.push({ kind: 'rock', x, z, s: .8 + rnd() * 1.4, snow: zf > 2.5, j: [rnd(), rnd(), rnd(), rnd()] });
+}
+// Verge tufts right beside the road (pebbles once the meadow ends), and loose meadow tufts.
+for (let z = -800; z < 15000; z += 38 + rnd() * 30) {
+  if (z > TUN0 - 20 && z < TUN1 + 20) continue;
+  if (Math.abs(z - STREAM_Z) < 90) continue;
+  const side = rnd() < .5 ? -1 : 1, x = pathX(z) + side * (44 + rnd() * 16);
+  objs.push({ kind: zoneF(z) < 1.6 ? 'tuft' : 'pebble', x, z, s: .9 + rnd() * .5 });
+}
+for (let i = 0; i < 260; i++) {
+  const z = -800 + rnd() * 6000, x = calmX(z) + (rnd() - .5) * 1100;
+  if (nearRoad(x, z, 70) || blocked(x, z)) continue;
+  objs.push({ kind: 'tuft', x, z, s: 1 + rnd() * .6 });
+}
+// Tonal ground patches, and snow patches high up (flat shapes, keyed at their near edge).
+for (let i = 0; i < 140; i++) {
+  const zc = -800 + rnd() * 15400, rx = 50 + rnd() * 120, rz = 30 + rnd() * 50;
+  const x = calmX(zc) + (rnd() < .5 ? -1 : 1) * (110 + rnd() * 900);
+  if (nearRoad(x, zc, rx + 50) || (zc > TUN0 - 80 && zc < TUN1 + 80) || Math.abs(zc - STREAM_Z) < 150) continue;
+  objs.push({ kind: 'patch', x, zc, z: zc - rz, rx, rz, ph: rnd() * 6 });
+}
+// Clouds, flat and high.
+for (let i = 0; i < 60; i++) {
+  const z = 600 + rnd() * 15000;
+  objs.push({ kind: 'cloud', x: calmX(z) + (rnd() - .5) * 3400, z, y: alt(z) + 1150 + rnd() * 900, w: 260 + rnd() * 420 });
+}
+// The climber stands on the road just below today's stop.
+// He stands on the road below today's stop. Today's stop is drawn right after him (it is a UI marker,
+// so it stays on top of him when depth squeezes the two together).
+const climber = { kind: 'climber', z: todayZ - 165, at: todayZ - 165 };
+objs.push(climber);
+for (const s of stops) objs.push(s);
+objs.push(proStop);
+objs.sort((a, b) => b.z - a.z);
+const stars = Array.from({ length: 110 }, () => [rnd() * W, rnd() * H * .55, rnd() * 1.2 + .3, rnd() * 6]);
+const climberImg = new Image(); climberImg.src = '/art/climber.png';
+
+// ---- camera ----
+const scroller = document.getElementById('scroller');
+const maxScroll = () => scroller.scrollHeight - scroller.clientHeight;
+const Z_PER_PX = 2.2;                           // world distance per scrolled pixel
+const OPEN = 640;                               // how far behind today's stop the camera opens
+const Z0 = 560;                                 // the trailhead sits this far behind the first stop's sign
+const zToScroll = z => maxScroll() - (z + Z0) / Z_PER_PX;
+let target = 0, shown = 0;
+function camera(zc) {
+  const climb = smooth(zc / 7000);              // 0 at the trailhead, 1 high on the mountain
+  const k = tunK(zc + 300);                     // walk down to the road before the tunnel, rise after it
+  const inT = smooth((zc - (TUN0 - 200)) / 180) * (1 - smooth((zc - (TUN1 - 60)) / 200));
+  const slope = Math.atan((alt(zc + 60) - alt(zc - 60)) / 120);    // look along the tunnel floor
+  const pitch = reduce ? 0.3 : lerp(lerp(lerp(0.28, -0.07, climb), 0.12, k), 0.02 - slope, inT);
+  const lookX = lerp(calmX(zc + 200), calmX(zc + 560), .55);
+  return {
+    x: lerp(lookX, pathX(zc + 120), k * .8),
+    y: alt(zc) + lerp(lerp(380 + climb * 240, 130, k), 55, inT),
+    z: zc, pitch, climb, k, cos: Math.cos(pitch), sin: Math.sin(pitch),
+  };
+}
+function project(cam, x, y, z) {
+  const dx = x - cam.x, dy = y - cam.y, dz = z - cam.z;
+  const zf = dz * cam.cos - dy * cam.sin;
+  if (zf < 20) return null;
+  const yu = dy * cam.cos + dz * cam.sin;
+  return { x: W / 2 + F * dx / zf, y: H * 0.47 - F * yu / zf, s: F / zf, d: zf };
+}
+
+// ---- drawing ----
+const cv = document.getElementById('world'), ctx = cv.getContext('2d');
+const DPR = Math.min(2, devicePixelRatio || 1);
+cv.width = W * DPR; cv.height = H * DPR; ctx.scale(DPR, DPR);
+const VIEW = 2800;                              // how far you can see before the haze closes in
+const fogAt = d => smooth((d - 250) / (VIEW - 250)) * 0.94;
+const fogc = (c, f, a = 1) => rgb(mix(c, SC.fog, f), a);
+let tapTargets = [], overlay = [];
+function fillPoly(pts, style) { ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y); ctx.closePath(); ctx.fillStyle = style; ctx.fill(); }
+function strokePoly(pts, style, lw, close = true) { ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y); if (close) ctx.closePath(); ctx.strokeStyle = style; ctx.lineWidth = lw; ctx.stroke(); }
+
+function sky(cam, t) {
+  const g = ctx.createLinearGradient(0, 0, 0, H * .62);
+  const up = smooth(cam.climb * 1.1);           // the sky deepens a little as you rise
+  g.addColorStop(0, rgb(mix(SC.skyTop, SC.skyHigh, up)));
+  g.addColorStop(.75, rgb(mix(SC.skyLow, SC.fog, .3)));
+  g.addColorStop(1, rgb(SC.fog));
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  if (T.stars) {
+    for (const [x, y, r, ph] of stars) {
+      const tw = reduce ? .8 : .6 + .4 * Math.sin(t / 900 + ph);
+      ctx.fillStyle = `rgba(236,232,220,${T.stars * (.35 + up * .5) * tw})`;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
+    }
+  }
+  const [gx, gy] = [W * T.glowAt[0], H * T.glowAt[1] + (TOD === 'evening' ? -up * 60 : 0)];
+  const glow = ctx.createRadialGradient(gx, gy, 0, gx, gy, TOD === 'evening' ? 300 : 220);
+  glow.addColorStop(0, `rgba(${T.glow[0]},${T.glow[1]},${T.glow[2]},${T.glowA})`); glow.addColorStop(1, `rgba(${T.glow[0]},${T.glow[1]},${T.glow[2]},0)`);
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+  if (TOD === 'evening') { ctx.fillStyle = 'rgba(255,226,170,.9)'; ctx.beginPath(); ctx.arc(gx, gy, 26, 0, 7); ctx.fill(); }
+  if (T.moon) {
+    ctx.fillStyle = 'rgba(240,236,222,.95)'; ctx.beginPath(); ctx.arc(gx, gy, 17, 0, 7); ctx.fill();
+    ctx.fillStyle = rgb(mix(SC.skyTop, SC.skyHigh, up)); ctx.beginPath(); ctx.arc(gx + 7, gy - 4, 15, 0, 7); ctx.fill();
+  }
+}
+
+function range(cam) {
+  // two far ranges, always far ahead, drifting slowly; snow on the high one
+  for (const [dz, amp, base0, tone, snowy] of [[11000, 1300, 900, .55, true], [7000, 700, 500, .3, false]]) {
+    const z = cam.z + dz, pts = [];
+    for (let x = -9000; x <= 9000; x += 260) {
+      const y = alt(z) + base0 + amp * Math.abs(Math.sin(x / 2300 + 1.3)) + amp * .35 * Math.sin(x / 640) + amp * .12 * Math.sin(x / 190);
+      const p = project(cam, cam.x + x, y, z); if (p) pts.push(p);
+    }
+    if (pts.length < 2) continue;
+    const col = mix(SC.range, SC.fog, tone);
+    let top = H; for (const p of pts) top = Math.min(top, p.y);
+    const base = project(cam, cam.x, alt(z) + base0, z), by = base ? base.y : H * .6;
+    const gr = ctx.createLinearGradient(0, top, 0, Math.max(top + 10, by));   // aerial haze at the foot
+    gr.addColorStop(0, rgb(col)); gr.addColorStop(.55, rgb(col)); gr.addColorStop(1, rgb(mix(col, SC.fog, .85)));
+    ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+    for (const p of pts) ctx.lineTo(p.x, p.y);
+    ctx.lineTo(W + 50, H); ctx.lineTo(-50, H); ctx.closePath();
+    ctx.fillStyle = gr; ctx.fill();
+    if (snowy) {                                 // snow on the highest peaks: a lighter cap band
+      ctx.save(); ctx.clip();
+      ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y + 26);
+      for (const p of pts) ctx.lineTo(p.x, p.y + 26 + (p.y < H * .3 ? 0 : 60));
+      for (let i = pts.length - 1; i >= 0; i--) ctx.lineTo(pts[i].x, pts[i].y - 4);
+      ctx.closePath(); ctx.fillStyle = rgb(mix(SC.snow, SC.fog, tone + .15), .7); ctx.fill();
+      ctx.restore();
+    }
+  }
+}
+
+// One ground band: the terrain profile at depth z, filled down to the screen bottom. A horizontal
+// gradient runs from the hill tone at the sides to the zone's ground tone around the road.
+function band(cam, z) {
+  const pts = [];
+  for (let x = -2600; x <= 2600; x += 65) {
+    const wx = cam.x + x;
+    const p = project(cam, wx, ground(wx, z), z);
+    if (p) pts.push(p);
+  }
+  if (pts.length < 2) return;
+  const d = pts[pts.length >> 1].d, f = fogAt(d);
+  const zf = zoneF(z), zi = Math.min(3, Math.floor(zf)), zt = zf - zi, zj = Math.min(3, zi + 1);
+  const g = mix(SC['g' + zi], SC['g' + zj], zt), hl = mix(SC['h' + zi], SC['h' + zj], zt);
+  const pk = passK(z), tk = z > TUN0 && z < TUN1 ? 1 : 0;
+  const side = mix(hl, SC.slate, Math.max(pk * .85, tk * .7));
+  const vary = .97 + .05 * Math.sin(z / 640);        // soft light and shade over the rises, no stripes
+  const c0 = project(cam, calmX(z), alt(z), z);
+  const cx = c0 ? c0.x : W / 2, sp = Math.max(30, (c0 ? c0.s : .2) * 520);
+  const gr = ctx.createLinearGradient(cx - sp * 1.6, 0, cx + sp * 1.6, 0);
+  const cs = rgb(mix(shade(side, vary), SC.fog, f)), cg = rgb(mix(shade(tk ? side : g, vary), SC.fog, f));
+  gr.addColorStop(0, cs); gr.addColorStop(.32, cg); gr.addColorStop(.68, cg); gr.addColorStop(1, cs);
+  ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+  for (const p of pts) ctx.lineTo(p.x, p.y);
+  ctx.lineTo(pts[pts.length - 1].x, H + 10); ctx.lineTo(pts[0].x, H + 10); ctx.closePath();
+  ctx.fillStyle = gr; ctx.fill();
+  if (pk > .2 || tk) {                               // rock walls and the cliff get an ink edge
+    ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+    for (const p of pts) ctx.lineTo(p.x, p.y);
+    ctx.strokeStyle = rgb(SC.ink, .35 * (1 - f)); ctx.lineWidth = .8; ctx.stroke();
+  }
+}
+
+// One piece of road between z0 (far) and z1 (near): worn verge, ink edges, dirt bed, dashes.
+function road(cam, z0, z1, xOf, half, alpha, walkedTo) {
+  const L = [], R = [], C = [];
+  const n = 4;
+  for (let k = 0; k <= n; k++) {
+    const z = lerp(z0, z1, k / n), x = xOf(z), y = ground(x, z) + 1.5;
+    const a = project(cam, x - half, y, z), b = project(cam, x + half, y, z);
+    if (!a || !b) continue;
+    L.push(a); R.push(b); C.push({ z, x, y });
+  }
+  if (L.length < 2) return;
+  const f = fogAt(L[0].d);
+  // worn verge (a faint wider shadow), then the bed
+  const vL = [], vR = [];
+  for (let k = 0; k < L.length; k++) { const dx = R[k].x - L[k].x; vL.push({ x: L[k].x - dx * .3, y: L[k].y }); vR.push({ x: R[k].x + dx * .3, y: R[k].y }); }
+  fillPoly([...vL, ...vR.reverse()], rgb(SC.ink, .06 * alpha * (1 - f)));
+  fillPoly([...L, ...[...R].reverse()], fogc(SC.ground, f, alpha));
+  const lw = clamp(L[L.length - 1].s * 2.4, .5, 1.8);
+  strokePoly(L, fogc(SC.ink, f, .85 * alpha), lw, false);
+  strokePoly(R, fogc(SC.ink, f, .85 * alpha), lw, false);
+  // dashes in world space (walked part darker), so they never restart at a slice edge
+  ctx.lineCap = 'round';
+  for (let k = 0; k < C.length - 1; k++) {
+    const za = C[k].z, zb = C[k + 1].z;
+    const walked = Math.max(za, zb) < walkedTo;
+    const period = 34, on = walked ? 18 : 14;
+    const lo = Math.min(za, zb), hi = Math.max(za, zb);
+    for (let s = Math.floor(lo / period) * period; s < hi; s += period) {
+      const a0 = Math.max(lo, s), a1 = Math.min(hi, s + on); if (a1 <= a0) continue;
+      const pa = project(cam, xOf(a0), ground(xOf(a0), a0) + 2, a0), pb = project(cam, xOf(a1), ground(xOf(a1), a1) + 2, a1);
+      if (!pa || !pb) continue;
+      ctx.beginPath(); ctx.moveTo(pa.x, pa.y); ctx.lineTo(pb.x, pb.y);
+      ctx.strokeStyle = fogc(walked ? SC.trunk : SC.tanSh, f, (walked ? .75 : .6) * alpha);
+      ctx.lineWidth = clamp(pa.s * (walked ? 5 : 4), .4, 3.2); ctx.stroke();
+    }
+  }
+}
+
+function drawTree(cam, o) {
+  const p = project(cam, o.x, ground(o.x, o.z), o.z); if (!p || p.x < -90 || p.x > W + 90) return;
+  const h = o.h * p.s, f = fogAt(p.d);
+  if (h < 1.6) return;
+  const lw = clamp(p.s * 2.2, .35, 1.4), ink = fogc(SC.ink, f, .9);
+  const w = h * .42, ln = o.lean * p.s;
+  if (o.round) {                                     // a round meadow tree
+    ctx.fillStyle = fogc(SC.trunk, f); ctx.fillRect(p.x - w * .07, p.y - h * .34, w * .14, h * .36);
+    ctx.beginPath(); ctx.ellipse(p.x + ln, p.y - h * .62, w * .62, h * .36, 0, 0, 7);
+    ctx.fillStyle = fogc(SC.round, f); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(p.x + ln + w * .18, p.y - h * .58, w * .42, h * .3, 0, -.9, 2.2);
+    ctx.fillStyle = fogc(SC.roundSh, f); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(p.x + ln, p.y - h * .62, w * .62, h * .36, 0, 0, 7);
+    ctx.strokeStyle = ink; ctx.lineWidth = lw; ctx.stroke();
+    return;
+  }
+  const far = o.far || h < 14;
+  if (!far) { ctx.fillStyle = fogc(SC.trunk, f); ctx.fillRect(p.x - w * .07, p.y - h * .2, w * .14, h * .22); }
+  const tiers = far ? [[.04, .6, .36], [.38, 1, .25]] : [[.08, .52, .34], [.36, .75, .26], [.6, 1, .18]];
+  const body = fogc(far ? SC.pineFar : SC.pine, f), sh = fogc(SC.pineSh, f);
+  for (let i = 0; i < tiers.length; i++) {
+    const [b, tp, ww] = tiers[i];
+    const yb = p.y - h * b, yt = p.y - h * tp, wh = h * ww * 1.25, tip = p.x + ln * (.4 + i * .5);
+    ctx.beginPath(); ctx.moveTo(tip, yt);
+    ctx.quadraticCurveTo(p.x - wh * .5, yb - (yb - yt) * .25, p.x - wh, yb);
+    ctx.quadraticCurveTo(p.x, yb + h * .025, p.x + wh, yb);
+    ctx.quadraticCurveTo(p.x + wh * .5, yb - (yb - yt) * .25, tip, yt);
+    ctx.fillStyle = body; ctx.fill();
+    if (!far) {
+      ctx.save(); ctx.clip(); ctx.fillStyle = sh; ctx.fillRect(tip, yt, wh + 2, yb - yt + 4); ctx.restore();
+    }
+    ctx.strokeStyle = ink; ctx.lineWidth = lw; ctx.stroke();
+  }
+}
+
+function drawRock(cam, o) {
+  const p = project(cam, o.x, ground(o.x, o.z), o.z); if (!p || p.x < -60 || p.x > W + 60) return;
+  const w = 16 * o.s * p.s, hh = (11 + o.j[0] * 5) * o.s * p.s; if (w < 1) return;
+  const f = fogAt(p.d), j = k => (o.j[k] - .5) * w * .3;
+  const pts = [[p.x - w, p.y], [p.x - w * .78 + j(1), p.y - hh * .55], [p.x - w * .22 + j(2), p.y - hh], [p.x + w * .4 + j(3), p.y - hh * .8], [p.x + w, p.y - hh * .18], [p.x + w * .92, p.y]].map(([x, y]) => ({ x, y }));
+  fillPoly(pts, fogc(SC.stone, f));
+  fillPoly([pts[2], pts[3], pts[4], pts[5], { x: p.x + w * .05, y: p.y }], fogc(SC.stoneSh, f));
+  if (o.snow) fillPoly([pts[1], pts[2], pts[3], { x: p.x + w * .2, y: p.y - hh * .62 }, { x: p.x - w * .25, y: p.y - hh * .7 }], fogc(SC.snow, f));
+  strokePoly(pts, fogc(SC.ink, f, .85), clamp(p.s * 2, .35, 1.3));
+}
+
+function drawTuft(cam, o) {
+  const p = project(cam, o.x, ground(o.x, o.z), o.z); if (!p || p.s < .05 || p.x < -10 || p.x > W + 10) return;
+  const s = o.s * p.s * 1.6, f = fogAt(p.d);
+  ctx.beginPath();
+  ctx.moveTo(p.x, p.y); ctx.quadraticCurveTo(p.x - 2 * s, p.y - 5 * s, p.x - 5 * s, p.y - 7 * s);
+  ctx.moveTo(p.x, p.y); ctx.quadraticCurveTo(p.x, p.y - 6 * s, p.x + s, p.y - 10 * s);
+  ctx.moveTo(p.x, p.y); ctx.quadraticCurveTo(p.x + 2 * s, p.y - 4 * s, p.x + 6 * s, p.y - 6 * s);
+  ctx.strokeStyle = fogc(zoneF(o.z) < .8 ? SC.pine : SC.pineFar, f, .9); ctx.lineWidth = clamp(p.s * 2.4, .4, 1.6); ctx.lineCap = 'round'; ctx.stroke();
+}
+function drawPebble(cam, o) {
+  const p = project(cam, o.x, ground(o.x, o.z), o.z); if (!p || p.s < .05) return;
+  const f = fogAt(p.d);
+  ctx.beginPath(); ctx.ellipse(p.x, p.y, 4 * o.s * p.s, 2.4 * o.s * p.s, 0, 0, 7);
+  ctx.fillStyle = fogc(SC.stone, f); ctx.fill(); ctx.strokeStyle = fogc(SC.ink, f, .7); ctx.lineWidth = clamp(p.s * 1.6, .3, 1); ctx.stroke();
+}
+function drawPatch(cam, o) {
+  const pts = [];
+  for (let k = 0; k < 10; k++) {
+    const a = k / 10 * Math.PI * 2, r = .82 + .18 * Math.sin(a * 3 + o.ph);
+    const x = o.x + Math.cos(a) * o.rx * r, z = o.zc + Math.sin(a) * o.rz * r;
+    const p = project(cam, x, ground(x, z) + 1, z); if (!p) return;
+    pts.push(p);
+  }
+  const zf = zoneF(o.zc), zi = Math.min(3, Math.round(zf));
+  const tone = zi === 3 ? mix(SC.p3, SC.g3, .4) : SC['p' + zi];      // snow patches stay soft, not paper cut-outs
+  fillPoly(pts, fogc(tone, fogAt(pts[0].d)));
+}
+
+function drawCloud(cam, o) {
+  const p = project(cam, o.x, o.y, o.z); if (!p || p.d < 1100) return;
+  const w = o.w * p.s; if (w < 4 || p.x < -w || p.x > W + w) return;
+  const a = T.cloudA * (1 - fogAt(p.d) * .7);
+  ctx.fillStyle = rgb(SC.cloud, a);
+  ctx.beginPath();
+  ctx.ellipse(p.x, p.y, w * .5, w * .13, 0, 0, 7);
+  ctx.ellipse(p.x - w * .18, p.y - w * .07, w * .22, w * .12, 0, 0, 7);
+  ctx.ellipse(p.x + w * .14, p.y - w * .09, w * .26, w * .15, 0, 0, 7);
+  ctx.fill();
+}
+
+function drawStream(cam) {
+  const nearE = [], farE = [];
+  for (let x = cam.x - 2600; x <= cam.x + 2600; x += 60) {
+    const zc = streamZ(x);
+    const a = project(cam, x, ground(x, zc - 22) - 2, zc - 22), b = project(cam, x, ground(x, zc + 22) - 2, zc + 22);
+    if (a && b) { nearE.push(a); farE.push(b); }
+  }
+  if (nearE.length < 2) return;
+  const f = fogAt(nearE[nearE.length >> 1].d);
+  const bank = [...nearE, ...[...farE].reverse()];
+  fillPoly(bank, fogc(SC.ground, f));
+  // water inside the banks
+  const wN = [], wF = [];
+  for (let i = 0; i < nearE.length; i++) { wN.push({ x: nearE[i].x, y: lerp(nearE[i].y, farE[i].y, .25) }); wF.push({ x: farE[i].x, y: lerp(nearE[i].y, farE[i].y, .75) }); }
+  fillPoly([...wN, ...wF.reverse()], fogc(SC.water, f));
+  strokePoly(nearE, fogc(SC.ink, f, .5), .9, false);
+  strokePoly(farE, fogc(SC.ink, f, .4), .7, false);
+}
+function drawBridge(cam) {
+  const x = pathX(STREAM_Z), zA = STREAM_Z - 46, zB = STREAM_Z + 46, half = 40;
+  const y = z => Math.max(ground(x, z), ground(x, STREAM_Z)) + 4;
+  const P = (dx, dy, z) => project(cam, x + dx, y(z) + dy, z);
+  const c = [P(-half, 0, zB), P(half, 0, zB), P(half, 0, zA), P(-half, 0, zA)];
+  if (c.some(q => !q)) return;
+  const f = fogAt(c[2].d), lw = clamp(c[2].s * 2.4, .4, 1.6);
+  fillPoly(c, fogc(SC.tan, f));
+  for (let k = 1; k < 9; k++) {                      // planks across the road
+    const z = lerp(zA, zB, k / 9), a = P(-half, 0, z), b = P(half, 0, z); if (!a || !b) continue;
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.strokeStyle = fogc(SC.tanSh, f); ctx.lineWidth = lw * .8; ctx.stroke();
+  }
+  strokePoly(c, fogc(SC.ink, f), lw);
+  for (const sx of [-half - 3, half + 3]) {          // rails along it, posts at the ends
+    const r0 = P(sx, 16, zA), r1 = P(sx, 16, zB), b0 = P(sx, 0, zA), b1 = P(sx, 0, zB);
+    if (!r0 || !r1) continue;
+    ctx.beginPath(); ctx.moveTo(r0.x, r0.y); ctx.lineTo(r1.x, r1.y);
+    ctx.moveTo(b0.x, b0.y); ctx.lineTo(r0.x, r0.y); ctx.moveTo(b1.x, b1.y); ctx.lineTo(r1.x, r1.y);
+    ctx.strokeStyle = fogc(SC.trunk, f); ctx.lineWidth = clamp(r0.s * 4, .6, 3); ctx.lineCap = 'round'; ctx.stroke();
+  }
+}
+
+// An arch of the tunnel at depth z: road-wide walls with a round top. Returns projected outline.
+function archPts(cam, z, wid = 52, wall = 44) {
+  const x = pathX(z), y0 = alt(z), out = [];
+  const pa = project(cam, x - wid, y0, z); if (!pa) return null; out.push(pa);
+  for (let k = 0; k <= 10; k++) {
+    const a = Math.PI - k / 10 * Math.PI;
+    const p = project(cam, x + Math.cos(a) * wid, y0 + wall + Math.sin(a) * wid, z); if (!p) return null; out.push(p);
+  }
+  const pb = project(cam, x + wid, y0, z); if (!pb) return null; out.push(pb);
+  return out;
+}
+function drawPortal(cam) {
+  const outer = archPts(cam, TUN0 - 1, 64, 46), inner = archPts(cam, TUN0 - 1, 50, 44);
+  if (!outer || !inner) return;
+  const f = fogAt(inner[0].d);
+  fillPoly(outer, fogc(SC.stoneSh, f));
+  // stone voussoirs around the opening
+  for (let k = 1; k < outer.length - 1; k += 2) {
+    ctx.beginPath(); ctx.moveTo(outer[k].x, outer[k].y); ctx.lineTo(inner[Math.min(k, inner.length - 1)].x, inner[Math.min(k, inner.length - 1)].y);
+    ctx.strokeStyle = fogc(SC.ink, f, .5); ctx.lineWidth = clamp(inner[0].s * 1.6, .3, 1.2); ctx.stroke();
+  }
+  strokePoly(outer, fogc(SC.ink, f), clamp(inner[0].s * 2.4, .4, 1.8));
+  fillPoly(inner, rgb(mix([18, 15, 12], SC.fog, f * .5)));
+  // light at the far end
+  const exit = archPts(cam, TUN1, 50, 44);
+  if (exit) {
+    ctx.save(); fillPoly(inner, 'rgba(0,0,0,0)'); ctx.clip();
+    fillPoly(exit, rgb(SC.portal)); ctx.restore();
+  }
+}
+// Inside the tunnel: lamp-lit rings toward the bright exit.
+function tunnelView(cam, t) {
+  ctx.fillStyle = '#14110D'; ctx.fillRect(0, 0, W, H);
+  const exit = archPts(cam, TUN1, 50, 44);
+  if (exit) {
+    fillPoly(exit, rgb(SC.portal));
+    const c = exit[6];
+    const g = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, 260);
+    g.addColorStop(0, rgb(SC.portal, .45)); g.addColorStop(1, rgb(SC.portal, 0));
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  }
+  for (let z = Math.min(TUN1 - 1, cam.z + 1400); z > cam.z + 22; z -= 60) {
+    if (z < TUN0 - 60) break;
+    const a = archPts(cam, z, 52, 44); if (!a) continue;
+    const near = 1 - smooth((a[0].d - 60) / 900);
+    strokePoly(a, `rgba(120,104,82,${.25 + near * .55})`, clamp(a[0].s * 6, .5, 8), false);
+    const fl = project(cam, pathX(z) - 34, alt(z) + 1, z), fr = project(cam, pathX(z) + 34, alt(z) + 1, z);
+    const zb = Math.max(z - 60, cam.z + 21);
+    const fl2 = project(cam, pathX(zb) - 34, alt(zb) + 1, zb), fr2 = project(cam, pathX(zb) + 34, alt(zb) + 1, zb);
+    if (fl && fr && fl2 && fr2) fillPoly([fl, fr, fr2, fl2], `rgba(92,80,62,${.2 + near * .4})`);
+    if (Math.round(z / 60) % 3 === 0) {             // a lamp on the wall
+      const l = project(cam, pathX(z) - 50, alt(z) + 40, z);
+      if (l) { const r = clamp(l.s * 16, 2, 26); const g = ctx.createRadialGradient(l.x, l.y, 0, l.x, l.y, r);
+        g.addColorStop(0, 'rgba(255,214,140,.9)'); g.addColorStop(1, 'rgba(255,214,140,0)'); ctx.fillStyle = g; ctx.fillRect(l.x - r, l.y - r, r * 2, r * 2); }
+    }
+  }
+}
+
+// ---- buildings ----
+function drawBuilding(cam, o) {
+  const b = o.b, x0 = o.x - b.w / 2, x1 = o.x + b.w / 2, z0 = o.z0, z1 = o.z0 + b.d;
+  const gy = Math.min(ground(x0, z0), ground(x1, z0), ground(o.x, z1)) - 6;
+  const y1 = Math.max(ground(x0, z0), ground(x1, z0)) + b.h;
+  const P = (x, y, z) => project(cam, x, y, z);
+  const f00 = P(x0, gy, z0), f10 = P(x1, gy, z0), f11 = P(x1, y1, z0), f01 = P(x0, y1, z0);
+  if (!f00 || !f10 || !f11 || !f01) return;
+  if (f10.x < -30 || f00.x > W + 30) return;
+  const f = fogAt(f00.d); if (f > .96) return;
+  const lw = clamp(f00.s * 2.6, .35, 1.7), ink = fogc(SC.ink, f, .92);
+  const C = (k, m = 1) => fogc(shade(SC[k], m), f);
+  const wall = b.wall, faces = [];
+  // the side wall toward the camera (shaded)
+  if (b.roof !== 'none') {
+    const sx = cam.x < x0 ? x0 : cam.x > x1 ? x1 : null;
+    if (sx !== null) {
+      const s = [P(sx, gy, z0), P(sx, gy, z1), P(sx, y1, z1), P(sx, y1, z0)];
+      if (s.every(Boolean)) { fillPoly(s, C(wall, .82)); strokePoly(s, ink, lw); }
+    }
+  }
+  if (b.roof === 'gable') {
+    const ry = y1 + b.rh, ov = 6;
+    const Lp = [P(x0 - ov, y1 - 3, z0 - ov), P(x0 - ov, y1 - 3, z1 + ov), P(o.x, ry, z1 + ov), P(o.x, ry, z0 - ov)];
+    const Rp = [P(x1 + ov, y1 - 3, z0 - ov), P(x1 + ov, y1 - 3, z1 + ov), P(o.x, ry, z1 + ov), P(o.x, ry, z0 - ov)];
+    const order = cam.x < o.x ? [[Rp, .86], [Lp, 1]] : [[Lp, 1], [Rp, .86]];
+    if (b.chimney) {
+      const cx = o.x + b.w * .22, cz = z0 + b.d * .55;
+      const c = [P(cx - 6, y1, cz), P(cx + 6, y1, cz), P(cx + 6, ry + 4, cz), P(cx - 6, ry + 4, cz)];
+      if (c.every(Boolean)) { fillPoly(c, C('stone')); strokePoly(c, ink, lw); }
+    }
+    for (const [pl, m] of order) if (pl.every(Boolean)) { fillPoly(pl, C(b.roofC, m)); strokePoly(pl, ink, lw); }
+    const tri = [f01, f11, P(o.x, ry, z0)];
+    if (tri[2]) { fillPoly(tri, C(wall)); strokePoly(tri, ink, lw); }
+  } else if (b.roof === 'flat' || b.roof === 'slab') {
+    const top = [f01, f11, P(x1, y1, z1), P(x0, y1, z1)];
+    if (top.every(Boolean)) { fillPoly(top, C(b.roofC)); strokePoly(top, ink, lw); }
+  }
+  if (b.roof === 'slab') {                              // a platform canopy: a thin roof on posts
+    const ys = y1 - 7;
+    const front = [P(x0, ys, z0), P(x1, ys, z0), f11, f01];
+    if (front.every(Boolean)) { fillPoly(front, C(b.roofC, .9)); strokePoly(front, ink, lw); }
+    for (let k = 0; k <= 4; k++) {
+      const px = lerp(x0 + 8, x1 - 8, k / 4), a = P(px, gy, z0 + 6), c = P(px, ys, z0 + 6);
+      if (a && c) { ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y); ctx.strokeStyle = C('trunk'); ctx.lineWidth = clamp(a.s * 4, .6, 3); ctx.stroke(); }
+    }
+    return;
+  }
+  if (b.roof === 'none') {                              // a market stall: counter + striped canopy
+    const ch = gy + 6 + b.h;
+    const cnt = [f00, f10, P(x1, ch, z0), P(x0, ch, z0)];
+    if (cnt.every(Boolean)) { fillPoly(cnt, C('tan')); strokePoly(cnt, ink, lw); }
+    awning(cam, P, x0, x1, z0, ch + 34, ch + 24, -18, b.canopy, f, ink, lw, true);
+    return;
+  }
+  // front wall
+  const front = [f00, f10, f11, f01];
+  fillPoly(front, C(wall)); strokePoly(front, ink, lw);
+  // details on the front face (u across, v up, in 0..1)
+  const fy = v => lerp(gy + 6, y1, v), fx = u => lerp(x0, x1, u), zF = z0 - .5;
+  const rect = (u, v, w, h) => [P(fx(u), fy(v), zF), P(fx(u + w), fy(v), zF), P(fx(u + w), fy(v + h), zF), P(fx(u), fy(v + h), zF)];
+  const lit = T.lit;
+  const win = (r) => {
+    if (!r.every(Boolean)) return;
+    fillPoly(r, lit ? rgb(mix(SC.window, SC.lit, lit), 1) : C('window'));
+    strokePoly(r, ink, lw * .8);
+    if (lit && f < .8) {                                // window glow at golden hour and night
+      const c = { x: (r[0].x + r[2].x) / 2, y: (r[0].y + r[2].y) / 2 }, rr = Math.abs(r[1].x - r[0].x) * 1.6 + 2;
+      const g = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, rr);
+      g.addColorStop(0, `rgba(255,205,120,${.35 * lit})`); g.addColorStop(1, 'rgba(255,205,120,0)');
+      ctx.fillStyle = g; ctx.fillRect(c.x - rr, c.y - rr, rr * 2, rr * 2);
+    }
+  };
+  if (b.columns) {
+    const steps = [P(x0 - 8, gy + 6, z0 - 14), P(x1 + 8, gy + 6, z0 - 14), P(x1 + 8, gy + 14, z0 - 14), P(x0 - 8, gy + 14, z0 - 14)];
+    if (steps.every(Boolean)) { fillPoly(steps, C('stone')); strokePoly(steps, ink, lw); }
+    for (let k = 0; k < b.columns; k++) {
+      const u = .08 + k * (.84 / (b.columns - 1)) - .025;
+      const r = rect(u, .1, .05, .72); if (r.every(Boolean)) { fillPoly(r, C('snow')); strokePoly(r, ink, lw * .7); }
+    }
+    for (const u of [.2, .5, .74]) win(rect(u + .02, .3, .06, .3));
+  }
+  if (b.pediment) {
+    const t = [P(x0 - 4, y1, z0 - 1), P(x1 + 4, y1, z0 - 1), P(o.x, y1 + 30, z0 - 1)];
+    if (t.every(Boolean)) { fillPoly(t, C('snow')); strokePoly(t, ink, lw); }
+  }
+  if (b.grid) {
+    const [cx, cy] = b.grid;
+    for (let i = 0; i < cx; i++) for (let j = 0; j < cy; j++) win(rect(.12 + i * .28, .26 + j * .18, .18, .1));
+  }
+  for (const w of b.win || []) win(rect(...w));
+  if (b.door) { const r = rect(.43, 0, .14, b.h > 100 ? .14 : .36); if (r.every(Boolean)) { fillPoly(r, C('trunk')); strokePoly(r, ink, lw * .8); } }
+  if (b.awning) awning(cam, P, x0 + 4, x1 - 4, z0, fy(.74), fy(.56), -20, b.awning, f, ink, lw, false);
+  if (b.clock) {
+    const c = P(o.x, y1 + b.rh * .45, z0 - 1);
+    if (c) { const r = Math.max(1.5, 9 * c.s); ctx.beginPath(); ctx.arc(c.x, c.y, r, 0, 7); ctx.fillStyle = C('snow'); ctx.fill(); ctx.strokeStyle = ink; ctx.lineWidth = lw; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(c.x, c.y); ctx.lineTo(c.x, c.y - r * .7); ctx.moveTo(c.x, c.y); ctx.lineTo(c.x + r * .5, c.y); ctx.stroke(); }
+  }
+  if (b.bell) {
+    const bx = o.x, by = y1 + b.rh;
+    const tw = [P(bx - 9, by - 8, z0 + 20), P(bx + 9, by - 8, z0 + 20), P(bx + 9, by + 14, z0 + 20), P(bx - 9, by + 14, z0 + 20)];
+    const tp = P(bx, by + 30, z0 + 20);
+    if (tw.every(Boolean) && tp) { fillPoly(tw, C('plaster')); strokePoly(tw, ink, lw); fillPoly([tw[3], tw[2], tp], C('slate')); strokePoly([tw[3], tw[2], tp], ink, lw); }
+  }
+  if (b.cross) {
+    const c = P(o.x, fy(.8), zF);
+    if (c) { const s = Math.max(1.5, 9 * c.s); ctx.fillStyle = C('pine'); ctx.fillRect(c.x - s * .35, c.y - s, s * .7, s * 2); ctx.fillRect(c.x - s, c.y - s * .35, s * 2, s * .7); }
+  }
+  if (b.dome) {
+    const c = P(o.x, y1, z0 + b.d / 2), e = P(x1 - 8, y1, z0 + b.d / 2);
+    if (c && e) {
+      const r = Math.abs(e.x - c.x);
+      ctx.beginPath(); ctx.arc(c.x, c.y, r, Math.PI, 0); ctx.closePath(); ctx.fillStyle = C('slateFar'); ctx.fill(); ctx.strokeStyle = ink; ctx.lineWidth = lw; ctx.stroke();
+      ctx.fillStyle = lit ? rgb(SC.lit, .9) : C('slateSh'); ctx.fillRect(c.x - r * .1, c.y - r * .95, r * .2, r * .95);
+    }
+  }
+}
+function awning(cam, P, x0, x1, z0, yTop, yBot, out, cols, f, ink, lw, posts) {
+  const n = 6;
+  for (let k = 0; k < n; k++) {
+    const a = lerp(x0, x1, k / n), b = lerp(x0, x1, (k + 1) / n);
+    const q = [P(a, yTop, z0 - 1), P(b, yTop, z0 - 1), P(b, yBot, z0 + out), P(a, yBot, z0 + out)];
+    if (!q.every(Boolean)) return;
+    fillPoly(q, fogc(SC[cols[k % 2]], f));
+  }
+  const q = [P(x0, yTop, z0 - 1), P(x1, yTop, z0 - 1), P(x1, yBot, z0 + out), P(x0, yBot, z0 + out)];
+  if (q.every(Boolean)) strokePoly(q, ink, lw);
+  if (posts) for (const x of [x0 + 3, x1 - 3]) {
+    const a = P(x, yBot, z0 + out), g = P(x, yBot - 40, z0 + out);
+    if (a && g) { ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(g.x, g.y); ctx.strokeStyle = fogc(SC.trunk, f); ctx.lineWidth = clamp(a.s * 3, .5, 2.4); ctx.stroke(); }
+  }
+}
+function drawWell(cam, o) {
+  const p = project(cam, o.x, ground(o.x, o.z), o.z); if (!p || p.x < -40 || p.x > W + 40) return;
+  const s = p.s, f = fogAt(p.d), ink = fogc(SC.ink, f), lw = clamp(s * 2.4, .4, 1.6);
+  ctx.beginPath(); ctx.ellipse(p.x, p.y - 14 * s, 22 * s, 7 * s, 0, 0, 7); ctx.rect(p.x - 22 * s, p.y - 14 * s, 44 * s, 14 * s);
+  ctx.fillStyle = fogc(SC.stone, f); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(p.x, p.y - 14 * s, 22 * s, 7 * s, 0, 0, 7); ctx.fillStyle = fogc(SC.stoneSh, f); ctx.fill(); ctx.strokeStyle = ink; ctx.lineWidth = lw; ctx.stroke();
+  ctx.strokeRect(p.x - 22 * s, p.y - 14 * s, 44 * s, 14 * s);
+  ctx.beginPath(); ctx.moveTo(p.x - 18 * s, p.y - 14 * s); ctx.lineTo(p.x - 18 * s, p.y - 52 * s); ctx.moveTo(p.x + 18 * s, p.y - 14 * s); ctx.lineTo(p.x + 18 * s, p.y - 52 * s);
+  ctx.strokeStyle = fogc(SC.trunk, f); ctx.lineWidth = clamp(s * 4, .5, 3); ctx.stroke();
+  fillPoly([{ x: p.x - 30 * s, y: p.y - 48 * s }, { x: p.x + 30 * s, y: p.y - 48 * s }, { x: p.x, y: p.y - 70 * s }], fogc(SC.brick, f));
+  strokePoly([{ x: p.x - 30 * s, y: p.y - 48 * s }, { x: p.x + 30 * s, y: p.y - 48 * s }, { x: p.x, y: p.y - 70 * s }], ink, lw);
+}
+function drawCairn(cam, o) {
+  const p = project(cam, o.x, ground(o.x, o.z), o.z); if (!p) return;
+  const s = p.s * 1.8, f = fogAt(p.d), ink = fogc(SC.ink, f), lw = clamp(p.s * 2, .3, 1.2);
+  for (const [dy, rx, ry, c] of [[0, 6.6, 3.4, 'stoneSh'], [-5, 4.9, 2.9, 'stone'], [-9.4, 3.2, 2.2, 'stoneSh']]) {
+    ctx.beginPath(); ctx.ellipse(p.x, p.y + dy * s, rx * s, ry * s, 0, 0, 7); ctx.fillStyle = fogc(SC[c], f); ctx.fill(); ctx.strokeStyle = ink; ctx.lineWidth = lw; ctx.stroke();
+  }
+}
+function drawFence(cam, o) {
+  const pts = [];
+  for (let k = 0; k < 7; k++) { const z = o.z + k * 34, x = o.x + o.side * k * 6; const b = project(cam, x, ground(x, z), z), t = project(cam, x, ground(x, z) + 26, z); if (!b || !t) return; pts.push([b, t]); }
+  const f = fogAt(pts[0][0].d), lw = clamp(pts[0][0].s * 3, .4, 2.2);
+  ctx.strokeStyle = fogc(SC.trunk, f); ctx.lineCap = 'round';
+  ctx.beginPath();
+  for (const [b, t] of pts) { ctx.moveTo(b.x, b.y); ctx.lineTo(t.x, t.y); }
+  for (const r of [.35, .8]) { ctx.moveTo(lerp(pts[0][0].x, pts[0][1].x, r), lerp(pts[0][0].y, pts[0][1].y, r)); for (const [b, t] of pts) ctx.lineTo(lerp(b.x, t.x, r), lerp(b.y, t.y, r)); }
+  ctx.lineWidth = lw; ctx.stroke();
+}
+function drawFingerpost(cam, o) {
+  const p = project(cam, o.x, ground(o.x, o.z), o.z); if (!p || p.s < .08) return;
+  const s = p.s, f = fogAt(p.d), ink = fogc(SC.ink, f), lw = clamp(s * 2.4, .4, 1.6);
+  ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x, p.y - 58 * s); ctx.strokeStyle = ink; ctx.lineWidth = clamp(s * 4, .6, 3); ctx.stroke();
+  const arm = (y, dir) => { const q = [{ x: p.x, y: y - 6 * s }, { x: p.x + dir * 28 * s, y: y - 6 * s }, { x: p.x + dir * 36 * s, y }, { x: p.x + dir * 28 * s, y: y + 6 * s }, { x: p.x, y: y + 6 * s }]; fillPoly(q, fogc(SC.tan, f)); strokePoly(q, ink, lw); };
+  arm(p.y - 50 * s, 1); arm(p.y - 34 * s, -1);
+}
+// The unit signpost: a pole beside the road with a pennant (tan ahead, pine once the unit is done).
+function drawSign(cam, o) {
+  const p = project(cam, o.x, ground(o.x, o.z), o.z); if (!p) return;
+  const s = p.s, f = fogAt(p.d); if (f > .9) return;
+  const ink = fogc(SC.ink, f), top = p.y - 96 * s;
+  ctx.beginPath(); ctx.ellipse(p.x, p.y, 14 * s, 4 * s, 0, 0, 7); ctx.fillStyle = fogc(SC.tan, f); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x, top); ctx.strokeStyle = ink; ctx.lineWidth = clamp(s * 4, .6, 3); ctx.lineCap = 'round'; ctx.stroke();
+  const dir = o.side, q = [{ x: p.x, y: top + 3 * s }, { x: p.x + dir * 40 * s, y: top + 13 * s }, { x: p.x, y: top + 23 * s }];
+  fillPoly(q, fogc(o.done ? SC.pine : SC.tan, f)); strokePoly(q, ink, clamp(s * 2.4, .4, 1.6));
+  if (s > .16 && f < .78 && p.x > -20 && p.x < W + 20) overlay.push({ kind: 'signChip', o, x: p.x + dir * 12, y: top - 4, dir, a: 1 - smooth((f - .5) / .28) });
+}
+function drawSection(cam, o) {
+  const p = project(cam, pathX(o.z), ground(pathX(o.z), o.z), o.z); if (!p) return;
+  const f = fogAt(p.d);
+  if (p.s > .16 && f < .78) overlay.push({ kind: 'sectionChip', o, x: p.x, y: p.y, a: 1 - smooth((f - .5) / .28) });
+}
+
+function drawClimber(cam, o, t) {
+  if (!climberImg.complete || !climberImg.naturalWidth) return;
+  const z = o.at, x = pathX(z) + (pathX(todayZ) > pathX(z) ? -6 : 6);
+  const p = project(cam, x, ground(x, z) + 1, z); if (!p) return;
+  const f = fogAt(p.d); if (f > .8) return;
+  const st = project(cam, pathX(todayZ), ground(pathX(todayZ), todayZ), todayZ);
+  const face = st && st.x > p.x + 2 ? 1 : -1;                  // +1 faces right; the art faces left
+  const hgt = clamp(82 * p.s, 10, 92), wid = hgt * climberImg.naturalWidth / climberImg.naturalHeight;
+  const bob = reduce ? 0 : (Math.sin(t / 650) * .5 + .5) * hgt * .025;
+  ctx.save(); ctx.globalAlpha = 1 - f;
+  ctx.beginPath(); ctx.ellipse(p.x, p.y, wid * .55, hgt * .05, 0, 0, 7); ctx.fillStyle = 'rgba(20,16,10,.18)'; ctx.fill();
+  ctx.translate(p.x, p.y - bob);
+  if (face > 0) ctx.scale(-1, 1);
+  if (TOD === 'night') ctx.filter = 'brightness(.62) saturate(.8)';
+  ctx.drawImage(climberImg, -wid * .55, -hgt, wid, hgt);
+  ctx.restore();
+}
+
+let curPending = false;
+function drawStop(cam, o, t, now) {
+  if (o.i === CURRENT && !now) { curPending = true; return; }
+  const pro = o.kind === 'pro';
+  const x = pro ? branchX(o.z) : pathX(o.z);
+  const p = project(cam, x, ground(x, o.z) + 4, o.z); if (!p) return;
+  const fog = fogAt(p.d);
+  if (fog > .85) return;
+  const cur = !pro && o.i === CURRENT, done = !pro && o.i < CURRENT;
+  let r = Math.min(cur ? 42 : 38, 30 * p.s * 1.6);
+  if (p.d < 1100) r = Math.max(r, 15);
+  const cy = p.y - r * .9;
+  ctx.save(); ctx.globalAlpha = 1 - fog;
+  ctx.fillStyle = 'rgba(20,16,10,.2)';
+  ctx.beginPath(); ctx.ellipse(p.x, p.y, r * .9, r * .28, 0, 0, 7); ctx.fill();
+  if (cur) {
+    const pulse = reduce ? 0 : (t / 1600) % 1;
+    ctx.strokeStyle = rgb(UI.gilt, reduce ? .45 : .55 * (1 - pulse)); ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(p.x, cy, r * (1.18 + pulse * .6), 0, 7); ctx.stroke();
+  }
+  ctx.beginPath(); ctx.arc(p.x, cy, r, 0, 7);
+  ctx.fillStyle = rgb(done || cur ? UI.gilt : UI.sheet, pro ? .88 : 1); ctx.fill();
+  ctx.lineWidth = Math.max(1.4, r * .09);
+  ctx.strokeStyle = rgb(done || cur ? UI.sheet : UI.gilt, .95); ctx.stroke();
+  ctx.beginPath(); ctx.arc(p.x, cy, r + ctx.lineWidth * .5 + .6, 0, 7); ctx.strokeStyle = 'rgba(20,16,10,.35)'; ctx.lineWidth = .8; ctx.stroke();
+  const fg = done || cur ? UI.onGilt : UI.ink;
+  ctx.strokeStyle = rgb(fg); ctx.fillStyle = rgb(fg); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  if (done) {
+    ctx.lineWidth = r * .16; ctx.beginPath();
+    ctx.moveTo(p.x - r * .38, cy + r * .02); ctx.lineTo(p.x - r * .08, cy + r * .3); ctx.lineTo(p.x + r * .4, cy - r * .28); ctx.stroke();
+  } else if (pro) {
+    ctx.lineWidth = r * .12;
+    ctx.strokeRect(p.x - r * .34, cy - r * .02, r * .68, r * .5);
+    ctx.beginPath(); ctx.arc(p.x, cy - r * .02, r * .22, Math.PI, 0); ctx.stroke();
+  } else {
+    ctx.font = `600 ${Math.round(r * (cur ? .8 : .72))}px 'Hanken Grotesk', sans-serif`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(String(o.i + 1), p.x, cy + r * .04);
+  }
+  ctx.restore();
+  tapTargets.push({ kind: 'stop', o, x: p.x, y: cy, r: Math.max(r, 22), d: p.d });
+  if ((cur || pro) && r > 12 && p.x > 0 && p.x < W) overlay.push({ kind: cur ? 'start' : 'proChip', o, x: p.x, y: cy, r, a: (1 - fog) * (cur ? smooth((r - 20) / 8) : 1) });
+}
+
+// Screen-space chips drawn last, clamped inside the screen and kept out of the header and today card.
+function chip(x, y, w, h, bg, a) {
+  ctx.fillStyle = rgb(bg, .94 * a);
+  ctx.beginPath(); ctx.roundRect(x, y, w, h, h / 2 > 14 ? 14 : h / 2); ctx.fill();
+  ctx.strokeStyle = `rgba(33,29,22,${.12 * a})`; ctx.lineWidth = 1; ctx.stroke();
+}
+const SAFE_TOP = 196, SAFE_BOT = H - 200;
+function drawOverlay() {
+  const placed = [];
+  const free = (x, y, w, h) => !placed.some(b => x < b[0] + b[2] + 4 && x + w + 4 > b[0] && y < b[1] + b[3] + 4 && y + h + 4 > b[1]);
+  const pick = (cands, w, h) => { for (let [x, y] of cands) { x = clamp(x, 10, W - 10 - w); if (free(x, y, w, h)) return [x, y]; } return null; };
+  const fadeY = (y, h) => smooth((y - SAFE_TOP) / 26) * smooth((SAFE_BOT - (y + h)) / 26);
+  // stops first (they own their space), then the Start bubble, then signs and sections
+  overlay.sort((a, b) => ({ start: 0, proChip: 1, signChip: 2, sectionChip: 3 }[a.kind] - { start: 0, proChip: 1, signChip: 2, sectionChip: 3 }[b.kind]));
+  for (const t of tapTargets) placed.push([t.x - t.r, t.y - t.r, t.r * 2, t.r * 2]);
+  for (const o of overlay) {
+    ctx.save();
+    if (o.kind === 'start') {
+      const label = 'Start · 5 words';
+      ctx.font = `600 14px 'Hanken Grotesk', sans-serif`;
+      const w = Math.max(132, ctx.measureText(label).width + 30), h = 44;
+      const right = o.x < W / 2;
+      let bx = right ? o.x + o.r + 12 : o.x - o.r - 12 - w;
+      bx = clamp(bx, 10, W - 10 - w);
+      const by = o.y - h / 2, a = o.a * fadeY(by, h);
+      if (a < .05) { ctx.restore(); continue; }
+      ctx.globalAlpha = a;
+      ctx.fillStyle = 'rgba(20,16,10,.26)'; ctx.beginPath(); ctx.roundRect(bx, by + 3, w, h, h / 2); ctx.fill();
+      ctx.fillStyle = rgb(UI.gilt); ctx.beginPath(); ctx.roundRect(bx, by, w, h, h / 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(20,16,10,.38)'; ctx.lineWidth = 1; ctx.stroke();      // a defined edge on pale ground
+      ctx.fillStyle = rgb(UI.onGilt); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, bx + w / 2, by + h / 2 + 1);
+      placed.push([bx, by, w, h]);
+      if (a > .5) tapTargets.push({ kind: 'start', x: bx, y: by, w, h, d: 0 });
+    } else if (o.kind === 'proChip') {
+      const label = 'Medical track · Pro';
+      ctx.font = `600 13px 'Hanken Grotesk', sans-serif`;
+      const w = ctx.measureText(label).width + 24, h = 28;
+      const spot = pick([[o.x - w / 2, o.y - o.r - 10 - h], [o.x - o.r - 10 - w, o.y - h / 2], [o.x + o.r + 10, o.y - h / 2], [o.x - w / 2, o.y + o.r + 8]], w, h);
+      if (!spot) { ctx.restore(); continue; }
+      const [bx, by] = spot, a = o.a * fadeY(by, h);
+      if (a < .05) { ctx.restore(); continue; }
+      chip(bx, by, w, h, UI.sheet, a);
+      ctx.fillStyle = rgb(UI.ink, a); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, bx + w / 2, by + h / 2 + 1);
+      placed.push([bx, by, w, h]);
+    } else if (o.kind === 'signChip') {
+      const u = UNITS[o.o.u], eb = `Unit ${o.o.u + 1} · ${o.o.done ? 'Complete' : o.o.active ? `${CURRENT - o.o.u * PER_UNIT}/${PER_UNIT}` : u.field}`;
+      ctx.font = `600 10.5px 'Hanken Grotesk', sans-serif`; ctx.letterSpacing = '1.2px';
+      const ew = ctx.measureText(eb.toUpperCase()).width;
+      ctx.font = `400 18px 'Lexfall Serif', Georgia, serif`; ctx.letterSpacing = '0px';
+      const tw = ctx.measureText(u.title).width;
+      const w = Math.max(ew, tw) + 24, h = 48;
+      const spot = pick([[o.dir > 0 ? o.x : o.x - w, o.y - h], [o.dir > 0 ? o.x : o.x - w, o.y - h - 30], [o.dir > 0 ? o.x - w : o.x, o.y - h]], w, h);
+      if (!spot) { ctx.restore(); continue; }
+      const [bx, by] = spot, a = o.a * fadeY(by, h) * (o.o.done || o.o.active ? 1 : .9);
+      if (a < .05) { ctx.restore(); continue; }
+      chip(bx, by, w, h, CHIP.bg, a);
+      ctx.textAlign = o.dir > 0 ? 'left' : 'right'; ctx.textBaseline = 'alphabetic';
+      const tx = o.dir > 0 ? bx + 12 : bx + w - 12;
+      ctx.font = `600 10.5px 'Hanken Grotesk', sans-serif`; ctx.letterSpacing = '1.2px';
+      ctx.fillStyle = rgb(CHIP.muted, a); ctx.fillText(eb.toUpperCase(), tx, by + 18);
+      ctx.font = `400 18px 'Lexfall Serif', Georgia, serif`; ctx.letterSpacing = '0px';
+      ctx.fillStyle = rgb(CHIP.ink, a); ctx.fillText(u.title, tx, by + 38);
+      placed.push([bx, by, w, h]);
+    } else if (o.kind === 'sectionChip') {
+      const label = o.o.text.toUpperCase();
+      ctx.font = `600 11px 'Hanken Grotesk', sans-serif`; ctx.letterSpacing = '1.3px';
+      const w = ctx.measureText(label).width + 24, h = 26;
+      const spot = pick([[o.x - w / 2, o.y - h / 2], [o.x - w / 2, o.y + 14], [o.x - w / 2, o.y - h - 14]], w, h);
+      if (!spot) { ctx.restore(); continue; }
+      const [bx, by] = spot, a = o.a * fadeY(by, h);
+      if (a < .05) { ctx.restore(); continue; }
+      chip(bx, by, w, h, CHIP.bg, a * (o.o.ahead ? .85 : 1));
+      ctx.fillStyle = rgb(o.o.ahead ? CHIP.muted : CHIP.ink, a); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, bx + w / 2, by + h / 2 + 1);
+      ctx.letterSpacing = '0px';
+      placed.push([bx, by, w, h]);
+    }
+    ctx.restore();
+  }
+}
+
+// Draw one frame. The world is cut into depth slices from far to near; each slice draws its ground
+// band, its piece of road, then what stands in it, so nearer hills cover what is behind them.
+const BREAKS = [TUN0, TUN1, STREAM_Z - 70, FORK, FORK_END];
+let perf = [];
+function frame(t) {
+  const t0 = performance.now();
+  if (!reduce) { shown = lerp(shown, target, .16); if (Math.abs(shown - target) < .05) shown = target; } else shown = target;
+  const cam = camera(shown);
+  tapTargets = []; overlay = []; curPending = false;
+  if (cam.z > TUN0 - 25 && cam.z < TUN1 - 20) {
+    tunnelView(cam, t);
+  } else {
+    sky(cam, t);
+    range(cam);
+    for (const o of objs) if (o.kind === 'cloud' && o.z > cam.z + 200 && o.z < cam.z + VIEW + 3000) drawCloud(cam, o);
+    const zFar = cam.z + VIEW, zNear = cam.z + 30;
+    let oi = 0; while (oi < objs.length && objs[oi].z > zFar) oi++;
+    for (let z = zFar; z > zNear;) {
+      const dzc = z - cam.z;
+      let zn = Math.max(zNear, z - (dzc > 1300 ? 150 : dzc > 500 ? 90 : 50));
+      for (const b of BREAKS) if (b < z - 1 && b > zn) zn = b;
+      band(cam, z);
+      if (z > FORK && zn < FORK_END + 150) road(cam, Math.min(z, FORK_END + 150), Math.max(zn, FORK), branchX, 20, .6, -1);
+      const inT = Math.min(z, TUN1) > Math.max(zn, TUN0);
+      if (!inT) road(cam, z, zn, pathX, 34, 1, todayZ);
+      // ground details first (flat), then standing things, far to near
+      const start = oi;
+      while (oi < objs.length && objs[oi].z > zn) oi++;
+      for (let k = start; k < oi; k++) {
+        const o = objs[k];
+        if (o.kind === 'patch') drawPatch(cam, o);
+        else if (o.kind === 'stream') drawStream(cam);
+      }
+      for (let k = start; k < oi; k++) {
+        const o = objs[k];
+        switch (o.kind) {
+          case 'tree': drawTree(cam, o); break;
+          case 'rock': drawRock(cam, o); break;
+          case 'tuft': drawTuft(cam, o); break;
+          case 'pebble': drawPebble(cam, o); break;
+          case 'bld': drawBuilding(cam, o); break;
+          case 'well': drawWell(cam, o); break;
+          case 'cairn': drawCairn(cam, o); break;
+          case 'fence': drawFence(cam, o); break;
+          case 'fingerpost': drawFingerpost(cam, o); break;
+          case 'sign': drawSign(cam, o); break;
+          case 'section': drawSection(cam, o); break;
+          case 'bridge': drawBridge(cam); break;
+          case 'portal': drawPortal(cam); break;
+          case 'climber': drawClimber(cam, o, t); if (curPending) { curPending = false; drawStop(cam, stops[CURRENT], t, true); } break;
+          case 'stop': case 'pro': drawStop(cam, o, t); break;
+        }
+      }
+      z = zn;
+    }
+    if (curPending) { curPending = false; drawStop(cam, stops[CURRENT], t, true); }
+    // darken on the way into the tunnel and brighten out of it
+    const dIn = smooth((cam.z - (TUN0 - 180)) / 155), dOut = 1 - smooth((cam.z - (TUN1 - 20)) / 160);
+    const dk = cam.z < TUN0 ? dIn : cam.z > TUN1 - 20 ? dOut * .9 : 0;
+    if (dk > 0) { ctx.fillStyle = `rgba(20,17,13,${dk * .85})`; ctx.fillRect(0, 0, W, H); }
+    drawOverlay();
+  }
+  ui(cam);
+  perf.push(performance.now() - t0); if (perf.length > 240) perf.shift();
+  requestAnimationFrame(frame);
+}
+window.climbPerf = () => { const a = [...perf].sort((x, y) => x - y); return { n: a.length, median: a[a.length >> 1], p95: a[Math.floor(a.length * .95)], max: a[a.length - 1] }; };
+
+// ---- scroll + UI ----
+const hint = document.getElementById('hint'), back = document.getElementById('back'), today = document.getElementById('today'), toast = document.getElementById('toast');
+let scrolled = false;
+function readScroll() { target = Math.max(-Z0, (maxScroll() - scroller.scrollTop) * Z_PER_PX - Z0); }
+scroller.addEventListener('scroll', () => {
+  readScroll();
+  if (!scrolled && Math.abs(target - (todayZ - OPEN)) > 40) { scrolled = true; hint.classList.add('hide'); }
+}, { passive: true });
+const sb = document.querySelector('.sb');
+function ui(cam) {
+  const light = TOD === 'night' || (cam.z > TUN0 - 120 && cam.z < TUN1 + 60);   // status bar over the scene
+  if (light !== sbLight) { sbLight = light; sb.style.color = light ? '#ECE5D7' : '#211D16'; }
+  const ahead = todayZ > cam.z + 1500, behind = todayZ < cam.z + 120;
+  const off = ahead || behind;
+  back.classList.toggle('on', off);
+  back.classList.toggle('up', ahead);
+  today.classList.toggle('away', off);
+}
+back.addEventListener('click', () => scroller.scrollTo({ top: zToScroll(todayZ - OPEN), behavior: reduce ? 'auto' : 'smooth' }));
+let toastTimer;
+function say(msg) { toast.textContent = msg; toast.classList.add('on'); hint.classList.add('hide'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('on'), 2200); }
+document.getElementById('startCard').addEventListener('click', () => say("Lesson 5 opens. The climber hops into the circle first."));
+scroller.addEventListener('click', e => {
+  const rect = scr.getBoundingClientRect(), s = rect.width / W;
+  const x = (e.clientX - rect.left) / s, y = (e.clientY - rect.top) / s;
+  const bubble = tapTargets.find(h => h.kind === 'start' && x >= h.x && x <= h.x + h.w && y >= h.y - 0 && y <= h.y + h.h);
+  if (bubble) { say("Lesson 5 opens. The climber hops into the circle first."); return; }
+  const hit = tapTargets.filter(h => h.kind === 'stop' && Math.hypot(h.x - x, h.y - y) <= h.r).sort((a, b) => a.d - b.d)[0];
+  if (!hit) return;
+  const o = hit.o;
+  if (o.kind === 'pro') say('Medical track is part of Pro. In the app this opens the paywall.');
+  else if (o.i < CURRENT) say(`Lesson ${o.i + 1} done. In the app, tap to practise it again.`);
+  else if (o.i === CURRENT) say("Today's lesson. Tap Start to begin.");
+  else say(`Lesson ${o.i + 1} unlocks after today's lesson.`);
+});
+
+// Open on today's lesson, then a one-time nudge up and back to show the path scrolls.
+requestAnimationFrame(() => {
+  scroller.scrollTop = zToScroll(todayZ - OPEN);
+  readScroll(); shown = target;
+  requestAnimationFrame(frame);
+  if (!reduce) {
+    setTimeout(() => { if (!scrolled) target += 300; }, 900);
+    setTimeout(() => { if (!scrolled) readScroll(); }, 1600);
+  }
+});
+</script>
+</body>
+</html>
