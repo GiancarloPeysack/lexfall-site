@@ -20,8 +20,8 @@ export const HEAD_ASSETS = `<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#100E0B" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="/fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="/favicon.ico?v=36" sizes="any">
-<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png?v=36">
+<link rel="icon" href="/favicon.ico?v=37" sizes="any">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png?v=37">
 <link rel="stylesheet" href="/styles.css?v=${CSS_VERSION}">`;
 
 const APPLE = '<svg class="badge-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.09-2.02-3.76-2.05-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.88 2.65 3.22 2.6 1.29-.05 1.78-.83 3.34-.83 1.56 0 2 .83 3.37.81 1.39-.03 2.27-1.27 3.12-2.53.98-1.45 1.39-2.85 1.41-2.92-.03-.01-2.7-1.04-2.73-4.13zM14.53 4.6c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.65.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44z"/></svg>';
@@ -45,7 +45,7 @@ const LINKS = [
 export const NAV = (ct) => `<a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png?v=36" alt="" width="32" height="32"><span>Lexfall</span></a>
+    <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png?v=37" alt="" width="32" height="32"><span>Lexfall</span></a>
     <nav class="nav-links" aria-label="Primary">
       ${LINKS.map(([h, t]) => `<a href="${h}">${t}</a>`).join('\n      ')}
     </nav>
@@ -65,7 +65,7 @@ export const FOOT = () => `<footer class="site-foot">
   <div class="foot-body">
     <div class="wrap foot-grid">
       <div class="foot-brand">
-        <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png?v=36" alt="" width="32" height="32" loading="lazy"><span>Lexfall</span></a>
+        <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png?v=37" alt="" width="32" height="32" loading="lazy"><span>Lexfall</span></a>
         <p>Short daily lessons for advanced English. A path built for your field or exam, from your level up to Expert.</p>
         ${badges('web_foot')}
       </div>

@@ -98,14 +98,14 @@ const head = ({ title, desc, url, jsonld }) => `<!DOCTYPE html>
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE}/og-image.png?v=36">
+<meta property="og:image" content="${SITE}/og-image.png?v=37">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Lexfall: Short daily lessons for advanced English">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">
-<meta name="twitter:image" content="${SITE}/og-image.png?v=36">
+<meta name="twitter:image" content="${SITE}/og-image.png?v=37">
 <script type="application/ld+json">
 ${JSON.stringify(jsonld)}
 </script>
@@ -141,7 +141,7 @@ for (const list of LISTS) {
   const jsonld = {
     '@context': 'https://schema.org', '@graph': [
       { '@type': 'Article', headline: list.h1, description: list.desc, datePublished: list.published || TODAY, dateModified: TODAY,
-        image: `${SITE}/og-image.png?v=36`, articleSection: 'Language', author: org,
+        image: `${SITE}/og-image.png?v=37`, articleSection: 'Language', author: org,
         publisher: { ...org, logo: { '@type': 'ImageObject', url: `${SITE}/brand/apple-touch-icon.png` } }, mainEntityOfPage: url },
       { '@type': 'DefinedTermSet', name: list.h1, url, hasDefinedTerm: chosen.map((w) => ({ '@type': 'DefinedTerm', name: w.word, description: w.def })) },
       crumbs([['Word lists', `${SITE}/word-lists`], [list.h1.split(':')[0], url]]),
