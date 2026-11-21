@@ -232,13 +232,14 @@ async function liquidMark(host) {
   stage.className = 'lm-stage';
   stage.setAttribute('aria-hidden', 'true');
   host.append(stage);
-  // liquid-logo's look, tinted to the Lexfall gold
+  // liquid-logo's look, chrome (the Lexfall logo leaf)
   new ShaderMount(stage, liquidMetalFragmentShader, {
     u_colorBack: getShaderColorFromString('#00000000'),
-    u_colorTint: getShaderColorFromString(dark() ? '#D9C38C' : '#E6CC8A'),
+    u_colorTint: getShaderColorFromString('#FFFFFF'),
     u_image: image, u_isImage: true, u_shape: 0,
-    u_repetition: 3, u_softness: 0.35, u_shiftRed: 0.3, u_shiftBlue: 0.3,
-    u_distortion: 0.1, u_contour: 0.6, u_angle: 70,
+    // 2026-11-21 logo settings (owner pick, option 3): the same render as the app icon
+    u_repetition: 1.5, u_softness: 0.6, u_shiftRed: 0.6, u_shiftBlue: 0.6,
+    u_distortion: 0.15, u_contour: 0.9, u_angle: 70,
     u_fit: ShaderFitOptions.contain, u_scale: 0.95, u_rotation: 0, u_offsetX: 0, u_offsetY: 0,
     u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0,
   }, undefined, reduce ? 0 : 0.6, 1.2, 2, 1600 * 1600);
