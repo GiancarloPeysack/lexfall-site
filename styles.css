@@ -167,7 +167,7 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 .section-head.center{margin:0 auto;text-align:center}
 .h2,.section-head h2{font-family:var(--serif);font-weight:500;letter-spacing:-.6px;font-size:clamp(30px,4.6vw,46px);line-height:1.08;margin-top:12px}
 .section-head p{color:var(--muted);margin-top:14px;font-size:18px}
-.leaf-stop{display:inline-block;width:.5em;height:.62em;margin-left:.02em;vertical-align:-.1em;background:url(/art/leaf.webp) center/contain no-repeat;transform:rotate(28deg);filter:var(--art-filter)}
+.leaf-stop{display:inline-block;width:.46em;height:.64em;margin-left:.04em;vertical-align:-.08em;background:url(/art/leaf-liquid.webp) center/contain no-repeat;filter:drop-shadow(0 .03em .05em rgba(0,0,0,.25))}
 
 /* ---------------------------------------------------------------- HOME: hero */
 .hero{position:relative;padding-top:36px;overflow:hidden}
