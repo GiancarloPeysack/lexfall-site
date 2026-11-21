@@ -87,9 +87,9 @@ const head = ({ title, desc, url, jsonld }) => `<!DOCTYPE html>
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE}/og-image.png?v=34">
+<meta property="og:image" content="${SITE}/og-image.png?v=36">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="${SITE}/og-image.png?v=34">
+<meta name="twitter:image" content="${SITE}/og-image.png?v=36">
 ${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld)}\n</script>\n` : ''}<!-- chrome:head -->
 ${HEAD_ASSETS}
 <!-- /chrome:head -->
