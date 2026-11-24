@@ -704,3 +704,57 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 .lm-mark.lm-on picture{display:none}
 .lm-mark.lm-on .lm-stage{display:block;width:120px;height:162px;margin:-118px auto 0;position:relative}
 .lm-stage canvas{display:block}
+
+/* ---------------------------------------------------------------- craft layer (preview 2026-11-24)
+   Framer-style motion without a library: one soft spring token, per-word hero headline, outcome chips,
+   scroll-linked plates (CSS scroll-driven, Chrome 115 / Safari 26 / Firefox 159; static elsewhere),
+   mono figure labels, label-roll buttons, cross-page view transitions. Reduced motion: all off. */
+:root{--spring:cubic-bezier(.2,.7,.2,1);--mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace}
+@supports (transition-timing-function:linear(0,1)){:root{--spring:linear(0,.18 6%,.55 16%,.84 28%,.97 40%,1.012 52%,1.006 70%,1)}}
+
+/* hero headline: each word rises in turn */
+.hw .w{display:inline-block}
+@media (prefers-reduced-motion:no-preference){
+  .hw .w{animation:wordIn .9s var(--spring) both;animation-delay:calc(.06s + var(--i) * 70ms)}
+}
+@keyframes wordIn{from{opacity:0;transform:translateY(.42em) rotate(1.5deg);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+
+/* outcome chips: the visitor names the outcome first (exam, licence, work) */
+.goal{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0 4px;justify-content:center}
+@media(min-width:900px){.goal{justify-content:flex-start}}
+.goal-q{font-family:var(--mono);font-size:12px;letter-spacing:.4px;color:var(--muted);margin-right:2px}
+.goal-chip{display:inline-flex;align-items:center;padding:7px 14px;border-radius:999px;border:1px solid var(--line, rgba(127,127,127,.28));
+  color:var(--text, inherit);text-decoration:none;font-size:14.5px;font-weight:500;transition:border-color .25s ease,transform .35s var(--spring),background-color .25s ease}
+.goal-chip:hover{border-color:currentColor;transform:translateY(-2px)}
+.goal-chip:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* facts: numbers sit still while they count */
+.facts b{font-variant-numeric:tabular-nums lining-nums}
+
+/* panel eyebrows read as figure labels, like a printed magazine */
+.panels{counter-reset:fig}
+.pn-eyebrow::before{counter-increment:fig;content:"Fig. " counter(fig,decimal-leading-zero) "\2003";content:"Fig. " counter(fig,decimal-leading-zero) "\2003" / "";
+  font-family:var(--mono);font-weight:500;letter-spacing:.3px;opacity:.7;text-transform:none}
+
+/* scroll-linked plates: art settles into its frame as it enters, hero art drifts up as you leave */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .panel .pn-plate{animation:plateIn linear both;animation-timeline:view();animation-range:entry 0% cover 38%}
+    .ed-hero-art .pn-plate{animation:heroDrift linear both;animation-timeline:scroll(root);animation-range:0 90vh}
+  }
+}
+@keyframes plateIn{from{transform:translateY(56px) scale(.94);opacity:.35;clip-path:inset(6% 4% 6% 4% round 24px)}to{transform:none;opacity:1;clip-path:inset(0 round 24px)}}
+@keyframes heroDrift{to{transform:translateY(-48px) scale(.97);opacity:.55}}
+
+/* label-roll on primary buttons: the label slides up, its copy follows from below (the button clips) */
+@media (prefers-reduced-motion:no-preference) and (hover:hover){
+  .btn-primary{overflow:hidden}
+  .btn-primary>span{display:inline-block;text-shadow:0 2.4em 0 currentColor;transition:transform .5s var(--spring)}
+  .btn-primary:hover>span{transform:translateY(-2.4em)}
+}
+
+/* page to page: a short cross-fade where the browser supports it */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.28s}
+}
