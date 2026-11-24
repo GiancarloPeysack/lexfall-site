@@ -740,7 +740,7 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 @media (prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
     .panel .pn-plate{animation:plateIn linear both;animation-timeline:view();animation-range:entry 0% cover 38%}
-    .ed-hero-art .pn-plate{animation:heroDrift linear both;animation-timeline:scroll(root);animation-range:0 90vh}
+    @media(min-width:900px){.ed-hero-art .pn-plate{animation:heroDrift linear both;animation-timeline:scroll(root);animation-range:0 90vh}}
   }
 }
 @keyframes plateIn{from{transform:translateY(56px) scale(.94);opacity:.35;clip-path:inset(6% 4% 6% 4% round 24px)}to{transform:none;opacity:1;clip-path:inset(0 round 24px)}}
