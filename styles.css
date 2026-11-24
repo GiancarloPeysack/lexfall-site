@@ -778,3 +778,18 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 :root{--serif:"Lexfall Serif",Georgia,"Times New Roman",serif;--serif-text:"Lexfall Text",Georgia,serif;--ipa:"Charis SIL","Doulos SIL","Lucida Sans Unicode",serif;--sans:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 .hero h1,.ed-hero h1{letter-spacing:-.4px}.h2,.section-head h2{letter-spacing:-.2px}.wordmark,.qr b{font-family:var(--serif-text)}
 .wcard-def,.pn-sub{font-family:var(--sans)} [class*="ipa"],.pron{font-family:var(--ipa)}
+/* exam marquee: a slow ticker of the exams with word lists; still (and scrollable) with reduced motion */
+.marquee{display:flex;overflow:hidden;gap:0;margin:40px auto 0;max-width:var(--maxw);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;flex:none;gap:0;margin:0;padding:0;list-style:none}
+.mq-track li{flex:none;font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);color:var(--muted);padding:0 22px;white-space:nowrap}
+.mq-track li+li::before{content:"\00B7";margin-right:22px;margin-left:-22px;opacity:.5}
+.mq-track a{color:inherit;text-decoration:none;transition:color .2s ease}
+.mq-track a:hover{color:var(--text)}
+.mq-track li:first-child::before{content:"\00B7";margin-right:22px;margin-left:-22px;opacity:.5}
+@media (prefers-reduced-motion:no-preference){
+  .mq-track{animation:mq 60s linear infinite}
+  .marquee:hover .mq-track,.marquee:focus-within .mq-track{animation-play-state:paused}
+}
+@media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.mq-track[aria-hidden]{display:none}}
+@keyframes mq{to{transform:translateX(-100%)}}
