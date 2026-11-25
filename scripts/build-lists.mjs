@@ -126,7 +126,11 @@ function summary(list, chosen) {
   const what = list.pool.exams ? `${list.eyebrow} vocabulary` : `${list.eyebrow.replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase())} vocabulary`;
   return `<strong>In short:</strong> ${chosen.length} ${what} words at ${range} level, grouped by ${by}. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.`;
 }
-const plate = (scene, alt) => `    <figure class="post-plate"><picture><source type="image/avif" srcset="/art/${scene}-600.avif?v=34 600w, /art/${scene}-1200.avif?v=34 1200w" sizes="(min-width:1100px) 1040px, 92vw"><img src="/art/${scene}-600.webp?v=34" srcset="/art/${scene}-600.webp?v=34 600w, /art/${scene}-1200.webp?v=34 1200w" sizes="(min-width:1100px) 1040px, 92vw" width="1344" height="1056" alt="${alt}" decoding="async"></picture></figure>`;
+const plate = (scene, alt) => `    <figure class="post-plate"><picture><source type="image/avif" srcset="/art/${scene}-600.avif?v=34 600w, /art/${scene}-1200.avif?v=34 1200w" sizes="(min-width:1100px) 1040px, 92vw"><img src="/art/${scene}-600.webp?v=34" srcset="/art/${scene}-600.webp?v=34 600w, /art/${scene}-1200.webp?v=34 1200w" sizes="(min-width:1100px) 1040px, 92vw" width="1344" height="1056" alt="${alt}" decoding="async"></picture>${CAPS[scene]}</figure>`;
+const CAPS = {
+  'scene-exams': '<figcaption><i>Fig. 01</i> Exam prep: a few words a day, reviewed until they stay.</figcaption>',
+  'scene-fields': '<figcaption><i>Fig. 01</i> Your field: the words your work runs on.</figcaption>',
+};
 const PLATES = {
   exam: ['scene-exams', 'A man studies at a desk in a quiet room under an arched window.'],
   field: ['scene-fields', 'A doctor, a business executive, a lawyer with a folder and a professor with a book stand side by side.'],
