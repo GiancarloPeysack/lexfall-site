@@ -226,6 +226,7 @@ function hubPage() {
     <span class="eyebrow">Word list</span>
     <h1>Advanced English vocabulary</h1>
     <p class="lede">${entries.length.toLocaleString('en-US')} words from the Lexfall app, each with a clear definition, a real example sentence, its CEFR level and a rarity score from 0 to 100.</p>
+    <figure class="post-plate"><picture><source type="image/avif" srcset="/art/scene-library-600.avif?v=34 600w, /art/scene-library-1200.avif?v=34 1200w" sizes="(min-width:760px) 700px, 92vw"><img src="/art/scene-library-600.webp?v=34" srcset="/art/scene-library-600.webp?v=34 600w, /art/scene-library-1200.webp?v=34 1200w" sizes="(min-width:760px) 700px, 92vw" width="1344" height="1056" alt="A young man stands at a reading desk with a lamp and a book." decoding="async"></picture><figcaption><i>Fig. 01</i> The dictionary: every word in the app, with its level and how rare it is.</figcaption></figure>
     <h2 class="h-sub">Browse by letter</h2>
     ${letterNav(null)}
     <h2 class="h-sub">Browse by field</h2>
