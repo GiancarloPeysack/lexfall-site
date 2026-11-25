@@ -41,13 +41,15 @@ const LINKS = [
   ['/blog', 'Blog'],
   ['/support', 'Support'],
 ];
+// the desktop bar keeps four reader links; Creators and Partners stay in the menu and the footer
+const BAR = LINKS.filter(([h]) => h !== '/creators' && h !== '/partners');
 
 export const NAV = (ct) => `<a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="/" class="wordmark" aria-label="Lexfall home"><img class="mark" src="/brand/icon-64.png?v=38" alt="" width="32" height="32"><span>Lexfall</span></a>
     <nav class="nav-links" aria-label="Primary">
-      ${LINKS.map(([h, t]) => `<a href="${h}">${t}</a>`).join('\n      ')}
+      ${BAR.map(([h, t]) => `<a href="${h}">${t}</a>`).join('\n      ')}
     </nav>
     <details class="menu">
       <summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></summary>
