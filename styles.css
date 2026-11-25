@@ -849,3 +849,21 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 @media (prefers-color-scheme:dark){.post .cta{background:#17140F;box-shadow:inset 0 0 0 1px var(--line)}}
 .post .cta .badge{background:#0E0C09;color:#F4EEE2;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
 .post .cta .qr{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#F4EEE2}
+/* round two (2026-11-25) */
+#download.section{padding-top:0}
+.closer-band{margin-top:112px}
+.goal-q,.pn-eyebrow::before{font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:0;text-transform:none;opacity:.85}
+.faq{gap:0}
+.faq details{background:none;border-radius:0;border-top:1px solid var(--line);padding:0}
+.faq>details:last-of-type{border-bottom:1px solid var(--line)}
+.faq summary{font-size:22px;padding:22px 32px 22px 0}
+.faq .faq-more{border-top:0}
+.faq-inner>details:first-child{border-top:1px solid var(--line)}
+.facts span{max-width:26ch;margin:4px auto 0}
+.field-reveal-head{text-wrap:balance}
+.ed-hero-art .pn-plate img{box-shadow:0 0 0 1px var(--line),var(--soft-shadow, 0 24px 48px -24px rgba(0,0,0,.35))}
+.post-plate img{aspect-ratio:3/2;object-position:50% 18%}
+.post-plate figcaption{font-family:var(--serif);font-size:15.5px;color:var(--muted);margin-top:10px;line-height:1.45}
+.post-plate figcaption i{font-style:italic;margin-right:.5em}
+@media(min-width:1100px){.post-plate{width:auto;margin-left:0}.post .cta{width:1040px;margin-left:calc(50% - 520px)}}
+.post{padding-bottom:0}
