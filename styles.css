@@ -834,3 +834,18 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 .faq .faq-more>summary{font-family:var(--sans);font-size:15px;color:var(--muted);text-align:center;padding:14px 0;text-decoration:underline;text-underline-offset:3px}
 .faq .faq-more>summary::after{display:none}
 .faq-inner{margin:8px 0 0}
+/* list and exam pages (2026-11-25): an Editorial Flat plate under the header, the word list breaks out
+   of the reading column into two columns on desktop, the closing card matches the home closer */
+.post-plate{margin:28px 0 0}
+.post-plate img{display:block;width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;object-position:50% 35%;border-radius:24px;filter:var(--art-filter)}
+@media(min-width:1100px){
+  .post-plate,.post .wordlist{width:1040px;margin-left:calc(50% - 520px)}
+  .post .wordlist{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;padding:12px 36px 28px}
+  .post .wordlist h3{grid-column:1/-1}
+  .post .wordlist h3 + .term + .term{border-top:none}
+}
+.post .cta{background:#211D16;color:#F4EEE2;box-shadow:none;--muted:#D6CDBC;--text:#F4EEE2}
+.post .cta::before{display:none}
+@media (prefers-color-scheme:dark){.post .cta{background:#17140F;box-shadow:inset 0 0 0 1px var(--line)}}
+.post .cta .badge{background:#0E0C09;color:#F4EEE2;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+.post .cta .qr{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#F4EEE2}
