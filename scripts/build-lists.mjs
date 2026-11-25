@@ -126,6 +126,11 @@ function summary(list, chosen) {
   const what = list.pool.exams ? `${list.eyebrow} vocabulary` : `${list.eyebrow.replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase())} vocabulary`;
   return `<strong>In short:</strong> ${chosen.length} ${what} words at ${range} level, grouped by ${by}. Each has a plain definition, its level and a real example sentence. Learn a few a day and review them over several weeks; reading the list once is not enough.`;
 }
+const plate = (scene, alt) => `    <figure class="post-plate"><picture><source type="image/avif" srcset="/art/${scene}-600.avif?v=34 600w, /art/${scene}-1200.avif?v=34 1200w" sizes="(min-width:1100px) 1040px, 92vw"><img src="/art/${scene}-600.webp?v=34" srcset="/art/${scene}-600.webp?v=34 600w, /art/${scene}-1200.webp?v=34 1200w" sizes="(min-width:1100px) 1040px, 92vw" width="1344" height="1056" alt="${alt}" decoding="async"></picture></figure>`;
+const PLATES = {
+  exam: ['scene-exams', 'A man studies at a desk in a quiet room under an arched window.'],
+  field: ['scene-fields', 'A doctor, a business executive, a lawyer with a folder and a professor with a book stand side by side.'],
+};
 const cta = (text, ct) => `    <div class="cta" id="get">
       <p>${text}</p>
       ${badges(ct)}
@@ -170,6 +175,7 @@ for (const list of LISTS) {
     <p>${summary(list, chosen)}</p>
     <p class="byline">By the Lexfall team · Updated ${MONTH}</p>
     <p class="inline-cta"><a href="${STORE(list.ct)}">Get Lexfall on the App Store</a> · Free to download. Subscription after a free trial.</p>
+${plate(...PLATES[list.pool.exams ? 'exam' : 'field'])}
 
 ${list.intro.map((p) => `    <p>${p}</p>`).join('\n\n')}
 
