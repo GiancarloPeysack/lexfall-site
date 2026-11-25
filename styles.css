@@ -774,3 +774,58 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 }
 @media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.mq-track[aria-hidden]{display:none}}
 @keyframes mq{to{transform:translateX(-100%)}}
+
+/* 2026-11-25 fresh-eyes pass: one gold object per view, one leaf per page, product in the hero,
+   three short panels merged into one row (identical-template tell), 44px tap targets on phones */
+.ed-hero .eyebrow{color:var(--muted)}
+@media (prefers-color-scheme:dark){.badge{background:#0E0C09;color:#F4EEE2;box-shadow:0 0 0 1px var(--line2, rgba(255,255,255,.16))}}
+.pn-eyebrow{color:var(--pm)}
+.pn-copy ul:not(.chips) li::before{background:var(--pm);opacity:.5}
+.facts{grid-template-columns:repeat(3,1fr);max-width:720px}
+@media(min-width:760px){.facts{grid-template-columns:repeat(3,1fr)}}
+.wcard:not(:first-child) .wcard-icon,.wcard:not(:first-child) .wcard-now{display:none}
+@media(max-width:899px){.nav-cta,.goal-chip{min-height:44px}.goal-q{flex-basis:100%;text-align:center}}
+/* hero: the lesson card on a phone over the plate */
+.ed-hero-art{display:grid}
+.ed-hero-art>.pn-plate,.ed-hero-art>.hero-phone{grid-area:1/1}
+.hero-phone.pn-phone.phone{width:46%;margin-top:52%;justify-self:start;margin-left:-6%;z-index:2}
+@media(min-width:900px){.hero-phone.pn-phone.phone{width:48%;margin-top:46%;margin-left:-22%}}
+/* Fig. 01 now shows the plate alone (its phone moved to the hero) */
+.pn-art-solo .pn-plate img{box-shadow:var(--soft-shadow, 0 24px 48px -24px rgba(0,0,0,.4))}
+/* between lessons: three screens in one row */
+.trio-panel{grid-template-columns:1fr}
+@media(min-width:900px){.trio-panel{grid-template-columns:1fr}.trio-panel .pn-copy{max-width:none;text-align:center;margin:0 auto}}
+.trio{list-style:none;display:grid;grid-template-columns:1fr;gap:40px;margin:8px 0 0;padding:0}
+@media(min-width:760px){.trio{grid-template-columns:repeat(3,1fr);gap:28px}}
+.trio-item{display:flex;flex-direction:column;align-items:center;text-align:center}
+.trio-phone.phone{width:min(220px,62vw);padding:6px;border-radius:34px;box-shadow:0 30px 60px -24px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06)}
+.trio-phone.phone img{border-radius:28px}
+.trio-item h4{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.2vw,26px);line-height:1.15;margin-top:22px;color:var(--pt)}
+.trio-item p{color:var(--pm);font-size:15.5px;margin-top:8px;max-width:30ch}
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    @media(min-width:760px){.trio-item{animation:trio-rise linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+      .trio-item:nth-child(2){animation-range:entry 8% cover 36%}.trio-item:nth-child(3){animation-range:entry 16% cover 42%}}
+  }
+}
+@keyframes trio-rise{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+/* closer: a solid ink page instead of the shader band + frosted glass (glow tell) */
+.closer-band{margin-top:48px}
+.closer-band .closer{background:#211D16;color:#F4EEE2;border-radius:32px;padding:56px 22px 40px;max-width:900px;
+  --muted:#D6CDBC;--faint:#B3A993;--text:#F4EEE2}
+@media (prefers-color-scheme:dark){.closer-band .closer{background:#17140F;box-shadow:inset 0 0 0 1px var(--line)}}
+.closer-band .closer h2{color:#F4EEE2}
+.closer-band .badge{background:#0E0C09;color:#F4EEE2;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+.closer-band .qr{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#F4EEE2}
+/* phone fixes after the re-shoot */
+@media(max-width:899px){.hero-phone.pn-phone.phone{margin-left:3%;width:42%}}
+.section-head h2,.pn-copy h3,.trio-item h4{text-wrap:balance}
+@media(max-width:759px){
+  .trio{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:72%;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+    margin:8px -22px 0;padding:0 22px 8px;scroll-padding:0 22px;scrollbar-width:none}
+  .trio::-webkit-scrollbar{display:none}
+  .trio-item{scroll-snap-align:center}
+  .trio-phone.phone{width:100%}
+  .facts span{font-size:12.5px}
+}
+@media(min-width:640px) and (max-width:759px){.trio{margin:8px -40px 0;padding:0 40px 8px;scroll-padding:0 40px}}
