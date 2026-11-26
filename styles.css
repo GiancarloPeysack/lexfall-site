@@ -882,3 +882,5 @@ header.nav .wrap.nav-inner{max-width:calc(var(--maxw) - 2*var(--gut));margin:0 v
 .pn-art-solo::after{content:"";position:absolute;left:-30px;top:-22px;width:116px;height:87px;background:url(/art/obj-teacup-480.webp) center/contain no-repeat;transform:rotate(-6deg);filter:var(--art-filter) drop-shadow(0 10px 14px rgba(33,29,22,.18));pointer-events:none}
 @media(max-width:759px){.pn-art-solo::after{width:84px;height:63px;left:-10px;top:-18px}}
 .site-foot .ridge img{filter:var(--art-filter) sepia(.25) saturate(.8)}
+.facts b{white-space:nowrap}
+@media(max-width:759px){.facts b{font-size:26px}}
