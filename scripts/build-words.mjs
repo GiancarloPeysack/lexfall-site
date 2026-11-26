@@ -35,6 +35,8 @@ const rarityWords = (r) => r >= 80 ? 'very rare' : r >= 60 ? 'rare' : r >= 40 ? 
 
 // ---- group the corpus into one entry per headword --------------------------------------------
 const raw = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/words.json'), 'utf8').replace(/\s*\u2014\s*/g, ', ')); // no em dashes on the site (owner rule)
+// Some app sources store definitions as fragments ("showy but cheaply made"): print them as sentences.
+for (const w of raw) if (w.def) { w.def = w.def.trim(); w.def = w.def[0].toUpperCase() + w.def.slice(1); if (!/[.!?)]$/.test(w.def)) w.def += '.'; }
 const bySlug = new Map();
 for (const w of raw) {
   const slug = slugify(w.word);
