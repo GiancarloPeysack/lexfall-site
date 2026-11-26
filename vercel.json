@@ -68,6 +68,76 @@
       "source": "/get",
       "destination": "https://apps.apple.com/app/id6786614029?pt=128225052&ct=link",
       "permanent": false
+    },
+    {
+      "source": "/words/anti-dilution-provision",
+      "destination": "/words/anti-dilution",
+      "permanent": true
+    },
+    {
+      "source": "/words/contempt-of-court",
+      "destination": "/words/contempt",
+      "permanent": true
+    },
+    {
+      "source": "/words/drag-along-right",
+      "destination": "/words/drag-along",
+      "permanent": true
+    },
+    {
+      "source": "/words/immobilise-the-spine",
+      "destination": "/words/immobilise",
+      "permanent": true
+    },
+    {
+      "source": "/words/leniency-programme",
+      "destination": "/words/leniency",
+      "permanent": true
+    },
+    {
+      "source": "/words/market-penetration",
+      "destination": "/words/penetration",
+      "permanent": true
+    },
+    {
+      "source": "/words/medicines-reconciliation",
+      "destination": "/words/reconciliation",
+      "permanent": true
+    },
+    {
+      "source": "/words/passing-on-defence",
+      "destination": "/words/pass-on-defence",
+      "permanent": true
+    },
+    {
+      "source": "/words/post-money-valuation",
+      "destination": "/words/post-money",
+      "permanent": true
+    },
+    {
+      "source": "/words/pre-money-valuation",
+      "destination": "/words/pre-money",
+      "permanent": true
+    },
+    {
+      "source": "/words/pressure-support-ventilation",
+      "destination": "/words/pressure-support",
+      "permanent": true
+    },
+    {
+      "source": "/words/pro-rata-rights",
+      "destination": "/words/pro-rata",
+      "permanent": true
+    },
+    {
+      "source": "/words/secure-the-airway",
+      "destination": "/words/airway",
+      "permanent": true
+    },
+    {
+      "source": "/words/statements-of-case",
+      "destination": "/words/pleadings",
+      "permanent": true
     }
   ],
   "rewrites": [
