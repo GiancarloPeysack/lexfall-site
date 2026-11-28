@@ -150,7 +150,6 @@ function wordPage(e) {
       </section>`).join('');
   const stats = [
     e.level && `<div><b>${e.level}</b><span>CEFR level</span></div>`,
-    e.register && `<div><b>${REGISTER[e.register] || e.register}</b><span>Register</span></div>`,
   ].filter(Boolean).join('');
   const rel = e.related?.length ? `
     <h2 class="h-sub">More ${esc(FIELD[p.field].short.toLowerCase())} words: ${esc(p.topic)}</h2>
