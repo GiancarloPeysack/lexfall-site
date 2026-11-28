@@ -150,7 +150,6 @@ function wordPage(e) {
       </section>`).join('');
   const stats = [
     e.level && `<div><b>${e.level}</b><span>CEFR level</span></div>`,
-    typeof e.rarity === 'number' && `<div><b>${e.rarity}<small>/100</small></b><span>Rarity: ${rarityWords(e.rarity)}</span></div>`,
     e.register && `<div><b>${REGISTER[e.register] || e.register}</b><span>Register</span></div>`,
   ].filter(Boolean).join('');
   const rel = e.related?.length ? `
@@ -164,7 +163,7 @@ function wordPage(e) {
     <p class="headline-meta">${!multi ? `<span class="pos">${esc(posName(p.pos))}</span>` : ''}${e.ipa ? `<span class="ipa">/${esc(e.ipa)}/</span>` : ''}</p>
     ${stats ? `<div class="stats">${stats}</div>` : ''}
     ${senses}
-    ${typeof e.rarity === 'number' ? `<p class="note">Rarity runs from 0 (a word everyone knows) to 100 (almost never seen outside specialist or literary writing). Level is the word's real difficulty on the CEFR scale, from A1 to C2.</p>` : ''}
+    <p class="note">Level is the word's real difficulty on the CEFR scale, from A1 to C2.</p>
     ${cta(`Learn words like <em>${esc(e.word)}</em> in short daily lessons, with smart reviews that make them stick.`)}
     ${rel}
     ${letterNav(null)}
@@ -179,7 +178,7 @@ const listItems = (list) => list.map((e) => `<li><a href="/words/${e.slug}">${es
 function letterPage(l) {
   const list = entries.filter((e) => e.letter === l || (l === 'a' && e.letter === '0'));
   const url = `${SITE}/words/letter/${l}`;
-  return head({ title: `Advanced English words starting with ${l.toUpperCase()} | Lexfall`, desc: `${list.length.toLocaleString('en-US')} advanced English words starting with ${l.toUpperCase()}, each with a clear definition, a real example sentence, its CEFR level and a rarity score.`, url }) + `
+  return head({ title: `Advanced English words starting with ${l.toUpperCase()} | Lexfall`, desc: `${list.length.toLocaleString('en-US')} advanced English words starting with ${l.toUpperCase()}, each with a clear definition, a real example sentence, and its CEFR level.`, url }) + `
 <main id="main">
   <article class="wrap word-index">
     <p class="crumbs"><a href="/words">Words</a> / ${l.toUpperCase()}</p>
@@ -204,7 +203,7 @@ function fieldPage(f) {
   const tlist = [...topics.entries()].sort((a, b) => b[1].length - a[1].length);
   const F = FIELD[f];
   const url = `${SITE}/words/field/${F.hub}`;
-  return head({ title: `${F.name} vocabulary list: ${list.length.toLocaleString('en-US')} words | Lexfall`, desc: `${list.length.toLocaleString('en-US')} ${F.name.toLowerCase()} words grouped by topic, each with a clear definition, a real example sentence, its CEFR level and a rarity score.`, url }) + `
+  return head({ title: `${F.name} vocabulary list: ${list.length.toLocaleString('en-US')} words | Lexfall`, desc: `${list.length.toLocaleString('en-US')} ${F.name.toLowerCase()} words grouped by topic, each with a clear definition, a real example sentence, and its CEFR level.`, url }) + `
 <main id="main">
   <article class="wrap word-index">
     <p class="crumbs"><a href="/words">Words</a> / ${esc(F.short)}</p>
@@ -222,12 +221,12 @@ function hubPage() {
   const counts = Object.fromEntries(FIELD_ORDER.map((f) => [f, entries.filter((e) => e.senses.some((s) => s.field === f)).length]));
   const featured = ['sonder', 'petrichor', 'sedulous', 'laconic', 'palliative', 'estoppel', 'fiduciary', 'lucrative', 'ostensible', 'brainrot']
     .map((s) => bySlug.get(s)).filter(Boolean);
-  return head({ title: 'Advanced English vocabulary: definitions and examples | Lexfall', desc: `${entries.length.toLocaleString('en-US')} advanced English words for life and work, from general vocabulary to medical, legal and business English. Each has a definition, an example sentence, a level and a rarity score.`, url: `${SITE}/words` }) + `
+  return head({ title: 'Advanced English vocabulary: definitions and examples | Lexfall', desc: `${entries.length.toLocaleString('en-US')} advanced English words for life and work, from general vocabulary to medical, legal and business English. Each has a definition, an example sentence and a level.`, url: `${SITE}/words` }) + `
 <main id="main">
   <article class="wrap word-index">
     <span class="eyebrow">Word list</span>
     <h1>Advanced English vocabulary</h1>
-    <p class="lede">${entries.length.toLocaleString('en-US')} words from the Lexfall app, each with a clear definition, a real example sentence, its CEFR level and a rarity score from 0 to 100.</p>
+    <p class="lede">${entries.length.toLocaleString('en-US')} words from the Lexfall app, each with a clear definition, a real example sentence, and its CEFR level.</p>
     <figure class="post-plate"><picture><source type="image/avif" srcset="/art/scene-library-600.avif?v=34 600w, /art/scene-library-1200.avif?v=34 1200w" sizes="(min-width:760px) 700px, 92vw"><img src="/art/scene-library-600.webp?v=34" srcset="/art/scene-library-600.webp?v=34 600w, /art/scene-library-1200.webp?v=34 1200w" sizes="(min-width:760px) 700px, 92vw" width="1344" height="1056" alt="A young man stands at a reading desk with a lamp and a book." decoding="async"></picture><figcaption><i>Fig. 01</i> The dictionary: every word in the app, with its level and how rare it is.</figcaption></figure>
     <h2 class="h-sub">Browse by letter</h2>
     ${letterNav(null)}
